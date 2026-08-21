@@ -1,142 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZIZOU DESIGN</title>
 
-  <title>ZIZOU DESIGN</title>
-
-  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <header class="navbar">
+    <!-- FULL SCREEN HERO -->
+    <section class="hero" id="home">
 
-    <div class="nav-left">
-      <button class="nav-icon" id="menuButton" aria-label="Open menu">
-        ☰
-      </button>
+        <img
+            src="images/IMG_2075.jpeg"
+            alt="ZIZOU DESIGN"
+            class="hero-image"
+        >
 
-      <button class="nav-icon search-icon" id="searchButton" aria-label="Search">
-        ⌕
-      </button>
-    </div>
+        <!-- Navigation -->
+        <header class="navbar">
 
-    <a href="#" class="logo">
-      ZIZOU DESIGN
-    </a>
+            <div class="nav-left">
+                <button class="icon-button menu-button" aria-label="Menu">
+                    ☰
+                </button>
 
-    <div class="nav-right">
-      <button class="nav-icon" aria-label="Wishlist">
-        ♡
-      </button>
+                <button class="icon-button search-button" aria-label="Search">
+                    ⌕
+                </button>
+            </div>
 
-      <button class="nav-icon" aria-label="Shopping bag">
-        ♧
-      </button>
-    </div>
+            <a href="#home" class="logo">
+                ZIZOU DESIGN
+            </a>
 
-  </header>
+            <div class="nav-right">
+                <button class="bag-button" aria-label="Shopping bag">
+                    ♧
+                </button>
+            </div>
 
-
-  <aside class="side-menu" id="sideMenu">
-
-    <button class="close-button" id="closeMenu">
-      ×
-    </button>
-
-    <nav>
-      <a href="#">Home</a>
-      <a href="#collection">Collection</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-  </aside>
+        </header>
 
 
-  <div class="search-screen" id="searchScreen">
-
-    <button class="search-close" id="closeSearch">
-      ×
-    </button>
-
-    <div class="search-box">
-      <input
-        type="search"
-        placeholder="Search ZIZOU DESIGN"
-        aria-label="Search ZIZOU DESIGN"
-      >
-    </div>
-
-  </div>
-
-
-  <main>
-
-    <section class="hero">
-
-      <img
-        src="images/IMG_2075.jpg"
-        alt="ZIZOU DESIGN campaign"
-        class="hero-image"
-      >
-
-      <div class="hero-shade"></div>
-
-      <div class="hero-content">
-
-        <a href="#collection" class="hero-button">
-          VIEW COLLECTION
+        <!-- Collection button -->
+        <a href="#collection" class="collection-button">
+            VIEW COLLECTION
         </a>
 
-      </div>
-
     </section>
 
 
-    <section class="collection" id="collection">
+    <!-- COLLECTION -->
+    <main class="collection" id="collection">
 
-      <div class="section-heading">
-        <p>ZIZOU DESIGN</p>
-        <h2>Current Collection</h2>
-      </div>
+        <p class="collection-brand">ZIZOU DESIGN</p>
 
-      <div class="product-grid">
+        <h1>Current Collection</h1>
 
-        <article class="product">
-          <img src="images/product-1.jpg" alt="ZIZOU DESIGN product">
-          <div class="product-info">
-            <h3>Product Name</h3>
-            <p>$00.00</p>
-          </div>
-        </article>
+        <div class="collection-grid">
 
-        <article class="product">
-          <img src="images/product-2.jpg" alt="ZIZOU DESIGN product">
-          <div class="product-info">
-            <h3>Product Name</h3>
-            <p>$00.00</p>
-          </div>
-        </article>
+            <article class="artwork">
+                <img src="images/amber-breeze.jpeg" alt="Amber Breeze">
 
-        <article class="product">
-          <img src="images/product-3.jpg" alt="ZIZOU DESIGN product">
-          <div class="product-info">
-            <h3>Product Name</h3>
-            <p>$00.00</p>
-          </div>
-        </article>
-
-      </div>
-
-    </section>
-
-  </main>
+                <h2>Amber Breeze</h2>
+                <p>$39.00</p>
+            </article>
 
 
-  <script src="script.js"></script>
+            <article class="artwork">
+                <img src="images/sage-quietude.jpeg" alt="Sage Quietude">
+
+                <h2>Sage Quietude</h2>
+                <p>$39.00</p>
+            </article>
+
+
+            <article class="artwork">
+                <img src="images/eter-do-luar.jpeg" alt="Éter do Luar">
+
+                <h2>Éter do Luar</h2>
+                <p>$39.00</p>
+            </article>
+
+
+            <article class="artwork">
+                <img src="images/oneiric-glow.jpeg" alt="Oneiric Glow">
+
+                <h2>Oneiric Glow</h2>
+                <p>$39.00</p>
+            </article>
+
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
 
 </body>
 </html>
