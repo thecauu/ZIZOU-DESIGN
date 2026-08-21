@@ -381,3 +381,165 @@ body {
     }
 
 }
+
+
+/* =========================
+   SIDE MENU
+========================= */
+
+.side-menu {
+    position: fixed;
+
+    top: 0;
+    left: -100%;
+
+    width: min(420px, 88%);
+    height: 100%;
+
+    background: #111111;
+
+    color: white;
+
+    padding: 35px;
+
+    z-index: 1000;
+
+    transition: left 0.35s ease;
+}
+
+
+.side-menu.open {
+    left: 0;
+}
+
+
+.close-menu {
+    border: none;
+    background: transparent;
+
+    color: white;
+
+    font-size: 40px;
+
+    cursor: pointer;
+}
+
+
+.menu-nav {
+    display: flex;
+    flex-direction: column;
+
+    gap: 28px;
+
+    margin-top: 70px;
+}
+
+
+.menu-nav > a,
+.dropdown-button {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 30px;
+
+    font-weight: 400;
+}
+
+
+.dropdown-button {
+    border: none;
+    background: transparent;
+
+    width: 100%;
+
+    padding: 0;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    cursor: pointer;
+
+    text-align: left;
+}
+
+
+.dropdown-content {
+
+    display: none;
+
+    flex-direction: column;
+
+    padding:
+        18px
+        0
+        0
+        20px;
+}
+
+
+.dropdown-content.open {
+    display: flex;
+}
+
+
+.dropdown-content a {
+
+    color: rgba(255,255,255,0.7);
+
+    text-decoration: none;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 15px;
+
+    letter-spacing: 1px;
+}
+
+
+
+/* =========================
+   VIEW FULL COLLECTION
+========================= */
+
+.view-more {
+
+    text-align: center;
+
+    margin-top: 55px;
+}
+
+
+.view-more a {
+
+    display: inline-block;
+
+    padding:
+        17px
+        34px;
+
+    border: 1px solid #111111;
+
+    color: #111111;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+    transition: 0.25s;
+}
+
+
+.view-more a:hover {
+
+    background: #111111;
+
+    color: white;
+}
