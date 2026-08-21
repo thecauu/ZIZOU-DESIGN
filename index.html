@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>ZIZOU DESIGN</title>
 
     <link rel="stylesheet" href="style.css">
@@ -10,7 +11,69 @@
 
 <body>
 
-    <!-- FULL SCREEN HERO -->
+
+    <!-- =========================
+         SIDE MENU
+    ========================== -->
+
+    <aside class="side-menu" id="sideMenu">
+
+        <button class="close-menu" id="closeMenu" aria-label="Close menu">
+            ×
+        </button>
+
+        <nav class="menu-nav">
+
+            <a href="index.html">
+                Home
+            </a>
+
+
+            <!-- COLLECTIONS DROPDOWN -->
+            <div class="menu-dropdown">
+
+                <button
+                    class="dropdown-button"
+                    id="collectionsButton"
+                    type="button"
+                >
+                    Collections
+                    <span>⌄</span>
+                </button>
+
+
+                <div
+                    class="dropdown-content"
+                    id="collectionsMenu"
+                >
+
+                    <a href="summertide.html">
+                        Summertide Collection
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <a href="#about">
+                About
+            </a>
+
+            <a href="#contact">
+                Contact
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+
+    <!-- =========================
+         FULL SCREEN HERO
+    ========================== -->
+
     <section class="hero" id="home">
 
         <img
@@ -19,85 +82,193 @@
             class="hero-image"
         >
 
+
         <!-- Navigation -->
+
         <header class="navbar">
 
             <div class="nav-left">
-                <button class="icon-button menu-button" aria-label="Menu">
+
+                <button
+                    class="icon-button menu-button"
+                    id="menuButton"
+                    type="button"
+                    aria-label="Open menu"
+                >
                     ☰
                 </button>
 
-                <button class="icon-button search-button" aria-label="Search">
+
+                <button
+                    class="icon-button search-button"
+                    id="searchButton"
+                    type="button"
+                    aria-label="Search"
+                >
                     ⌕
                 </button>
+
             </div>
+
 
             <a href="#home" class="logo">
                 ZIZOU DESIGN
             </a>
 
+
             <div class="nav-right">
-                <button class="bag-button" aria-label="Shopping bag">
+
+                <button
+                    class="bag-button"
+                    type="button"
+                    aria-label="Shopping bag"
+                >
                     ♧
                 </button>
+
             </div>
 
         </header>
 
 
-        <!-- Collection button -->
-        <a href="#collection" class="collection-button">
+
+        <!-- Hero Collection Button -->
+
+        <a
+            href="#collection"
+            class="collection-button"
+        >
             VIEW COLLECTION
         </a>
 
     </section>
 
 
-    <!-- COLLECTION -->
-    <main class="collection" id="collection">
 
-        <p class="collection-brand">ZIZOU DESIGN</p>
+    <!-- =========================
+         LATEST COLLECTION
+    ========================== -->
 
-        <h1>Current Collection</h1>
+    <main
+        class="collection"
+        id="collection"
+    >
+
+        <p class="collection-brand">
+            LATEST COLLECTION
+        </p>
+
+
+        <h1>
+            Summertide
+        </h1>
+
+
+
+        <!-- FOUR PHOTO PREVIEW -->
 
         <div class="collection-grid">
 
-            <article class="artwork">
-                <img src="images/amber-breeze.jpeg" alt="Amber Breeze">
 
-                <h2>Amber Breeze</h2>
-                <p>$39.00</p>
+            <article class="artwork">
+
+                <img
+                    src="images/amber-breeze.jpeg"
+                    alt="Amber Breeze"
+                >
+
+                <h2>
+                    Amber Breeze
+                </h2>
+
+                <p>
+                    $39.00
+                </p>
+
             </article>
 
 
-            <article class="artwork">
-                <img src="images/sage-quietude.jpeg" alt="Sage Quietude">
 
-                <h2>Sage Quietude</h2>
-                <p>$39.00</p>
+            <article class="artwork">
+
+                <img
+                    src="images/peridot-float.jpeg"
+                    alt="Peridot Float"
+                >
+
+                <h2>
+                    Peridot Float
+                </h2>
+
+                <p>
+                    $39.00
+                </p>
+
             </article>
 
 
-            <article class="artwork">
-                <img src="images/eter-do-luar.jpeg" alt="Éter do Luar">
 
-                <h2>Éter do Luar</h2>
-                <p>$39.00</p>
+            <article class="artwork">
+
+                <img
+                    src="images/patina-del-mar.jpeg"
+                    alt="Pátina del Mar"
+                >
+
+                <h2>
+                    Pátina del Mar
+                </h2>
+
+                <p>
+                    $39.00
+                </p>
+
             </article>
 
 
-            <article class="artwork">
-                <img src="images/oneiric-glow.jpeg" alt="Oneiric Glow">
 
-                <h2>Oneiric Glow</h2>
-                <p>$39.00</p>
+            <article class="artwork">
+
+                <img
+                    src="images/sage-quietude.jpeg"
+                    alt="Sage Quietude"
+                >
+
+                <h2>
+                    Sage Quietude
+                </h2>
+
+                <p>
+                    $39.00
+                </p>
+
             </article>
+
+
+        </div>
+
+
+
+        <!-- VIEW FULL COLLECTION -->
+
+        <div class="view-more">
+
+            <a href="summertide.html">
+                VIEW FULL COLLECTION
+            </a>
 
         </div>
 
     </main>
 
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
     <script src="script.js"></script>
+
 
 </body>
 </html>
