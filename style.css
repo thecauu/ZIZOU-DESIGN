@@ -564,3 +564,300 @@ body {
     height: 100%;
     object-fit: cover;
 }
+
+
+/* =========================
+   SUMMERTIDE COLLECTION PAGE
+========================= */
+
+.collection-page-nav {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+
+    padding: 28px 6%;
+
+    background: white;
+}
+
+
+.back-link {
+    color: #111;
+    text-decoration: none;
+
+    font-size: 30px;
+
+    justify-self: start;
+}
+
+
+.collection-page-logo {
+    color: #111;
+    text-decoration: none;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 26px;
+
+    letter-spacing: 1px;
+
+    justify-self: center;
+
+    white-space: nowrap;
+}
+
+
+.collection-page-spacer {
+    justify-self: end;
+}
+
+
+
+.collection-page {
+    padding:
+        60px
+        6%
+        100px;
+}
+
+
+.collection-page-label {
+    font-size: 12px;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 18px;
+}
+
+
+.collection-page h1 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: clamp(48px, 9vw, 84px);
+
+    font-weight: 400;
+
+    margin-bottom: 55px;
+}
+
+
+
+/* =========================
+   FULL COLLECTION GRID
+========================= */
+
+.full-collection-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap:
+        42px
+        18px;
+}
+
+
+.collection-item {
+    border: none;
+    background: none;
+
+    padding: 0;
+
+    text-align: left;
+
+    cursor: pointer;
+}
+
+
+.collection-item img {
+    width: 100%;
+
+    aspect-ratio: 4 / 5;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+.collection-item span {
+    display: block;
+
+    margin-top: 12px;
+
+    color: #111;
+
+    font-size: 16px;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+/* =========================
+   LIGHTBOX
+========================= */
+
+.lightbox {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 5000;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.96);
+
+    color: white;
+}
+
+
+.lightbox.open {
+    display: flex;
+}
+
+
+.lightbox-content {
+    width: min(82%, 900px);
+
+    text-align: center;
+}
+
+
+.lightbox-content img {
+    max-width: 100%;
+
+    max-height: 75vh;
+
+    object-fit: contain;
+}
+
+
+.lightbox-title {
+    margin-top: 18px;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 22px;
+}
+
+
+.lightbox-counter {
+    margin-top: 8px;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    opacity: 0.65;
+}
+
+
+.lightbox-close {
+    position: absolute;
+
+    top: 22px;
+    right: 24px;
+
+    border: none;
+    background: none;
+
+    color: white;
+
+    font-size: 42px;
+
+    cursor: pointer;
+}
+
+
+.lightbox-arrow {
+    position: absolute;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border: none;
+    background: none;
+
+    color: white;
+
+    font-size: 55px;
+
+    cursor: pointer;
+
+    padding: 10px;
+}
+
+
+.lightbox-prev {
+    left: 10px;
+}
+
+
+.lightbox-next {
+    right: 10px;
+}
+
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .collection-page-nav {
+        padding:
+            22px
+            18px;
+    }
+
+
+    .collection-page-logo {
+        font-size: 22px;
+    }
+
+
+    .collection-page {
+        padding:
+            45px
+            6%
+            80px;
+    }
+
+
+    .collection-page h1 {
+        font-size: 50px;
+
+        margin-bottom: 40px;
+    }
+
+
+    .full-collection-grid {
+        gap:
+            35px
+            12px;
+    }
+
+
+    .collection-item span {
+        font-size: 15px;
+    }
+
+
+    .lightbox-content {
+        width: 88%;
+    }
+
+
+    .lightbox-content img {
+        max-height: 70vh;
+    }
+
+}
