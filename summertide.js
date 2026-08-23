@@ -2,42 +2,42 @@ const galleries = {
 
     amber: [
         {
-            src: "images/amber breeze.jpg",
+            src: "images/amber breeze second page.jpg",
             title: "Amber Breeze"
         }
     ],
 
     peridot: [
         {
-            src: "images/peridot afloat.jpg",
+            src: "images/peridot afloat second page.jpg",
             title: "Peridot Afloat"
         }
     ],
 
     patina: [
         {
-            src: "images/pátina del mar .jpg",
+            src: "images/patina del mar second page.jpg",
             title: "Pátina del Mar"
         }
     ],
 
     sage: [
         {
-            src: "images/Sage Quietude.jpeg",
+            src: "images/sage quietude second page.jpg",
             title: "Sage Quietude"
         }
     ],
 
     eter: [
         {
-            src: "images/éter do luar.JPG",
+            src: "images/eter do luar second page.jpg",
             title: "Éter do Luar"
         }
     ],
 
     oneiric: [
         {
-            src: "images/Oneiric Glow.jpeg",
+            src: "images/oneiric glow second page.jpg",
             title: "Oneiric Glow"
         }
     ]
