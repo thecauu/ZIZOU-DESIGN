@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Summertide Collection | ZIZOU DESIGN</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         TOP NAV
+    ========================== -->
+
+    <header class="collection-page-nav">
+
+        <a href="index.html" class="back-link">
+            ←
+        </a>
+
+        <a href="index.html" class="collection-page-logo">
+            ZIZOU DESIGN
+        </a>
+
+        <div class="collection-page-spacer"></div>
+
+    </header>
+
+
+
+    <!-- =========================
+         COLLECTION HEADER
+    ========================== -->
+
+    <main class="collection-page">
+
+        <p class="collection-page-label">
+            COLLECTION
+        </p>
+
+        <h1>
+            Summertide
+        </h1>
+
+
+
+        <!-- =========================
+             FULL COLLECTION GRID
+        ========================== -->
+
+        <div class="full-collection-grid">
+
+
+            <!-- AMBER BREEZE -->
+
+            <button
+                class="collection-item"
+                type="button"
+                data-gallery="amber"
+            >
+                <img
+                    src="images/amber breeze.jpg"
+                    alt="Amber Breeze"
+                >
+
+                <span>
+                    Amber Breeze
+                </span>
+            </button>
+
+
+
+            <!-- PERIDOT AFLOAT -->
+
+            <button
+                class="collection-item"
+                type="button"
+                data-gallery="peridot"
+            >
+                <img
+                    src="images/peridot afloat.jpg"
+                    alt="Peridot Afloat"
+                >
+
+                <span>
+                    Peridot Afloat
+                </span>
+            </button>
+
+
+
+            <!-- PATINA DEL MAR -->
+
+            <button
+                class="collection-item"
+                type="button"
+                data-gallery="patina"
+            >
+                <img
+                    src="images/pátina del mar .jpg"
+                    alt="Pátina del Mar"
+                >
+
+                <span>
+                    Pátina del Mar
+                </span>
+            </button>
+
+
+
+            <!-- SAGE QUIETUDE -->
+
+            <button
+                class="collection-item"
+                type="button"
+                data-gallery="sage"
+            >
+                <img
+                    src="images/Sage Quietude.jpeg"
+                    alt="Sage Quietude"
+                >
+
+                <span>
+                    Sage Quietude
+                </span>
+            </button>
+
+
+
+            <!-- ETER DO LUAR -->
+
+            <button
+                class="collection-item"
+                type="button"
+                data-gallery="eter"
+            >
+                <img
+                    src="images/éter do luar.JPG"
+                    alt="Éter do Luar"
+                >
+
+                <span>
+                    Éter do Luar
+                </span>
+            </button>
+
+
+
+            <!-- ONEIRIC GLOW -->
+
+            <button
+                class="collection-item"
+                type="button"
+                data-gallery="oneiric"
+            >
+                <img
+                    src="images/Oneiric Glow.jpeg"
+                    alt="Oneiric Glow"
+                >
+
+                <span>
+                    Oneiric Glow
+                </span>
+            </button>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =========================
+         LIGHTBOX / SLIDER
+    ========================== -->
+
+    <div
+        class="lightbox"
+        id="lightbox"
+        aria-hidden="true"
+    >
+
+        <button
+            class="lightbox-close"
+            id="lightboxClose"
+            type="button"
+            aria-label="Close gallery"
+        >
+            ×
+        </button>
+
+
+        <button
+            class="lightbox-arrow lightbox-prev"
+            id="lightboxPrev"
+            type="button"
+            aria-label="Previous image"
+        >
+            ‹
+        </button>
+
+
+        <div class="lightbox-content">
+
+            <img
+                id="lightboxImage"
+                src=""
+                alt=""
+            >
+
+            <p
+                id="lightboxTitle"
+                class="lightbox-title"
+            ></p>
+
+            <p
+                id="lightboxCounter"
+                class="lightbox-counter"
+            ></p>
+
+        </div>
+
+
+        <button
+            class="lightbox-arrow lightbox-next"
+            id="lightboxNext"
+            type="button"
+            aria-label="Next image"
+        >
+            ›
+        </button>
+
+    </div>
+
+
+
+    <script src="summertide.js"></script>
+
+</body>
+</html>
