@@ -3,106 +3,161 @@ const galleries = {
     amber: [
         {
             src: "images/amber breeze second page.jpg",
-            title: "Amber Breeze"
+            title: "Amber Breeze",
+            type: "preview"
+        },
+        {
+            src: "images/amber mock room.jpg",
+            title: "Amber Breeze — Room Preview",
+            type: "room"
+        },
+        {
+            src: "images/amber watermark.jpg",
+            title: "Amber Breeze — Artwork Detail",
+            type: "watermark"
         }
     ],
 
     peridot: [
         {
             src: "images/peridot afloat second page.jpg",
-            title: "Peridot Afloat"
+            title: "Peridot Afloat",
+            type: "preview"
+        },
+        {
+            src: "images/peridot mock room.jpg",
+            title: "Peridot Afloat — Room Preview",
+            type: "room"
+        },
+        {
+            src: "images/peridot watermark.jpg",
+            title: "Peridot Afloat — Artwork Detail",
+            type: "watermark"
         }
     ],
 
     patina: [
         {
             src: "images/patina del mar second page.jpg",
-            title: "Pátina del Mar"
+            title: "Pátina del Mar",
+            type: "preview"
+        },
+        {
+            src: "images/patina mock room.jpg",
+            title: "Pátina del Mar — Room Preview",
+            type: "room"
+        },
+        {
+            src: "images/patina watermark.jpg",
+            title: "Pátina del Mar — Artwork Detail",
+            type: "watermark"
         }
     ],
 
     sage: [
         {
             src: "images/sage quietude second page.jpg",
-            title: "Sage Quietude"
+            title: "Sage Quietude",
+            type: "preview"
+        },
+        {
+            src: "images/sage mock room.jpg",
+            title: "Sage Quietude — Room Preview",
+            type: "room"
+        },
+        {
+            src: "images/sage watermark.jpg",
+            title: "Sage Quietude — Artwork Detail",
+            type: "watermark"
         }
     ],
 
     eter: [
         {
             src: "images/eter do luar second page.jpg",
-            title: "Éter do Luar"
+            title: "Éter do Luar",
+            type: "preview"
+        },
+        {
+            src: "images/eter mock room.jpg",
+            title: "Éter do Luar — Room Preview",
+            type: "room"
+        },
+        {
+            src: "images/eter watermark.JPG",
+            title: "Éter do Luar — Artwork Detail",
+            type: "watermark"
         }
     ],
 
     oneiric: [
         {
             src: "images/oneiric glow second page.jpg",
-            title: "Oneiric Glow"
+            title: "Oneiric Glow",
+            type: "preview"
+        },
+        {
+            src: "images/oneiric mock room.PNG",
+            title: "Oneiric Glow — Room Preview",
+            type: "room"
+        },
+        {
+            src: "images/oneiric watermark.jpg",
+            title: "Oneiric Glow — Artwork Detail",
+            type: "watermark"
         }
     ]
 
 };
 
 
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxTitle = document.getElementById("lightboxTitle");
+const lightboxCounter = document.getElementById("lightboxCounter");
 
-const lightbox =
-    document.getElementById("lightbox");
-
-const lightboxImage =
-    document.getElementById("lightboxImage");
-
-const lightboxTitle =
-    document.getElementById("lightboxTitle");
-
-const lightboxCounter =
-    document.getElementById("lightboxCounter");
-
-const lightboxClose =
-    document.getElementById("lightboxClose");
-
-const lightboxPrev =
-    document.getElementById("lightboxPrev");
-
-const lightboxNext =
-    document.getElementById("lightboxNext");
-
+const lightboxClose = document.getElementById("lightboxClose");
+const lightboxPrev = document.getElementById("lightboxPrev");
+const lightboxNext = document.getElementById("lightboxNext");
 
 
 let activeGallery = [];
 let activeIndex = 0;
 
+let touchStartX = 0;
+let touchEndX = 0;
+
+let transitionRunning = false;
 
 
-function showSlide() {
+/* =========================
+   UPDATE SLIDE
+========================= */
 
-    const slide =
-        activeGallery[activeIndex];
+function updateSlideContent() {
 
-    lightboxImage.src =
-        slide.src;
+    const slide = activeGallery[activeIndex];
 
-    lightboxImage.alt =
-        slide.title;
+    lightboxImage.src = slide.src;
+    lightboxImage.alt = slide.title;
 
-    lightboxTitle.textContent =
-        slide.title;
+    lightboxTitle.textContent = slide.title;
 
     lightboxCounter.textContent =
         `${activeIndex + 1} / ${activeGallery.length}`;
-
 }
 
 
+/* =========================
+   OPEN GALLERY
+========================= */
 
 function openGallery(galleryName) {
 
-    activeGallery =
-        galleries[galleryName];
-
+    activeGallery = galleries[galleryName];
     activeIndex = 0;
 
-    showSlide();
+    updateSlideContent();
 
     lightbox.classList.add("open");
 
@@ -111,12 +166,232 @@ function openGallery(galleryName) {
         "false"
     );
 
-    document.body.style.overflow =
-        "hidden";
+    document.body.style.overflow = "hidden";
 
+
+    /*
+       Give the preview a moment to appear.
+
+       Then automatically perform the
+       cinematic transition into the room.
+    */
+
+    setTimeout(() => {
+
+        if (
+            activeGallery.length > 1 &&
+            lightbox.classList.contains("open")
+        ) {
+
+            cinematicRoomTransition();
+
+        }
+
+    }, 700);
 }
 
 
+/* =========================
+   CINEMATIC ROOM TRANSITION
+========================= */
+
+function cinematicRoomTransition() {
+
+    if (transitionRunning) {
+        return;
+    }
+
+    if (activeIndex !== 0) {
+        return;
+    }
+
+    if (activeGallery.length < 2) {
+        return;
+    }
+
+    transitionRunning = true;
+
+
+    /*
+       Stage 1:
+       slowly enlarge the artwork,
+       simulating the viewer moving closer.
+    */
+
+    lightboxImage.classList.add(
+        "cinematic-zoom"
+    );
+
+
+    setTimeout(() => {
+
+        /*
+           Stage 2:
+           fade the artwork away.
+        */
+
+        lightboxImage.classList.add(
+            "cinematic-fade"
+        );
+
+
+        setTimeout(() => {
+
+            /*
+               Change the image while
+               it is faded out.
+            */
+
+            activeIndex = 1;
+
+            const roomSlide =
+                activeGallery[activeIndex];
+
+            lightboxImage.src =
+                roomSlide.src;
+
+            lightboxImage.alt =
+                roomSlide.title;
+
+            lightboxTitle.textContent =
+                roomSlide.title;
+
+            lightboxCounter.textContent =
+                `${activeIndex + 1} / ${activeGallery.length}`;
+
+
+            /*
+               Reset scale while hidden.
+            */
+
+            lightboxImage.classList.remove(
+                "cinematic-zoom"
+            );
+
+
+            /*
+               Let browser register new image.
+            */
+
+            requestAnimationFrame(() => {
+
+                requestAnimationFrame(() => {
+
+                    /*
+                       Fade the room outward.
+
+                       Because the scale is now
+                       smaller, it creates the
+                       illusion of pulling away
+                       from the artwork.
+                    */
+
+                    lightboxImage.classList.remove(
+                        "cinematic-fade"
+                    );
+
+                    lightboxImage.classList.add(
+                        "cinematic-room-reveal"
+                    );
+
+
+                    setTimeout(() => {
+
+                        lightboxImage.classList.remove(
+                            "cinematic-room-reveal"
+                        );
+
+                        transitionRunning = false;
+
+                    }, 1100);
+
+                });
+
+            });
+
+        }, 600);
+
+    }, 850);
+}
+
+
+/* =========================
+   NORMAL SLIDE TRANSITION
+========================= */
+
+function changeSlide(newIndex) {
+
+    if (transitionRunning) {
+        return;
+    }
+
+    transitionRunning = true;
+
+    lightboxImage.classList.add(
+        "slide-fade-out"
+    );
+
+
+    setTimeout(() => {
+
+        activeIndex = newIndex;
+
+        updateSlideContent();
+
+        lightboxImage.classList.remove(
+            "slide-fade-out"
+        );
+
+        lightboxImage.classList.add(
+            "slide-fade-in"
+        );
+
+
+        setTimeout(() => {
+
+            lightboxImage.classList.remove(
+                "slide-fade-in"
+            );
+
+            transitionRunning = false;
+
+        }, 500);
+
+    }, 300);
+}
+
+
+/* =========================
+   NEXT / PREVIOUS
+========================= */
+
+function nextSlide() {
+
+    const newIndex =
+        (activeIndex + 1)
+        % activeGallery.length;
+
+    changeSlide(newIndex);
+}
+
+
+function previousSlide() {
+
+    const newIndex =
+        (
+            activeIndex
+            - 1
+            + activeGallery.length
+        )
+        % activeGallery.length;
+
+    changeSlide(newIndex);
+}
+
+
+/* =========================
+   CLOSE GALLERY
+========================= */
 
 function closeGallery() {
 
@@ -127,40 +402,23 @@ function closeGallery() {
         "true"
     );
 
-    document.body.style.overflow =
-        "";
+    document.body.style.overflow = "";
 
+    transitionRunning = false;
+
+    lightboxImage.classList.remove(
+        "cinematic-zoom",
+        "cinematic-fade",
+        "cinematic-room-reveal",
+        "slide-fade-out",
+        "slide-fade-in"
+    );
 }
 
 
-
-function nextSlide() {
-
-    activeIndex =
-        (activeIndex + 1)
-        % activeGallery.length;
-
-    showSlide();
-
-}
-
-
-
-function previousSlide() {
-
-    activeIndex =
-        (
-            activeIndex
-            - 1
-            + activeGallery.length
-        )
-        % activeGallery.length;
-
-    showSlide();
-
-}
-
-
+/* =========================
+   OPEN ARTWORK
+========================= */
 
 document
     .querySelectorAll(".collection-item")
@@ -180,12 +438,14 @@ document
     });
 
 
+/* =========================
+   CONTROLS
+========================= */
 
 lightboxClose.addEventListener(
     "click",
     closeGallery
 );
-
 
 
 lightboxNext.addEventListener(
@@ -194,12 +454,10 @@ lightboxNext.addEventListener(
 );
 
 
-
 lightboxPrev.addEventListener(
     "click",
     previousSlide
 );
-
 
 
 lightbox.addEventListener(
@@ -216,6 +474,9 @@ lightbox.addEventListener(
 );
 
 
+/* =========================
+   KEYBOARD
+========================= */
 
 document.addEventListener(
     "keydown",
@@ -250,3 +511,61 @@ document.addEventListener(
 
     }
 );
+
+
+/* =========================
+   MOBILE SWIPE
+========================= */
+
+lightboxImage.addEventListener(
+    "touchstart",
+    (event) => {
+
+        touchStartX =
+            event.changedTouches[0].screenX;
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+lightboxImage.addEventListener(
+    "touchend",
+    (event) => {
+
+        touchEndX =
+            event.changedTouches[0].screenX;
+
+        handleSwipe();
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+function handleSwipe() {
+
+    const distance =
+        touchStartX - touchEndX;
+
+
+    if (Math.abs(distance) < 50) {
+        return;
+    }
+
+
+    if (distance > 0) {
+
+        nextSlide();
+
+    } else {
+
+        previousSlide();
+
+    }
+
+}
