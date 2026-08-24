@@ -863,83 +863,207 @@ body {
 }
 
 
-/* =========================
-   CINEMATIC GALLERY EFFECT
-========================= */
-
-.lightbox-content {
-    overflow: hidden;
-}
-
-
-.lightbox-content img {
-    transform: scale(1);
-
-    opacity: 1;
-
-    transition:
-        transform 1s cubic-bezier(
-            0.22,
-            1,
-            0.36,
-            1
-        ),
-        opacity 0.6s ease;
-
-    will-change:
-        transform,
-        opacity;
-}
-
-
-
-/* Artwork slowly moves closer */
-
-.lightbox-content img.cinematic-zoom {
-
-    transform: scale(1.13);
-
-}
-
-
-
-/* Artwork disappears */
-
-.lightbox-content img.cinematic-fade {
-
-    opacity: 0;
-
-}
-
+/* ==========================================
+   ZIZOU CINEMATIC ARTWORK TRANSITION
+========================================== */
 
 
 /*
-   Room appears slightly enlarged
-   and pulls backward to normal size.
+   Temporary copy of the thumbnail.
+
+   It begins exactly where the artwork was
+   tapped and smoothly travels toward the
+   gallery.
 */
 
-.lightbox-content img.cinematic-room-reveal {
+.transition-artwork {
 
-    animation:
-        roomReveal
-        1.1s
+    position: fixed;
+
+    z-index: 10000;
+
+    object-fit: cover;
+
+    margin: 0;
+
+    pointer-events: none;
+
+    transform-origin: center center;
+
+    transition:
+
+        top 1.35s
         cubic-bezier(
-            0.22,
+            0.16,
             1,
-            0.36,
+            0.3,
             1
-        );
+        ),
+
+        left 1.35s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        ),
+
+        width 1.35s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        ),
+
+        height 1.35s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        ),
+
+        transform 1.35s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        ),
+
+        opacity 0.75s ease;
+
 }
 
 
-@keyframes roomReveal {
+/*
+   Preview dissolves while room appears.
+*/
+
+.transition-artwork-fade {
+
+    opacity: 0;
+
+    transform:
+        scale(0.96);
+
+}
+
+
+
+/* ==========================================
+   LIGHTBOX DURING OPENING
+========================================== */
+
+.lightbox.transition-opening {
+
+    background:
+        rgba(
+            0,
+            0,
+            0,
+            0
+        );
+
+    animation:
+        galleryBackground
+        1s
+        forwards;
+
+}
+
+
+@keyframes galleryBackground {
+
+    from {
+
+        background:
+            rgba(
+                0,
+                0,
+                0,
+                0
+            );
+
+    }
+
+
+    to {
+
+        background:
+            rgba(
+                0,
+                0,
+                0,
+                0.96
+            );
+
+    }
+
+}
+
+
+
+/* ==========================================
+   MOCK ROOM REVEAL
+========================================== */
+
+.lightbox-content img {
+
+    transform: scale(1);
+
+    transform-origin: center;
+
+    transition:
+        opacity 0.8s ease,
+        transform 1.25s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        );
+
+}
+
+
+.lightbox-content img.room-image-reveal {
+
+    animation:
+        roomRevealSmooth
+        1.15s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        );
+
+}
+
+
+@keyframes roomRevealSmooth {
 
     0% {
 
         opacity: 0;
 
         transform:
-            scale(1.14);
+            scale(1.10);
+
+        filter:
+            blur(3px);
+
+    }
+
+
+    45% {
+
+        opacity: 0.65;
+
+        filter:
+            blur(1px);
 
     }
 
@@ -951,44 +1075,63 @@ body {
         transform:
             scale(1);
 
+        filter:
+            blur(0);
+
     }
 
 }
 
 
 
-/* =========================
-   NORMAL SLIDE CHANGES
-========================= */
+/* ==========================================
+   CONTROLS FADE IN
+========================================== */
 
-.lightbox-content img.slide-fade-out {
+.lightbox-title,
+.lightbox-counter,
+.lightbox-arrow,
+.lightbox-close {
 
-    opacity: 0;
-
-    transform:
-        scale(0.98);
+    transition:
+        opacity 0.55s ease;
 
 }
 
 
-.lightbox-content img.slide-fade-in {
+
+/* ==========================================
+   NORMAL GALLERY SLIDES
+========================================== */
+
+.lightbox-content img.gallery-fade-out {
+
+    opacity: 0;
+
+    transform:
+        scale(0.985);
+
+}
+
+
+.lightbox-content img.gallery-fade-in {
 
     animation:
-        slideFadeIn
-        0.5s
+        normalGalleryFade
+        0.55s
         ease;
 
 }
 
 
-@keyframes slideFadeIn {
+@keyframes normalGalleryFade {
 
     from {
 
         opacity: 0;
 
         transform:
-            scale(1.02);
+            scale(1.015);
 
     }
 
@@ -1006,9 +1149,9 @@ body {
 
 
 
-/* =========================
+/* ==========================================
    MOBILE
-========================= */
+========================================== */
 
 @media (max-width: 600px) {
 
@@ -1025,28 +1168,26 @@ body {
 
     }
 
-
-    .lightbox-arrow {
-
-        font-size: 45px;
-
-    }
-
 }
 
 
 
-/* =========================
-   ACCESSIBILITY
-========================= */
+/* ==========================================
+   REDUCED MOTION
+========================================== */
 
 @media (
     prefers-reduced-motion: reduce
 ) {
 
-    .lightbox-content img {
+    .transition-artwork,
+    .lightbox-content img,
+    .lightbox-title,
+    .lightbox-counter,
+    .lightbox-arrow,
+    .lightbox-close {
 
-        transition: none;
+        transition: none !important;
 
         animation: none !important;
 
