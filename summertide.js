@@ -1,124 +1,103 @@
+/* ==========================================
+   ZIZOU DESIGN — SUMMERTIDE GALLERIES
+========================================== */
+
 const galleries = {
 
     amber: [
         {
-            src: "images/amber breeze second page.jpg",
-            title: "Amber Breeze",
-            type: "preview"
-        },
-        {
             src: "images/amber mock room.jpg",
-            title: "Amber Breeze — Room Preview",
-            type: "room"
+            title: "Amber Breeze — Room Preview"
         },
         {
             src: "images/amber watermark.jpg",
-            title: "Amber Breeze — Artwork Detail",
-            type: "watermark"
+            title: "Amber Breeze"
         }
     ],
 
     peridot: [
         {
-            src: "images/peridot afloat second page.jpg",
-            title: "Peridot Afloat",
-            type: "preview"
-        },
-        {
             src: "images/peridot mock room.jpg",
-            title: "Peridot Afloat — Room Preview",
-            type: "room"
+            title: "Peridot Afloat — Room Preview"
         },
         {
             src: "images/peridot watermark.jpg",
-            title: "Peridot Afloat — Artwork Detail",
-            type: "watermark"
+            title: "Peridot Afloat"
         }
     ],
 
     patina: [
         {
-            src: "images/patina del mar second page.jpg",
-            title: "Pátina del Mar",
-            type: "preview"
-        },
-        {
             src: "images/patina mock room.jpg",
-            title: "Pátina del Mar — Room Preview",
-            type: "room"
+            title: "Pátina del Mar — Room Preview"
         },
         {
             src: "images/patina watermark.jpg",
-            title: "Pátina del Mar — Artwork Detail",
-            type: "watermark"
+            title: "Pátina del Mar"
         }
     ],
 
     sage: [
         {
-            src: "images/sage quietude second page.jpg",
-            title: "Sage Quietude",
-            type: "preview"
-        },
-        {
             src: "images/sage mock room.jpg",
-            title: "Sage Quietude — Room Preview",
-            type: "room"
+            title: "Sage Quietude — Room Preview"
         },
         {
             src: "images/sage watermark.jpg",
-            title: "Sage Quietude — Artwork Detail",
-            type: "watermark"
+            title: "Sage Quietude"
         }
     ],
 
     eter: [
         {
-            src: "images/eter do luar second page.jpg",
-            title: "Éter do Luar",
-            type: "preview"
-        },
-        {
             src: "images/eter mock room.jpg",
-            title: "Éter do Luar — Room Preview",
-            type: "room"
+            title: "Éter do Luar — Room Preview"
         },
         {
             src: "images/eter watermark.JPG",
-            title: "Éter do Luar — Artwork Detail",
-            type: "watermark"
+            title: "Éter do Luar"
         }
     ],
 
     oneiric: [
         {
-            src: "images/oneiric glow second page.jpg",
-            title: "Oneiric Glow",
-            type: "preview"
-        },
-        {
             src: "images/oneiric mock room.PNG",
-            title: "Oneiric Glow — Room Preview",
-            type: "room"
+            title: "Oneiric Glow — Room Preview"
         },
         {
             src: "images/oneiric watermark.jpg",
-            title: "Oneiric Glow — Artwork Detail",
-            type: "watermark"
+            title: "Oneiric Glow"
         }
     ]
 
 };
 
 
-const lightbox = document.getElementById("lightbox");
-const lightboxImage = document.getElementById("lightboxImage");
-const lightboxTitle = document.getElementById("lightboxTitle");
-const lightboxCounter = document.getElementById("lightboxCounter");
 
-const lightboxClose = document.getElementById("lightboxClose");
-const lightboxPrev = document.getElementById("lightboxPrev");
-const lightboxNext = document.getElementById("lightboxNext");
+/* ==========================================
+   ELEMENTS
+========================================== */
+
+const lightbox =
+    document.getElementById("lightbox");
+
+const lightboxImage =
+    document.getElementById("lightboxImage");
+
+const lightboxTitle =
+    document.getElementById("lightboxTitle");
+
+const lightboxCounter =
+    document.getElementById("lightboxCounter");
+
+const lightboxClose =
+    document.getElementById("lightboxClose");
+
+const lightboxPrev =
+    document.getElementById("lightboxPrev");
+
+const lightboxNext =
+    document.getElementById("lightboxNext");
 
 
 let activeGallery = [];
@@ -130,205 +109,283 @@ let touchEndX = 0;
 let transitionRunning = false;
 
 
-/* =========================
-   UPDATE SLIDE
-========================= */
 
-function updateSlideContent() {
+/* ==========================================
+   UPDATE CURRENT SLIDE
+========================================== */
+
+function updateSlide() {
 
     const slide = activeGallery[activeIndex];
 
     lightboxImage.src = slide.src;
     lightboxImage.alt = slide.title;
 
-    lightboxTitle.textContent = slide.title;
+    lightboxTitle.textContent =
+        slide.title;
 
     lightboxCounter.textContent =
         `${activeIndex + 1} / ${activeGallery.length}`;
 }
 
 
-/* =========================
-   OPEN GALLERY
-========================= */
 
-function openGallery(galleryName) {
+/* ==========================================
+   OPEN WITH CINEMATIC TRANSITION
+========================================== */
+
+function openGallery(galleryName, clickedImage) {
+
+    if (transitionRunning) return;
+
+    transitionRunning = true;
 
     activeGallery = galleries[galleryName];
     activeIndex = 0;
 
-    updateSlideContent();
 
-    lightbox.classList.add("open");
+    /*
+       PRELOAD ROOM IMAGE BEFORE ANIMATION
+       This avoids the ugly flash/jump.
+    */
+
+    const roomImage = new Image();
+
+    roomImage.src =
+        activeGallery[0].src;
+
+
+    roomImage.onload = () => {
+
+        runZoomOutTransition(
+            clickedImage
+        );
+
+    };
+
+
+    /*
+       Fallback in case browser already cached it.
+    */
+
+    if (roomImage.complete) {
+
+        runZoomOutTransition(
+            clickedImage
+        );
+
+    }
+}
+
+
+
+/* ==========================================
+   REALISTIC ZOOM-OUT EFFECT
+========================================== */
+
+function runZoomOutTransition(clickedImage) {
+
+    /*
+       Find exact position of clicked preview.
+    */
+
+    const startRect =
+        clickedImage.getBoundingClientRect();
+
+
+    /*
+       Temporary floating copy of preview.
+    */
+
+    const transitionImage =
+        clickedImage.cloneNode(true);
+
+
+    transitionImage.classList.add(
+        "transition-artwork"
+    );
+
+
+    transitionImage.style.top =
+        `${startRect.top}px`;
+
+    transitionImage.style.left =
+        `${startRect.left}px`;
+
+    transitionImage.style.width =
+        `${startRect.width}px`;
+
+    transitionImage.style.height =
+        `${startRect.height}px`;
+
+
+    document.body.appendChild(
+        transitionImage
+    );
+
+
+    /*
+       Open black gallery background,
+       but keep real room image hidden initially.
+    */
+
+    activeIndex = 0;
+
+    updateSlide();
+
+
+    lightbox.classList.add(
+        "open",
+        "transition-opening"
+    );
+
 
     lightbox.setAttribute(
         "aria-hidden",
         "false"
     );
 
-    document.body.style.overflow = "hidden";
+
+    document.body.style.overflow =
+        "hidden";
+
+
+    lightboxImage.style.opacity = "0";
+
+    lightboxTitle.style.opacity = "0";
+
+    lightboxCounter.style.opacity = "0";
+
+    lightboxPrev.style.opacity = "0";
+
+    lightboxNext.style.opacity = "0";
+
+    lightboxClose.style.opacity = "0";
 
 
     /*
-       Give the preview a moment to appear.
-
-       Then automatically perform the
-       cinematic transition into the room.
+       Wait for lightbox layout.
     */
 
-    setTimeout(() => {
+    requestAnimationFrame(() => {
 
-        if (
-            activeGallery.length > 1 &&
-            lightbox.classList.contains("open")
-        ) {
+        requestAnimationFrame(() => {
 
-            cinematicRoomTransition();
+            const destination =
+                lightboxImage.getBoundingClientRect();
 
-        }
 
-    }, 700);
+            /*
+               MOVE PREVIEW TOWARD FINAL
+               GALLERY POSITION.
+
+               Slightly oversize it first to create
+               a continuous camera movement.
+            */
+
+            transitionImage.style.top =
+                `${destination.top}px`;
+
+            transitionImage.style.left =
+                `${destination.left}px`;
+
+            transitionImage.style.width =
+                `${destination.width}px`;
+
+            transitionImage.style.height =
+                `${destination.height}px`;
+
+            transitionImage.style.transform =
+                "scale(1.06)";
+
+
+            /*
+               After movement begins,
+               slowly dissolve preview into room.
+            */
+
+            setTimeout(() => {
+
+                transitionImage.classList.add(
+                    "transition-artwork-fade"
+                );
+
+
+                lightboxImage.classList.add(
+                    "room-image-reveal"
+                );
+
+
+                lightboxImage.style.opacity =
+                    "1";
+
+            }, 550);
+
+
+            /*
+               Reveal controls/text near the end.
+            */
+
+            setTimeout(() => {
+
+                lightboxTitle.style.opacity =
+                    "1";
+
+                lightboxCounter.style.opacity =
+                    "1";
+
+                lightboxPrev.style.opacity =
+                    "1";
+
+                lightboxNext.style.opacity =
+                    "1";
+
+                lightboxClose.style.opacity =
+                    "1";
+
+            }, 1050);
+
+
+            /*
+               Remove temporary preview.
+            */
+
+            setTimeout(() => {
+
+                transitionImage.remove();
+
+                lightbox.classList.remove(
+                    "transition-opening"
+                );
+
+                lightboxImage.classList.remove(
+                    "room-image-reveal"
+                );
+
+                transitionRunning = false;
+
+            }, 1500);
+
+        });
+
+    });
 }
 
 
-/* =========================
-   CINEMATIC ROOM TRANSITION
-========================= */
 
-function cinematicRoomTransition() {
-
-    if (transitionRunning) {
-        return;
-    }
-
-    if (activeIndex !== 0) {
-        return;
-    }
-
-    if (activeGallery.length < 2) {
-        return;
-    }
-
-    transitionRunning = true;
-
-
-    /*
-       Stage 1:
-       slowly enlarge the artwork,
-       simulating the viewer moving closer.
-    */
-
-    lightboxImage.classList.add(
-        "cinematic-zoom"
-    );
-
-
-    setTimeout(() => {
-
-        /*
-           Stage 2:
-           fade the artwork away.
-        */
-
-        lightboxImage.classList.add(
-            "cinematic-fade"
-        );
-
-
-        setTimeout(() => {
-
-            /*
-               Change the image while
-               it is faded out.
-            */
-
-            activeIndex = 1;
-
-            const roomSlide =
-                activeGallery[activeIndex];
-
-            lightboxImage.src =
-                roomSlide.src;
-
-            lightboxImage.alt =
-                roomSlide.title;
-
-            lightboxTitle.textContent =
-                roomSlide.title;
-
-            lightboxCounter.textContent =
-                `${activeIndex + 1} / ${activeGallery.length}`;
-
-
-            /*
-               Reset scale while hidden.
-            */
-
-            lightboxImage.classList.remove(
-                "cinematic-zoom"
-            );
-
-
-            /*
-               Let browser register new image.
-            */
-
-            requestAnimationFrame(() => {
-
-                requestAnimationFrame(() => {
-
-                    /*
-                       Fade the room outward.
-
-                       Because the scale is now
-                       smaller, it creates the
-                       illusion of pulling away
-                       from the artwork.
-                    */
-
-                    lightboxImage.classList.remove(
-                        "cinematic-fade"
-                    );
-
-                    lightboxImage.classList.add(
-                        "cinematic-room-reveal"
-                    );
-
-
-                    setTimeout(() => {
-
-                        lightboxImage.classList.remove(
-                            "cinematic-room-reveal"
-                        );
-
-                        transitionRunning = false;
-
-                    }, 1100);
-
-                });
-
-            });
-
-        }, 600);
-
-    }, 850);
-}
-
-
-/* =========================
-   NORMAL SLIDE TRANSITION
-========================= */
+/* ==========================================
+   CHANGE SLIDE
+========================================== */
 
 function changeSlide(newIndex) {
 
-    if (transitionRunning) {
-        return;
-    }
+    if (transitionRunning) return;
 
     transitionRunning = true;
 
+
     lightboxImage.classList.add(
-        "slide-fade-out"
+        "gallery-fade-out"
     );
 
 
@@ -336,34 +393,37 @@ function changeSlide(newIndex) {
 
         activeIndex = newIndex;
 
-        updateSlideContent();
+        updateSlide();
+
 
         lightboxImage.classList.remove(
-            "slide-fade-out"
+            "gallery-fade-out"
         );
 
+
         lightboxImage.classList.add(
-            "slide-fade-in"
+            "gallery-fade-in"
         );
 
 
         setTimeout(() => {
 
             lightboxImage.classList.remove(
-                "slide-fade-in"
+                "gallery-fade-in"
             );
 
             transitionRunning = false;
 
-        }, 500);
+        }, 550);
 
     }, 300);
 }
 
 
-/* =========================
+
+/* ==========================================
    NEXT / PREVIOUS
-========================= */
+========================================== */
 
 function nextSlide() {
 
@@ -389,36 +449,46 @@ function previousSlide() {
 }
 
 
-/* =========================
-   CLOSE GALLERY
-========================= */
+
+/* ==========================================
+   CLOSE
+========================================== */
 
 function closeGallery() {
 
-    lightbox.classList.remove("open");
+    lightbox.classList.remove(
+        "open",
+        "transition-opening"
+    );
+
 
     lightbox.setAttribute(
         "aria-hidden",
         "true"
     );
 
-    document.body.style.overflow = "";
+
+    document.body.style.overflow =
+        "";
+
 
     transitionRunning = false;
 
-    lightboxImage.classList.remove(
-        "cinematic-zoom",
-        "cinematic-fade",
-        "cinematic-room-reveal",
-        "slide-fade-out",
-        "slide-fade-in"
-    );
+
+    document
+        .querySelectorAll(
+            ".transition-artwork"
+        )
+        .forEach(
+            element => element.remove()
+        );
 }
 
 
-/* =========================
-   OPEN ARTWORK
-========================= */
+
+/* ==========================================
+   CLICK ARTWORK
+========================================== */
 
 document
     .querySelectorAll(".collection-item")
@@ -428,8 +498,13 @@ document
             "click",
             () => {
 
+                const clickedImage =
+                    item.querySelector("img");
+
+
                 openGallery(
-                    item.dataset.gallery
+                    item.dataset.gallery,
+                    clickedImage
                 );
 
             }
@@ -438,9 +513,10 @@ document
     });
 
 
-/* =========================
-   CONTROLS
-========================= */
+
+/* ==========================================
+   BUTTONS
+========================================== */
 
 lightboxClose.addEventListener(
     "click",
@@ -460,9 +536,14 @@ lightboxPrev.addEventListener(
 );
 
 
+
+/* ==========================================
+   CLICK BACKGROUND TO CLOSE
+========================================== */
+
 lightbox.addEventListener(
     "click",
-    (event) => {
+    event => {
 
         if (event.target === lightbox) {
 
@@ -474,13 +555,14 @@ lightbox.addEventListener(
 );
 
 
-/* =========================
+
+/* ==========================================
    KEYBOARD
-========================= */
+========================================== */
 
 document.addEventListener(
     "keydown",
-    (event) => {
+    event => {
 
         if (
             !lightbox.classList.contains("open")
@@ -513,13 +595,14 @@ document.addEventListener(
 );
 
 
-/* =========================
+
+/* ==========================================
    MOBILE SWIPE
-========================= */
+========================================== */
 
 lightboxImage.addEventListener(
     "touchstart",
-    (event) => {
+    event => {
 
         touchStartX =
             event.changedTouches[0].screenX;
@@ -533,7 +616,7 @@ lightboxImage.addEventListener(
 
 lightboxImage.addEventListener(
     "touchend",
-    (event) => {
+    event => {
 
         touchEndX =
             event.changedTouches[0].screenX;
@@ -553,7 +636,9 @@ function handleSwipe() {
         touchStartX - touchEndX;
 
 
-    if (Math.abs(distance) < 50) {
+    if (
+        Math.abs(distance) < 50
+    ) {
         return;
     }
 
@@ -562,7 +647,9 @@ function handleSwipe() {
 
         nextSlide();
 
-    } else {
+    }
+
+    else {
 
         previousSlide();
 
