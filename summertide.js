@@ -319,7 +319,7 @@ function runZoomOutTransition(clickedImage) {
                 lightboxImage.style.opacity =
                     "1";
 
-            }, 550);
+            }, 900);
 
 
             /*
@@ -343,7 +343,7 @@ function runZoomOutTransition(clickedImage) {
                 lightboxClose.style.opacity =
                     "1";
 
-            }, 1050);
+            }, 1750);
 
 
             /*
@@ -364,7 +364,7 @@ function runZoomOutTransition(clickedImage) {
 
                 transitionRunning = false;
 
-            }, 1500);
+            }, 2400);
 
         });
 
