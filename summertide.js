@@ -128,7 +128,12 @@ function updateSlide() {
         `${activeIndex + 1} / ${activeGallery.length}`;
 }
 
-
+function preloadGalleryImages(gallery) {
+    gallery.forEach((slide) => {
+        const image = new Image();
+        image.src = slide.src;
+    });
+}
 
 /* ==========================================
    OPEN WITH CINEMATIC TRANSITION
@@ -143,6 +148,7 @@ function openGallery(galleryName, clickedImage) {
     activeGallery = galleries[galleryName];
     activeIndex = 0;
 
+preloadGalleryImages(activeGallery);
 
     /*
        PRELOAD ROOM IMAGE BEFORE ANIMATION
