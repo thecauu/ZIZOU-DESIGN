@@ -1201,38 +1201,28 @@ body {
    SUMMERTIDE EDITORIAL BACKGROUND
 ========================================= */
 
-html {
-    background: #f7f6f3;
-}
-
-body {
-    position: relative;
-    min-height: 100vh;
-    background: transparent;
-}
-
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-
+.collection-page {
     background:
         linear-gradient(
-            rgba(255, 255, 255, 0.82),
-            rgba(255, 255, 255, 0.82)
+            rgba(255, 255, 255, 0.76),
+            rgba(255, 255, 255, 0.76)
         ),
         url("images/IMG_2322.jpeg");
 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
 
-    z-index: 0;
-    pointer-events: none;
+    min-height: 100vh;
 }
 
-/* Keep all page content above background */
-body > * {
-    position: relative;
-    z-index: 1;
+
+/* Slightly softer navigation so it blends
+   with the editorial background */
+
+.collection-page-nav {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
