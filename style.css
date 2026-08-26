@@ -1201,7 +1201,14 @@ body {
    SUMMERTIDE EDITORIAL BACKGROUND
 ========================================= */
 
-.collection-page {
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+
     background:
         linear-gradient(
             rgba(255, 255, 255, 0.76),
@@ -1213,16 +1220,29 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-
-    min-height: 100vh;
 }
 
 
-/* Slightly softer navigation so it blends
-   with the editorial background */
+/* Keep the Summertide page transparent
+   so the body background shows through */
+
+.collection-page {
+    background: transparent;
+
+    min-height: 100vh;
+
+    padding:
+        60px
+        6%
+        140px;
+}
+
+
+/* Navigation can stay softly translucent */
 
 .collection-page-nav {
-    background: rgba(255, 255, 255, 0.88);
+    background: rgba(255, 255, 255, 0.82);
+
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
 }
