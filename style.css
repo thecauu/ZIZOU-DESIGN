@@ -1198,11 +1198,16 @@ body {
 
 
 /* =========================================
-   SUMMERTIDE FULL-PAGE BACKGROUND
+   SUMMERTIDE PERMANENT BACKGROUND
 ========================================= */
 
-html {
-    min-height: 100%;
+.summertide-background {
+    position: fixed;
+    inset: 0;
+
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
 
     background:
         linear-gradient(
@@ -1214,50 +1219,28 @@ html {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+
+    z-index: -1;
+    pointer-events: none;
 }
 
 
+/* Remove white surfaces from the collection page */
+
+html,
 body {
-    margin: 0;
-
-    min-height: 100vh;
-    min-height: 100dvh;
-
-    background:
-        linear-gradient(
-            rgba(255, 255, 255, 0.76),
-            rgba(255, 255, 255, 0.76)
-        ),
-        url("images/IMG_2322.jpeg") !important;
-
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    background-attachment: fixed !important;
+    background: transparent;
 }
-
-
-/* Collection must NOT paint white over it */
 
 .collection-page {
-    background: transparent !important;
-
-    min-height: 100vh;
-    min-height: 100dvh;
-
-    padding:
-        60px
-        6%
-        140px;
+    background: transparent;
 }
 
 
-/* Top navigation */
+/* Keep actual page content above the background */
 
-.collection-page-nav {
-    background: rgba(255, 255, 255, 0.82);
-
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+.collection-page-nav,
+.collection-page,
+.lightbox {
+    position: relative;
 }
