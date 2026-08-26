@@ -1201,11 +1201,25 @@ body {
    SUMMERTIDE PERMANENT BACKGROUND
 ========================================= */
 
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+    background: #f3f3ed;
+}
+
+
+/* REAL BACKGROUND LAYER */
+
 .summertide-background {
     position: fixed;
-    inset: 0;
 
-    width: 100vw;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
     height: 100vh;
     height: 100dvh;
 
@@ -1220,27 +1234,40 @@ body {
     background-position: center;
     background-repeat: no-repeat;
 
-    z-index: -1;
+    z-index: 0;
+
     pointer-events: none;
 }
 
 
-/* Remove white surfaces from the collection page */
+/* EVERYTHING ELSE SITS ABOVE THE BACKGROUND */
 
-html,
-body {
-    background: transparent;
+.collection-page-nav,
+.collection-page {
+    position: relative;
+    z-index: 1;
 }
+
+
+/* Don't let the gallery paint white over it */
 
 .collection-page {
     background: transparent;
 }
 
 
-/* Keep actual page content above the background */
+/* Keep your navigation slightly translucent */
 
-.collection-page-nav,
-.collection-page,
+.collection-page-nav {
+    background: rgba(255, 255, 255, 0.82);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+
+/* Lightbox still has to sit above everything */
+
 .lightbox {
-    position: relative;
+    z-index: 5000;
 }
