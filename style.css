@@ -41,7 +41,8 @@ body {
 
 /* Hero photograph */
 
-.hero-image {
+.hero-image,
+.hero-video {
     position: absolute;
     inset: 0;
 
