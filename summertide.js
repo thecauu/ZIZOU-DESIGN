@@ -668,26 +668,38 @@ function handleSwipe() {
    SUMMERTIDE EDITORIAL BACKGROUND
 ========================================= */
 
-body {
-    position: relative;
+html {
     background: #f7f6f3;
 }
 
-/* Background artwork with editorial fade */
+body {
+    position: relative;
+    min-height: 100vh;
+    background: transparent;
+}
+
 body::before {
     content: "";
     position: fixed;
     inset: 0;
 
-    background-image: url("images/IMG_2322.jpeg");
+    background:
+        linear-gradient(
+            rgba(255, 255, 255, 0.82),
+            rgba(255, 255, 255, 0.82)
+        ),
+        url("images/IMG_2322.jpeg");
+
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 
-    /* Soft editorial appearance */
-    opacity: 0.16;
-    filter: saturate(0.75) contrast(0.9);
-
-    z-index: -1;
+    z-index: 0;
     pointer-events: none;
+}
+
+/* Keep all page content above background */
+body > * {
+    position: relative;
+    z-index: 1;
 }
