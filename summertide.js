@@ -12,6 +12,10 @@ const galleries = {
         {
             src: "images/amber watermark.jpg",
             title: "Amber Breeze"
+        },
+        {
+            src: "images/Amber Design.JPEG",
+            title: "Amber Breeze - Design Card"
         }
     ],
 
@@ -23,6 +27,10 @@ const galleries = {
         {
             src: "images/peridot watermark.jpg",
             title: "Peridot Afloat"
+        },
+        {
+            src: "images/Peridot Design.JPEG",
+            title: "Peridot Afloat - Design Card"
         }
     ],
 
@@ -34,6 +42,10 @@ const galleries = {
         {
             src: "images/patina watermark.jpg",
             title: "Pátina del Mar"
+        },
+        {
+            src: "images/Patina Design.JPEG",
+            title: "Pátina del Mar - Design Card"
         }
     ],
 
@@ -45,6 +57,10 @@ const galleries = {
         {
             src: "images/sage watermark.jpg",
             title: "Sage Quietude"
+        },
+        {
+            src: "images/Sage Design.JPEG",
+            title: "Sage Quietude - Design Card"
         }
     ],
 
@@ -56,6 +72,10 @@ const galleries = {
         {
             src: "images/eter watermark.JPG",
             title: "Éter do Luar"
+        },
+        {
+            src: "images/Eter Design.JPEG",
+            title: "Éter do Luar - Design Card"
         }
     ],
 
@@ -67,6 +87,10 @@ const galleries = {
         {
             src: "images/oneiric watermark.jpg",
             title: "Oneiric Glow"
+        },
+        {
+            src: "images/Oneiric Design.JPEG",
+            title: "Oneiric Glow - Design Card"
         }
     ]
 
