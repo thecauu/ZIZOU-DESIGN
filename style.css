@@ -1550,22 +1550,30 @@ body {
    MOBILE
 ========================================== */
 
+/* SUMMERTIDE GALLERY IMAGE SIZE — MOBILE */
+
 @media (max-width: 600px) {
 
-    .lightbox-content {
-
-        width: 90%;
-
+    .artwork-viewer {
+        padding-left: 12px;
+        padding-right: 12px;
     }
 
+    .lightbox-content {
+        width: 100%;
+        max-width: none;
+    }
 
     .lightbox-content img {
-
-        max-height: 72vh;
-
+        width: calc(100vw - 24px);
+        height: auto;
+        max-width: none;
+        max-height: 88svh;
+        object-fit: contain;
     }
 
 }
+
 
 
 
