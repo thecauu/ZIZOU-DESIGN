@@ -1,98 +1,165 @@
 /* ==========================================
-   ZIZOU DESIGN — SUMMERTIDE GALLERIES
+   ZIZOU DESIGN — SUMMERTIDE ARTWORKS
 ========================================== */
 
-const galleries = {
+const artworks = {
 
-    amber: [
-        {
-            src: "images/amber mock room.jpg",
-            title: "Amber Breeze — Room Preview"
-        },
-        {
-            src: "images/amber watermark.jpg",
-            title: "Amber Breeze"
-        },
-        {
-            src: "images/Amber Design.JPEG",
-            title: "Amber Breeze - Design Card"
-        }
-    ],
+    amber: {
+        name: "Amber Breeze",
+        product: "amber-breeze",
+        price: "19.99",
+        year: "2024",
+        number: "01",
 
-    peridot: [
-        {
-            src: "images/peridot mock room.jpg",
-            title: "Peridot Afloat — Room Preview"
-        },
-        {
-            src: "images/peridot watermark.jpg",
-            title: "Peridot Afloat"
-        },
-        {
-            src: "images/Peridot Design.JPEG",
-            title: "Peridot Afloat - Design Card"
-        }
-    ],
+        description:
+            "The scent of a summer floral breeze captivating the soul.",
 
-    patina: [
-        {
-            src: "images/patina mock room.jpg",
-            title: "Pátina del Mar — Room Preview"
-        },
-        {
-            src: "images/patina watermark.jpg",
-            title: "Pátina del Mar"
-        },
-        {
-            src: "images/Patina Design.JPEG",
-            title: "Pátina del Mar - Design Card"
-        }
-    ],
+        gallery: [
+            {
+                src: "images/amber mock room.jpg",
+                alt: "Amber Breeze — Room Preview"
+            },
+            {
+                src: "images/amber watermark.jpg",
+                alt: "Amber Breeze"
+            },
+            {
+                src: "images/Amber Design.JPEG",
+                alt: "Amber Breeze — Design Card"
+            }
+        ]
+    },
 
-    sage: [
-        {
-            src: "images/sage mock room.jpg",
-            title: "Sage Quietude — Room Preview"
-        },
-        {
-            src: "images/sage watermark.jpg",
-            title: "Sage Quietude"
-        },
-        {
-            src: "images/Sage Design.JPEG",
-            title: "Sage Quietude - Design Card"
-        }
-    ],
 
-    eter: [
-        {
-            src: "images/eter mock room.jpg",
-            title: "Éter do Luar — Room Preview"
-        },
-        {
-            src: "images/eter watermark.JPG",
-            title: "Éter do Luar"
-        },
-        {
-            src: "images/Eter Design.JPEG",
-            title: "Éter do Luar - Design Card"
-        }
-    ],
+    peridot: {
+        name: "Peridot Afloat",
+        product: "peridot-afloat",
+        price: "19.99",
+        year: "2024",
+        number: "02",
 
-    oneiric: [
-        {
-            src: "images/oneiric mock room.PNG",
-            title: "Oneiric Glow — Room Preview"
-        },
-        {
-            src: "images/oneiric watermark.jpg",
-            title: "Oneiric Glow"
-        },
-        {
-            src: "images/Oneiric Design.JPEG",
-            title: "Oneiric Glow - Design Card"
-        }
-    ]
+        description: "",
+
+        gallery: [
+            {
+                src: "images/peridot mock room.jpg",
+                alt: "Peridot Afloat — Room Preview"
+            },
+            {
+                src: "images/peridot watermark.jpg",
+                alt: "Peridot Afloat"
+            },
+            {
+                src: "images/Peridot Design.JPEG",
+                alt: "Peridot Afloat — Design Card"
+            }
+        ]
+    },
+
+
+    patina: {
+        name: "Pátina del Mar",
+        product: "patina-del-mar",
+        price: "19.99",
+        year: "2024",
+        number: "03",
+
+        description: "",
+
+        gallery: [
+            {
+                src: "images/patina mock room.jpg",
+                alt: "Pátina del Mar — Room Preview"
+            },
+            {
+                src: "images/patina watermark.jpg",
+                alt: "Pátina del Mar"
+            },
+            {
+                src: "images/Patina Design.JPEG",
+                alt: "Pátina del Mar — Design Card"
+            }
+        ]
+    },
+
+
+    sage: {
+        name: "Sage Quietude",
+        product: "sage-quietude",
+        price: "19.99",
+        year: "2024",
+        number: "04",
+
+        description: "",
+
+        gallery: [
+            {
+                src: "images/sage mock room.jpg",
+                alt: "Sage Quietude — Room Preview"
+            },
+            {
+                src: "images/sage watermark.jpg",
+                alt: "Sage Quietude"
+            },
+            {
+                src: "images/Sage Design.JPEG",
+                alt: "Sage Quietude — Design Card"
+            }
+        ]
+    },
+
+
+    eter: {
+        name: "Éter do Luar",
+        product: "eter-do-luar",
+        price: "19.99",
+        year: "2024",
+        number: "05",
+
+        description: "",
+
+        gallery: [
+            {
+                src: "images/eter mock room.jpg",
+                alt: "Éter do Luar — Room Preview"
+            },
+            {
+                src: "images/eter watermark.JPG",
+                alt: "Éter do Luar"
+            },
+            {
+                src: "images/Eter Design.JPEG",
+                alt: "Éter do Luar — Design Card"
+            }
+        ]
+    },
+
+
+    oneiric: {
+        name: "Oneiric Glow",
+        product: "oneiric-glow",
+        price: "19.99",
+        year: "2024",
+        number: "06",
+
+        description:
+            "A moment of stillness can kindle a soul toward rediscovery.",
+
+        gallery: [
+            {
+                src: "images/oneiric mock room.PNG",
+                alt: "Oneiric Glow — Room Preview"
+            },
+            {
+                src: "images/oneiric watermark.jpg",
+                alt: "Oneiric Glow"
+            },
+            {
+                src: "images/Oneiric Design.JPEG",
+                alt: "Oneiric Glow — Design Card"
+            }
+        ]
+    }
 
 };
 
@@ -124,6 +191,30 @@ const lightboxNext =
     document.getElementById("lightboxNext");
 
 
+/* PRODUCT INFORMATION */
+
+const artworkPrice =
+    document.getElementById("artworkPrice");
+
+const artworkDescription =
+    document.getElementById("artworkDescription");
+
+const artworkYear =
+    document.getElementById("artworkYear");
+
+const artworkNumber =
+    document.getElementById("artworkNumber");
+
+const artworkAddToBag =
+    document.getElementById("artworkAddToBag");
+
+
+
+/* ==========================================
+   ACTIVE ARTWORK / GALLERY
+========================================== */
+
+let activeArtwork = null;
 let activeGallery = [];
 let activeIndex = 0;
 
@@ -135,51 +226,183 @@ let transitionRunning = false;
 
 
 /* ==========================================
+   UPDATE ARTWORK INFORMATION
+========================================== */
+
+function updateArtworkInfo() {
+
+    if (!activeArtwork) return;
+
+
+    lightboxTitle.textContent =
+        activeArtwork.name;
+
+
+    artworkPrice.textContent =
+        `$${activeArtwork.price} USD`;
+
+
+    artworkYear.textContent =
+        activeArtwork.year;
+
+
+    artworkNumber.textContent =
+        activeArtwork.number;
+
+
+    /*
+       Only display description when one exists.
+    */
+
+    if (activeArtwork.description) {
+
+        artworkDescription.textContent =
+            activeArtwork.description;
+
+        artworkDescription.style.display =
+            "";
+
+    }
+
+    else {
+
+        artworkDescription.textContent =
+            "";
+
+        artworkDescription.style.display =
+            "none";
+
+    }
+
+
+    /*
+       Prepare ADD TO BAG information.
+       These attributes allow the same button
+       to represent whichever artwork is open.
+    */
+
+    artworkAddToBag.dataset.product =
+        activeArtwork.product;
+
+    artworkAddToBag.dataset.name =
+        activeArtwork.name;
+
+    artworkAddToBag.dataset.price =
+        activeArtwork.price;
+
+}
+
+
+
+/* ==========================================
    UPDATE CURRENT SLIDE
 ========================================== */
 
 function updateSlide() {
 
-    const slide = activeGallery[activeIndex];
+    const slide =
+        activeGallery[activeIndex];
 
-    lightboxImage.src = slide.src;
-    lightboxImage.alt = slide.title;
 
-    lightboxTitle.textContent =
-        slide.title;
+    lightboxImage.src =
+        slide.src;
+
+
+    lightboxImage.alt =
+        slide.alt;
+
 
     lightboxCounter.textContent =
         `${activeIndex + 1} / ${activeGallery.length}`;
+
 }
 
-function preloadGalleryImages(gallery) {
-    gallery.forEach((slide) => {
-        const image = new Image();
-        image.src = slide.src;
-    });
-}
+
 
 /* ==========================================
-   OPEN WITH CINEMATIC TRANSITION
+   PRELOAD GALLERY
 ========================================== */
 
-function openGallery(galleryName, clickedImage) {
+function preloadGalleryImages(gallery) {
+
+    gallery.forEach((slide) => {
+
+        const image =
+            new Image();
+
+        image.src =
+            slide.src;
+
+    });
+
+}
+
+
+
+/* ==========================================
+   OPEN ARTWORK
+========================================== */
+
+function openGallery(
+    artworkName,
+    clickedImage
+) {
 
     if (transitionRunning) return;
 
-    transitionRunning = true;
 
-    activeGallery = galleries[galleryName];
-    activeIndex = 0;
+    const selectedArtwork =
+        artworks[artworkName];
 
-preloadGalleryImages(activeGallery);
+
+    if (!selectedArtwork) return;
+
+
+    transitionRunning =
+        true;
+
+
+    activeArtwork =
+        selectedArtwork;
+
+
+    activeGallery =
+        selectedArtwork.gallery;
+
+
+    activeIndex =
+        0;
+
+
+    preloadGalleryImages(
+        activeGallery
+    );
+
 
     /*
-       PRELOAD ROOM IMAGE BEFORE ANIMATION
-       This avoids the ugly flash/jump.
+       Load all artwork information
+       before opening the viewer.
     */
 
-    const roomImage = new Image();
+    updateArtworkInfo();
+
+
+    /*
+       Close any accordion that may have
+       been left open from another artwork.
+    */
+
+    closeAllAccordions();
+
+
+    /*
+       Preload first room image before
+       starting the animation.
+    */
+
+    const roomImage =
+        new Image();
+
 
     roomImage.src =
         activeGallery[0].src;
@@ -195,7 +418,7 @@ preloadGalleryImages(activeGallery);
 
 
     /*
-       Fallback in case browser already cached it.
+       Browser cache fallback.
     */
 
     if (roomImage.complete) {
@@ -205,6 +428,7 @@ preloadGalleryImages(activeGallery);
         );
 
     }
+
 }
 
 
@@ -213,18 +437,17 @@ preloadGalleryImages(activeGallery);
    REALISTIC ZOOM-OUT EFFECT
 ========================================== */
 
-function runZoomOutTransition(clickedImage) {
-
-    /*
-       Find exact position of clicked preview.
-    */
+function runZoomOutTransition(
+    clickedImage
+) {
 
     const startRect =
         clickedImage.getBoundingClientRect();
 
 
     /*
-       Temporary floating copy of preview.
+       Temporary floating copy
+       of collection preview.
     */
 
     const transitionImage =
@@ -255,14 +478,19 @@ function runZoomOutTransition(clickedImage) {
 
 
     /*
-       Open black gallery background,
-       but keep real room image hidden initially.
+       Update first gallery image.
     */
 
-    activeIndex = 0;
+    activeIndex =
+        0;
+
 
     updateSlide();
 
+
+    /*
+       Open artwork viewer.
+    */
 
     lightbox.classList.add(
         "open",
@@ -276,26 +504,34 @@ function runZoomOutTransition(clickedImage) {
     );
 
 
+    /*
+       Collection page stays fixed behind
+       the artwork viewer.
+    */
+
     document.body.style.overflow =
         "hidden";
 
 
-    lightboxImage.style.opacity = "0";
-
-    lightboxTitle.style.opacity = "0";
-
-    lightboxCounter.style.opacity = "0";
-
-    lightboxPrev.style.opacity = "0";
-
-    lightboxNext.style.opacity = "0";
-
-    lightboxClose.style.opacity = "0";
-
-
     /*
-       Wait for lightbox layout.
+       Begin hidden.
     */
+
+    lightboxImage.style.opacity =
+        "0";
+
+    lightboxCounter.style.opacity =
+        "0";
+
+    lightboxPrev.style.opacity =
+        "0";
+
+    lightboxNext.style.opacity =
+        "0";
+
+    lightboxClose.style.opacity =
+        "0";
+
 
     requestAnimationFrame(() => {
 
@@ -304,14 +540,6 @@ function runZoomOutTransition(clickedImage) {
             const destination =
                 lightboxImage.getBoundingClientRect();
 
-
-            /*
-               MOVE PREVIEW TOWARD FINAL
-               GALLERY POSITION.
-
-               Slightly oversize it first to create
-               a continuous camera movement.
-            */
 
             transitionImage.style.top =
                 `${destination.top}px`;
@@ -330,8 +558,8 @@ function runZoomOutTransition(clickedImage) {
 
 
             /*
-               After movement begins,
-               slowly dissolve preview into room.
+               Dissolve preview into
+               room image.
             */
 
             setTimeout(() => {
@@ -353,13 +581,10 @@ function runZoomOutTransition(clickedImage) {
 
 
             /*
-               Reveal controls/text near the end.
+               Reveal gallery controls.
             */
 
             setTimeout(() => {
-
-                lightboxTitle.style.opacity =
-                    "1";
 
                 lightboxCounter.style.opacity =
                     "1";
@@ -377,28 +602,33 @@ function runZoomOutTransition(clickedImage) {
 
 
             /*
-               Remove temporary preview.
+               Remove temporary image.
             */
 
             setTimeout(() => {
 
                 transitionImage.remove();
 
+
                 lightbox.classList.remove(
                     "transition-opening"
                 );
+
 
                 lightboxImage.classList.remove(
                     "room-image-reveal"
                 );
 
-                transitionRunning = false;
+
+                transitionRunning =
+                    false;
 
             }, 2400);
 
         });
 
     });
+
 }
 
 
@@ -407,11 +637,15 @@ function runZoomOutTransition(clickedImage) {
    CHANGE SLIDE
 ========================================== */
 
-function changeSlide(newIndex) {
+function changeSlide(
+    newIndex
+) {
 
     if (transitionRunning) return;
 
-    transitionRunning = true;
+
+    transitionRunning =
+        true;
 
 
     lightboxImage.classList.add(
@@ -421,7 +655,9 @@ function changeSlide(newIndex) {
 
     setTimeout(() => {
 
-        activeIndex = newIndex;
+        activeIndex =
+            newIndex;
+
 
         updateSlide();
 
@@ -442,11 +678,14 @@ function changeSlide(newIndex) {
                 "gallery-fade-in"
             );
 
-            transitionRunning = false;
+
+            transitionRunning =
+                false;
 
         }, 550);
 
     }, 300);
+
 }
 
 
@@ -458,10 +697,16 @@ function changeSlide(newIndex) {
 function nextSlide() {
 
     const newIndex =
-        (activeIndex + 1)
+        (
+            activeIndex + 1
+        )
         % activeGallery.length;
 
-    changeSlide(newIndex);
+
+    changeSlide(
+        newIndex
+    );
+
 }
 
 
@@ -475,13 +720,17 @@ function previousSlide() {
         )
         % activeGallery.length;
 
-    changeSlide(newIndex);
+
+    changeSlide(
+        newIndex
+    );
+
 }
 
 
 
 /* ==========================================
-   CLOSE
+   CLOSE ARTWORK VIEW
 ========================================== */
 
 function closeGallery() {
@@ -502,7 +751,8 @@ function closeGallery() {
         "";
 
 
-    transitionRunning = false;
+    transitionRunning =
+        false;
 
 
     document
@@ -510,8 +760,22 @@ function closeGallery() {
             ".transition-artwork"
         )
         .forEach(
-            element => element.remove()
+            element =>
+                element.remove()
         );
+
+
+    /*
+       Return viewer to top so another
+       artwork always opens from the beginning.
+    */
+
+    lightbox.scrollTop =
+        0;
+
+
+    closeAllAccordions();
+
 }
 
 
@@ -521,7 +785,9 @@ function closeGallery() {
 ========================================== */
 
 document
-    .querySelectorAll(".collection-item")
+    .querySelectorAll(
+        ".collection-item"
+    )
     .forEach((item) => {
 
         item.addEventListener(
@@ -545,7 +811,7 @@ document
 
 
 /* ==========================================
-   BUTTONS
+   GALLERY BUTTONS
 ========================================== */
 
 lightboxClose.addEventListener(
@@ -568,21 +834,124 @@ lightboxPrev.addEventListener(
 
 
 /* ==========================================
-   CLICK BACKGROUND TO CLOSE
+   ACCORDION / DROP MENUS
 ========================================== */
 
-lightbox.addEventListener(
-    "click",
-    event => {
+const accordionButtons =
+    document.querySelectorAll(
+        ".accordion-button"
+    );
 
-        if (event.target === lightbox) {
 
-            closeGallery();
+accordionButtons.forEach(
+    (button) => {
 
-        }
+        button.addEventListener(
+            "click",
+            () => {
+
+                const accordion =
+                    button.parentElement;
+
+
+                const content =
+                    button.nextElementSibling;
+
+
+                const symbol =
+                    button.querySelector(
+                        ".accordion-symbol"
+                    );
+
+
+                const isOpen =
+                    accordion.classList.contains(
+                        "open"
+                    );
+
+
+                /*
+                   Close all first.
+                   This keeps the page clean,
+                   similar to luxury product pages.
+                */
+
+                closeAllAccordions();
+
+
+                /*
+                   If this one was closed,
+                   open it.
+                */
+
+                if (!isOpen) {
+
+                    accordion.classList.add(
+                        "open"
+                    );
+
+
+                    content.style.maxHeight =
+                        content.scrollHeight
+                        + "px";
+
+
+                    symbol.textContent =
+                        "−";
+
+                }
+
+            }
+        );
 
     }
 );
+
+
+
+function closeAllAccordions() {
+
+    document
+        .querySelectorAll(
+            ".artwork-accordion"
+        )
+        .forEach((accordion) => {
+
+            accordion.classList.remove(
+                "open"
+            );
+
+
+            const content =
+                accordion.querySelector(
+                    ".accordion-content"
+                );
+
+
+            const symbol =
+                accordion.querySelector(
+                    ".accordion-symbol"
+                );
+
+
+            if (content) {
+
+                content.style.maxHeight =
+                    null;
+
+            }
+
+
+            if (symbol) {
+
+                symbol.textContent =
+                    "+";
+
+            }
+
+        });
+
+}
 
 
 
@@ -595,27 +964,35 @@ document.addEventListener(
     event => {
 
         if (
-            !lightbox.classList.contains("open")
+            !lightbox.classList.contains(
+                "open"
+            )
         ) {
             return;
         }
 
 
-        if (event.key === "Escape") {
+        if (
+            event.key === "Escape"
+        ) {
 
             closeGallery();
 
         }
 
 
-        if (event.key === "ArrowRight") {
+        if (
+            event.key === "ArrowRight"
+        ) {
 
             nextSlide();
 
         }
 
 
-        if (event.key === "ArrowLeft") {
+        if (
+            event.key === "ArrowLeft"
+        ) {
 
             previousSlide();
 
@@ -635,7 +1012,9 @@ lightboxImage.addEventListener(
     event => {
 
         touchStartX =
-            event.changedTouches[0].screenX;
+            event
+                .changedTouches[0]
+                .screenX;
 
     },
     {
@@ -649,7 +1028,10 @@ lightboxImage.addEventListener(
     event => {
 
         touchEndX =
-            event.changedTouches[0].screenX;
+            event
+                .changedTouches[0]
+                .screenX;
+
 
         handleSwipe();
 
@@ -660,20 +1042,25 @@ lightboxImage.addEventListener(
 );
 
 
+
 function handleSwipe() {
 
     const distance =
-        touchStartX - touchEndX;
+        touchStartX
+        - touchEndX;
 
 
     if (
-        Math.abs(distance) < 50
+        Math.abs(distance)
+        < 50
     ) {
         return;
     }
 
 
-    if (distance > 0) {
+    if (
+        distance > 0
+    ) {
 
         nextSlide();
 
@@ -686,4 +1073,3 @@ function handleSwipe() {
     }
 
 }
-
