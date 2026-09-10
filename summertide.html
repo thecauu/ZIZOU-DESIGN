@@ -71,17 +71,6 @@
             <p class="product-title">Amber Breeze</p>
             <p class="product-price">$19.99 USD</p>
 
-            <button
-                class="add-to-bag"
-                type="button"
-                data-product="amber-breeze"
-                data-name="Amber Breeze"
-                data-price="19.99"
-            >
-                ADD TO BAG
-            </button>
-        </div>
-
     </div>
 
 
@@ -104,17 +93,6 @@
             <p class="product-title">Peridot Afloat</p>
             <p class="product-price">$19.99 USD</p>
 
-            <button
-                class="add-to-bag"
-                type="button"
-                data-product="peridot-afloat"
-                data-name="Peridot Afloat"
-                data-price="19.99"
-            >
-                ADD TO BAG
-            </button>
-        </div>
-
     </div>
 
 
@@ -136,18 +114,6 @@
         <div class="product-info">
             <p class="product-title">Pátina del Mar</p>
             <p class="product-price">$19.99 USD</p>
-
-            <button
-                class="add-to-bag"
-                type="button"
-                data-product="patina-del-mar"
-                data-name="Pátina del Mar"
-                data-price="19.99"
-            >
-                ADD TO BAG
-            </button>
-        </div>
-
     </div>
 
 
@@ -169,18 +135,6 @@
         <div class="product-info">
             <p class="product-title">Sage Quietude</p>
             <p class="product-price">$19.99 USD</p>
-
-            <button
-                class="add-to-bag"
-                type="button"
-                data-product="sage-quietude"
-                data-name="Sage Quietude"
-                data-price="19.99"
-            >
-                ADD TO BAG
-            </button>
-        </div>
-
     </div>
 
 
@@ -202,18 +156,6 @@
         <div class="product-info">
             <p class="product-title">Éter do Luar</p>
             <p class="product-price">$19.99 USD</p>
-
-            <button
-                class="add-to-bag"
-                type="button"
-                data-product="eter-do-luar"
-                data-name="Éter do Luar"
-                data-price="19.99"
-            >
-                ADD TO BAG
-            </button>
-        </div>
-
     </div>
 
 
@@ -235,18 +177,6 @@
         <div class="product-info">
             <p class="product-title">Oneiric Glow</p>
             <p class="product-price">$19.99 USD</p>
-
-            <button
-                class="add-to-bag"
-                type="button"
-                data-product="oneiric-glow"
-                data-name="Oneiric Glow"
-                data-price="19.99"
-            >
-                ADD TO BAG
-            </button>
-        </div>
-
     </div>
 
 
@@ -256,25 +186,29 @@
 
 
 
-    <!-- =========================
-         LIGHTBOX / SLIDER
-    ========================== -->
+<!-- =========================
+     ARTWORK PRODUCT VIEW
+========================== -->
 
-    <div
-        class="lightbox"
-        id="lightbox"
-        aria-hidden="true"
+<div
+    class="lightbox"
+    id="lightbox"
+    aria-hidden="true"
+>
+
+    <button
+        class="lightbox-close"
+        id="lightboxClose"
+        type="button"
+        aria-label="Close artwork"
     >
+        ×
+    </button>
 
-        <button
-            class="lightbox-close"
-            id="lightboxClose"
-            type="button"
-            aria-label="Close gallery"
-        >
-            ×
-        </button>
 
+    <!-- BLACK IMAGE AREA -->
+
+    <section class="artwork-viewer">
 
         <button
             class="lightbox-arrow lightbox-prev"
@@ -295,11 +229,6 @@
             >
 
             <p
-                id="lightboxTitle"
-                class="lightbox-title"
-            ></p>
-
-            <p
                 id="lightboxCounter"
                 class="lightbox-counter"
             ></p>
@@ -316,8 +245,154 @@
             ›
         </button>
 
-    </div>
+    </section>
 
+
+    <!-- WHITE PRODUCT INFORMATION AREA -->
+
+    <section class="artwork-product-info">
+
+        <h2 id="lightboxTitle"></h2>
+
+        <p
+            id="artworkPrice"
+            class="artwork-price"
+        >
+            $19.99 USD
+        </p>
+
+
+        <button
+            id="artworkAddToBag"
+            class="artwork-add-to-bag"
+            type="button"
+        >
+            ADD TO BAG
+        </button>
+
+
+        <p
+            id="artworkDescription"
+            class="artwork-description"
+        ></p>
+
+
+        <!-- ARTWORK DETAILS -->
+
+        <div class="artwork-accordion">
+
+            <button
+                class="accordion-button"
+                type="button"
+            >
+                <span>Artwork Details</span>
+                <span class="accordion-symbol">+</span>
+            </button>
+
+            <div class="accordion-content">
+
+                <div class="artwork-spec">
+                    <span>Artist</span>
+                    <span>Zizou</span>
+                </div>
+
+                <div class="artwork-spec">
+                    <span>Year</span>
+                    <span id="artworkYear"></span>
+                </div>
+
+                <div class="artwork-spec">
+                    <span>Medium</span>
+                    <span>Photography</span>
+                </div>
+
+                <div class="artwork-spec">
+                    <span>Collection</span>
+                    <span>Summertide</span>
+                </div>
+
+                <div class="artwork-spec">
+                    <span>Work N°</span>
+                    <span id="artworkNumber"></span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- DIGITAL FILE & PRINTING -->
+
+        <div class="artwork-accordion">
+
+            <button
+                class="accordion-button"
+                type="button"
+            >
+                <span>Digital File & Printing</span>
+                <span class="accordion-symbol">+</span>
+            </button>
+
+            <div class="accordion-content">
+
+                <div class="artwork-spec">
+                    <span>File Format</span>
+                    <span>PDF</span>
+                </div>
+
+                <div class="artwork-spec">
+                    <span>Aspect Ratio</span>
+                    <span>2:3</span>
+                </div>
+
+                <div class="artwork-spec">
+                    <span>Delivery</span>
+                    <span>Digital Download</span>
+                </div>
+
+                <p class="accordion-note">
+                    Designed for printing in proportional 2:3 dimensions.
+                    No physical product will be shipped.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRINTING & DISPLAY -->
+
+        <div class="artwork-accordion">
+
+            <button
+                class="accordion-button"
+                type="button"
+            >
+                <span>Printing & Display</span>
+                <span class="accordion-symbol">+</span>
+            </button>
+
+            <div class="accordion-content">
+
+                <p class="accordion-note">
+                    For best results, maintain the original 2:3 aspect ratio
+                    when printing. The artwork may be reproduced at a range
+                    of proportional dimensions depending on the desired
+                    display size.
+                </p>
+
+                <p class="accordion-note">
+                    Professional photographic or fine-art printing is
+                    recommended for optimal reproduction.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
 
 
     <script src="summertide.js"></script>
