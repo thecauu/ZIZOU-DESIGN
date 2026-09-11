@@ -778,9 +778,9 @@ body {
     min-height: 100svh;
 
     padding:
-        max(60px, env(safe-area-inset-top))
-        16px
-        35px;
+        55px
+        12px
+        20px;
 
     display: flex;
     align-items: center;
@@ -795,12 +795,10 @@ body {
 
 
 .lightbox-content img {
-    width: auto;
-    max-width: calc(100vw - 32px);
-
+    width: calc(100vw - 24px);
     height: auto;
-    max-height: 84svh;
-
+    max-width: none;
+    max-height: 88svh;
     object-fit: contain;
 }
 
