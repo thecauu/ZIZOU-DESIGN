@@ -775,12 +775,14 @@ body {
 ========================================== */
 
 .artwork-viewer {
-    min-height: 100svh;
+    min-height: auto;
+    height: 82svh;
 
     padding:
-        55px
+        45px
         12px
-        20px;
+        15px;
+}
 
     display: flex;
     align-items: center;
