@@ -131,13 +131,15 @@
 
             <div class="nav-right">
 
-                <button
-                    class="bag-button"
-                    type="button"
-                    aria-label="Shopping bag"
-                >
-                    ♧
-                </button>
+<button
+    class="bag-button"
+    id="bagButton"
+    type="button"
+    aria-label="Shopping bag"
+>
+    ♧
+    <span id="bagCount">0</span>
+</button>
 
             </div>
 
@@ -156,6 +158,51 @@
 
     </section>
 
+<!-- =========================
+     SHOPPING BAG
+========================== -->
+
+<div class="shopping-bag" id="shoppingBag">
+
+    <div class="shopping-bag-header">
+
+        <h2>YOUR BAG</h2>
+
+        <button
+            id="closeBag"
+            type="button"
+            aria-label="Close shopping bag"
+        >
+            ×
+        </button>
+
+    </div>
+
+    <div id="bagItems"></div>
+
+    <div
+        class="bag-empty"
+        id="bagEmpty"
+    >
+        YOUR BAG IS EMPTY
+    </div>
+
+    <div
+        class="bag-checkout-area"
+        id="bagCheckoutArea"
+    >
+
+        <a
+            href="https://zizoudesign.lemonsqueezy.com/checkout/buy/8c922568-b22d-4f21-b7cb-9faaf3298379?embed=1&logo=0"
+            class="lemonsqueezy-button checkout-button"
+            id="checkoutButton"
+        >
+            CHECKOUT
+        </a>
+
+    </div>
+
+</div>
 
 
     <!-- =========================
@@ -289,17 +336,10 @@ s0.parentNode.insertBefore(s1,s0);
 
 
 
+<!-- =========================
+     PRODUCTS
+========================== -->
 
-
-
-
-
-<a
-    href="https://zizoudesign.lemonsqueezy.com/checkout/buy/8c922568-b22d-4f21-b7cb-9faaf3298379?embed=1&logo=0"
-    class="lemonsqueezy-button checkout-button"
->
-    CHECKOUT
-</a>
 
 <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
 
