@@ -454,27 +454,25 @@ function updateGlobalBag() {
 
 function connectAddToBagButtons() {
 
-    document
-        .querySelectorAll(".add-to-bag")
-        .forEach(
-            button => {
+    document.addEventListener("click", (event) => {
 
-                button.addEventListener(
-                    "click",
-                    () => {
+        const button =
+            event.target.closest(".add-to-bag");
 
-                        const productId =
-                            button.dataset.product;
+        if (!button) {
+            return;
+        }
 
-                        addToGlobalBag(
-                            productId
-                        );
+        const productId =
+            button.dataset.product;
 
-                    }
-                );
+        if (!productId) {
+            return;
+        }
 
-            }
-        );
+        addToGlobalBag(productId);
+
+    });
 
 }
 
