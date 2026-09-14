@@ -2279,3 +2279,24 @@ body {
     background: #111111;
     color: #ffffff;
 }
+
+/* GLOBAL BAG BUTTON FOR PAGES WITHOUT NAV BAG */
+
+.global-bag-button {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 5500;
+
+    border: none;
+    background: transparent;
+    color: #111111;
+
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.global-bag-button #bagCount {
+    font-size: 10px;
+    margin-left: 3px;
+}
