@@ -233,34 +233,30 @@ function saveGlobalCart() {
    ADD PRODUCT
 ----------------------------------------- */
 
-function addToGlobalBag(productId) {
+function connectAddToBagButtons() {
 
-    if (!zizouProducts[productId]) {
-        return;
-    }
+    document.addEventListener("click", function (event) {
 
+        const button = event.target.closest(
+            ".add-to-bag, .artwork-add-to-bag"
+        );
 
-    if (!zizouCart.includes(productId)) {
+        if (!button) {
+            return;
+        }
 
-        zizouCart.push(productId);
+        const productId =
+            button.getAttribute("data-product");
 
-        saveGlobalCart();
+        if (!productId) {
+            return;
+        }
 
-    }
+        addToGlobalBag(productId);
 
-
-    updateGlobalBag();
-
-
-    const shoppingBag =
-        document.getElementById("shoppingBag");
-
-    if (shoppingBag) {
-        shoppingBag.classList.add("open");
-    }
+    });
 
 }
-
 
 /* -----------------------------------------
    REMOVE PRODUCT
