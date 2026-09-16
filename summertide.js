@@ -207,6 +207,16 @@ const artworkNumber =
 
 const artworkAddToBag =
     document.getElementById("artworkAddToBag");
+    
+    artworkAddToBag.addEventListener("click", () => {
+
+    if (!activeArtwork) {
+        return;
+    }
+
+    addToGlobalBag(activeArtwork.product);
+
+});
 
 
 
