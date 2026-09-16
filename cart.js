@@ -46,11 +46,6 @@ try {
 
 function createGlobalBag() {
 
-    /*
-       If the page already contains the old
-       temporary bag, remove it first.
-    */
-
     const oldBag =
         document.getElementById("shoppingBag");
 
@@ -59,19 +54,9 @@ function createGlobalBag() {
     }
 
 
-    /*
-       Look for an existing navbar bag button.
-       If one exists, we reuse it.
-    */
-
     let bagButton =
         document.getElementById("bagButton");
 
-
-    /*
-       Some pages may only have the old
-       .bag-button without an ID.
-    */
 
     if (!bagButton) {
 
@@ -85,35 +70,31 @@ function createGlobalBag() {
     }
 
 
-    /*
-       If the page has no bag button at all,
-       create a floating one automatically.
-    */
-
     if (!bagButton) {
 
         bagButton =
             document.createElement("button");
 
-        bagButton.id = "bagButton";
+        bagButton.id =
+            "bagButton";
+
         bagButton.className =
             "bag-button global-bag-button";
 
-        bagButton.type = "button";
+        bagButton.type =
+            "button";
 
         bagButton.setAttribute(
             "aria-label",
             "Shopping bag"
         );
 
-        document.body.appendChild(bagButton);
+        document.body.appendChild(
+            bagButton
+        );
 
     }
 
-
-    /*
-       Standardize contents of bag button.
-    */
 
     bagButton.innerHTML = `
         ♧
@@ -121,12 +102,9 @@ function createGlobalBag() {
     `;
 
 
-    /*
-       Create bag drawer.
-    */
-
     const shoppingBag =
         document.createElement("aside");
+
 
     shoppingBag.className =
         "shopping-bag";
@@ -181,7 +159,9 @@ function createGlobalBag() {
     `;
 
 
-    document.body.appendChild(shoppingBag);
+    document.body.appendChild(
+        shoppingBag
+    );
 
 
     /* OPEN BAG */
@@ -190,7 +170,9 @@ function createGlobalBag() {
         "click",
         () => {
 
-            shoppingBag.classList.add("open");
+            shoppingBag.classList.add(
+                "open"
+            );
 
         }
     );
@@ -204,7 +186,9 @@ function createGlobalBag() {
             "click",
             () => {
 
-                shoppingBag.classList.remove("open");
+                shoppingBag.classList.remove(
+                    "open"
+                );
 
             }
         );
@@ -233,30 +217,45 @@ function saveGlobalCart() {
    ADD PRODUCT
 ----------------------------------------- */
 
-function connectAddToBagButtons() {
+function addToGlobalBag(productId) {
 
-    document.addEventListener("click", function (event) {
+    const product =
+        zizouProducts[productId];
 
-        const button = event.target.closest(
-            ".add-to-bag, .artwork-add-to-bag"
+
+    if (!product) {
+        return;
+    }
+
+
+    if (!zizouCart.includes(productId)) {
+
+        zizouCart.push(productId);
+
+        saveGlobalCart();
+
+    }
+
+
+    updateGlobalBag();
+
+
+    const shoppingBag =
+        document.getElementById(
+            "shoppingBag"
         );
 
-        if (!button) {
-            return;
-        }
 
-        const productId =
-            button.getAttribute("data-product");
+    if (shoppingBag) {
 
-        if (!productId) {
-            return;
-        }
+        shoppingBag.classList.add(
+            "open"
+        );
 
-        addToGlobalBag(productId);
-
-    });
+    }
 
 }
+
 
 /* -----------------------------------------
    REMOVE PRODUCT
@@ -284,13 +283,19 @@ function removeFromGlobalBag(productId) {
 function updateGlobalBag() {
 
     const bagItems =
-        document.getElementById("bagItems");
+        document.getElementById(
+            "bagItems"
+        );
 
     const bagCount =
-        document.getElementById("bagCount");
+        document.getElementById(
+            "bagCount"
+        );
 
     const bagEmpty =
-        document.getElementById("bagEmpty");
+        document.getElementById(
+            "bagEmpty"
+        );
 
     const checkoutArea =
         document.getElementById(
@@ -308,7 +313,8 @@ function updateGlobalBag() {
     }
 
 
-    bagItems.innerHTML = "";
+    bagItems.innerHTML =
+        "";
 
 
     if (bagCount) {
@@ -319,26 +325,35 @@ function updateGlobalBag() {
     }
 
 
-    /* EMPTY CART */
+    /* EMPTY BAG */
 
     if (zizouCart.length === 0) {
 
-        bagEmpty.style.display =
-            "block";
+        if (bagEmpty) {
+            bagEmpty.style.display =
+                "block";
+        }
 
-        checkoutArea.style.display =
-            "none";
+        if (checkoutArea) {
+            checkoutArea.style.display =
+                "none";
+        }
 
         return;
 
     }
 
 
-    bagEmpty.style.display =
-        "none";
+    if (bagEmpty) {
+        bagEmpty.style.display =
+            "none";
+    }
 
-    checkoutArea.style.display =
-        "block";
+
+    if (checkoutArea) {
+        checkoutArea.style.display =
+            "block";
+    }
 
 
     /* DISPLAY PRODUCTS */
@@ -349,13 +364,16 @@ function updateGlobalBag() {
             const product =
                 zizouProducts[productId];
 
+
             if (!product) {
                 return;
             }
 
 
             const item =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
 
             item.className =
@@ -392,46 +410,20 @@ function updateGlobalBag() {
             `;
 
 
-            bagItems.appendChild(item);
+            bagItems.appendChild(
+                item
+            );
 
         }
     );
 
 
-    /* REMOVE BUTTONS */
-
-    document
-        .querySelectorAll(".remove-item")
-        .forEach(
-            button => {
-
-                button.addEventListener(
-                    "click",
-                    () => {
-
-                        removeFromGlobalBag(
-                            button.dataset.remove
-                        );
-
-                    }
-                );
-
-            }
-        );
-
-
-    /*
-       FOR NOW:
-       Amber Breeze is our only Lemon product.
-
-       When we add the remaining products,
-       we'll upgrade checkout to support
-       multiple products.
-    */
+    /* CHECKOUT */
 
     if (
         zizouCart.length === 1 &&
-        zizouProducts[zizouCart[0]]
+        zizouProducts[zizouCart[0]] &&
+        checkoutButton
     ) {
 
         checkoutButton.href =
@@ -445,32 +437,67 @@ function updateGlobalBag() {
 
 
 /* -----------------------------------------
-   CONNECT EVERY ADD TO BAG BUTTON
+   ADD / REMOVE BUTTON CLICKS
 ----------------------------------------- */
 
-function connectAddToBagButtons() {
+document.addEventListener(
+    "click",
+    (event) => {
 
-    document.addEventListener("click", (event) => {
 
-        const button =
-            event.target.closest(".add-to-bag");
+        /* ADD TO BAG */
 
-        if (!button) {
+        const addButton =
+            event.target.closest(
+                ".add-to-bag, .artwork-add-to-bag"
+            );
+
+
+        if (addButton) {
+
+            const productId =
+                addButton.dataset.product;
+
+
+            if (productId) {
+
+                addToGlobalBag(
+                    productId
+                );
+
+            }
+
             return;
+
         }
 
-        const productId =
-            button.dataset.product;
 
-        if (!productId) {
-            return;
+        /* REMOVE FROM BAG */
+
+        const removeButton =
+            event.target.closest(
+                ".remove-item"
+            );
+
+
+        if (removeButton) {
+
+            const productId =
+                removeButton.dataset.remove;
+
+
+            if (productId) {
+
+                removeFromGlobalBag(
+                    productId
+                );
+
+            }
+
         }
 
-        addToGlobalBag(productId);
-
-    });
-
-}
+    }
+);
 
 
 /* -----------------------------------------
@@ -482,8 +509,6 @@ document.addEventListener(
     () => {
 
         createGlobalBag();
-
-        connectAddToBagButtons();
 
     }
 );
