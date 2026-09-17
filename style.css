@@ -547,14 +547,22 @@ body {
     cursor: pointer;
 }
 
-.collection-item img {
+/* Protected Summertide collection artwork */
+
+.protected-collection-image {
+    display: block;
+
     width: 100%;
 
     aspect-ratio: 4 / 5;
 
-    object-fit: cover;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
-    display: block;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .product-info {
@@ -641,20 +649,25 @@ body {
     margin: 0;
 }
 
-.lightbox-content img {
+/* Protected opened gallery artwork */
+
+.protected-lightbox-image {
     display: block;
 
     width: 100%;
-    height: auto;
 
-    max-width: none;
-    max-height: none;
+    /*
+       Gives the background artwork the same
+       large visual area as the old image.
+    */
+    aspect-ratio: 4 / 5;
 
     margin: 0;
 
-    object-fit: contain;
-
-    background: #f3f1ed;
+    background-color: #f3f1ed;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 
     transform: scale(1);
     transform-origin: center;
@@ -668,6 +681,10 @@ body {
             0.3,
             1
         );
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 
@@ -1054,7 +1071,7 @@ body {
    ROOM IMAGE REVEAL
 ========================================================= */
 
-.lightbox-content img.room-image-reveal {
+.protected-lightbox-image.room-image-reveal {
     animation:
         roomRevealSmooth
         1.8s
@@ -1115,14 +1132,14 @@ body {
    NORMAL GALLERY SLIDE TRANSITION
 ========================================================= */
 
-.lightbox-content img.gallery-fade-out {
+.protected-lightbox-image.gallery-fade-out {
     opacity: 0;
 
     transform:
         scale(0.985);
 }
 
-.lightbox-content img.gallery-fade-in {
+.protected-lightbox-image.gallery-fade-in {
     animation:
         normalGalleryFade
         0.55s
@@ -1916,16 +1933,6 @@ body {
         max-width: none;
     }
 
-    .lightbox-content img {
-        width: 100%;
-
-        height: auto;
-
-        max-width: none;
-        max-height: none;
-
-        object-fit: contain;
-    }
 
     .lightbox-counter {
         right: 16px;
@@ -2107,13 +2114,67 @@ body {
 
 
 /* =========================================================
+   HOMEPAGE — PROTECTED ARTWORK PREVIEWS
+========================================================= */
+
+.artwork-link {
+    display: block;
+
+    width: 100%;
+
+    aspect-ratio: 4 / 5;
+
+    overflow: hidden;
+
+    text-decoration: none;
+
+    color: inherit;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+
+.protected-home-image {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+
+/* =========================================================
+   ARTWORK LONG-PRESS PROTECTION
+========================================================= */
+
+.protected-home-image,
+.protected-collection-image,
+.protected-lightbox-image {
+
+    -webkit-touch-callout: none !important;
+
+    -webkit-user-select: none !important;
+    user-select: none !important;
+}
+
+
+/* =========================================================
    REDUCED MOTION
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
     .transition-artwork,
-    .lightbox-content img,
+    .protected-lightbox-image,
     .lightbox-title,
     .lightbox-counter,
     .lightbox-arrow,
@@ -2121,41 +2182,7 @@ body {
 
         transition: none !important;
         animation: none !important;
-        
-/* =========================================
-   ZIZOU ARTWORK TOUCH PROTECTION
-========================================= */
 
-html,
-body {
-    -webkit-touch-callout: none !important;
-}
+    }
 
-.collection-item,
-.artwork-link,
-.lightbox-content {
-    position: relative;
-}
-
-.collection-item img,
-.artwork-link img,
-.lightbox-content img {
-    pointer-events: none !important;
-    -webkit-user-drag: none !important;
-    -webkit-user-select: none !important;
-    user-select: none !important;
-}
-
-.collection-item::after,
-.artwork-link::after,
-.lightbox-content::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 50;
-    background: transparent;
-
-    -webkit-touch-callout: none !important;
-    -webkit-user-select: none !important;
-    user-select: none !important;
 }
