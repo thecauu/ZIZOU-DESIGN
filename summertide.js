@@ -1082,4 +1082,37 @@ function handleSwipe() {
 
     }
 
+
+/* ==========================================
+   ARTWORK IMAGE PROTECTION
+========================================== */
+
+/* Prevent right-click / context menu on artwork */
+
+document.addEventListener("contextmenu", (event) => {
+
+    if (
+        event.target.matches(
+            ".collection-item img, .lightbox-content img"
+        )
+    ) {
+        event.preventDefault();
+    }
+
+});
+
+
+/* Prevent dragging artwork */
+
+document.addEventListener("dragstart", (event) => {
+
+    if (
+        event.target.matches(
+            ".collection-item img, .lightbox-content img"
+        )
+    ) {
+        event.preventDefault();
+    }
+
+});
 }
