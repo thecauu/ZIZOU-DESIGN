@@ -38,7 +38,7 @@ const artworks = {
         year: "2024",
         number: "02",
 
-        description: "A peaceful state of solitude guided by crystalline ripples",
+        description: "A peaceful state of solitude guided by crystalline ripples.",
 
         gallery: [
             {
@@ -64,7 +64,7 @@ const artworks = {
         year: "2024",
         number: "03",
 
-        description: "The sea has a way of illustrating a story wherever it touches",
+        description: "The sea has a way of illustrating a story wherever it touches.",
 
         gallery: [
             {
@@ -90,7 +90,7 @@ const artworks = {
         year: "2024",
         number: "04",
 
-        description: "Restfulness begins with the first breath of release",
+        description: "Restfulness begins with the first breath of release.",
 
         gallery: [
             {
@@ -116,7 +116,7 @@ const artworks = {
         year: "2024",
         number: "05",
 
-        description: "The aura enfolding the world with a gentle touch",
+        description: "The aura enfolding the world with a gentle touch.",
 
         gallery: [
             {
