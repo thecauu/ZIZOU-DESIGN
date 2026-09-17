@@ -38,7 +38,8 @@ const artworks = {
         year: "2024",
         number: "02",
 
-        description: "A peaceful state of solitude guided by crystalline ripples.",
+        description:
+            "A peaceful state of solitude guided by crystalline ripples.",
 
         gallery: [
             {
@@ -64,7 +65,8 @@ const artworks = {
         year: "2024",
         number: "03",
 
-        description: "The sea has a way of illustrating a story wherever it touches.",
+        description:
+            "The sea has a way of illustrating a story wherever it touches.",
 
         gallery: [
             {
@@ -90,7 +92,8 @@ const artworks = {
         year: "2024",
         number: "04",
 
-        description: "Restfulness begins with the first breath of release.",
+        description:
+            "Restfulness begins with the first breath of release.",
 
         gallery: [
             {
@@ -116,7 +119,8 @@ const artworks = {
         year: "2024",
         number: "05",
 
-        description: "The aura enfolding the world with a gentle touch.",
+        description:
+            "The aura enfolding the world with a gentle touch.",
 
         gallery: [
             {
@@ -207,16 +211,6 @@ const artworkNumber =
 
 const artworkAddToBag =
     document.getElementById("artworkAddToBag");
-    
-    artworkAddToBag.addEventListener("click", () => {
-
-    if (!activeArtwork) {
-        return;
-    }
-
-    addToGlobalBag(activeArtwork.product);
-
-});
 
 
 
@@ -232,6 +226,27 @@ let touchStartX = 0;
 let touchEndX = 0;
 
 let transitionRunning = false;
+
+
+
+/* ==========================================
+   ADD TO BAG
+========================================== */
+
+artworkAddToBag.addEventListener(
+    "click",
+    () => {
+
+        if (!activeArtwork) {
+            return;
+        }
+
+        addToGlobalBag(
+            activeArtwork.product
+        );
+
+    }
+);
 
 
 
@@ -260,10 +275,6 @@ function updateArtworkInfo() {
         activeArtwork.number;
 
 
-    /*
-       Only display description when one exists.
-    */
-
     if (activeArtwork.description) {
 
         artworkDescription.textContent =
@@ -284,12 +295,6 @@ function updateArtworkInfo() {
 
     }
 
-
-    /*
-       Prepare ADD TO BAG information.
-       These attributes allow the same button
-       to represent whichever artwork is open.
-    */
 
     artworkAddToBag.dataset.product =
         activeArtwork.product;
@@ -322,8 +327,8 @@ function updateSlide() {
         slide.alt;
 
 
-lightboxCounter.textContent =
-    `${activeIndex + 1}/${activeGallery.length}`;
+    lightboxCounter.textContent =
+        `${activeIndex + 1}/${activeGallery.length}`;
 
 }
 
@@ -389,26 +394,11 @@ function openGallery(
     );
 
 
-    /*
-       Load all artwork information
-       before opening the viewer.
-    */
-
     updateArtworkInfo();
 
 
-    /*
-       Close any accordion that may have
-       been left open from another artwork.
-    */
-
     closeAllAccordions();
 
-
-    /*
-       Preload first room image before
-       starting the animation.
-    */
 
     const roomImage =
         new Image();
@@ -426,10 +416,6 @@ function openGallery(
 
     };
 
-
-    /*
-       Browser cache fallback.
-    */
 
     if (roomImage.complete) {
 
@@ -454,11 +440,6 @@ function runZoomOutTransition(
     const startRect =
         clickedImage.getBoundingClientRect();
 
-
-    /*
-       Temporary floating copy
-       of collection preview.
-    */
 
     const transitionImage =
         clickedImage.cloneNode(true);
@@ -487,20 +468,12 @@ function runZoomOutTransition(
     );
 
 
-    /*
-       Update first gallery image.
-    */
-
     activeIndex =
         0;
 
 
     updateSlide();
 
-
-    /*
-       Open artwork viewer.
-    */
 
     lightbox.classList.add(
         "open",
@@ -514,18 +487,9 @@ function runZoomOutTransition(
     );
 
 
-    /*
-       Collection page stays fixed behind
-       the artwork viewer.
-    */
-
     document.body.style.overflow =
         "hidden";
 
-
-    /*
-       Begin hidden.
-    */
 
     lightboxImage.style.opacity =
         "0";
@@ -567,11 +531,6 @@ function runZoomOutTransition(
                 "scale(1.06)";
 
 
-            /*
-               Dissolve preview into
-               room image.
-            */
-
             setTimeout(() => {
 
                 transitionImage.classList.add(
@@ -590,10 +549,6 @@ function runZoomOutTransition(
             }, 900);
 
 
-            /*
-               Reveal gallery controls.
-            */
-
             setTimeout(() => {
 
                 lightboxCounter.style.opacity =
@@ -610,10 +565,6 @@ function runZoomOutTransition(
 
             }, 1750);
 
-
-            /*
-               Remove temporary image.
-            */
 
             setTimeout(() => {
 
@@ -775,11 +726,6 @@ function closeGallery() {
         );
 
 
-    /*
-       Return viewer to top so another
-       artwork always opens from the beginning.
-    */
-
     lightbox.scrollTop =
         0;
 
@@ -880,19 +826,8 @@ accordionButtons.forEach(
                     );
 
 
-                /*
-                   Close all first.
-                   This keeps the page clean,
-                   similar to luxury product pages.
-                */
-
                 closeAllAccordions();
 
-
-                /*
-                   If this one was closed,
-                   open it.
-                */
 
                 if (!isOpen) {
 
@@ -982,27 +917,21 @@ document.addEventListener(
         }
 
 
-        if (
-            event.key === "Escape"
-        ) {
+        if (event.key === "Escape") {
 
             closeGallery();
 
         }
 
 
-        if (
-            event.key === "ArrowRight"
-        ) {
+        if (event.key === "ArrowRight") {
 
             nextSlide();
 
         }
 
 
-        if (
-            event.key === "ArrowLeft"
-        ) {
+        if (event.key === "ArrowLeft") {
 
             previousSlide();
 
@@ -1022,9 +951,7 @@ lightboxImage.addEventListener(
     event => {
 
         touchStartX =
-            event
-                .changedTouches[0]
-                .screenX;
+            event.changedTouches[0].screenX;
 
     },
     {
@@ -1038,9 +965,7 @@ lightboxImage.addEventListener(
     event => {
 
         touchEndX =
-            event
-                .changedTouches[0]
-                .screenX;
+            event.changedTouches[0].screenX;
 
 
         handleSwipe();
@@ -1068,9 +993,7 @@ function handleSwipe() {
     }
 
 
-    if (
-        distance > 0
-    ) {
+    if (distance > 0) {
 
         nextSlide();
 
@@ -1082,65 +1005,4 @@ function handleSwipe() {
 
     }
 
-
-/* ==========================================
-   ARTWORK IMAGE PROTECTION — iOS SAFARI
-========================================== */
-
-const protectedArtworkSelector =
-    ".collection-item, .lightbox-content";
-
-
-/* Block iPhone/iPad long-press image menu */
-
-document.addEventListener(
-    "touchstart",
-    function (event) {
-
-        if (
-            event.target.closest(
-                protectedArtworkSelector
-            )
-        ) {
-            event.preventDefault();
-        }
-
-    },
-    { passive: false }
-);
-
-
-/* Block Safari context menu */
-
-document.addEventListener(
-    "contextmenu",
-    function (event) {
-
-        if (
-            event.target.closest(
-                protectedArtworkSelector
-            )
-        ) {
-            event.preventDefault();
-        }
-
-    }
-);
-
-
-/* Block image dragging */
-
-document.addEventListener(
-    "dragstart",
-    function (event) {
-
-        if (
-            event.target.closest(
-                protectedArtworkSelector
-            )
-        ) {
-            event.preventDefault();
-        }
-
-    }
-);
+}
