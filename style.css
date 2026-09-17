@@ -2123,46 +2123,39 @@ body {
         animation: none !important;
         
 /* =========================================
-   ARTWORK IMAGE PROTECTION
+   ZIZOU ARTWORK TOUCH PROTECTION
 ========================================= */
 
-/*
-   Safari cannot directly interact with the
-   actual image element.
-
-   The parent button / gallery remains
-   interactive, so opening artwork and
-   navigating the gallery still works.
-*/
-
-.collection-item img,
-.artwork-link img,
-.lightbox-content img {
-
-    pointer-events: none;
-
+html,
+body {
     -webkit-touch-callout: none !important;
-
-    -webkit-user-select: none !important;
-    user-select: none !important;
-
-    -webkit-user-drag: none !important;
-
-    -webkit-tap-highlight-color: transparent;
 }
-
-
-/*
-   Prevent long-press selection/callout
-   on the containers surrounding the images.
-*/
 
 .collection-item,
 .artwork-link,
 .lightbox-content {
+    position: relative;
+}
+
+.collection-item img,
+.artwork-link img,
+.lightbox-content img {
+    pointer-events: none !important;
+    -webkit-user-drag: none !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+}
+
+.collection-item::after,
+.artwork-link::after,
+.lightbox-content::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 50;
+    background: transparent;
 
     -webkit-touch-callout: none !important;
-
     -webkit-user-select: none !important;
     user-select: none !important;
 }
