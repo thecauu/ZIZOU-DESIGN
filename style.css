@@ -2121,6 +2121,31 @@ body {
 
         transition: none !important;
         animation: none !important;
+        
+        /* =========================================
+   ARTWORK IMAGE PROTECTION
+========================================= */
+
+/* Collection thumbnails + full artwork viewer */
+
+.collection-item img,
+.lightbox-content img,
+.artwork-link img {
+
+    /* Prevent iPhone/iPad long-press image menu */
+    -webkit-touch-callout: none;
+
+    /* Prevent selecting/highlighting */
+    -webkit-user-select: none;
+    user-select: none;
+
+    /* Prevent dragging image on WebKit browsers */
+    -webkit-user-drag: none;
+
+    /* Normal cursor instead of drag cursor */
+    cursor: default;
+}
+
     }
 
 }
