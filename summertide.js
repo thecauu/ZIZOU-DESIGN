@@ -215,6 +215,38 @@ const artworkAddToBag =
 
 
 /* ==========================================
+   LOAD PROTECTED COLLECTION IMAGES
+========================================== */
+
+/*
+   The collection artwork is no longer
+   displayed with normal IMG elements.
+
+   Instead, each image is loaded as the
+   background of a SPAN element.
+*/
+
+document
+    .querySelectorAll(
+        ".protected-collection-image"
+    )
+    .forEach((image) => {
+
+        const source =
+            image.dataset.image;
+
+        if (!source) {
+            return;
+        }
+
+        image.style.backgroundImage =
+            `url("${source}")`;
+
+    });
+
+
+
+/* ==========================================
    ACTIVE ARTWORK / GALLERY
 ========================================== */
 
@@ -256,7 +288,9 @@ artworkAddToBag.addEventListener(
 
 function updateArtworkInfo() {
 
-    if (!activeArtwork) return;
+    if (!activeArtwork) {
+        return;
+    }
 
 
     lightboxTitle.textContent =
@@ -319,12 +353,28 @@ function updateSlide() {
         activeGallery[activeIndex];
 
 
-    lightboxImage.src =
-        slide.src;
+    if (!slide) {
+        return;
+    }
 
 
-    lightboxImage.alt =
-        slide.alt;
+    /*
+       IMPORTANT:
+
+       lightboxImage is now a DIV.
+
+       The artwork is loaded as a CSS
+       background instead of IMG src.
+    */
+
+    lightboxImage.style.backgroundImage =
+        `url("${slide.src}")`;
+
+
+    lightboxImage.setAttribute(
+        "aria-label",
+        slide.alt
+    );
 
 
     lightboxCounter.textContent =
@@ -341,6 +391,14 @@ function updateSlide() {
 function preloadGalleryImages(gallery) {
 
     gallery.forEach((slide) => {
+
+        /*
+           These Image objects exist only in
+           JavaScript memory to preload files.
+
+           They are NOT placed on the webpage
+           and therefore cannot be long-pressed.
+        */
 
         const image =
             new Image();
@@ -363,14 +421,18 @@ function openGallery(
     clickedImage
 ) {
 
-    if (transitionRunning) return;
+    if (transitionRunning) {
+        return;
+    }
 
 
     const selectedArtwork =
         artworks[artworkName];
 
 
-    if (!selectedArtwork) return;
+    if (!selectedArtwork) {
+        return;
+    }
 
 
     transitionRunning =
@@ -400,6 +462,11 @@ function openGallery(
     closeAllAccordions();
 
 
+    /*
+       Preload the first room preview before
+       opening the product viewer.
+    */
+
     const roomImage =
         new Image();
 
@@ -408,20 +475,40 @@ function openGallery(
         activeGallery[0].src;
 
 
-    roomImage.onload = () => {
+    let transitionStarted =
+        false;
+
+
+    function startTransition() {
+
+        /*
+           Prevent the transition from running
+           twice when the image is already cached.
+        */
+
+        if (transitionStarted) {
+            return;
+        }
+
+
+        transitionStarted =
+            true;
+
 
         runZoomOutTransition(
             clickedImage
         );
 
-    };
+    }
+
+
+    roomImage.onload =
+        startTransition;
 
 
     if (roomImage.complete) {
 
-        runZoomOutTransition(
-            clickedImage
-        );
+        startTransition();
 
     }
 
@@ -437,9 +524,24 @@ function runZoomOutTransition(
     clickedImage
 ) {
 
+    if (!clickedImage) {
+
+        transitionRunning =
+            false;
+
+        return;
+
+    }
+
+
     const startRect =
         clickedImage.getBoundingClientRect();
 
+
+    /*
+       Clone the protected background element
+       for the opening animation.
+    */
 
     const transitionImage =
         clickedImage.cloneNode(true);
@@ -448,6 +550,10 @@ function runZoomOutTransition(
     transitionImage.classList.add(
         "transition-artwork"
     );
+
+
+    transitionImage.style.position =
+        "fixed";
 
 
     transitionImage.style.top =
@@ -602,7 +708,9 @@ function changeSlide(
     newIndex
 ) {
 
-    if (transitionRunning) return;
+    if (transitionRunning) {
+        return;
+    }
 
 
     transitionRunning =
@@ -671,6 +779,7 @@ function nextSlide() {
 }
 
 
+
 function previousSlide() {
 
     const newIndex =
@@ -721,8 +830,9 @@ function closeGallery() {
             ".transition-artwork"
         )
         .forEach(
-            element =>
-                element.remove()
+            element => {
+                element.remove();
+            }
         );
 
 
@@ -750,8 +860,16 @@ document
             "click",
             () => {
 
+                /*
+                   The clicked artwork is now
+                   the protected SPAN rather
+                   than an IMG element.
+                */
+
                 const clickedImage =
-                    item.querySelector("img");
+                    item.querySelector(
+                        ".protected-collection-image"
+                    );
 
 
                 openGallery(
