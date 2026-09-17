@@ -2122,30 +2122,47 @@ body {
         transition: none !important;
         animation: none !important;
         
-        /* =========================================
+/* =========================================
    ARTWORK IMAGE PROTECTION
 ========================================= */
 
-/* Collection thumbnails + full artwork viewer */
+/*
+   Safari cannot directly interact with the
+   actual image element.
+
+   The parent button / gallery remains
+   interactive, so opening artwork and
+   navigating the gallery still works.
+*/
 
 .collection-item img,
-.lightbox-content img,
-.artwork-link img {
+.artwork-link img,
+.lightbox-content img {
 
-    /* Prevent iPhone/iPad long-press image menu */
-    -webkit-touch-callout: none;
+    pointer-events: none;
 
-    /* Prevent selecting/highlighting */
-    -webkit-user-select: none;
-    user-select: none;
+    -webkit-touch-callout: none !important;
 
-    /* Prevent dragging image on WebKit browsers */
-    -webkit-user-drag: none;
+    -webkit-user-select: none !important;
+    user-select: none !important;
 
-    /* Normal cursor instead of drag cursor */
-    cursor: default;
+    -webkit-user-drag: none !important;
+
+    -webkit-tap-highlight-color: transparent;
 }
 
-    }
 
+/*
+   Prevent long-press selection/callout
+   on the containers surrounding the images.
+*/
+
+.collection-item,
+.artwork-link,
+.lightbox-content {
+
+    -webkit-touch-callout: none !important;
+
+    -webkit-user-select: none !important;
+    user-select: none !important;
 }
