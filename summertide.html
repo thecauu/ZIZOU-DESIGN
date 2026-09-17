@@ -16,7 +16,7 @@
 
     <link
         rel="stylesheet"
-        href="style.css"
+        href="style.css?v=5"
     >
 
 </head>
@@ -92,12 +92,15 @@
                 class="collection-item"
                 type="button"
                 data-gallery="amber"
+                aria-label="Open Amber Breeze"
             >
 
-                <img
-                    src="images/amber breeze second page.jpg"
-                    alt="Amber Breeze"
-                >
+                <span
+                    class="protected-collection-image"
+                    data-image="images/amber breeze second page.jpg"
+                    role="img"
+                    aria-label="Amber Breeze"
+                ></span>
 
             </button>
 
@@ -126,12 +129,15 @@
                 class="collection-item"
                 type="button"
                 data-gallery="peridot"
+                aria-label="Open Peridot Afloat"
             >
 
-                <img
-                    src="images/peridot afloat second page.jpg"
-                    alt="Peridot Afloat"
-                >
+                <span
+                    class="protected-collection-image"
+                    data-image="images/peridot afloat second page.jpg"
+                    role="img"
+                    aria-label="Peridot Afloat"
+                ></span>
 
             </button>
 
@@ -160,12 +166,15 @@
                 class="collection-item"
                 type="button"
                 data-gallery="patina"
+                aria-label="Open Pátina del Mar"
             >
 
-                <img
-                    src="images/patina del mar second page.jpg"
-                    alt="Pátina del Mar"
-                >
+                <span
+                    class="protected-collection-image"
+                    data-image="images/patina del mar second page.jpg"
+                    role="img"
+                    aria-label="Pátina del Mar"
+                ></span>
 
             </button>
 
@@ -194,12 +203,15 @@
                 class="collection-item"
                 type="button"
                 data-gallery="sage"
+                aria-label="Open Sage Quietude"
             >
 
-                <img
-                    src="images/sage quietude second page.jpg"
-                    alt="Sage Quietude"
-                >
+                <span
+                    class="protected-collection-image"
+                    data-image="images/sage quietude second page.jpg"
+                    role="img"
+                    aria-label="Sage Quietude"
+                ></span>
 
             </button>
 
@@ -228,12 +240,15 @@
                 class="collection-item"
                 type="button"
                 data-gallery="eter"
+                aria-label="Open Éter do Luar"
             >
 
-                <img
-                    src="images/eter do luar second page.jpg"
-                    alt="Éter do Luar"
-                >
+                <span
+                    class="protected-collection-image"
+                    data-image="images/eter do luar second page.jpg"
+                    role="img"
+                    aria-label="Éter do Luar"
+                ></span>
 
             </button>
 
@@ -262,12 +277,15 @@
                 class="collection-item"
                 type="button"
                 data-gallery="oneiric"
+                aria-label="Open Oneiric Glow"
             >
 
-                <img
-                    src="images/oneiric glow second page.jpg"
-                    alt="Oneiric Glow"
-                >
+                <span
+                    class="protected-collection-image"
+                    data-image="images/oneiric glow second page.jpg"
+                    role="img"
+                    aria-label="Oneiric Glow"
+                ></span>
 
             </button>
 
@@ -315,8 +333,6 @@
 
 
 
-    <!-- BLACK IMAGE AREA -->
-
     <section class="artwork-viewer">
 
 
@@ -333,11 +349,19 @@
 
         <div class="lightbox-content">
 
-            <img
+            <!--
+                IMPORTANT:
+                This is deliberately a DIV rather than an IMG.
+                Safari therefore has no normal image element
+                to long-press and save.
+            -->
+
+            <div
                 id="lightboxImage"
-                src=""
-                alt=""
-            >
+                class="protected-lightbox-image"
+                role="img"
+                aria-label=""
+            ></div>
 
 
             <p
@@ -423,67 +447,32 @@
 
 
                 <div class="artwork-spec">
-
-                    <span>
-                        Artist
-                    </span>
-
-                    <span>
-                        Zizou
-                    </span>
-
+                    <span>Artist</span>
+                    <span>Zizou</span>
                 </div>
 
 
-
                 <div class="artwork-spec">
-
-                    <span>
-                        Year
-                    </span>
-
+                    <span>Year</span>
                     <span id="artworkYear"></span>
-
                 </div>
 
 
-
                 <div class="artwork-spec">
-
-                    <span>
-                        Medium
-                    </span>
-
-                    <span>
-                        Photography
-                    </span>
-
+                    <span>Medium</span>
+                    <span>Photography</span>
                 </div>
 
 
-
                 <div class="artwork-spec">
-
-                    <span>
-                        Collection
-                    </span>
-
-                    <span>
-                        Summertide
-                    </span>
-
+                    <span>Collection</span>
+                    <span>Summertide</span>
                 </div>
 
 
-
                 <div class="artwork-spec">
-
-                    <span>
-                        Work N°
-                    </span>
-
+                    <span>Work N°</span>
                     <span id="artworkNumber"></span>
-
                 </div>
 
 
@@ -514,50 +503,25 @@
             </button>
 
 
-
             <div class="accordion-content">
 
 
                 <div class="artwork-spec">
-
-                    <span>
-                        File Format
-                    </span>
-
-                    <span>
-                        PDF
-                    </span>
-
+                    <span>File Format</span>
+                    <span>PDF</span>
                 </div>
-
 
 
                 <div class="artwork-spec">
-
-                    <span>
-                        Aspect Ratio
-                    </span>
-
-                    <span>
-                        2:3
-                    </span>
-
+                    <span>Aspect Ratio</span>
+                    <span>2:3</span>
                 </div>
-
 
 
                 <div class="artwork-spec">
-
-                    <span>
-                        Delivery
-                    </span>
-
-                    <span>
-                        Digital Download
-                    </span>
-
+                    <span>Delivery</span>
+                    <span>Digital Download</span>
                 </div>
-
 
 
                 <p class="accordion-note">
@@ -593,7 +557,6 @@
                 </span>
 
             </button>
-
 
 
             <div class="accordion-content">
@@ -687,7 +650,7 @@
      JAVASCRIPT
 ========================== -->
 
-<script src="summertide.js?v=2"></script>
+<script src="summertide.js?v=6"></script>
 
 <script src="cart.js?v=4"></script>
 
