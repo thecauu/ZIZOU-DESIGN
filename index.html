@@ -1,172 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>ZIZOU DESIGN</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css?v=6"
+    >
+
 </head>
+
 
 <body>
 
 
-    <!-- =========================
-         SIDE MENU
-    ========================== -->
+<!-- =========================
+     SIDE MENU
+========================== -->
 
-    <aside class="side-menu" id="sideMenu">
-
-        <button
-            class="close-menu"
-            id="closeMenu"
-            type="button"
-            aria-label="Close menu"
-        >
-            ×
-        </button>
-
-
-        <nav class="menu-nav">
-
-            <a href="/">
-                Home
-            </a>
-
-
-            <!-- COLLECTIONS DROPDOWN -->
-
-            <div class="menu-dropdown">
-
-                <button
-                    class="dropdown-button"
-                    id="collectionsButton"
-                    type="button"
-                >
-                    Collections
-                    <span>⌄</span>
-                </button>
-
-
-                <div
-                    class="dropdown-content"
-                    id="collectionsMenu"
-                >
-
-                    <a href="summertide.html">
-                        Summertide Collection
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <a href="about.html">
-                About
-            </a>
-
-
-            <a href="#contact">
-                Contact
-            </a>
-
-        </nav>
-
-    </aside>
-
-
-
-    <!-- =========================
-         FULL SCREEN HERO
-    ========================== -->
-
-    <section class="hero" id="home">
-
-<video
-    class="hero-video"
-    autoplay
-    muted
-    loop
-    playsinline
-    preload="auto"
+<aside
+    class="side-menu"
+    id="sideMenu"
 >
-    <source src="videos/zizou home video.mp4" type="video/mp4">
-</video>
+
+    <button
+        class="close-menu"
+        id="closeMenu"
+        type="button"
+        aria-label="Close menu"
+    >
+        ×
+    </button>
 
 
-        <!-- Navigation -->
+    <nav class="menu-nav">
 
-        <header class="navbar">
-
-            <div class="nav-left">
-
-                <button
-                    class="icon-button menu-button"
-                    id="menuButton"
-                    type="button"
-                    aria-label="Open menu"
-                >
-                    ☰
-                </button>
-
-
-                <button
-                    class="icon-button search-button"
-                    id="searchButton"
-                    type="button"
-                    aria-label="Search"
-                >
-                    ⌕
-                </button>
-
-            </div>
-
-
-            <a href="#home" class="logo">
-                ZIZOU DESIGN
-            </a>
-
-
-            <div class="nav-right">
-
-<button
-    class="bag-button"
-    id="bagButton"
-    type="button"
-    aria-label="Shopping bag"
->
-    ♧
-    <span id="bagCount">0</span>
-</button>
-
-            </div>
-
-        </header>
-
-
-
-        <!-- Hero Collection Button -->
-
-        <a
-            href="#collection"
-            class="collection-button"
-        >
-            VIEW COLLECTION
+        <a href="/">
+            Home
         </a>
 
-    </section>
+
+        <div class="menu-dropdown">
+
+            <button
+                class="dropdown-button"
+                id="collectionsButton"
+                type="button"
+            >
+                Collections
+                <span>⌄</span>
+            </button>
+
+
+            <div
+                class="dropdown-content"
+                id="collectionsMenu"
+            >
+
+                <a href="summertide.html">
+                    Summertide Collection
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <a href="about.html">
+            About
+        </a>
+
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+    </nav>
+
+</aside>
+
+
+
+<!-- =========================
+     FULL SCREEN HERO
+========================== -->
+
+<section
+    class="hero"
+    id="home"
+>
+
+    <video
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+    >
+
+        <source
+            src="videos/zizou home video.mp4"
+            type="video/mp4"
+        >
+
+    </video>
+
+
+
+    <!-- NAVIGATION -->
+
+    <header class="navbar">
+
+
+        <div class="nav-left">
+
+            <button
+                class="icon-button menu-button"
+                id="menuButton"
+                type="button"
+                aria-label="Open menu"
+            >
+                ☰
+            </button>
+
+
+            <button
+                class="icon-button search-button"
+                id="searchButton"
+                type="button"
+                aria-label="Search"
+            >
+                ⌕
+            </button>
+
+        </div>
+
+
+
+        <a
+            href="#home"
+            class="logo"
+        >
+            ZIZOU DESIGN
+        </a>
+
+
+
+        <div class="nav-right">
+
+            <button
+                class="bag-button"
+                id="bagButton"
+                type="button"
+                aria-label="Shopping bag"
+            >
+                ♧
+
+                <span id="bagCount">
+                    0
+                </span>
+
+            </button>
+
+        </div>
+
+
+    </header>
+
+
+
+    <!-- HERO COLLECTION BUTTON -->
+
+    <a
+        href="#collection"
+        class="collection-button"
+    >
+        VIEW COLLECTION
+    </a>
+
+
+</section>
+
+
 
 <!-- =========================
      SHOPPING BAG
 ========================== -->
 
-<div class="shopping-bag" id="shoppingBag">
+<div
+    class="shopping-bag"
+    id="shoppingBag"
+>
 
     <div class="shopping-bag-header">
 
-        <h2>YOUR BAG</h2>
+        <h2>
+            YOUR BAG
+        </h2>
+
 
         <button
             id="closeBag"
@@ -178,7 +219,9 @@
 
     </div>
 
+
     <div id="bagItems"></div>
+
 
     <div
         class="bag-empty"
@@ -186,6 +229,7 @@
     >
         YOUR BAG IS EMPTY
     </div>
+
 
     <div
         class="bag-checkout-area"
@@ -205,82 +249,124 @@
 </div>
 
 
-    <!-- =========================
-         LATEST COLLECTION
-    ========================== -->
 
-    <main
-        class="collection"
-        id="collection"
-    >
+<!-- =========================
+     LATEST COLLECTION
+========================== -->
 
-        <p class="collection-brand">
-            LATEST COLLECTION
-        </p>
+<main
+    class="collection"
+    id="collection"
+>
 
-
-        <h1>
-            Summertide
-        </h1>
+    <p class="collection-brand">
+        LATEST COLLECTION
+    </p>
 
 
-
-<!-- FOUR CLEAN HOMEPAGE PREVIEWS -->
-
-<div class="collection-grid">
-
-    <div class="artwork-link">
-        <img
-            src="images/amber breeze home page.jpg"
-            alt="Amber Breeze"
-        >
-    </div>
-
-    <div class="artwork-link">
-        <img
-            src="images/peridot afloat home page.jpg"
-            alt="Peridot Afloat"
-        >
-    </div>
-
-    <div class="artwork-link">
-        <img
-            src="images/patina del mar home page.jpg"
-            alt="Pátina del Mar"
-        >
-    </div>
-
-    <div class="artwork-link">
-        <img
-            src="images/sage quietude home page.jpg"
-            alt="Sage Quietude"
-        >
-    </div>
-
-</div>
-
-
-<!-- VIEW FULL COLLECTION -->
-
-<div class="view-more">
-
-    <a href="summertide.html">
-        VIEW FULL COLLECTION
-    </a>
-
-</div>
-
-
-
-    </main>
+    <h1>
+        Summertide
+    </h1>
 
 
 
     <!-- =========================
-         JAVASCRIPT
+         FOUR HOMEPAGE PREVIEWS
     ========================== -->
 
-    <script src="script.js"></script>
+    <div class="collection-grid">
+
+
+        <!-- AMBER BREEZE -->
+
+        <div class="artwork-link">
+
+            <div
+                class="protected-home-image"
+                role="img"
+                aria-label="Amber Breeze"
+                style="
+                    background-image:
+                    url('images/amber breeze home page.jpg');
+                "
+            ></div>
+
+        </div>
+
+
+
+        <!-- PERIDOT AFLOAT -->
+
+        <div class="artwork-link">
+
+            <div
+                class="protected-home-image"
+                role="img"
+                aria-label="Peridot Afloat"
+                style="
+                    background-image:
+                    url('images/peridot afloat home page.jpg');
+                "
+            ></div>
+
+        </div>
+
+
+
+        <!-- PÁTINA DEL MAR -->
+
+        <div class="artwork-link">
+
+            <div
+                class="protected-home-image"
+                role="img"
+                aria-label="Pátina del Mar"
+                style="
+                    background-image:
+                    url('images/patina del mar home page.jpg');
+                "
+            ></div>
+
+        </div>
+
+
+
+        <!-- SAGE QUIETUDE -->
+
+        <div class="artwork-link">
+
+            <div
+                class="protected-home-image"
+                role="img"
+                aria-label="Sage Quietude"
+                style="
+                    background-image:
+                    url('images/sage quietude home page.jpg');
+                "
+            ></div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =========================
+         VIEW FULL COLLECTION
+    ========================== -->
+
+    <div class="view-more">
+
+        <a href="summertide.html">
+            VIEW FULL COLLECTION
+        </a>
+
+    </div>
+
+
+</main>
+
 
 
 <!-- =========================
@@ -289,23 +375,44 @@
 
 <footer class="site-footer">
 
-    <p>© ZIZOU DESIGN</p>
+    <p>
+        © ZIZOU DESIGN
+    </p>
+
 
     <div class="footer-links">
 
-        <a href="terms.html">Terms & Conditions</a>
+        <a href="terms.html">
+            Terms & Conditions
+        </a>
+
         <span>·</span>
 
-        <a href="privacy.html">Privacy Policy</a>
+
+        <a href="privacy.html">
+            Privacy Policy
+        </a>
+
         <span>·</span>
 
-        <a href="license.html">Digital License</a>
+
+        <a href="license.html">
+            Digital License
+        </a>
+
         <span>·</span>
 
-        <a href="refund.html">Refund Policy</a>
+
+        <a href="refund.html">
+            Refund Policy
+        </a>
+
         <span>·</span>
 
-        <a href="contact.html">Contact</a>
+
+        <a href="contact.html">
+            Contact
+        </a>
 
     </div>
 
@@ -313,37 +420,71 @@
 
 
 
+<!-- =========================
+     JAVASCRIPT
+========================== -->
+
+<script src="script.js?v=2"></script>
+
+<script src="cart.js?v=4"></script>
+
+<script
+    src="https://assets.lemonsqueezy.com/lemon.js"
+    defer
+></script>
+
 
 
 <!-- =========================
      LIVE CHAT
 ========================== -->
 
-
-
 <!--Start of Tawk.to Script-->
+
 <script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+
+var Tawk_API =
+    Tawk_API || {};
+
+var Tawk_LoadStart =
+    new Date();
+
 (function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/6a9f0a7ed0128c344982321b/1k1uk1vjc';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
+
+    var s1 =
+        document.createElement("script");
+
+    var s0 =
+        document.getElementsByTagName(
+            "script"
+        )[0];
+
+    s1.async =
+        true;
+
+    s1.src =
+        "https://embed.tawk.to/6a9f0a7ed0128c344982321b/1k1uk1vjc";
+
+    s1.charset =
+        "UTF-8";
+
+    s1.setAttribute(
+        "crossorigin",
+        "*"
+    );
+
+    s0.parentNode.insertBefore(
+        s1,
+        s0
+    );
+
 })();
+
 </script>
+
 <!--End of Tawk.to Script-->
 
 
-
-<!-- =========================
-     PRODUCTS
-========================== -->
-
-
-<script src="cart.js"></script>
-<script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
-
 </body>
+
 </html>
