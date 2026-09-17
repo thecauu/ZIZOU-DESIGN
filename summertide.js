@@ -1084,8 +1084,33 @@ function handleSwipe() {
 
 
 /* ==========================================
-   ARTWORK IMAGE PROTECTION
+   ARTWORK IMAGE PROTECTION — iOS SAFARI
 ========================================== */
+
+const protectedArtworkSelector =
+    ".collection-item, .lightbox-content";
+
+
+/* Block iPhone/iPad long-press image menu */
+
+document.addEventListener(
+    "touchstart",
+    function (event) {
+
+        if (
+            event.target.closest(
+                protectedArtworkSelector
+            )
+        ) {
+            event.preventDefault();
+        }
+
+    },
+    { passive: false }
+);
+
+
+/* Block Safari context menu */
 
 document.addEventListener(
     "contextmenu",
@@ -1093,7 +1118,7 @@ document.addEventListener(
 
         if (
             event.target.closest(
-                ".collection-item, .lightbox-content"
+                protectedArtworkSelector
             )
         ) {
             event.preventDefault();
@@ -1103,13 +1128,15 @@ document.addEventListener(
 );
 
 
+/* Block image dragging */
+
 document.addEventListener(
     "dragstart",
     function (event) {
 
         if (
             event.target.closest(
-                ".collection-item, .lightbox-content"
+                protectedArtworkSelector
             )
         ) {
             event.preventDefault();
