@@ -322,8 +322,8 @@ function updateSlide() {
         slide.alt;
 
 
-    lightboxCounter.textContent =
-        `${activeIndex + 1} / ${activeGallery.length}`;
+lightboxCounter.textContent =
+    `${activeIndex + 1}/${activeGallery.length}`;
 
 }
 
