@@ -14,7 +14,7 @@
 
     <link
         rel="stylesheet"
-        href="style.css?v=7"
+        href="style.css?v=8"
     >
 
 </head>
@@ -37,14 +37,12 @@
         ←
     </a>
 
-
     <a
         href="index.html"
         class="legal-logo"
     >
         ZIZOU DESIGN
     </a>
-
 
     <div class="legal-nav-space"></div>
 
@@ -58,6 +56,7 @@
 
 <main class="contact-page">
 
+
     <div class="contact-heading">
 
         <p class="legal-label">
@@ -68,19 +67,31 @@
             Contact
         </h1>
 
-        <p class="contact-intro">
-            CUSTOMER SUPPORT · LICENSING ·
-            COLLABORATIONS · GENERAL INQUIRIES
-        </p>
-
     </div>
+
 
 
     <!-- =========================
          LIVE SUPPORT
     ========================== -->
 
-    <section class="live-support">
+    <section
+        class="live-support"
+        id="liveSupportSection"
+    >
+
+        <p class="live-support-label">
+            CUSTOMER SUPPORT
+        </p>
+
+        <h2>
+            Speak with ZIZOU DESIGN
+        </h2>
+
+        <p class="live-support-description">
+            For artwork, orders, licensing,
+            collaborations, and general inquiries.
+        </p>
 
         <button
             type="button"
@@ -98,7 +109,9 @@
 
     </section>
 
+
 </main>
+
 
 
 <!-- =========================
@@ -109,71 +122,22 @@
     type="button"
     class="support-dock"
     id="supportDock"
-    aria-label="Open customer support"
+    aria-label="Return to customer support"
 >
-    <span>
+
+    <span class="support-dock-text">
         CUSTOMER SUPPORT
+    </span>
+
+    <span class="support-dock-status">
+        ACTIVE
     </span>
 
     <span class="support-dock-icon">
         ↑
     </span>
+
 </button>
-
-
-
-    <!-- =========================
-         LIVE SUPPORT
-    ========================== -->
-
-    <section class="live-support">
-
-
-        <p class="live-support-label">
-            CUSTOMER SUPPORT
-        </p>
-
-
-        <h2>
-            Speak with ZIZOU DESIGN
-        </h2>
-
-
-        <p class="live-support-description">
-            Start a live conversation for questions
-            concerning artwork, purchases, licensing,
-            collaborations, technical issues, or
-            general support.
-        </p>
-
-
-        <p class="live-support-note">
-            If live support is unavailable, you may
-            leave a message through the chat and
-            receive a response when support returns.
-        </p>
-
-
-        <button
-            type="button"
-            class="live-chat-button"
-            id="startLiveChat"
-        >
-            START LIVE CHAT
-        </button>
-
-
-        <p
-            class="live-chat-status"
-            id="liveChatStatus"
-            aria-live="polite"
-        ></p>
-
-
-    </section>
-
-
-</main>
 
 
 
@@ -187,7 +151,6 @@
         © ZIZOU DESIGN
     </p>
 
-
     <div class="footer-links">
 
         <a href="terms.html">
@@ -196,13 +159,11 @@
 
         <span>·</span>
 
-
         <a href="privacy.html">
             Privacy Policy
         </a>
 
         <span>·</span>
-
 
         <a href="license.html">
             Digital License
@@ -210,13 +171,11 @@
 
         <span>·</span>
 
-
         <a href="refund.html">
             Refund Policy
         </a>
 
         <span>·</span>
-
 
         <a href="contact.html">
             Contact
@@ -247,36 +206,72 @@
 
 <script>
 
+const liveSupportSection =
+    document.getElementById(
+        "liveSupportSection"
+    );
+
 const startLiveChat =
-    document.getElementById("startLiveChat");
+    document.getElementById(
+        "startLiveChat"
+    );
 
 const liveChatStatus =
-    document.getElementById("liveChatStatus");
+    document.getElementById(
+        "liveChatStatus"
+    );
 
 const supportDock =
-    document.getElementById("supportDock");
+    document.getElementById(
+        "supportDock"
+    );
+
 
 let tawkLoading = false;
 
 
 /* =========================
-   SUPPORT DOCK
+   PAGE STATES
 ========================== */
+
+function showStartSection() {
+
+    liveSupportSection
+        .classList
+        .remove("hidden");
+
+    supportDock
+        .classList
+        .remove("show");
+
+}
+
+
+function hideStartSection() {
+
+    liveSupportSection
+        .classList
+        .add("hidden");
+
+}
+
 
 function showSupportDock() {
 
-    if (supportDock) {
-        supportDock.classList.add("show");
-    }
+    hideStartSection();
+
+    supportDock
+        .classList
+        .add("show");
 
 }
 
 
 function hideSupportDock() {
 
-    if (supportDock) {
-        supportDock.classList.remove("show");
-    }
+    supportDock
+        .classList
+        .remove("show");
 
 }
 
@@ -287,16 +282,32 @@ function hideSupportDock() {
 
 function openTawkChat() {
 
+    /*
+       The customer has chosen to enter
+       customer support, so remove the
+       START LIVE CHAT section immediately.
+    */
+
+    hideStartSection();
+
     hideSupportDock();
 
 
+    /*
+       If tawk.to is already loaded,
+       simply reopen the conversation.
+    */
+
     if (
         window.Tawk_API &&
-        typeof window.Tawk_API.showWidget === "function" &&
-        typeof window.Tawk_API.maximize === "function"
+        typeof window.Tawk_API.showWidget ===
+            "function" &&
+        typeof window.Tawk_API.maximize ===
+            "function"
     ) {
 
         window.Tawk_API.showWidget();
+
         window.Tawk_API.maximize();
 
         return;
@@ -328,50 +339,138 @@ function openTawkChat() {
         new Date();
 
 
-    /* WHEN CHAT LOADS */
+
+    /* =========================
+       WIDGET LOADED
+    ========================== */
 
     window.Tawk_API.onLoad =
         function () {
 
             tawkLoading = false;
 
+
             if (liveChatStatus) {
-                liveChatStatus.textContent = "";
+
+                liveChatStatus.textContent =
+                    "";
+
             }
 
+
             window.Tawk_API.showWidget();
+
             window.Tawk_API.maximize();
 
         };
 
 
-    /* WHEN CHAT OPENS */
 
-    window.Tawk_API.onChatMaximized =
+    /* =========================
+       CHAT STARTED
+    ========================== */
+
+    window.Tawk_API.onChatStarted =
         function () {
+
+            hideStartSection();
 
             hideSupportDock();
 
         };
 
 
-    /* WHEN CHAT IS MINIMIZED */
+
+    /* =========================
+       CHAT MAXIMIZED
+    ========================== */
+
+    window.Tawk_API.onChatMaximized =
+        function () {
+
+            hideStartSection();
+
+            hideSupportDock();
+
+        };
+
+
+
+    /* =========================
+       CHAT MINIMIZED
+    ========================== */
 
     window.Tawk_API.onChatMinimized =
         function () {
 
+            /*
+               Remove the normal green
+               tawk.to bubble.
+            */
+
             window.Tawk_API.hideWidget();
+
+
+            /*
+               Replace it with our own
+               ZIZOU DESIGN support bar.
+            */
 
             showSupportDock();
 
         };
 
 
+
+    /* =========================
+       CHAT ENDED
+    ========================== */
+
+    window.Tawk_API.onChatEnded =
+        function () {
+
+            /*
+               The conversation is finished,
+               so completely remove the
+               active-chat controls.
+            */
+
+            hideSupportDock();
+
+
+            if (
+                typeof window.Tawk_API.hideWidget ===
+                    "function"
+            ) {
+
+                window.Tawk_API.hideWidget();
+
+            }
+
+
+            /*
+               Bring back the original
+               START LIVE CHAT option.
+            */
+
+            showStartSection();
+
+        };
+
+
+
+    /* =========================
+       LOAD TAWK
+    ========================== */
+
     const tawkScript =
-        document.createElement("script");
+        document.createElement(
+            "script"
+        );
 
 
-    tawkScript.async = true;
+    tawkScript.async =
+        true;
 
 
     tawkScript.src =
@@ -393,6 +492,10 @@ function openTawkChat() {
 
             tawkLoading = false;
 
+
+            showStartSection();
+
+
             if (liveChatStatus) {
 
                 liveChatStatus.textContent =
@@ -410,28 +513,52 @@ function openTawkChat() {
 }
 
 
+
 /* =========================
-   BUTTONS
+   START BUTTON
 ========================== */
 
-if (startLiveChat) {
-
-    startLiveChat.addEventListener(
-        "click",
-        openTawkChat
-    );
-
-}
+startLiveChat.addEventListener(
+    "click",
+    openTawkChat
+);
 
 
-if (supportDock) {
 
-    supportDock.addEventListener(
-        "click",
-        openTawkChat
-    );
+/* =========================
+   MINIMIZED BAR
+========================== */
 
-}
+supportDock.addEventListener(
+    "click",
+    function () {
+
+        hideSupportDock();
+
+
+        if (
+            window.Tawk_API &&
+            typeof window.Tawk_API.showWidget ===
+                "function"
+        ) {
+
+            window.Tawk_API.showWidget();
+
+        }
+
+
+        if (
+            window.Tawk_API &&
+            typeof window.Tawk_API.maximize ===
+                "function"
+        ) {
+
+            window.Tawk_API.maximize();
+
+        }
+
+    }
+);
 
 </script>
 
