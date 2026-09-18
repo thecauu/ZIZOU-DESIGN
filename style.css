@@ -1466,12 +1466,13 @@ body {
 
 
 /* =========================================================
-   CONTACT
+   CONTACT — LIVE SUPPORT
 ========================================================= */
 
 .contact-heading {
     margin-bottom: 55px;
 }
+
 
 .contact-intro {
     max-width: 620px;
@@ -1485,74 +1486,101 @@ body {
     letter-spacing: 1.5px;
 }
 
-.contact-form {
-    display: flex;
 
-    flex-direction: column;
-
-    gap: 32px;
-}
-
-.contact-field {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 10px;
-}
-
-.contact-field label {
-    font-size: 11px;
-
-    letter-spacing: 2px;
-}
-
-.contact-field input,
-.contact-field select,
-.contact-field textarea {
+.live-support {
     width: 100%;
 
-    border: none;
+    padding:
+        45px
+        0;
+
+    border-top:
+        1px solid
+        rgba(0, 0, 0, 0.35);
 
     border-bottom:
         1px solid
-        #111111;
+        rgba(0, 0, 0, 0.35);
+}
 
-    border-radius: 0;
 
-    background: transparent;
+.live-support-label {
+    margin-bottom: 18px;
 
-    padding:
-        10px
-        0;
+    font-size: 10px;
 
-    color: #111111;
+    letter-spacing: 2.5px;
+}
 
-    font: inherit;
+
+.live-support h2 {
+    margin: 0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            28px,
+            5vw,
+            42px
+        );
+
+    font-weight: 400;
+
+    line-height: 1.15;
+}
+
+
+.live-support-description {
+    max-width: 620px;
+
+    margin-top: 22px;
 
     font-size: 14px;
 
-    outline: none;
+    line-height: 1.7;
 }
 
-.contact-field textarea {
-    resize: vertical;
+
+.live-support-note {
+    max-width: 620px;
+
+    margin-top: 16px;
+
+    font-size: 12px;
+
+    line-height: 1.65;
+
+    opacity: 0.68;
 }
 
-.contact-submit {
-    margin-top: 10px;
 
+.live-chat-button {
     width: 100%;
 
-    padding: 17px;
+    margin-top: 38px;
+
+    padding:
+        18px
+        20px;
 
     border:
         1px solid
         #111111;
 
-    background: transparent;
+    background:
+        #111111;
 
-    color: #111111;
+    color:
+        #ffffff;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
     font-size: 11px;
 
@@ -1565,32 +1593,28 @@ body {
         color 0.25s ease;
 }
 
-.contact-submit:hover {
-    background: #111111;
 
-    color: #ffffff;
+.live-chat-button:hover {
+    background:
+        transparent;
+
+    color:
+        #111111;
 }
 
-.contact-direct {
-    margin-top: 65px;
 
-    padding-top: 28px;
+.live-chat-status {
+    min-height: 18px;
 
-    border-top:
-        1px solid
-        rgba(0, 0, 0, 0.3);
-}
-
-.contact-direct > p:first-child {
-    margin-bottom: 10px;
+    margin-top: 16px;
 
     font-size: 10px;
 
-    letter-spacing: 2px;
-}
+    letter-spacing: 1.5px;
 
-.contact-email {
-    font-size: 13px;
+    line-height: 1.5;
+
+    opacity: 0.65;
 }
 
 
