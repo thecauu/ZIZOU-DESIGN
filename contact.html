@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -11,239 +12,338 @@
 
     <title>Contact | ZIZOU DESIGN</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css?v=7"
+    >
+
 </head>
+
 
 <body class="legal-body">
 
-    <!-- =========================
-         NAVIGATION
-    ========================== -->
 
-    <header class="legal-nav">
+<!-- =========================
+     NAVIGATION
+========================== -->
 
-        <a
-            href="index.html"
-            class="legal-back"
-            aria-label="Back to homepage"
-        >
-            ←
-        </a>
+<header class="legal-nav">
 
-        <a
-            href="index.html"
-            class="legal-logo"
-        >
+    <a
+        href="index.html"
+        class="legal-back"
+        aria-label="Back to homepage"
+    >
+        ←
+    </a>
+
+
+    <a
+        href="index.html"
+        class="legal-logo"
+    >
+        ZIZOU DESIGN
+    </a>
+
+
+    <div class="legal-nav-space"></div>
+
+</header>
+
+
+
+<!-- =========================
+     CONTACT
+========================== -->
+
+<main class="contact-page">
+
+
+    <div class="contact-heading">
+
+        <p class="legal-label">
             ZIZOU DESIGN
+        </p>
+
+
+        <h1>
+            Contact
+        </h1>
+
+
+        <p class="contact-intro">
+            LIVE SUPPORT FOR GENERAL INQUIRIES,
+            ARTWORK, ORDERS, LICENSING,
+            COMMISSIONS, PRESS, AND
+            COLLABORATIONS.
+        </p>
+
+    </div>
+
+
+
+    <!-- =========================
+         LIVE SUPPORT
+    ========================== -->
+
+    <section class="live-support">
+
+
+        <p class="live-support-label">
+            CUSTOMER SUPPORT
+        </p>
+
+
+        <h2>
+            Speak with ZIZOU DESIGN
+        </h2>
+
+
+        <p class="live-support-description">
+            Start a live conversation for questions
+            concerning artwork, purchases, licensing,
+            collaborations, technical issues, or
+            general support.
+        </p>
+
+
+        <p class="live-support-note">
+            If live support is unavailable, you may
+            leave a message through the chat and
+            receive a response when support returns.
+        </p>
+
+
+        <button
+            type="button"
+            class="live-chat-button"
+            id="startLiveChat"
+        >
+            START LIVE CHAT
+        </button>
+
+
+        <p
+            class="live-chat-status"
+            id="liveChatStatus"
+            aria-live="polite"
+        ></p>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================== -->
+
+<footer class="site-footer">
+
+    <p>
+        © ZIZOU DESIGN
+    </p>
+
+
+    <div class="footer-links">
+
+        <a href="terms.html">
+            Terms & Conditions
         </a>
 
-        <div class="legal-nav-space"></div>
-
-    </header>
+        <span>·</span>
 
 
-    <!-- =========================
-         CONTACT
-    ========================== -->
+        <a href="privacy.html">
+            Privacy Policy
+        </a>
 
-    <main class="contact-page">
-
-        <div class="contact-heading">
-
-            <p class="legal-label">
-                ZIZOU DESIGN
-            </p>
-
-            <h1>
-                Contact
-            </h1>
-
-            <p class="contact-intro">
-                FOR GENERAL INQUIRIES, ARTWORK,
-                COMMISSIONS, LICENSING, PRESS,
-                AND COLLABORATIONS.
-            </p>
-
-        </div>
+        <span>·</span>
 
 
-        <!-- =========================
-             CONTACT FORM
-        ========================== -->
+        <a href="license.html">
+            Digital License
+        </a>
 
-        <form
-            class="contact-form"
-            id="contactForm"
-        >
-
-            <div class="contact-field">
-
-                <label for="name">
-                    NAME
-                </label>
-
-                <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    autocomplete="name"
-                    required
-                >
-
-            </div>
+        <span>·</span>
 
 
-            <div class="contact-field">
+        <a href="refund.html">
+            Refund Policy
+        </a>
 
-                <label for="email">
-                    EMAIL
-                </label>
-
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    autocomplete="email"
-                    required
-                >
-
-            </div>
+        <span>·</span>
 
 
-            <div class="contact-field">
+        <a href="contact.html">
+            Contact
+        </a>
 
-                <label for="inquiry">
-                    INQUIRY
-                </label>
+    </div>
 
-                <select
-                    id="inquiry"
-                    name="inquiry"
-                    required
-                >
+</footer>
 
-                    <option value="" disabled selected>
-                        SELECT
-                    </option>
-
-                    <option value="general">
-                        General Inquiry
-                    </option>
-
-                    <option value="artwork">
-                        Artwork
-                    </option>
-
-                    <option value="commission">
-                        Commission
-                    </option>
-
-                    <option value="licensing">
-                        Licensing
-                    </option>
-
-                    <option value="collaboration">
-                        Collaboration
-                    </option>
-
-                    <option value="press">
-                        Press
-                    </option>
-
-                    <option value="order">
-                        Order Support
-                    </option>
-
-                    <option value="other">
-                        Other
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <div class="contact-field">
-
-                <label for="message">
-                    MESSAGE
-                </label>
-
-                <textarea
-                    id="message"
-                    name="message"
-                    rows="7"
-                    required
-                ></textarea>
-
-            </div>
-
-
-            <button
-                type="submit"
-                class="contact-submit"
-            >
-                SEND INQUIRY
-            </button>
-
-        </form>
-
-
-        <!-- =========================
-             DIRECT CONTACT
-        ========================== -->
-
-        <div class="contact-direct">
-
-            <p>
-                DIRECT CONTACT
-            </p>
-
-            <p class="contact-email">
-                CONTACT EMAIL COMING SOON
-            </p>
-
-        </div>
-
-    </main>
-
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer class="site-footer">
-
-        <p>© ZIZOU DESIGN</p>
-
-        <div class="footer-links">
-
-            <a href="terms.html">Terms & Conditions</a>
-            <span>·</span>
-
-            <a href="privacy.html">Privacy Policy</a>
-            <span>·</span>
-
-            <a href="license.html">Digital License</a>
-            <span>·</span>
-
-            <a href="refund.html">Refund Policy</a>
-            <span>·</span>
-
-            <a href="contact.html">Contact</a>
-
-        </div>
-
-    </footer>
 
 
 <!-- =========================
      PRODUCTS
 ========================== -->
 
+<script src="cart.js?v=4"></script>
 
-<script src="cart.js"></script>
-<script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+<script
+    src="https://assets.lemonsqueezy.com/lemon.js"
+    defer
+></script>
+
+
+
+<!-- =========================
+     LIVE CHAT
+========================== -->
+
+<script>
+
+const startLiveChat =
+    document.getElementById("startLiveChat");
+
+const liveChatStatus =
+    document.getElementById("liveChatStatus");
+
+
+let tawkLoading =
+    false;
+
+
+function openTawkChat() {
+
+    if (
+        window.Tawk_API &&
+        typeof window.Tawk_API.maximize === "function"
+    ) {
+
+        window.Tawk_API.maximize();
+
+        return;
+
+    }
+
+
+    if (tawkLoading) {
+
+        return;
+
+    }
+
+
+    tawkLoading =
+        true;
+
+
+    if (liveChatStatus) {
+
+        liveChatStatus.textContent =
+            "OPENING LIVE SUPPORT...";
+
+    }
+
+
+    window.Tawk_API =
+        window.Tawk_API || {};
+
+
+    window.Tawk_LoadStart =
+        new Date();
+
+
+    window.Tawk_API.onLoad =
+        function () {
+
+            tawkLoading =
+                false;
+
+
+            if (liveChatStatus) {
+
+                liveChatStatus.textContent =
+                    "";
+
+            }
+
+
+            if (
+                typeof window.Tawk_API.maximize ===
+                "function"
+            ) {
+
+                window.Tawk_API.maximize();
+
+            }
+
+        };
+
+
+    const tawkScript =
+        document.createElement("script");
+
+
+    tawkScript.async =
+        true;
+
+
+    tawkScript.src =
+        "https://embed.tawk.to/6a9f0a7ed0128c344982321b/1k1uk1vjc";
+
+
+    tawkScript.charset =
+        "UTF-8";
+
+
+    tawkScript.setAttribute(
+        "crossorigin",
+        "*"
+    );
+
+
+    tawkScript.onerror =
+        function () {
+
+            tawkLoading =
+                false;
+
+
+            if (liveChatStatus) {
+
+                liveChatStatus.textContent =
+                    "LIVE SUPPORT COULD NOT BE LOADED. PLEASE TRY AGAIN.";
+
+            }
+
+        };
+
+
+    document.body.appendChild(
+        tawkScript
+    );
+
+}
+
+
+if (startLiveChat) {
+
+    startLiveChat.addEventListener(
+        "click",
+        openTawkChat
+    );
+
+}
+
+</script>
+
 
 </body>
+
 </html>
