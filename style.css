@@ -1466,24 +1466,24 @@ body {
 
 
 /* =========================================================
-   CONTACT — LIVE SUPPORT
+   CONTACT
 ========================================================= */
 
 .contact-heading {
-    margin-bottom: 55px;
+    margin-bottom: 52px;
 }
 
 
 .contact-intro {
-    max-width: 620px;
+    max-width: 650px;
 
-    margin-top: 20px;
+    margin-top: 18px;
 
-    font-size: 12px;
+    font-size: 11px;
 
-    line-height: 1.6;
+    line-height: 1.7;
 
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
 }
 
 
@@ -1491,80 +1491,24 @@ body {
     width: 100%;
 
     padding:
-        45px
+        42px
         0;
 
     border-top:
         1px solid
-        rgba(0, 0, 0, 0.35);
+        rgba(0, 0, 0, 0.32);
 
     border-bottom:
         1px solid
-        rgba(0, 0, 0, 0.35);
-}
-
-
-.live-support-label {
-    margin-bottom: 18px;
-
-    font-size: 10px;
-
-    letter-spacing: 2.5px;
-}
-
-
-.live-support h2 {
-    margin: 0;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size:
-        clamp(
-            28px,
-            5vw,
-            42px
-        );
-
-    font-weight: 400;
-
-    line-height: 1.15;
-}
-
-
-.live-support-description {
-    max-width: 620px;
-
-    margin-top: 22px;
-
-    font-size: 14px;
-
-    line-height: 1.7;
-}
-
-
-.live-support-note {
-    max-width: 620px;
-
-    margin-top: 16px;
-
-    font-size: 12px;
-
-    line-height: 1.65;
-
-    opacity: 0.68;
+        rgba(0, 0, 0, 0.32);
 }
 
 
 .live-chat-button {
     width: 100%;
 
-    margin-top: 38px;
-
     padding:
-        18px
+        19px
         20px;
 
     border:
@@ -1587,34 +1531,130 @@ body {
     letter-spacing: 3px;
 
     cursor: pointer;
-
-    transition:
-        background 0.25s ease,
-        color 0.25s ease;
-}
-
-
-.live-chat-button:hover {
-    background:
-        transparent;
-
-    color:
-        #111111;
 }
 
 
 .live-chat-status {
-    min-height: 18px;
+    min-height: 16px;
 
-    margin-top: 16px;
+    margin-top: 14px;
 
-    font-size: 10px;
+    text-align: center;
+
+    font-size: 9px;
 
     letter-spacing: 1.5px;
 
-    line-height: 1.5;
+    opacity: 0.6;
+}
 
-    opacity: 0.65;
+
+/* =========================================================
+   MINIMIZED CUSTOMER SUPPORT
+========================================================= */
+
+.support-dock {
+    position: fixed;
+
+    left: 50%;
+
+    bottom:
+        max(
+            18px,
+            calc(
+                env(safe-area-inset-bottom)
+                + 12px
+            )
+        );
+
+    transform:
+        translate(-50%, 140%);
+
+    width:
+        min(
+            calc(100% - 32px),
+            430px
+        );
+
+    min-height: 58px;
+
+    padding:
+        0
+        20px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.16);
+
+    border-radius: 30px;
+
+    background:
+        rgba(17, 17, 17, 0.96);
+
+    color:
+        #ffffff;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 2.4px;
+
+    box-shadow:
+        0
+        8px
+        28px
+        rgba(0, 0, 0, 0.20);
+
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    z-index: 9000;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.35s ease,
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+
+.support-dock.show {
+    transform:
+        translate(-50%, 0);
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+
+.support-dock-icon {
+    font-size: 18px;
+
+    line-height: 1;
+
+    letter-spacing: 0;
 }
 
 
