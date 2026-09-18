@@ -1646,6 +1646,22 @@ body {
 }
 
 
+/* =========================
+   LEGAL PAGE LINKS
+========================== */
+
+.legal-page a,
+.legal-page a:visited {
+    color: #111;
+    text-decoration-color: #111;
+}
+
+.legal-page a:hover,
+.legal-page a:active {
+    color: #111;
+    opacity: 0.7;
+}
+
 /* =========================================================
    SHOPPING BAG
 ========================================================= */
