@@ -547,9 +547,6 @@ body {
     cursor: pointer;
 }
 
-
-/* Protected Summertide collection artwork */
-
 .protected-collection-image {
     display: block;
 
@@ -1380,8 +1377,7 @@ body {
     justify-self: end;
 }
 
-.legal-page,
-.contact-page {
+.legal-page {
     width: min(92%, 900px);
 
     margin: 0 auto;
@@ -1400,8 +1396,7 @@ body {
     letter-spacing: 4px;
 }
 
-.legal-page h1,
-.contact-page h1 {
+.legal-page h1 {
     margin-bottom: 18px;
 
     font-family:
@@ -1455,11 +1450,25 @@ body {
 
 
 /* =========================================================
-   CONTACT
+   CONTACT — SUPPORT ONLY PAGE
 ========================================================= */
 
-.contact-heading {
-    margin-bottom: 52px;
+.contact-page-support-only {
+    width: min(92%, 900px);
+
+    margin: 0 auto;
+
+    min-height:
+        calc(100svh - 260px);
+
+    padding:
+        48px
+        0
+        72px;
+
+    display: flex;
+
+    align-items: flex-start;
 }
 
 
@@ -1467,20 +1476,12 @@ body {
    CONTACT — LIVE SUPPORT
 ========================================================= */
 
-.live-support {
+.contact-page-support-only .live-support {
     width: 100%;
 
-    padding:
-        48px
-        0;
+    padding: 0;
 
-    border-top:
-        1px solid
-        rgba(0, 0, 0, 0.32);
-
-    border-bottom:
-        1px solid
-        rgba(0, 0, 0, 0.32);
+    border: none;
 
     opacity: 1;
 
@@ -1493,7 +1494,7 @@ body {
 }
 
 .live-support-label {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 
     font-size: 10px;
 
@@ -1503,6 +1504,8 @@ body {
 .live-support h2 {
     margin: 0;
 
+    max-width: 760px;
+
     font-family:
         Georgia,
         "Times New Roman",
@@ -1510,35 +1513,35 @@ body {
 
     font-size:
         clamp(
-            32px,
-            6vw,
-            48px
+            44px,
+            7vw,
+            68px
         );
 
     font-weight: 400;
 
-    line-height: 1.12;
+    line-height: 0.98;
 }
 
 .live-support-description {
     max-width: 620px;
 
-    margin-top: 22px;
+    margin-top: 28px;
 
-    font-size: 13px;
+    font-size: 14px;
 
-    line-height: 1.7;
+    line-height: 1.65;
 
-    letter-spacing: 0.3px;
+    letter-spacing: 0.2px;
 }
 
 .live-chat-button {
     width: 100%;
 
-    margin-top: 38px;
+    margin-top: 36px;
 
     padding:
-        19px
+        20px
         20px;
 
     border:
@@ -2225,10 +2228,9 @@ body {
     }
 
 
-    /* LEGAL & CONTACT */
+    /* LEGAL */
 
-    .legal-page,
-    .contact-page {
+    .legal-page {
         width: 90%;
 
         padding:
@@ -2237,8 +2239,7 @@ body {
             80px;
     }
 
-    .legal-page h1,
-    .contact-page h1 {
+    .legal-page h1 {
         font-size: 44px;
     }
 
@@ -2255,29 +2256,45 @@ body {
 
     /* CONTACT */
 
-    .contact-heading {
-        margin-bottom: 42px;
+    .contact-page-support-only {
+        width: 90%;
+
+        min-height:
+            calc(100svh - 235px);
+
+        padding:
+            38px
+            0
+            62px;
     }
 
-    .live-support {
-        padding:
-            40px
-            0;
+    .live-support-label {
+        margin-bottom: 16px;
+
+        font-size: 10px;
+
+        letter-spacing: 3px;
     }
 
     .live-support h2 {
-        font-size: 36px;
+        font-size: 50px;
+
+        line-height: 0.98;
     }
 
     .live-support-description {
+        margin-top: 24px;
+
         font-size: 13px;
+
+        line-height: 1.6;
     }
 
     .live-chat-button {
-        margin-top: 32px;
+        margin-top: 30px;
 
         padding:
-            18px
+            19px
             14px;
     }
 
