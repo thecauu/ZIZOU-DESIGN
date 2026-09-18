@@ -58,27 +58,67 @@
 
 <main class="contact-page">
 
-
     <div class="contact-heading">
 
         <p class="legal-label">
             ZIZOU DESIGN
         </p>
 
-
         <h1>
             Contact
         </h1>
 
-
         <p class="contact-intro">
-            LIVE SUPPORT FOR GENERAL INQUIRIES,
-            ARTWORK, ORDERS, LICENSING,
-            COMMISSIONS, PRESS, AND
-            COLLABORATIONS.
+            CUSTOMER SUPPORT · LICENSING ·
+            COLLABORATIONS · GENERAL INQUIRIES
         </p>
 
     </div>
+
+
+    <!-- =========================
+         LIVE SUPPORT
+    ========================== -->
+
+    <section class="live-support">
+
+        <button
+            type="button"
+            class="live-chat-button"
+            id="startLiveChat"
+        >
+            START LIVE CHAT
+        </button>
+
+        <p
+            class="live-chat-status"
+            id="liveChatStatus"
+            aria-live="polite"
+        ></p>
+
+    </section>
+
+</main>
+
+
+<!-- =========================
+     MINIMIZED SUPPORT BAR
+========================== -->
+
+<button
+    type="button"
+    class="support-dock"
+    id="supportDock"
+    aria-label="Open customer support"
+>
+    <span>
+        CUSTOMER SUPPORT
+    </span>
+
+    <span class="support-dock-icon">
+        ↑
+    </span>
+</button>
 
 
 
@@ -213,18 +253,50 @@ const startLiveChat =
 const liveChatStatus =
     document.getElementById("liveChatStatus");
 
+const supportDock =
+    document.getElementById("supportDock");
 
-let tawkLoading =
-    false;
+let tawkLoading = false;
 
+
+/* =========================
+   SUPPORT DOCK
+========================== */
+
+function showSupportDock() {
+
+    if (supportDock) {
+        supportDock.classList.add("show");
+    }
+
+}
+
+
+function hideSupportDock() {
+
+    if (supportDock) {
+        supportDock.classList.remove("show");
+    }
+
+}
+
+
+/* =========================
+   OPEN CHAT
+========================== */
 
 function openTawkChat() {
 
+    hideSupportDock();
+
+
     if (
         window.Tawk_API &&
+        typeof window.Tawk_API.showWidget === "function" &&
         typeof window.Tawk_API.maximize === "function"
     ) {
 
+        window.Tawk_API.showWidget();
         window.Tawk_API.maximize();
 
         return;
@@ -233,14 +305,11 @@ function openTawkChat() {
 
 
     if (tawkLoading) {
-
         return;
-
     }
 
 
-    tawkLoading =
-        true;
+    tawkLoading = true;
 
 
     if (liveChatStatus) {
@@ -259,29 +328,41 @@ function openTawkChat() {
         new Date();
 
 
+    /* WHEN CHAT LOADS */
+
     window.Tawk_API.onLoad =
         function () {
 
-            tawkLoading =
-                false;
-
+            tawkLoading = false;
 
             if (liveChatStatus) {
-
-                liveChatStatus.textContent =
-                    "";
-
+                liveChatStatus.textContent = "";
             }
 
+            window.Tawk_API.showWidget();
+            window.Tawk_API.maximize();
 
-            if (
-                typeof window.Tawk_API.maximize ===
-                "function"
-            ) {
+        };
 
-                window.Tawk_API.maximize();
 
-            }
+    /* WHEN CHAT OPENS */
+
+    window.Tawk_API.onChatMaximized =
+        function () {
+
+            hideSupportDock();
+
+        };
+
+
+    /* WHEN CHAT IS MINIMIZED */
+
+    window.Tawk_API.onChatMinimized =
+        function () {
+
+            window.Tawk_API.hideWidget();
+
+            showSupportDock();
 
         };
 
@@ -290,8 +371,7 @@ function openTawkChat() {
         document.createElement("script");
 
 
-    tawkScript.async =
-        true;
+    tawkScript.async = true;
 
 
     tawkScript.src =
@@ -311,9 +391,7 @@ function openTawkChat() {
     tawkScript.onerror =
         function () {
 
-            tawkLoading =
-                false;
-
+            tawkLoading = false;
 
             if (liveChatStatus) {
 
@@ -332,9 +410,23 @@ function openTawkChat() {
 }
 
 
+/* =========================
+   BUTTONS
+========================== */
+
 if (startLiveChat) {
 
     startLiveChat.addEventListener(
+        "click",
+        openTawkChat
+    );
+
+}
+
+
+if (supportDock) {
+
+    supportDock.addEventListener(
         "click",
         openTawkChat
     );
