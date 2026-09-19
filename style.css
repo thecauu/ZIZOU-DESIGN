@@ -394,14 +394,20 @@ body {
 }
 
 
-/* =========================================================
-   SUMMERTIDE — INTRO COVER
+/* /* =========================================================
+   SUMMERTIDE — CINEMATIC INTRO COVER
 ========================================================= */
 
 body.summertide-intro-active {
     overflow: hidden;
 }
 
+
+/*
+   The dark layer exists immediately so
+   the collection does not flash on screen
+   before the cover begins.
+*/
 
 .summertide-intro {
     position: fixed;
@@ -414,24 +420,29 @@ body.summertide-intro-active {
 
     z-index: 20000;
 
-    background: #7da98a;
-
     overflow: hidden;
+
+    background: #111111;
 
     pointer-events: none;
 
-    animation:
-        summertideIntroFade
-        5.2s
+    opacity: 1;
+
+    transition:
+        opacity
+        1.8s
         cubic-bezier(
             0.16,
             1,
             0.3,
             1
-        )
-        forwards;
+        );
 }
 
+
+/*
+   The actual cover starts invisible.
+*/
 
 .summertide-intro-image {
     position: absolute;
@@ -445,19 +456,34 @@ body.summertide-intro-active {
     background-position: center;
     background-repeat: no-repeat;
 
-    transform:
-        scale(1.035);
+    opacity: 0;
 
-    animation:
-        summertideIntroImage
-        5.2s
+    transform:
+        scale(1.07);
+
+    filter:
+        blur(4px);
+
+    transition:
+        opacity
+        1.6s
         cubic-bezier(
             0.16,
             1,
             0.3,
             1
-        )
-        forwards;
+        ),
+        transform
+        4.8s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        ),
+        filter
+        1.8s
+        ease;
 
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -466,69 +492,44 @@ body.summertide-intro-active {
 
 
 /* =========================
-   COVER FADE
+   COVER ENTERS
 ========================= */
 
-@keyframes summertideIntroFade {
+.summertide-intro.is-visible
+.summertide-intro-image {
 
-    0% {
-        opacity: 0;
-    }
+    opacity: 1;
 
-    14% {
-        opacity: 1;
-    }
+    transform:
+        scale(1.015);
 
-    66% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-        visibility: hidden;
-    }
-
+    filter:
+        blur(0);
 }
 
 
 /* =========================
-   SUBTLE CINEMATIC MOVEMENT
+   COVER EXITS
 ========================= */
 
-@keyframes summertideIntroImage {
+.summertide-intro.is-leaving {
+    opacity: 0;
+}
 
-    0% {
-        transform:
-            scale(1.06);
 
-        filter:
-            blur(2px);
-    }
+/*
+   Continue the slow movement
+   while the cover disappears.
+*/
 
-    18% {
-        transform:
-            scale(1.045);
+.summertide-intro.is-leaving
+.summertide-intro-image {
 
-        filter:
-            blur(0);
-    }
+    transform:
+        scale(1);
 
-    70% {
-        transform:
-            scale(1.02);
-
-        filter:
-            blur(0);
-    }
-
-    100% {
-        transform:
-            scale(1);
-
-        filter:
-            blur(1px);
-    }
-
+    filter:
+        blur(1px);
 }
 
 /* =========================================================
@@ -2537,16 +2538,9 @@ body.summertide-intro-active {
 /* =========================================================
    REDUCED MOTION
 ========================================================= */
-.summertide-intro {
-    animation:
-        summertideIntroReduced
-        2s
-        ease
-        forwards !important;
-}
-
+.summertide-intro,
 .summertide-intro-image {
-    animation: none !important;
+    transition-duration: 0.4s !important;
 }
 
 @keyframes summertideIntroReduced {
