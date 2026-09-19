@@ -23,6 +23,24 @@
 
 
 <body>
+    
+    <!-- =========================
+     SUMMERTIDE INTRO COVER
+========================== -->
+
+<div
+    class="summertide-intro"
+    id="summertideIntro"
+    aria-hidden="true"
+>
+    <div
+        class="summertide-intro-image"
+        style="
+            background-image:
+            url('images/IMG_2353.jpeg');
+        "
+    ></div>
+</div>
 
 
 <div class="summertide-background"></div>
@@ -659,6 +677,40 @@
     defer
 ></script>
 
+
+
+<script>
+
+const summertideIntro =
+    document.getElementById(
+        "summertideIntro"
+    );
+
+
+if (summertideIntro) {
+
+    document.body.classList.add(
+        "summertide-intro-active"
+    );
+
+
+    window.setTimeout(
+        function () {
+
+            document.body.classList.remove(
+                "summertide-intro-active"
+            );
+
+
+            summertideIntro.remove();
+
+        },
+        5200
+    );
+
+}
+
+</script>
 
 </body>
 
