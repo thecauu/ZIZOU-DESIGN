@@ -9,6 +9,12 @@
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
+    
+    <meta
+    id="themeColor"
+    name="theme-color"
+    content="#f7f6f3"
+>
 
     <title>
         Summertide Collection | ZIZOU DESIGN
@@ -16,7 +22,7 @@
 
     <link
         rel="stylesheet"
-        href="style.css?v=5"
+        href="style.css?v=10"
     >
 
 </head>
@@ -686,26 +692,81 @@ const summertideIntro =
         "summertideIntro"
     );
 
+const summertideIntroImage =
+    document.querySelector(
+        ".summertide-intro-image"
+    );
 
-if (summertideIntro) {
+
+if (
+    summertideIntro &&
+    summertideIntroImage
+) {
 
     document.body.classList.add(
         "summertide-intro-active"
     );
 
 
-    window.setTimeout(
+    /*
+       Give the page a moment to render
+       before beginning the entrance.
+    */
+
+    window.addEventListener(
+        "load",
         function () {
 
-            document.body.classList.remove(
-                "summertide-intro-active"
+            window.setTimeout(
+                function () {
+
+                    summertideIntro
+                        .classList
+                        .add("is-visible");
+
+                },
+                250
             );
 
 
-            summertideIntro.remove();
+            /*
+               Keep the cover visible,
+               then begin the exit.
+            */
 
-        },
-        5200
+            window.setTimeout(
+                function () {
+
+                    summertideIntro
+                        .classList
+                        .add("is-leaving");
+
+                },
+                3500
+            );
+
+
+            /*
+               Remove the intro completely
+               after the fade has finished.
+            */
+
+            window.setTimeout(
+                function () {
+
+                    document.body
+                        .classList
+                        .remove(
+                            "summertide-intro-active"
+                        );
+
+                    summertideIntro.remove();
+
+                },
+                5400
+            );
+
+        }
     );
 
 }
