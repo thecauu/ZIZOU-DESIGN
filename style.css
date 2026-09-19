@@ -2540,7 +2540,7 @@ body.summertide-intro-active {
 ========================================================= */
 .summertide-intro,
 .summertide-intro-image {
-    transition-duration: 2.5s !important;
+    transition-duration: 2.0s !important;
 }
 
 @keyframes summertideIntroReduced {
