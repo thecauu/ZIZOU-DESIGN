@@ -96,9 +96,20 @@ function createGlobalBag() {
     }
 
 
+    /* -----------------------------------------
+       ZIZOU CART LOGO
+    ----------------------------------------- */
+
     bagButton.innerHTML = `
-        ♧
-        <span id="bagCount">0</span>
+        <img
+            src="images/ZIZOU LOGO.PNG"
+            alt=""
+            class="bag-logo"
+        >
+
+        <span id="bagCount">
+            0
+        </span>
     `;
 
 
@@ -330,13 +341,17 @@ function updateGlobalBag() {
     if (zizouCart.length === 0) {
 
         if (bagEmpty) {
+
             bagEmpty.style.display =
                 "block";
+
         }
 
         if (checkoutArea) {
+
             checkoutArea.style.display =
                 "none";
+
         }
 
         return;
@@ -345,14 +360,18 @@ function updateGlobalBag() {
 
 
     if (bagEmpty) {
+
         bagEmpty.style.display =
             "none";
+
     }
 
 
     if (checkoutArea) {
+
         checkoutArea.style.display =
             "block";
+
     }
 
 
