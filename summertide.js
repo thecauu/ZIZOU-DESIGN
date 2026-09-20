@@ -16,16 +16,16 @@ const artworks = {
 
         gallery: [
             {
+                src: "images/amber portrait.JPG",
+                alt: 
+            },
+            {
                 src: "images/amber mock room.jpg",
-                alt: "Amber Breeze — Room Preview"
+                alt: 
             },
             {
-                src: "images/amber watermark.jpg",
-                alt: "Amber Breeze"
-            },
-            {
-                src: "images/Amber Design.JPEG",
-                alt: "Amber Breeze — Design Card"
+                src: "images/amber mock room 2.JPG",
+                alt: 
             }
         ]
     },
