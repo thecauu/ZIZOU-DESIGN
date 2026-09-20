@@ -17,15 +17,15 @@ const artworks = {
         gallery: [
             {
                 src: "images/amber portrait.JPG",
-                alt: 
+                alt: "Amber portrait"
             },
             {
                 src: "images/amber mock room.jpg",
-                alt: 
+                alt: "Amber mock room 1"
             },
             {
                 src: "images/amber mock room 2.JPG",
-                alt: 
+                alt: "Amber mock room 2"
             }
         ]
     },
