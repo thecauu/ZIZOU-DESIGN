@@ -2110,6 +2110,31 @@ body.summertide-intro-active {
 }
 
 
+/* =========================================
+   ZIZOU CART LOGO
+========================================= */
+
+.bag-logo {
+    display: block;
+    width: auto;
+    height: 28px;
+    object-fit: contain;
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.bag-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+#bagCount {
+    flex-shrink: 0;
+}
+
 /* =========================================================
    GLOBAL BAG BUTTON
 ========================================================= */
