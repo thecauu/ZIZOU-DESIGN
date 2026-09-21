@@ -128,7 +128,7 @@ const artworks = {
                 alt: "Éter do Luar — Room Preview"
             },
             {
-                src: "images/eter mock room.JPG",
+                src: "images/eter mock room.jpg",
                 alt: "Éter do Luar"
             },
             {
