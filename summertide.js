@@ -155,7 +155,7 @@ const artworks = {
                 alt: "Oneiric Glow — Room Preview"
             },
             {
-                src: "images/oneiric mock room.jpg",
+                src: "images/oneiric mock room.PNG",
                 alt: "Oneiric Glow"
             },
             {
