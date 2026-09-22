@@ -78,7 +78,7 @@ const artworks = {
                 alt: "Pátina mock room 1"
             },
             {
-                src: "images/peridot mock room 2.JPG",
+                src: "images/patina mock room 2.JPG",
                 alt: "Pátina mock room 2"
             }
         ]
@@ -101,7 +101,7 @@ const artworks = {
                 alt: "Sage portrait"
             },
             {
-                src: "images/sage mock room.jpg",
+                src: "images/sage mock room 1.JPG",
                 alt: "Sage mock room 1.JPG"
             },
             {
@@ -132,7 +132,7 @@ const artworks = {
                 alt: "Éter mock room 1"
             },
             {
-                src: "images/eter mock room 2.JPG",
+                src: "images/eter mock room 2.jpg",
                 alt: "Éter mock room 2"
             }
         ]
