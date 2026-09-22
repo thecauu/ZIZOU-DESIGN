@@ -44,15 +44,15 @@ const artworks = {
         gallery: [
             {
                 src: "images/peridot portrait.JPG",
-                alt: "Peridot Afloat — Room Preview"
+                alt: "Peridot portrait"
             },
             {
-                src: "images/peridot mock room.jpg",
-                alt: "Peridot Afloat"
+                src: "images/peridot mock room 1.JPG",
+                alt: "Peridot mock room 1"
             },
             {
-                src: "images/",
-                alt: "Peridot Afloat — Design Card"
+                src: "images/peridot mock room 2.JPG",
+                alt: "Peridot mock room 2"
             }
         ]
     },
@@ -71,15 +71,15 @@ const artworks = {
         gallery: [
             {
                 src: "images/patina portrait.JPG",
-                alt: "Pátina del Mar — Room Preview"
+                alt: "Pátina portrait"
             },
             {
                 src: "images/patina mock room.jpg",
-                alt: "Pátina del Mar"
+                alt: "Pátina mock room 1"
             },
             {
-                src: "images/",
-                alt: "Pátina del Mar — Design Card"
+                src: "images/peridot mock room 2.JPG",
+                alt: "Pátina mock room 2"
             }
         ]
     },
@@ -98,15 +98,15 @@ const artworks = {
         gallery: [
             {
                 src: "images/sage portrait.JPG",
-                alt: "Sage Quietude — Room Preview"
+                alt: "Sage portrait"
             },
             {
                 src: "images/sage mock room.jpg",
-                alt: "Sage Quietude"
+                alt: "Sage mock room 1.JPG"
             },
             {
-                src: "images/",
-                alt: "Sage Quietude — Design Card"
+                src: "images/sage mock room 2.JPG",
+                alt: "Sage mock room 2"
             }
         ]
     },
@@ -125,15 +125,15 @@ const artworks = {
         gallery: [
             {
                 src: "images/eter portrait.JPG",
-                alt: "Éter do Luar — Room Preview"
+                alt: "Éter portrait"
             },
             {
                 src: "images/eter mock room.jpg",
-                alt: "Éter do Luar"
+                alt: "Éter mock room 1"
             },
             {
-                src: "images/",
-                alt: "Éter do Luar — Design Card"
+                src: "images/eter mock room 2.JPG",
+                alt: "Éter mock room 2"
             }
         ]
     },
@@ -152,15 +152,15 @@ const artworks = {
         gallery: [
             {
                 src: "images/oneiric portrait.JPG",
-                alt: "Oneiric Glow — Room Preview"
+                alt: "Oneiric portrait"
             },
             {
-                src: "images/oneiric mock room.PNG",
-                alt: "Oneiric Glow"
+                src: "images/oneiric mock room 1.JPG",
+                alt: "Oneiric mock room 1"
             },
             {
-                src: "images/",
-                alt: "Oneiric Glow — Design Card"
+                src: "images/oneiric mock room 2.JPG",
+                alt: "Oneiric mock room 2"
             }
         ]
     }
