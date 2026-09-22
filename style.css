@@ -295,7 +295,7 @@ body {
     position: fixed;
 
     top: 0;
-    left: -100%;
+    left: 0;
 
     width: min(420px, 88%);
     height: 100%;
@@ -307,12 +307,16 @@ body {
 
     z-index: 1000;
 
-    transition: left 0.35s ease;
+    transform: translateX(-100%);
+
+    transition:
+        transform 0.35s ease;
 }
 
 .side-menu.open {
-    left: 0;
+    transform: translateX(0);
 }
+
 
 .close-menu {
     border: none;
@@ -325,6 +329,7 @@ body {
     cursor: pointer;
 }
 
+
 .menu-nav {
     display: flex;
     flex-direction: column;
@@ -333,6 +338,7 @@ body {
 
     margin-top: 70px;
 }
+
 
 .menu-nav > a,
 .dropdown-button {
@@ -349,6 +355,11 @@ body {
     font-weight: 400;
 }
 
+
+/* =========================================
+   COLLECTIONS
+========================================= */
+
 .dropdown-button {
     border: none;
     background: transparent;
@@ -361,25 +372,59 @@ body {
     align-items: center;
 
     cursor: pointer;
+
     text-align: left;
 }
 
+
+/*
+   Keep the dropdown rendered instead of
+   switching between display:none and flex.
+*/
+
 .dropdown-content {
-    display: none;
+    display: flex;
     flex-direction: column;
 
+    gap: 8px;
+
+    max-height: 0;
+
+    overflow: hidden;
+
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
     padding:
-        18px
+        0
         0
         0
         20px;
+
+    transition:
+        max-height 0.3s ease,
+        opacity 0.25s ease,
+        padding-top 0.3s ease;
 }
+
 
 .dropdown-content.open {
-    display: flex;
+    max-height: 120px;
+
+    opacity: 1;
+    visibility: visible;
+
+    pointer-events: auto;
+
+    padding-top: 18px;
 }
 
+
 .dropdown-content a {
+    display: block;
+
     color: rgba(255, 255, 255, 0.7);
 
     text-decoration: none;
@@ -390,15 +435,8 @@ body {
         sans-serif;
 
     font-size: 15px;
+
     letter-spacing: 1px;
-}
-
-.dropdown-content a {
-    display: block;
-}
-
-.dropdown-content a + a {
-    margin-top: 8px;
 }
 
 /* /* =========================================================
