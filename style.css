@@ -393,6 +393,13 @@ body {
     letter-spacing: 1px;
 }
 
+.dropdown-content a {
+    display: block;
+}
+
+.dropdown-content a + a {
+    margin-top: 8px;
+}
 
 /* /* =========================================================
    SUMMERTIDE — CINEMATIC INTRO COVER
