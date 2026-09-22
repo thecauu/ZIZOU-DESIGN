@@ -17,6 +17,35 @@
         href="style.css?v=7"
     >
 
+
+    <!-- =========================================
+         COLLECTION MENU FIX
+    ========================================== -->
+
+    <style>
+
+        .dropdown-content {
+            list-style: none !important;
+        }
+
+        .dropdown-content::before,
+        .dropdown-content::after,
+        .dropdown-content a::before,
+        .dropdown-content a::after {
+            content: none !important;
+            display: none !important;
+        }
+
+        .dropdown-content a {
+            display: block;
+        }
+
+        .dropdown-content a + a {
+            margin-top: 8px;
+        }
+
+    </style>
+
 </head>
 
 
@@ -100,9 +129,9 @@
 
 
 
-<!-- =========================
+<!-- =========================================
      FULL SCREEN HERO
-========================== -->
+========================================= -->
 
 <section
     class="hero"
@@ -127,7 +156,9 @@
 
 
 
-    <!-- NAVIGATION -->
+    <!-- =========================================
+         NAVIGATION
+    ========================================== -->
 
     <header class="navbar">
 
@@ -169,21 +200,23 @@
         <div class="nav-right">
 
             <button
-    class="bag-button"
-    id="bagButton"
-    type="button"
-    aria-label="Shopping bag"
->
-    <img
-        src="images/ZIZOU LOGO.PNG"
-        alt=""
-        class="bag-logo"
-    >
+                class="bag-button"
+                id="bagButton"
+                type="button"
+                aria-label="Shopping bag"
+            >
 
-    <span id="bagCount">
-        0
-    </span>
-</button>
+                <img
+                    src="images/ZIZOU LOGO.PNG"
+                    alt=""
+                    class="bag-logo"
+                >
+
+                <span id="bagCount">
+                    0
+                </span>
+
+            </button>
 
         </div>
 
@@ -192,7 +225,9 @@
 
 
 
-    <!-- HERO COLLECTION BUTTON -->
+    <!-- =========================================
+         HERO COLLECTION BUTTON
+    ========================================== -->
 
     <a
         href="#collection"
@@ -206,9 +241,9 @@
 
 
 
-<!-- =========================
+<!-- =========================================
      SHOPPING BAG
-========================== -->
+========================================= -->
 
 <div
     class="shopping-bag"
@@ -263,9 +298,9 @@
 
 
 
-<!-- =========================
+<!-- =========================================
      LATEST COLLECTION
-========================== -->
+========================================= -->
 
 <main
     class="collection"
@@ -283,9 +318,9 @@
 
 
 
-    <!-- =========================
+    <!-- =========================================
          FOUR HOMEPAGE PREVIEWS
-    ========================== -->
+    ========================================== -->
 
     <div class="collection-grid">
 
@@ -365,9 +400,9 @@
 
 
 
-    <!-- =========================
+    <!-- =========================================
          VIEW FULL COLLECTION
-    ========================== -->
+    ========================================== -->
 
     <div class="view-more">
 
@@ -382,9 +417,9 @@
 
 
 
-<!-- =========================
+<!-- =========================================
      FOOTER
-========================== -->
+========================================= -->
 
 <footer class="site-footer">
 
@@ -433,9 +468,9 @@
 
 
 
-<!-- =========================
+<!-- =========================================
      JAVASCRIPT
-========================== -->
+========================================= -->
 
 <script src="script.js?v=3"></script>
 
