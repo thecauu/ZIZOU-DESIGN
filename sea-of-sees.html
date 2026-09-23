@@ -11,6 +11,7 @@
     >
 
     <meta
+        id="themeColor"
         name="theme-color"
         content="#f7f6f3"
     >
@@ -21,13 +22,35 @@
 
     <link
         rel="stylesheet"
-        href="style.css"
+        href="style.css?v=9"
     >
 
 </head>
 
 
 <body>
+
+
+<!-- =========================================
+     SEA OF SEES — CINEMATIC INTRO
+========================================= -->
+
+<div
+    class="sea-intro"
+    id="seaIntro"
+    aria-hidden="true"
+>
+
+    <div
+        class="sea-intro-image"
+        style="
+            background-image:
+            url('images/sea of sees cover.PNG');
+        "
+    ></div>
+
+</div>
+
 
 
 <!-- =========================================
@@ -138,12 +161,136 @@
      CART
 ========================================= -->
 
-<script src="cart.js"></script>
+<script src="cart.js?v=4"></script>
 
 <script
     src="https://assets.lemonsqueezy.com/lemon.js"
     defer
 ></script>
+
+
+
+<!-- =========================================
+     SEA OF SEES — INTRO ANIMATION
+========================================= -->
+
+<script>
+
+const seaIntro =
+    document.getElementById(
+        "seaIntro"
+    );
+
+const seaIntroImage =
+    document.querySelector(
+        ".sea-intro-image"
+    );
+
+const themeColor =
+    document.getElementById(
+        "themeColor"
+    );
+
+
+if (
+    seaIntro &&
+    seaIntroImage
+) {
+
+    document.body.classList.add(
+        "sea-intro-active"
+    );
+
+
+    /*
+       Match the browser area to the
+       black collection cover while
+       the intro is active.
+    */
+
+    if (themeColor) {
+
+        themeColor.setAttribute(
+            "content",
+            "#000000"
+        );
+
+    }
+
+
+    window.addEventListener(
+        "load",
+        function () {
+
+
+            /*
+               Slowly reveal the cover.
+            */
+
+            window.setTimeout(
+                function () {
+
+                    seaIntro.classList.add(
+                        "is-visible"
+                    );
+
+                },
+                250
+            );
+
+
+            /*
+               Begin the slow fade
+               into the collection page.
+            */
+
+            window.setTimeout(
+                function () {
+
+                    seaIntro.classList.add(
+                        "is-leaving"
+                    );
+
+                },
+                3500
+            );
+
+
+            /*
+               Remove the intro after
+               the fade finishes.
+            */
+
+            window.setTimeout(
+                function () {
+
+                    document.body.classList.remove(
+                        "sea-intro-active"
+                    );
+
+
+                    if (themeColor) {
+
+                        themeColor.setAttribute(
+                            "content",
+                            "#f7f6f3"
+                        );
+
+                    }
+
+
+                    seaIntro.remove();
+
+                },
+                5400
+            );
+
+        }
+    );
+
+}
+
+</script>
 
 
 </body>
