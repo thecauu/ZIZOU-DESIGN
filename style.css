@@ -586,10 +586,8 @@ body.sea-intro-active {
     overflow: hidden;
 }
 
-
 .sea-intro {
     position: fixed;
-
     inset: 0;
 
     width: 100%;
@@ -607,103 +605,56 @@ body.sea-intro-active {
     opacity: 1;
 
     transition:
-        opacity
-        1.8s
-        cubic-bezier(
-            0.16,
-            1,
-            0.3,
-            1
-        );
+        opacity 2s
+        cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 
 .sea-intro-image {
     position: absolute;
-
     inset: 0;
 
     width: 100%;
     height: 100%;
 
     background-color: #000000;
-
-    background-image:
-        url("images/sea of sees cover.PNG?v=3");
-
-    background-size: cover;
-    background-position: center;
+    background-image: url("images/sea of sees cover.PNG");
+    background-size: contain;
+    background-position: center center;
     background-repeat: no-repeat;
 
     opacity: 0;
 
-    transform:
-        scale(1.07);
-
-    filter:
-        blur(4px);
+    transform: scale(1);
+    filter: blur(3px);
 
     transition:
-        opacity
-        1.6s
-        cubic-bezier(
-            0.16,
-            1,
-            0.3,
-            1
-        ),
-        transform
-        4.8s
-        cubic-bezier(
-            0.16,
-            1,
-            0.3,
-            1
-        ),
-        filter
-        1.8s
-        ease;
-
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    user-select: none;
+        opacity 2s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 2s ease;
 }
 
 
-/* =========================
-   COVER ENTERS
-========================= */
+/* =========================================
+   SEA OF SEES — COVER ENTERS
+========================================= */
 
-.sea-intro.is-visible
-.sea-intro-image {
-
+.sea-intro.is-visible .sea-intro-image {
     opacity: 1;
-
-    transform:
-        scale(1.015);
-
-    filter:
-        blur(0);
+    transform: scale(1);
+    filter: blur(0);
 }
 
 
-/* =========================
-   COVER EXITS
-========================= */
+/* =========================================
+   SEA OF SEES — COVER EXITS
+========================================= */
 
 .sea-intro.is-leaving {
     opacity: 0;
 }
 
-
-.sea-intro.is-leaving
-.sea-intro-image {
-
-    transform:
-        scale(1);
-
-    filter:
-        blur(1px);
+.sea-intro.is-leaving .sea-intro-image {
+    transform: scale(1);
+    filter: blur(1px);
 }
 
 
