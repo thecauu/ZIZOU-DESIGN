@@ -22,7 +22,7 @@
 
     <link
         rel="stylesheet"
-        href="style.css?v=9"
+        href="style.css?v=12"
     >
 
 </head>
@@ -43,10 +43,6 @@
 
     <div
         class="sea-intro-image"
-        style="
-            background-image:
-            url('images/sea of sees cover.PNG');
-        "
     ></div>
 
 </div>
@@ -202,12 +198,6 @@ if (
     );
 
 
-    /*
-       Match the browser area to the
-       black collection cover while
-       the intro is active.
-    */
-
     if (themeColor) {
 
         themeColor.setAttribute(
@@ -223,9 +213,7 @@ if (
         function () {
 
 
-            /*
-               Slowly reveal the cover.
-            */
+            /* COVER ENTERS */
 
             window.setTimeout(
                 function () {
@@ -239,10 +227,7 @@ if (
             );
 
 
-            /*
-               Begin the slow fade
-               into the collection page.
-            */
+            /* COVER EXITS */
 
             window.setTimeout(
                 function () {
@@ -256,10 +241,7 @@ if (
             );
 
 
-            /*
-               Remove the intro after
-               the fade finishes.
-            */
+            /* INTRO REMOVED */
 
             window.setTimeout(
                 function () {
