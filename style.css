@@ -608,7 +608,7 @@ body.sea-intro-active {
 
     transition:
         opacity
-        2s
+        1.8s
         cubic-bezier(
             0.16,
             1,
@@ -629,28 +629,31 @@ body.sea-intro-active {
     background-color: #000000;
 
     background-image:
-        url("images/sea of sees cover.PNG?v=2");
+        url("images/sea of sees cover.PNG?v=3");
 
-    /*
-       IMPORTANT:
-       Fill the entire intro viewport while
-       keeping the complete cover visible.
-       No COVER cropping.
-    */
-
-    background-size: 100% 100%;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 
     opacity: 0;
 
-    transform: scale(1);
+    transform:
+        scale(1.07);
 
-    filter: blur(4px);
+    filter:
+        blur(4px);
 
     transition:
         opacity
-        2s
+        1.6s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        ),
+        transform
+        4.8s
         cubic-bezier(
             0.16,
             1,
@@ -658,7 +661,7 @@ body.sea-intro-active {
             1
         ),
         filter
-        2s
+        1.8s
         ease;
 
     -webkit-touch-callout: none;
@@ -667,22 +670,26 @@ body.sea-intro-active {
 }
 
 
-/* =========================================
-   SEA OF SEES — COVER ENTERS
-========================================= */
+/* =========================
+   COVER ENTERS
+========================= */
 
 .sea-intro.is-visible
 .sea-intro-image {
 
     opacity: 1;
 
-    filter: blur(0);
+    transform:
+        scale(1.015);
+
+    filter:
+        blur(0);
 }
 
 
-/* =========================================
-   SEA OF SEES — COVER EXITS
-========================================= */
+/* =========================
+   COVER EXITS
+========================= */
 
 .sea-intro.is-leaving {
     opacity: 0;
@@ -692,7 +699,11 @@ body.sea-intro-active {
 .sea-intro.is-leaving
 .sea-intro-image {
 
-    filter: blur(1px);
+    transform:
+        scale(1);
+
+    filter:
+        blur(1px);
 }
 
 
