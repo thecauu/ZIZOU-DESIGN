@@ -2608,23 +2608,12 @@ body.summertide-intro-active {
 /* =========================================================
    REDUCED MOTION
 ========================================================= */
+
 .summertide-intro,
-.summertide-intro-image {
-    transition-duration: 2.0s !important;
-}
-
-@keyframes summertideIntroReduced {
-
-    0%,
-    60% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-        visibility: hidden;
-    }
-
+.summertide-intro-image,
+.sea-intro,
+.sea-intro-image {
+    transition-duration: 2s !important;
 }
 
 
@@ -2638,10 +2627,8 @@ body.summertide-intro-active {
     .lightbox-close,
     .live-support,
     .support-dock {
-
         transition: none !important;
         animation: none !important;
-
     }
 
 }
