@@ -540,7 +540,6 @@ body.summertide-intro-active {
 
 /* =========================================================
    SEA OF SEES — CINEMATIC INTRO COVER
-   EXACT SAME VALUES AS SUMMERTIDE
 ========================================================= */
 
 body.sea-intro-active {
@@ -586,7 +585,7 @@ body.sea-intro-active {
     height: 100%;
 
     background-image:
-        url("images/sea of sees cover.PNG");
+        url("images/sea of sees cover art.PNG");
 
     background-size: cover;
     background-position: center;
