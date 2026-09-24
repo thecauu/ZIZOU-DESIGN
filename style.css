@@ -317,7 +317,6 @@ body {
     transform: translateX(0);
 }
 
-
 .close-menu {
     border: none;
     background: transparent;
@@ -329,7 +328,6 @@ body {
     cursor: pointer;
 }
 
-
 .menu-nav {
     display: flex;
     flex-direction: column;
@@ -338,7 +336,6 @@ body {
 
     margin-top: 70px;
 }
-
 
 .menu-nav > a,
 .dropdown-button {
@@ -376,12 +373,6 @@ body {
     text-align: left;
 }
 
-
-/*
-   Keep the dropdown rendered instead of
-   switching between display:none and flex.
-*/
-
 .dropdown-content {
     display: flex;
     flex-direction: column;
@@ -409,7 +400,6 @@ body {
         padding-top 0.3s ease;
 }
 
-
 .dropdown-content.open {
     max-height: 120px;
 
@@ -420,7 +410,6 @@ body {
 
     padding-top: 18px;
 }
-
 
 .dropdown-content a {
     display: block;
@@ -439,20 +428,14 @@ body {
     letter-spacing: 1px;
 }
 
-/* /* =========================================================
+
+/* =========================================================
    SUMMERTIDE — CINEMATIC INTRO COVER
 ========================================================= */
 
 body.summertide-intro-active {
     overflow: hidden;
 }
-
-
-/*
-   The dark layer exists immediately so
-   the collection does not flash on screen
-   before the cover begins.
-*/
 
 .summertide-intro {
     position: fixed;
@@ -483,11 +466,6 @@ body.summertide-intro-active {
             1
         );
 }
-
-
-/*
-   The actual cover starts invisible.
-*/
 
 .summertide-intro-image {
     position: absolute;
@@ -535,14 +513,8 @@ body.summertide-intro-active {
     user-select: none;
 }
 
-
-/* =========================
-   COVER ENTERS
-========================= */
-
 .summertide-intro.is-visible
 .summertide-intro-image {
-
     opacity: 1;
 
     transform:
@@ -552,24 +524,12 @@ body.summertide-intro-active {
         blur(0);
 }
 
-
-/* =========================
-   COVER EXITS
-========================= */
-
 .summertide-intro.is-leaving {
     opacity: 0;
 }
 
-
-/*
-   Continue the slow movement
-   while the cover disappears.
-*/
-
 .summertide-intro.is-leaving
 .summertide-intro-image {
-
     transform:
         scale(1);
 
@@ -580,6 +540,7 @@ body.summertide-intro-active {
 
 /* =========================================================
    SEA OF SEES — CINEMATIC INTRO COVER
+   EXACT SAME VALUES AS SUMMERTIDE
 ========================================================= */
 
 body.sea-intro-active {
@@ -588,6 +549,7 @@ body.sea-intro-active {
 
 .sea-intro {
     position: fixed;
+
     inset: 0;
 
     width: 100%;
@@ -598,63 +560,94 @@ body.sea-intro-active {
 
     overflow: hidden;
 
-    background: #000000;
+    background: #111111;
 
     pointer-events: none;
 
     opacity: 1;
 
     transition:
-        opacity 2s
-        cubic-bezier(0.16, 1, 0.3, 1);
+        opacity
+        1.8s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        );
 }
 
 .sea-intro-image {
     position: absolute;
+
     inset: 0;
 
     width: 100%;
     height: 100%;
 
-    background-color: #000000;
-    background-image: url("images/sea of sees cover.PNG");
-    background-size: contain;
-    background-position: center center;
+    background-image:
+        url("images/sea of sees cover.PNG");
+
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
 
     opacity: 0;
 
-    transform: scale(1);
-    filter: blur(3px);
+    transform:
+        scale(1.07);
+
+    filter:
+        blur(4px);
 
     transition:
-        opacity 2s cubic-bezier(0.16, 1, 0.3, 1),
-        filter 2s ease;
+        opacity
+        1.6s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        ),
+        transform
+        4.8s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        ),
+        filter
+        1.8s
+        ease;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
-
-/* =========================================
-   SEA OF SEES — COVER ENTERS
-========================================= */
-
-.sea-intro.is-visible .sea-intro-image {
+.sea-intro.is-visible
+.sea-intro-image {
     opacity: 1;
-    transform: scale(1);
-    filter: blur(0);
+
+    transform:
+        scale(1.015);
+
+    filter:
+        blur(0);
 }
-
-
-/* =========================================
-   SEA OF SEES — COVER EXITS
-========================================= */
 
 .sea-intro.is-leaving {
     opacity: 0;
 }
 
-.sea-intro.is-leaving .sea-intro-image {
-    transform: scale(1);
-    filter: blur(1px);
+.sea-intro.is-leaving
+.sea-intro-image {
+    transform:
+        scale(1);
+
+    filter:
+        blur(1px);
 }
 
 
@@ -2261,6 +2254,7 @@ body.sea-intro-active {
     flex-shrink: 0;
 }
 
+
 /* =========================================================
    GLOBAL BAG BUTTON
 ========================================================= */
@@ -2696,7 +2690,6 @@ body.sea-intro-active {
 .sea-intro-image {
     transition-duration: 2s !important;
 }
-
 
 @media (prefers-reduced-motion: reduce) {
 
