@@ -22,13 +22,24 @@
 
     <link
         rel="stylesheet"
-        href="style.css?v=14"
+        href="style.css?v=15"
     >
 
 </head>
 
 
 <body>
+
+
+<!-- =========================================
+     SEA OF SEES — PERMANENT BACKGROUND
+========================================= -->
+
+<div
+    class="sea-of-sees-background"
+    aria-hidden="true"
+></div>
+
 
 
 <!-- =========================================
@@ -72,7 +83,10 @@
     </a>
 
 
-    <div class="collection-page-spacer"></div>
+    <div
+        class="collection-page-spacer"
+        aria-hidden="true"
+    ></div>
 
 </header>
 
@@ -85,6 +99,7 @@
 <main class="coming-soon-page">
 
     <div class="coming-soon-content">
+
 
         <p class="coming-soon-label">
             COLLECTION 02
@@ -99,6 +114,7 @@
         <p class="coming-soon-status">
             COMING SOON
         </p>
+
 
     </div>
 
@@ -118,6 +134,7 @@
 
 
     <div class="footer-links">
+
 
         <a href="terms.html">
             Terms & Conditions
@@ -151,6 +168,7 @@
             Contact
         </a>
 
+
     </div>
 
 </footer>
@@ -162,6 +180,7 @@
 ========================================= -->
 
 <script src="cart.js?v=4"></script>
+
 
 <script
     src="https://assets.lemonsqueezy.com/lemon.js"
@@ -181,10 +200,12 @@ const seaIntro =
         "seaIntro"
     );
 
+
 const seaIntroImage =
     document.querySelector(
         ".sea-intro-image"
     );
+
 
 const themeColor =
     document.getElementById(
@@ -197,6 +218,7 @@ if (
     seaIntroImage
 ) {
 
+
     document.body.classList.add(
         "sea-intro-active"
     );
@@ -204,7 +226,7 @@ if (
 
     /*
        Match the browser chrome
-       to the dark intro.
+       to the dark cinematic intro.
     */
 
     if (themeColor) {
@@ -261,6 +283,7 @@ if (
             window.setTimeout(
                 function () {
 
+
                     document.body.classList.remove(
                         "sea-intro-active"
                     );
@@ -278,9 +301,11 @@ if (
 
                     seaIntro.remove();
 
+
                 },
                 5400
             );
+
 
         }
     );
