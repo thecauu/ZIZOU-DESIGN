@@ -22,7 +22,7 @@
 
     <link
         rel="stylesheet"
-        href="style.css?v=15"
+        href="style.css?v=16"
     >
 
 </head>
@@ -100,12 +100,6 @@
 
     <div class="coming-soon-content">
 
-
-        <p class="coming-soon-label">
-            COLLECTION 02
-        </p>
-
-
         <h1>
             Sea of Sees
         </h1>
@@ -114,7 +108,6 @@
         <p class="coming-soon-status">
             COMING SOON
         </p>
-
 
     </div>
 
@@ -134,7 +127,6 @@
 
 
     <div class="footer-links">
-
 
         <a href="terms.html">
             Terms & Conditions
@@ -167,7 +159,6 @@
         <a href="contact.html">
             Contact
         </a>
-
 
     </div>
 
@@ -218,15 +209,14 @@ if (
     seaIntroImage
 ) {
 
-
     document.body.classList.add(
         "sea-intro-active"
     );
 
 
     /*
-       Match the browser chrome
-       to the dark cinematic intro.
+       Match browser chrome
+       to the cinematic intro.
     */
 
     if (themeColor) {
@@ -283,7 +273,6 @@ if (
             window.setTimeout(
                 function () {
 
-
                     document.body.classList.remove(
                         "sea-intro-active"
                     );
@@ -301,7 +290,6 @@ if (
 
                     seaIntro.remove();
 
-
                 },
                 5400
             );
@@ -313,23 +301,6 @@ if (
 }
 
 </script>
-
-----
-----
-
-<div
-    id="viewportDebug"
-    style="
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        z-index: 999999;
-        background: black;
-        color: white;
-        padding: 10px;
-        font: 14px Arial;
-    "
-></div>
 
 
 </body>
