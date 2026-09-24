@@ -668,6 +668,196 @@ body.sea-intro-active {
 }
 
 /* =========================================================
+   SEA OF SEES — COLLECTION PAGE
+========================================================= */
+
+.sea-of-sees-body {
+    min-height: 100%;
+    background: #091014;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   SEA OF SEES — PERMANENT BACKGROUND
+========================================================= */
+
+.sea-of-sees-background {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+
+    background-color: #091014;
+
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.35),
+            rgba(0, 0, 0, 0.45)
+        ),
+        url("images/sea of sees background.JPG");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   SEA OF SEES — NAVIGATION
+========================================================= */
+
+.sea-of-sees-body .collection-page-nav {
+    position: relative;
+
+    z-index: 2;
+
+    background:
+        rgba(0, 0, 0, 0.10);
+
+    border: none;
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+
+.sea-of-sees-body .back-link,
+.sea-of-sees-body .collection-page-logo {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   SEA OF SEES — COMING SOON AREA
+========================================================= */
+
+.coming-soon-page {
+    position: relative;
+
+    z-index: 1;
+
+    width: 100%;
+
+    /*
+       More than one full viewport so the
+       footer requires a slight scroll.
+    */
+
+    min-height: 115svh;
+
+    display: grid;
+
+    place-items: center;
+
+    padding:
+        60px
+        24px
+        100px;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   SEA OF SEES — CENTERED CONTENT
+========================================================= */
+
+.coming-soon-content {
+    width: 100%;
+    max-width: 500px;
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+
+.coming-soon-content h1 {
+    margin: 0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            28px,
+            5vw,
+            42px
+        );
+
+    font-weight: 400;
+
+    line-height: 1.1;
+
+    letter-spacing: 0.5px;
+}
+
+
+.coming-soon-status {
+    margin-top: 16px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 400;
+
+    letter-spacing: 4px;
+
+    line-height: 1;
+
+    text-align: center;
+
+    opacity: 0.8;
+}
+
+
+/* =========================================================
+   SEA OF SEES — FOOTER
+========================================================= */
+
+.sea-of-sees-body .site-footer {
+    position: relative;
+
+    z-index: 2;
+
+    background:
+        rgba(0, 0, 0, 0.18);
+
+    color: #ffffff;
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.22);
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+
+.sea-of-sees-body .site-footer a,
+.sea-of-sees-body .site-footer span {
+    color: #ffffff;
+}
+
+/* =========================================================
    SUMMERTIDE — PERMANENT BACKGROUND
 ========================================================= */
 
