@@ -331,47 +331,6 @@ if (
     "
 ></div>
 
-<script>
-function showViewportSize() {
-
-    const intro =
-        document.querySelector(".sea-intro");
-
-    const box =
-        intro.getBoundingClientRect();
-
-    const visual =
-        window.visualViewport;
-
-    document.getElementById(
-        "viewportDebug"
-    ).innerHTML =
-
-        "INTRO: " +
-        Math.round(box.width) +
-        " × " +
-        Math.round(box.height) +
-        "<br>" +
-
-        "WINDOW: " +
-        window.innerWidth +
-        " × " +
-        window.innerHeight +
-        "<br>" +
-
-        "VISUAL: " +
-        Math.round(visual.width) +
-        " × " +
-        Math.round(visual.height);
-}
-
-showViewportSize();
-
-window.addEventListener(
-    "resize",
-    showViewportSize
-);
-</script>
 
 </body>
 
