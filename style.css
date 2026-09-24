@@ -546,6 +546,11 @@ body.sea-intro-active {
     overflow: hidden;
 }
 
+
+/* =========================================================
+   INTRO CONTAINER
+========================================================= */
+
 .sea-intro {
     position: fixed;
 
@@ -575,6 +580,11 @@ body.sea-intro-active {
             1
         );
 }
+
+
+/* =========================================================
+   COVER IMAGE — IPHONE / MOBILE DEFAULT
+========================================================= */
 
 .sea-intro-image {
     position: absolute;
@@ -625,8 +635,28 @@ body.sea-intro-active {
     user-select: none;
 }
 
+
+/* =========================================================
+   IPAD / TABLET COVER
+========================================================= */
+
+@media (min-width: 601px) {
+
+    .sea-intro-image {
+        background-image:
+            url("images/sea of sees cover art IP.JPG");
+    }
+
+}
+
+
+/* =========================================================
+   COVER ENTERS
+========================================================= */
+
 .sea-intro.is-visible
 .sea-intro-image {
+
     opacity: 1;
 
     transform:
@@ -636,19 +666,25 @@ body.sea-intro-active {
         blur(0);
 }
 
+
+/* =========================================================
+   COVER EXITS
+========================================================= */
+
 .sea-intro.is-leaving {
     opacity: 0;
 }
 
+
 .sea-intro.is-leaving
 .sea-intro-image {
+
     transform:
         scale(1);
 
     filter:
         blur(1px);
 }
-
 
 /* =========================================================
    SUMMERTIDE — PERMANENT BACKGROUND
