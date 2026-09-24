@@ -2912,3 +2912,329 @@ body.sea-intro-active {
     }
 
 }
+
+
+/* =========================================================
+   TABLET / DESKTOP — KEEP MOBILE-LIKE PROPORTIONS
+========================================================= */
+
+@media (min-width: 601px) {
+
+    /* =====================================================
+       GLOBAL NAVIGATION
+    ===================================================== */
+
+    .navbar {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    .logo {
+        font-size: 25px;
+    }
+
+    .menu-button {
+        font-size: 29px;
+    }
+
+    .search-button {
+        font-size: 30px;
+    }
+
+    .bag-button {
+        font-size: 30px;
+    }
+
+
+    /* =====================================================
+       HOMEPAGE COLLECTION
+    ===================================================== */
+
+    .collection {
+        padding:
+            60px
+            6%
+            90px;
+    }
+
+    .collection-brand {
+        max-width: 900px;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .collection h1 {
+        max-width: 900px;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        font-size: 48px;
+    }
+
+    .collection-grid {
+        max-width: 900px;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        gap:
+            36px
+            18px;
+    }
+
+    .artwork h2 {
+        font-size: 16px;
+    }
+
+    .artwork p {
+        font-size: 15px;
+    }
+
+    .view-more {
+        max-width: 900px;
+
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+    }
+
+
+    /* =====================================================
+       COLLECTION PAGE NAVIGATION
+    ===================================================== */
+
+    .collection-page-nav {
+        padding:
+            24px
+            32px;
+    }
+
+    .collection-page-logo {
+        font-size: 23px;
+    }
+
+    .back-link {
+        font-size: 28px;
+    }
+
+
+    /* =====================================================
+       SUMMERTIDE COLLECTION PAGE
+    ===================================================== */
+
+    .collection-page {
+        max-width: 1000px;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        padding:
+            55px
+            5%
+            90px;
+    }
+
+    .collection-page h1 {
+        font-size: 52px;
+
+        margin-bottom: 45px;
+    }
+
+    .collection-page-label {
+        font-size: 11px;
+    }
+
+    .full-collection-grid {
+        gap:
+            38px
+            18px;
+    }
+
+    .product-title {
+        font-size: 15px;
+    }
+
+    .product-price {
+        font-size: 14px;
+    }
+
+
+    /* =====================================================
+       OPENED ARTWORK
+    ===================================================== */
+
+    .artwork-viewer {
+        max-width: 760px;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .artwork-product-info {
+        max-width: 760px;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        padding:
+            28px
+            24px
+            90px;
+    }
+
+    .artwork-product-info h2 {
+        font-size: 21px;
+    }
+
+    .artwork-price {
+        font-size: 16px;
+    }
+
+    .artwork-description {
+        font-size: 15px;
+    }
+
+
+    /* =====================================================
+       ABOUT PAGE
+    ===================================================== */
+
+    .about-heading {
+        min-height: 115px;
+    }
+
+    .about-heading p {
+        font-size: 13px;
+    }
+
+    .about-founder-image {
+        max-width: 900px;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        max-height: 650px;
+    }
+
+    .about-story {
+        max-width: 900px;
+
+        padding:
+            60px
+            5%
+            90px;
+    }
+
+    .about-story p {
+        max-width: 760px;
+
+        font-size: 18px;
+
+        line-height: 1.35;
+    }
+
+
+    /* =====================================================
+       LEGAL PAGES
+    ===================================================== */
+
+    .legal-page {
+        width: min(88%, 760px);
+
+        padding:
+            60px
+            0
+            90px;
+    }
+
+    .legal-page h1 {
+        font-size: 48px;
+    }
+
+    .legal-section p {
+        font-size: 13px;
+
+        line-height: 1.65;
+    }
+
+
+    /* =====================================================
+       CONTACT PAGE
+    ===================================================== */
+
+    .contact-page-support-only {
+        width: min(88%, 720px);
+
+        padding:
+            50px
+            0
+            70px;
+    }
+
+    .live-support h2 {
+        font-size: 48px;
+    }
+
+    .live-support-description {
+        max-width: 560px;
+
+        font-size: 13px;
+    }
+
+
+    /* =====================================================
+       SEA OF SEES — COMING SOON
+    ===================================================== */
+
+    .coming-soon-content {
+        max-width: 420px;
+    }
+
+    .coming-soon-content h1 {
+        font-size: 34px;
+    }
+
+    .coming-soon-status {
+        font-size: 9px;
+
+        letter-spacing: 4px;
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    .site-footer {
+        padding:
+            32px
+            5%
+            36px;
+    }
+
+    .site-footer > p {
+        font-size: 10px;
+    }
+
+    .footer-links a,
+    .footer-links span {
+        font-size: 10px;
+    }
+
+
+    /* =====================================================
+       SIDE MENU
+    ===================================================== */
+
+    .side-menu {
+        width: 360px;
+    }
+
+    .menu-nav > a,
+    .dropdown-button {
+        font-size: 27px;
+    }
+
+}
