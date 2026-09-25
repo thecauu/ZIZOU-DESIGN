@@ -3,25 +3,42 @@
    STYLE.CSS
 
    01. GLOBAL
-   02. HOMEPAGE
-   03. SIDE MENU
-   04. COLLECTION PAGES — SHARED
-   05. SUMMERTIDE
-   06. SEA OF SEES
-   07. ARTWORK LIGHTBOX
-   08. ARTWORK TRANSITIONS
-   09. ABOUT
-   10. LEGAL
-   11. CONTACT
-   12. FOOTER
-   13. SHOPPING BAG
-   14. MOBILE — IPHONE
-   15. TABLET / DESKTOP
-   16. MOTION / ACCESSIBILITY
+   02. ARTWORK PROTECTION
+   03. HOMEPAGE
+   04. SIDE MENU
+   05. COLLECTION PAGES — SHARED
+   06. SUMMERTIDE
+   07. SEA OF SEES
+   08. ARTWORK LIGHTBOX
+   09. ARTWORK TRANSITIONS
+   10. ABOUT
+   11. LEGAL
+   12. CONTACT
+   13. FOOTER
+   14. SHOPPING BAG
+   15. MOBILE — IPHONE
+   16. TABLET / DESKTOP
+   17. MOTION / ACCESSIBILITY
 
    NOTE:
-   Image, zoom, drag, right-click, long-press,
-   and print protection now belong in protection.js.
+   Interaction-based image protection belongs in protection.js:
+   - Right-click protection
+   - Drag protection
+   - Long-press protection
+   - Zoom protection
+   - Selection protection
+   - Print protection
+
+   Visual artwork protection belongs here in STYLE.CSS:
+   - Fine interference texture
+   - High-frequency crosshatch
+   - Micro-dot texture
+   - Resampling / compression interference
+
+   Protected artwork surfaces:
+   - Homepage artwork
+   - Summertide collection artwork
+   - Artwork lightbox / gallery
 ========================================================= */
 
 
@@ -54,7 +71,151 @@ body {
 
 
 /* =========================================================
-   02. HOMEPAGE — HERO
+   02. ARTWORK PROTECTION — VARIABLES
+========================================================= */
+
+:root {
+
+    --protection-light:
+        rgba(
+            255,
+            255,
+            255,
+            0.03
+        );
+
+    --protection-dark:
+        rgba(
+            0,
+            0,
+            0,
+            0.025
+        );
+
+    --protection-dot:
+        rgba(
+            255,
+            255,
+            255,
+            0.04
+        );
+}
+
+
+/* =========================================================
+   02. ARTWORK PROTECTION — PROTECTED SURFACES
+========================================================= */
+
+.protected-home-image,
+.protected-collection-image,
+.protected-lightbox-image {
+    position: relative;
+
+    isolation: isolate;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   02. ARTWORK PROTECTION — CROSSHATCH LAYER
+========================================================= */
+
+.protected-home-image::before,
+.protected-collection-image::before,
+.protected-lightbox-image::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    background:
+
+        repeating-linear-gradient(
+            17deg,
+
+            var(--protection-light)
+            0,
+
+            var(--protection-light)
+            0.7px,
+
+            transparent
+            0.7px,
+
+            transparent
+            3px
+        ),
+
+        repeating-linear-gradient(
+            107deg,
+
+            var(--protection-dark)
+            0,
+
+            var(--protection-dark)
+            0.7px,
+
+            transparent
+            0.7px,
+
+            transparent
+            3.4px
+        );
+
+    mix-blend-mode:
+        soft-light;
+}
+
+
+/* =========================================================
+   02. ARTWORK PROTECTION — MICRO-DOT LAYER
+========================================================= */
+
+.protected-home-image::after,
+.protected-collection-image::after,
+.protected-lightbox-image::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 3;
+
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(
+            circle,
+
+            var(--protection-dot)
+            0.45px,
+
+            transparent
+            0.6px
+        );
+
+    background-size:
+        3.1px
+        3.1px;
+
+    background-position:
+        0.35px
+        0.65px;
+
+    mix-blend-mode:
+        soft-light;
+}
+
+
+/* =========================================================
+   03. HOMEPAGE — HERO
 ========================================================= */
 
 .hero {
@@ -106,7 +267,7 @@ body {
 
 
 /* =========================================================
-   02. HOMEPAGE — NAVIGATION
+   03. HOMEPAGE — NAVIGATION
 ========================================================= */
 
 .navbar {
@@ -216,7 +377,7 @@ body {
 
 
 /* =========================================================
-   02. HOMEPAGE — VIEW COLLECTION BUTTON
+   03. HOMEPAGE — VIEW COLLECTION BUTTON
 ========================================================= */
 
 .collection-button {
@@ -274,7 +435,7 @@ body {
 
 
 /* =========================================================
-   02. HOMEPAGE — COLLECTION
+   03. HOMEPAGE — COLLECTION
 ========================================================= */
 
 .collection {
@@ -358,7 +519,9 @@ body {
     height: 100%;
 
     background-size: cover;
+
     background-position: center;
+
     background-repeat: no-repeat;
 }
 
@@ -388,7 +551,7 @@ body {
 
 
 /* =========================================================
-   02. HOMEPAGE — VIEW FULL COLLECTION
+   03. HOMEPAGE — VIEW FULL COLLECTION
 ========================================================= */
 
 .view-more {
@@ -429,7 +592,7 @@ body {
 
 
 /* =========================================================
-   03. SIDE MENU — PANEL
+   04. SIDE MENU — PANEL
 ========================================================= */
 
 .side-menu {
@@ -506,7 +669,7 @@ body {
 
 
 /* =========================================================
-   03. SIDE MENU — COLLECTION DROPDOWN
+   04. SIDE MENU — COLLECTION DROPDOWN
 ========================================================= */
 
 .dropdown-button {
@@ -594,7 +757,7 @@ body {
 
 
 /* =========================================================
-   04. COLLECTION PAGES — SHARED NAVIGATION
+   05. COLLECTION PAGES — SHARED NAVIGATION
 ========================================================= */
 
 .collection-page-nav {
@@ -665,7 +828,7 @@ body {
 
 
 /* =========================================================
-   05. SUMMERTIDE — CINEMATIC INTRO
+   06. SUMMERTIDE — CINEMATIC INTRO
 ========================================================= */
 
 body.summertide-intro-active {
@@ -773,7 +936,7 @@ body.summertide-intro-active {
 
 
 /* =========================================================
-   05. SUMMERTIDE — PERMANENT BACKGROUND
+   06. SUMMERTIDE — PERMANENT BACKGROUND
 ========================================================= */
 
 .summertide-background {
@@ -818,7 +981,7 @@ body.summertide-intro-active {
 
 
 /* =========================================================
-   05. SUMMERTIDE — COLLECTION PAGE
+   06. SUMMERTIDE — COLLECTION PAGE
 ========================================================= */
 
 .collection-page {
@@ -862,7 +1025,7 @@ body.summertide-intro-active {
 
 
 /* =========================================================
-   05. SUMMERTIDE — COLLECTION GRID
+   06. SUMMERTIDE — COLLECTION GRID
 ========================================================= */
 
 .full-collection-grid {
@@ -940,7 +1103,7 @@ body.summertide-intro-active {
 
 
 /* =========================================================
-   06. SEA OF SEES — CINEMATIC INTRO
+   07. SEA OF SEES — CINEMATIC INTRO
 ========================================================= */
 
 body.sea-intro-active {
@@ -980,7 +1143,7 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   06. SEA OF SEES — IPHONE INTRO COVER
+   07. SEA OF SEES — IPHONE INTRO COVER
 ========================================================= */
 
 .sea-intro-image {
@@ -1050,7 +1213,7 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   06. SEA OF SEES — PAGE
+   07. SEA OF SEES — PAGE
 ========================================================= */
 
 .sea-of-sees-body {
@@ -1063,7 +1226,7 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   06. SEA OF SEES — PERMANENT BACKGROUND
+   07. SEA OF SEES — PERMANENT BACKGROUND
 ========================================================= */
 
 .sea-of-sees-background {
@@ -1111,7 +1274,7 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   06. SEA OF SEES — NAVIGATION
+   07. SEA OF SEES — NAVIGATION
 ========================================================= */
 
 .sea-of-sees-body
@@ -1146,7 +1309,7 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   06. SEA OF SEES — COMING SOON
+   07. SEA OF SEES — COMING SOON
 ========================================================= */
 
 .coming-soon-page {
@@ -1231,7 +1394,7 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   06. SEA OF SEES — FOOTER
+   07. SEA OF SEES — FOOTER
 ========================================================= */
 
 .sea-of-sees-body
@@ -1275,7 +1438,7 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   07. ARTWORK LIGHTBOX — CONTAINER
+   08. ARTWORK LIGHTBOX — CONTAINER
 ========================================================= */
 
 .lightbox {
@@ -1305,7 +1468,7 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   07. ARTWORK LIGHTBOX — IMAGE AREA
+   08. ARTWORK LIGHTBOX — IMAGE AREA
 ========================================================= */
 
 .artwork-viewer {
@@ -1371,7 +1534,7 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   07. ARTWORK LIGHTBOX — IMAGE COUNTER
+   08. ARTWORK LIGHTBOX — IMAGE COUNTER
 ========================================================= */
 
 .lightbox-counter {
@@ -1414,7 +1577,7 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   07. ARTWORK LIGHTBOX — CLOSE BUTTON
+   08. ARTWORK LIGHTBOX — CLOSE BUTTON
 ========================================================= */
 
 .lightbox-close {
@@ -1463,7 +1626,7 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   07. ARTWORK LIGHTBOX — GALLERY ARROWS
+   08. ARTWORK LIGHTBOX — GALLERY ARROWS
 ========================================================= */
 
 .lightbox-arrow {
@@ -1514,7 +1677,7 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   07. ARTWORK LIGHTBOX — PRODUCT INFORMATION
+   08. ARTWORK LIGHTBOX — PRODUCT INFORMATION
 ========================================================= */
 
 .artwork-product-info {
@@ -1560,7 +1723,7 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   07. ARTWORK LIGHTBOX — ADD TO BAG
+   08. ARTWORK LIGHTBOX — ADD TO BAG
 ========================================================= */
 
 .artwork-add-to-bag {
@@ -1602,7 +1765,7 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   07. ARTWORK LIGHTBOX — DESCRIPTION
+   08. ARTWORK LIGHTBOX — DESCRIPTION
 ========================================================= */
 
 .artwork-description {
@@ -1625,7 +1788,7 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   07. ARTWORK LIGHTBOX — ACCORDIONS
+   08. ARTWORK LIGHTBOX — ACCORDIONS
 ========================================================= */
 
 .artwork-accordion {
@@ -1773,7 +1936,7 @@ span:first-child {
 
 
 /* =========================================================
-   08. ARTWORK TRANSITIONS — OPENING
+   09. ARTWORK TRANSITIONS — OPENING
 ========================================================= */
 
 .transition-artwork {
@@ -1849,7 +2012,7 @@ span:first-child {
 
 
 /* =========================================================
-   08. ARTWORK TRANSITIONS — ROOM IMAGE
+   09. ARTWORK TRANSITIONS — ROOM IMAGE
 ========================================================= */
 
 .protected-lightbox-image.room-image-reveal {
@@ -1897,7 +2060,7 @@ span:first-child {
 
 
 /* =========================================================
-   08. ARTWORK TRANSITIONS — GALLERY CONTROLS
+   09. ARTWORK TRANSITIONS — GALLERY CONTROLS
 ========================================================= */
 
 #lightboxTitle,
@@ -1912,7 +2075,7 @@ span:first-child {
 
 
 /* =========================================================
-   08. ARTWORK TRANSITIONS — NORMAL GALLERY SLIDE
+   09. ARTWORK TRANSITIONS — NORMAL GALLERY SLIDE
 ========================================================= */
 
 .protected-lightbox-image.gallery-fade-out {
@@ -1949,7 +2112,7 @@ span:first-child {
 
 
 /* =========================================================
-   09. ABOUT — PAGE
+   10. ABOUT — PAGE
 ========================================================= */
 
 .about-body {
@@ -1967,7 +2130,7 @@ span:first-child {
 
 
 /* =========================================================
-   09. ABOUT — NAVIGATION
+   10. ABOUT — NAVIGATION
 ========================================================= */
 
 .about-nav {
@@ -2039,7 +2202,7 @@ span:first-child {
 
 
 /* =========================================================
-   09. ABOUT — HEADING
+   10. ABOUT — HEADING
 ========================================================= */
 
 .about-heading {
@@ -2064,7 +2227,7 @@ span:first-child {
 
 
 /* =========================================================
-   09. ABOUT — FOUNDER IMAGE
+   10. ABOUT — FOUNDER IMAGE
 ========================================================= */
 
 .about-image-section {
@@ -2087,7 +2250,7 @@ span:first-child {
 
 
 /* =========================================================
-   09. ABOUT — STORY
+   10. ABOUT — STORY
 ========================================================= */
 
 .about-story {
@@ -2138,7 +2301,7 @@ span:first-child {
 
 
 /* =========================================================
-   10. LEGAL — PAGE
+   11. LEGAL — PAGE
 ========================================================= */
 
 .legal-body {
@@ -2156,7 +2319,7 @@ span:first-child {
 
 
 /* =========================================================
-   10. LEGAL — NAVIGATION
+   11. LEGAL — NAVIGATION
 ========================================================= */
 
 .legal-nav {
@@ -2222,7 +2385,7 @@ span:first-child {
 
 
 /* =========================================================
-   10. LEGAL — CONTENT
+   11. LEGAL — CONTENT
 ========================================================= */
 
 .legal-page {
@@ -2319,7 +2482,7 @@ span:first-child {
 
 
 /* =========================================================
-   11. CONTACT — SUPPORT PAGE
+   12. CONTACT — SUPPORT PAGE
 ========================================================= */
 
 .contact-page-support-only {
@@ -2352,7 +2515,7 @@ span:first-child {
 
 
 /* =========================================================
-   11. CONTACT — LIVE SUPPORT
+   12. CONTACT — LIVE SUPPORT
 ========================================================= */
 
 .contact-page-support-only
@@ -2472,7 +2635,7 @@ span:first-child {
 
 
 /* =========================================================
-   11. CONTACT — MINIMIZED ACTIVE CHAT
+   12. CONTACT — MINIMIZED ACTIVE CHAT
 ========================================================= */
 
 .support-dock {
@@ -2634,7 +2797,7 @@ span:first-child {
 
 
 /* =========================================================
-   12. FOOTER
+   13. FOOTER
 ========================================================= */
 
 .site-footer {
@@ -2695,7 +2858,7 @@ span:first-child {
 
 
 /* =========================================================
-   13. SHOPPING BAG — PANEL
+   14. SHOPPING BAG — PANEL
 ========================================================= */
 
 .shopping-bag {
@@ -2768,7 +2931,7 @@ span:first-child {
 
 
 /* =========================================================
-   13. SHOPPING BAG — COUNT
+   14. SHOPPING BAG — COUNT
 ========================================================= */
 
 #bagCount {
@@ -2781,7 +2944,7 @@ span:first-child {
 
 
 /* =========================================================
-   13. SHOPPING BAG — EMPTY STATE
+   14. SHOPPING BAG — EMPTY STATE
 ========================================================= */
 
 .bag-empty {
@@ -2796,7 +2959,7 @@ span:first-child {
 
 
 /* =========================================================
-   13. SHOPPING BAG — ITEMS
+   14. SHOPPING BAG — ITEMS
 ========================================================= */
 
 .bag-item {
@@ -2867,7 +3030,7 @@ span:first-child {
 
 
 /* =========================================================
-   13. SHOPPING BAG — CHECKOUT
+   14. SHOPPING BAG — CHECKOUT
 ========================================================= */
 
 .bag-checkout-area {
@@ -2900,7 +3063,7 @@ span:first-child {
 
 
 /* =========================================================
-   13. SHOPPING BAG — ZIZOU LOGO
+   14. SHOPPING BAG — ZIZOU LOGO
 ========================================================= */
 
 .bag-logo {
@@ -2917,7 +3080,7 @@ span:first-child {
 
 
 /* =========================================================
-   13. SHOPPING BAG — GLOBAL BUTTON
+   14. SHOPPING BAG — GLOBAL BUTTON
 ========================================================= */
 
 .global-bag-button {
@@ -2949,7 +3112,7 @@ span:first-child {
 
 
 /* =========================================================
-   14. MOBILE — IPHONE
+   15. MOBILE — IPHONE
 ========================================================= */
 
 @media (max-width: 600px) {
@@ -3319,7 +3482,7 @@ span:first-child {
 
 
 /* =========================================================
-   15. TABLET / DESKTOP
+   16. TABLET / DESKTOP
 ========================================================= */
 
 @media (min-width: 601px) {
@@ -3846,7 +4009,7 @@ span:first-child {
 
 
 /* =========================================================
-   16. INTRO TRANSITION TIMING
+   17. INTRO TRANSITION TIMING
 ========================================================= */
 
 .summertide-intro,
@@ -3859,7 +4022,7 @@ span:first-child {
 
 
 /* =========================================================
-   16. REDUCED MOTION ACCESSIBILITY
+   17. REDUCED MOTION ACCESSIBILITY
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
