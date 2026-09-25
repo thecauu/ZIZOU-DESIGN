@@ -3871,6 +3871,21 @@ span:first-child {
         background-image: none !important;
         background: #111111 !important;
     }
+    
+    
+/* =========================================================
+   ZIZOU DESIGN — BLOCK ARTWORK ZOOM
+========================================================= */
+
+.protected-home-image,
+.protected-collection-image,
+.protected-lightbox-image {
+    touch-action: pan-y;
+
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+}
 
 }
 }
