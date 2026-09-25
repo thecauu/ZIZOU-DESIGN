@@ -9,12 +9,12 @@
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
-    
+
     <meta
-    id="themeColor"
-    name="theme-color"
-    content="#f7f6f3"
->
+        id="themeColor"
+        name="theme-color"
+        content="#f7f6f3"
+    >
 
     <title>
         Summertide Collection | ZIZOU DESIGN
@@ -22,15 +22,16 @@
 
     <link
         rel="stylesheet"
-        href="style.css?v=10"
+        href="style.css?v=19"
     >
 
 </head>
 
 
 <body>
-    
-    <!-- =========================
+
+
+<!-- =========================
      SUMMERTIDE INTRO COVER
 ========================== -->
 
@@ -39,6 +40,7 @@
     id="summertideIntro"
     aria-hidden="true"
 >
+
     <div
         class="summertide-intro-image"
         style="
@@ -46,10 +48,19 @@
             url('images/IMG_2353.jpeg');
         "
     ></div>
+
 </div>
 
 
-<div class="summertide-background"></div>
+
+<!-- =========================
+     SUMMERTIDE BACKGROUND
+========================== -->
+
+<div
+    class="summertide-background"
+    aria-hidden="true"
+></div>
 
 
 
@@ -76,7 +87,10 @@
     </a>
 
 
-    <div class="collection-page-spacer"></div>
+    <div
+        class="collection-page-spacer"
+        aria-hidden="true"
+    ></div>
 
 </header>
 
@@ -373,12 +387,6 @@
 
         <div class="lightbox-content">
 
-            <!--
-                IMPORTANT:
-                This is deliberately a DIV rather than an IMG.
-                Safari therefore has no normal image element
-                to long-press and save.
-            -->
 
             <div
                 id="lightboxImage"
@@ -392,6 +400,7 @@
                 id="lightboxCounter"
                 class="lightbox-counter"
             ></p>
+
 
         </div>
 
@@ -411,7 +420,9 @@
 
 
 
-    <!-- WHITE PRODUCT INFORMATION AREA -->
+    <!-- =========================
+         PRODUCT INFORMATION
+    ========================== -->
 
     <section class="artwork-product-info">
 
@@ -445,7 +456,9 @@
 
 
 
-        <!-- ARTWORK DETAILS -->
+        <!-- =========================
+             ARTWORK DETAILS
+        ========================== -->
 
         <div class="artwork-accordion">
 
@@ -471,32 +484,63 @@
 
 
                 <div class="artwork-spec">
-                    <span>Artist</span>
-                    <span>Zizou</span>
+
+                    <span>
+                        Artist
+                    </span>
+
+                    <span>
+                        Zizou
+                    </span>
+
                 </div>
 
 
                 <div class="artwork-spec">
-                    <span>Year</span>
+
+                    <span>
+                        Year
+                    </span>
+
                     <span id="artworkYear"></span>
+
                 </div>
 
 
                 <div class="artwork-spec">
-                    <span>Medium</span>
-                    <span>Photography</span>
+
+                    <span>
+                        Medium
+                    </span>
+
+                    <span>
+                        Photography
+                    </span>
+
                 </div>
 
 
                 <div class="artwork-spec">
-                    <span>Collection</span>
-                    <span>Summertide</span>
+
+                    <span>
+                        Collection
+                    </span>
+
+                    <span>
+                        Summertide
+                    </span>
+
                 </div>
 
 
                 <div class="artwork-spec">
-                    <span>Work N°</span>
+
+                    <span>
+                        Work N°
+                    </span>
+
                     <span id="artworkNumber"></span>
+
                 </div>
 
 
@@ -506,7 +550,9 @@
 
 
 
-        <!-- DIGITAL FILE & PRINTING -->
+        <!-- =========================
+             DIGITAL FILE & PRINTING
+        ========================== -->
 
         <div class="artwork-accordion">
 
@@ -527,24 +573,46 @@
             </button>
 
 
+
             <div class="accordion-content">
 
 
                 <div class="artwork-spec">
-                    <span>File Format</span>
-                    <span>PDF</span>
+
+                    <span>
+                        File Format
+                    </span>
+
+                    <span>
+                        PDF
+                    </span>
+
                 </div>
 
 
                 <div class="artwork-spec">
-                    <span>Aspect Ratio</span>
-                    <span>2:3</span>
+
+                    <span>
+                        Aspect Ratio
+                    </span>
+
+                    <span>
+                        2:3
+                    </span>
+
                 </div>
 
 
                 <div class="artwork-spec">
-                    <span>Delivery</span>
-                    <span>Digital Download</span>
+
+                    <span>
+                        Delivery
+                    </span>
+
+                    <span>
+                        Digital Download
+                    </span>
+
                 </div>
 
 
@@ -562,7 +630,9 @@
 
 
 
-        <!-- PRINTING & DISPLAY -->
+        <!-- =========================
+             PRINTING & DISPLAY
+        ========================== -->
 
         <div class="artwork-accordion">
 
@@ -581,6 +651,7 @@
                 </span>
 
             </button>
+
 
 
             <div class="accordion-content">
@@ -674,6 +745,8 @@
      JAVASCRIPT
 ========================== -->
 
+<script src="script.js?v=2"></script>
+
 <script src="summertide.js?v=6"></script>
 
 <script src="cart.js?v=4"></script>
@@ -685,12 +758,17 @@
 
 
 
+<!-- =========================
+     SUMMERTIDE INTRO ANIMATION
+========================== -->
+
 <script>
 
 const summertideIntro =
     document.getElementById(
         "summertideIntro"
     );
+
 
 const summertideIntroImage =
     document.querySelector(
@@ -708,48 +786,50 @@ if (
     );
 
 
-    /*
-       Give the page a moment to render
-       before beginning the entrance.
-    */
-
     window.addEventListener(
         "load",
         function () {
+
+
+            /* =========================
+               COVER ENTERS
+            ========================= */
 
             window.setTimeout(
                 function () {
 
                     summertideIntro
                         .classList
-                        .add("is-visible");
+                        .add(
+                            "is-visible"
+                        );
 
                 },
                 250
             );
 
 
-            /*
-               Keep the cover visible,
-               then begin the exit.
-            */
+            /* =========================
+               COVER EXITS
+            ========================= */
 
             window.setTimeout(
                 function () {
 
                     summertideIntro
                         .classList
-                        .add("is-leaving");
+                        .add(
+                            "is-leaving"
+                        );
 
                 },
                 3500
             );
 
 
-            /*
-               Remove the intro completely
-               after the fade has finished.
-            */
+            /* =========================
+               INTRO REMOVED
+            ========================= */
 
             window.setTimeout(
                 function () {
@@ -760,11 +840,13 @@ if (
                             "summertide-intro-active"
                         );
 
+
                     summertideIntro.remove();
 
                 },
                 5400
             );
+
 
         }
     );
@@ -772,6 +854,7 @@ if (
 }
 
 </script>
+
 
 </body>
 
