@@ -97,21 +97,19 @@ patina: {
             protectShape:
                 "polygon(16.8% 18.8%, 82.8% 18.8%, 82.8% 77.6%, 16.8% 77.6%)"
         },
-
         {
             src: "images/patina mock room.jpg",
             alt: "Pátina mock room 1",
 
             protectShape:
-                "polygon(42.2% 18.8%, 66.4% 18.8%, 66.4% 44.2%, 42.2% 44.2%)"
+                "polygon(41.5% 19.0%, 74.8% 19.0%, 74.8% 50.0%, 41.5% 50.0%)"
         },
-
         {
             src: "images/patina mock room 2.JPG",
             alt: "Pátina mock room 2",
 
             protectShape:
-                "polygon(49.2% 13.7%, 67.9% 13.7%, 67.9% 39.4%, 49.2% 39.4%)"
+                "polygon(56.8% 21.8%, 83.2% 21.8%, 83.2% 50.2%, 56.8% 50.2%)"
         }
     ]
 },
