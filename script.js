@@ -79,5 +79,46 @@ document.addEventListener("keydown", (event) => {
         sideMenu.classList.remove("open");
 
     }
+    
+    
+    
+    /* =========================
+   BLOCK RIGHT-CLICK AND DRAGGING
+========================= */
+
+const protectedArtwork =
+    ".protected-home-image, " +
+    ".protected-collection-image, " +
+    ".protected-lightbox-image";
+
+document.addEventListener(
+    "contextmenu",
+    function (event) {
+
+        if (
+            event.target.closest(
+                protectedArtwork
+            )
+        ) {
+            event.preventDefault();
+        }
+
+    }
+);
+
+document.addEventListener(
+    "dragstart",
+    function (event) {
+
+        if (
+            event.target.closest(
+                protectedArtwork
+            )
+        ) {
+            event.preventDefault();
+        }
+
+    }
+);
 
 });
