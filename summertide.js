@@ -41,7 +41,7 @@ amber: {
 },
 
 
-    peridot: {
+peridot: {
     name: "Peridot Afloat",
     product: "peridot-afloat",
     price: "19.99",
@@ -65,7 +65,7 @@ amber: {
             alt: "Peridot mock room 1",
 
             protectShape:
-                "polygon(40.8% 15.9%, 79.2% 15.9%, 79.2% 43.9%, 40.8% 43.9%)"
+                "polygon(48.4% 17.7%, 80.4% 17.7%, 80.4% 45.5%, 48.4% 45.5%)"
         },
 
         {
@@ -73,7 +73,7 @@ amber: {
             alt: "Peridot mock room 2",
 
             protectShape:
-                "polygon(33.7% 14.9%, 65.8% 14.9%, 65.8% 37.6%, 33.7% 37.6%)"
+                "polygon(52.0% 14.1%, 81.6% 14.1%, 81.6% 40.6%, 52.0% 40.6%)"
         }
     ]
 },
