@@ -442,30 +442,20 @@ function updateSlide() {
     const slide =
         activeGallery[activeIndex];
 
-
     if (!slide) {
         return;
     }
 
 
-    /*
-       Load the current gallery image.
-    */
-
     lightboxImage.style.backgroundImage =
         `url("${slide.src}")`;
 
 
-    /*
-       Apply the custom protection area.
-
-       Amber Breeze currently has individual
-       polygons for all three gallery slides.
-
-       Artworks without protectShape continue
-       using protection across the full image
-       until their coordinates are added.
-    */
+    lightboxImage.style.setProperty(
+        "--protect-shape",
+        slide.protectShape ||
+        "polygon(0 0, 0 0, 0 0, 0 0)"
+    );
 
 
     lightboxImage.setAttribute(
@@ -476,7 +466,6 @@ function updateSlide() {
 
     lightboxCounter.textContent =
         `${activeIndex + 1}/${activeGallery.length}`;
-
 }
 
 
