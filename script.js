@@ -1,27 +1,42 @@
 const menuButton =
-    document.getElementById("menuButton");
+    document.getElementById(
+        "menuButton"
+    );
 
 const closeMenu =
-    document.getElementById("closeMenu");
+    document.getElementById(
+        "closeMenu"
+    );
 
 const sideMenu =
-    document.getElementById("sideMenu");
+    document.getElementById(
+        "sideMenu"
+    );
 
 const collectionsButton =
-    document.getElementById("collectionsButton");
+    document.getElementById(
+        "collectionsButton"
+    );
 
 const collectionsMenu =
-    document.getElementById("collectionsMenu");
+    document.getElementById(
+        "collectionsMenu"
+    );
 
 const contactMenuLink =
-    document.getElementById("contactMenuLink");
+    document.getElementById(
+        "contactMenuLink"
+    );
 
 
 /* =========================
    SIDE MENU
 ========================= */
 
-if (menuButton && sideMenu) {
+if (
+    menuButton &&
+    sideMenu
+) {
 
     menuButton.addEventListener(
         "click",
@@ -37,7 +52,10 @@ if (menuButton && sideMenu) {
 }
 
 
-if (closeMenu && sideMenu) {
+if (
+    closeMenu &&
+    sideMenu
+) {
 
     closeMenu.addEventListener(
         "click",
@@ -62,9 +80,11 @@ if (
         "click",
         () => {
 
-            collectionsMenu.classList.toggle(
-                "open"
-            );
+            collectionsMenu
+                .classList
+                .toggle(
+                    "open"
+                );
 
         }
     );
@@ -102,69 +122,14 @@ document.addEventListener(
     (event) => {
 
         if (
-            event.key === "Escape" &&
+            event.key ===
+                "Escape" &&
             sideMenu
         ) {
 
             sideMenu.classList.remove(
                 "open"
             );
-
-        }
-
-    }
-);
-
-
-/* =========================
-   PROTECTED ARTWORK
-========================= */
-
-const protectedArtwork =
-    ".protected-home-image, " +
-    ".protected-collection-image, " +
-    ".protected-lightbox-image";
-
-
-/* =========================
-   BLOCK RIGHT-CLICK
-========================= */
-
-document.addEventListener(
-    "contextmenu",
-    function (event) {
-
-        if (
-            event.target instanceof Element &&
-            event.target.closest(
-                protectedArtwork
-            )
-        ) {
-
-            event.preventDefault();
-
-        }
-
-    }
-);
-
-
-/* =========================
-   BLOCK DRAGGING
-========================= */
-
-document.addEventListener(
-    "dragstart",
-    function (event) {
-
-        if (
-            event.target instanceof Element &&
-            event.target.closest(
-                protectedArtwork
-            )
-        ) {
-
-            event.preventDefault();
 
         }
 
