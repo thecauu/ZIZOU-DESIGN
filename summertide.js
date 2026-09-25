@@ -28,15 +28,14 @@ amber: {
             alt: "Amber mock room 1",
 
             protectShape:
-                "polygon(34.0% 17.4%, 69.6% 17.4%, 69.6% 50.5%, 34.0% 50.5%)"
-        },
+                "polygon(34.8% 17.4%, 69.6% 17.4%, 69.6% 50.5%, 34.8% 50.5%)"        },
 
         {
             src: "images/amber mock room 2.JPG",
             alt: "Amber mock room 2",
 
             protectShape:
-                "polygon(38.1% 17.9%, 69.2% 17.9%, 69.2% 46.2%, 38.1% 46.2%)"
+                "polygon(38.7% 17.9%, 69.2% 17.9%, 69.2% 46.2%, 38.7% 46.2%)"
         }
     ]
 },
