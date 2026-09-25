@@ -21,6 +21,7 @@
    17. MOTION / ACCESSIBILITY
 
    NOTE:
+
    Interaction-based image protection belongs in protection.js:
    - Right-click protection
    - Drag protection
@@ -29,16 +30,15 @@
    - Selection protection
    - Print protection
 
-   Visual artwork protection belongs here in STYLE.CSS:
-   - Fine interference texture
-   - High-frequency crosshatch
-   - Micro-dot texture
-   - Resampling / compression interference
+   Visual artwork protection belongs here in STYLE.CSS.
 
-   Protected artwork surfaces:
-   - Homepage artwork
-   - Summertide collection artwork
-   - Artwork lightbox / gallery
+   HOMEPAGE + COLLECTION:
+   The texture covers the full artwork preview.
+
+   LIGHTBOX / GALLERY:
+   The texture does NOT cover the full mockup image.
+   JavaScript creates .lightbox-protection-overlay and positions
+   it only over the actual artwork using protectBox coordinates.
 ========================================================= */
 
 
@@ -74,20 +74,48 @@ body {
    02. ARTWORK PROTECTION — VARIABLES
 ========================================================= */
 
+/*
+   TEST MODE:
+
+   These values are intentionally strong so the protection
+   texture is easy to see while positioning the artwork masks.
+
+   Later, reduce them for the final website.
+*/
+
 :root {
-    --protection-light: rgba(255, 255, 255, 0.35);
-    --protection-dark: rgba(0, 0, 0, 0.30);
-    --protection-dot: rgba(255, 255, 255, 0.40);
+    --protection-light:
+        rgba(
+            255,
+            255,
+            255,
+            0.35
+        );
+
+    --protection-dark:
+        rgba(
+            0,
+            0,
+            0,
+            0.30
+        );
+
+    --protection-dot:
+        rgba(
+            255,
+            255,
+            255,
+            0.40
+        );
 }
 
 
 /* =========================================================
-   02. ARTWORK PROTECTION — PROTECTED SURFACES
+   02. ARTWORK PROTECTION — HOMEPAGE / COLLECTION SURFACES
 ========================================================= */
 
 .protected-home-image,
-.protected-collection-image,
-.protected-lightbox-image {
+.protected-collection-image {
     position: relative;
 
     isolation: isolate;
@@ -97,12 +125,11 @@ body {
 
 
 /* =========================================================
-   02. ARTWORK PROTECTION — CROSSHATCH LAYER
+   02. ARTWORK PROTECTION — HOMEPAGE / COLLECTION CROSSHATCH
 ========================================================= */
 
 .protected-home-image::before,
-.protected-collection-image::before,
-.protected-lightbox-image::before {
+.protected-collection-image::before {
     content: "";
 
     position: absolute;
@@ -153,12 +180,11 @@ body {
 
 
 /* =========================================================
-   02. ARTWORK PROTECTION — MICRO-DOT LAYER
+   02. ARTWORK PROTECTION — HOMEPAGE / COLLECTION MICRO-DOTS
 ========================================================= */
 
 .protected-home-image::after,
-.protected-collection-image::after,
-.protected-lightbox-image::after {
+.protected-collection-image::after {
     content: "";
 
     position: absolute;
@@ -193,46 +219,125 @@ body {
 }
 
 
-/* ==========================================
-   LIGHTBOX PROTECTION OVERLAY
-========================================== */
+/* =========================================================
+   02. ARTWORK PROTECTION — LIGHTBOX IMAGE CONTAINER
+========================================================= */
+
+/*
+   IMPORTANT:
+
+   There are intentionally NO ::before or ::after protection
+   layers on .protected-lightbox-image.
+
+   The old full-image lightbox filter has been removed.
+
+   Only .lightbox-protection-overlay creates protection
+   inside the gallery.
+*/
 
 #lightboxImage {
     position: relative;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+
     overflow: hidden;
+
+    isolation: isolate;
+
+    background-repeat:
+        no-repeat;
+
+    background-position:
+        center;
+
+    background-size:
+        contain;
 }
+
+
+/* =========================================================
+   02. ARTWORK PROTECTION — TARGETED LIGHTBOX OVERLAY
+========================================================= */
+
+/*
+   JavaScript dynamically sets:
+
+   left
+   top
+   width
+   height
+
+   based on the protectBox coordinates belonging to
+   the current gallery slide.
+
+   Therefore this texture exists only over the artwork itself.
+*/
 
 .lightbox-protection-overlay {
     position: absolute;
-    display: none;
-    pointer-events: none;
-    z-index: 2;
-    opacity: 0.30;
 
-    /*
-       Replace this background with your own
-       protection effect if you already have one.
-    */
-    background-image:
+    display: none;
+
+    pointer-events: none;
+
+    z-index: 4;
+
+    overflow: hidden;
+
+    background:
+
         repeating-linear-gradient(
-            0deg,
-            rgba(255,255,255,0.26) 0px,
-            rgba(255,255,255,0.26) 1px,
-            transparent 1px,
-            transparent 10px
+            17deg,
+
+            var(--protection-light)
+            0,
+
+            var(--protection-light)
+            0.7px,
+
+            transparent
+            0.7px,
+
+            transparent
+            3px
         ),
+
         repeating-linear-gradient(
-            90deg,
-            rgba(255,255,255,0.26) 0px,
-            rgba(255,255,255,0.26) 1px,
-            transparent 1px,
-            transparent 10px
+            107deg,
+
+            var(--protection-dark)
+            0,
+
+            var(--protection-dark)
+            0.7px,
+
+            transparent
+            0.7px,
+
+            transparent
+            3.4px
+        ),
+
+        radial-gradient(
+            circle,
+
+            var(--protection-dot)
+            0.45px,
+
+            transparent
+            0.6px
         );
 
-    mix-blend-mode: screen;
+    background-size:
+        auto,
+        auto,
+        3.1px 3.1px;
+
+    background-position:
+        0 0,
+        0 0,
+        0.35px 0.65px;
+
+    mix-blend-mode:
+        soft-light;
 }
 
 
@@ -540,11 +645,14 @@ body {
     width: 100%;
     height: 100%;
 
-    background-size: cover;
+    background-size:
+        cover;
 
-    background-position: center;
+    background-position:
+        center;
 
-    background-repeat: no-repeat;
+    background-repeat:
+        no-repeat;
 }
 
 .artwork img {
@@ -1520,6 +1628,8 @@ body.sea-intro-active {
 }
 
 .protected-lightbox-image {
+    position: relative;
+
     display: block;
 
     width: 100%;
@@ -1528,19 +1638,27 @@ body.sea-intro-active {
 
     margin: 0;
 
+    overflow: hidden;
+
+    isolation: isolate;
+
     background-color:
         #f3f1ed;
 
-    background-size: contain;
+    background-size:
+        contain;
 
-    background-position: center;
+    background-position:
+        center;
 
-    background-repeat: no-repeat;
+    background-repeat:
+        no-repeat;
 
     transform:
         scale(1);
 
-    transform-origin: center;
+    transform-origin:
+        center;
 
     transition:
         opacity 0.8s ease,
@@ -3549,519 +3667,3 @@ span:first-child {
     }
 
     .bag-button {
-        font-size: 30px;
-    }
-
-
-    /* =====================================================
-       HOMEPAGE COLLECTION BUTTON
-    ===================================================== */
-
-    .collection-button {
-        width:
-            min(
-                420px,
-                55%
-            );
-
-        padding:
-            18px
-            20px;
-
-        font-size: 12px;
-
-        letter-spacing: 3px;
-    }
-
-
-    /* =====================================================
-       HOMEPAGE COLLECTION
-    ===================================================== */
-
-    .collection {
-        padding:
-            60px
-            6%
-            90px;
-    }
-
-    .collection-brand,
-    .collection h1,
-    .collection-grid,
-    .view-more {
-        width: 100%;
-
-        max-width: 900px;
-
-        margin-left: auto;
-
-        margin-right: auto;
-    }
-
-    .collection-brand {
-        font-size: 12px;
-
-        letter-spacing: 4px;
-    }
-
-    .collection h1 {
-        margin-bottom: 42px;
-
-        font-size: 48px;
-    }
-
-    .collection-grid {
-        gap:
-            36px
-            18px;
-    }
-
-    .artwork h2 {
-        font-size: 16px;
-    }
-
-    .artwork p {
-        font-size: 15px;
-    }
-
-    .view-more {
-        margin-top: 50px;
-    }
-
-
-    /* =====================================================
-       SIDE MENU
-    ===================================================== */
-
-    .side-menu {
-        width: 360px;
-
-        padding: 32px;
-    }
-
-    .menu-nav {
-        margin-top: 62px;
-
-        gap: 24px;
-    }
-
-    .menu-nav > a,
-    .dropdown-button {
-        font-size: 27px;
-    }
-
-    .dropdown-content a {
-        font-size: 14px;
-    }
-
-
-    /* =====================================================
-       COLLECTION PAGE NAVIGATION
-    ===================================================== */
-
-    .collection-page-nav {
-        padding:
-            24px
-            32px;
-    }
-
-    .collection-page-logo {
-        font-size: 23px;
-    }
-
-    .back-link {
-        font-size: 28px;
-    }
-
-
-    /* =====================================================
-       SUMMERTIDE COLLECTION
-    ===================================================== */
-
-    .collection-page {
-        width: 100%;
-
-        max-width: 1000px;
-
-        margin-left: auto;
-
-        margin-right: auto;
-
-        padding:
-            55px
-            5%
-            90px;
-    }
-
-    .collection-page-label {
-        font-size: 11px;
-
-        letter-spacing: 4px;
-    }
-
-    .collection-page h1 {
-        margin-bottom: 45px;
-
-        font-size: 52px;
-    }
-
-    .full-collection-grid {
-        gap:
-            38px
-            18px;
-    }
-
-    .product-title {
-        font-size: 15px;
-    }
-
-    .product-price {
-        font-size: 14px;
-    }
-
-
-    /* =====================================================
-       ARTWORK LIGHTBOX
-    ===================================================== */
-
-    .artwork-viewer {
-        width: 100%;
-
-        max-width: 760px;
-
-        margin-left: auto;
-
-        margin-right: auto;
-    }
-
-    .lightbox-content {
-        max-width: 760px;
-
-        margin-left: auto;
-
-        margin-right: auto;
-    }
-
-    .artwork-product-info {
-        width: 100%;
-
-        max-width: 760px;
-
-        margin-left: auto;
-
-        margin-right: auto;
-
-        padding:
-            28px
-            24px
-            90px;
-    }
-
-    .artwork-product-info h2 {
-        font-size: 21px;
-    }
-
-    .artwork-price {
-        font-size: 16px;
-    }
-
-    .artwork-description {
-        font-size: 15px;
-    }
-
-
-    /* =====================================================
-       ABOUT
-    ===================================================== */
-
-    .about-nav {
-        padding-left: 32px;
-
-        padding-right: 32px;
-    }
-
-    .about-logo {
-        font-size: 22px;
-    }
-
-    .about-back {
-        font-size: 30px;
-    }
-
-    .about-heading {
-        min-height: 115px;
-    }
-
-    .about-heading p {
-        font-size: 13px;
-    }
-
-    .about-image-section {
-        padding:
-            0
-            5%;
-    }
-
-    .about-founder-image {
-        max-width: 900px;
-
-        max-height: 650px;
-
-        margin-left: auto;
-
-        margin-right: auto;
-    }
-
-    .about-story {
-        max-width: 900px;
-
-        padding:
-            60px
-            5%
-            90px;
-    }
-
-    .about-role {
-        font-size:
-            13px !important;
-    }
-
-    .about-story p {
-        max-width: 760px;
-
-        font-size: 18px;
-
-        line-height: 1.35;
-    }
-
-
-    /* =====================================================
-       LEGAL
-    ===================================================== */
-
-    .legal-nav {
-        padding-left: 32px;
-
-        padding-right: 32px;
-    }
-
-    .legal-logo {
-        font-size: 21px;
-    }
-
-    .legal-back {
-        font-size: 28px;
-    }
-
-    .legal-page {
-        width:
-            min(
-                88%,
-                760px
-            );
-
-        padding:
-            60px
-            0
-            90px;
-    }
-
-    .legal-page h1 {
-        font-size: 48px;
-    }
-
-    .legal-label {
-        font-size: 10px;
-    }
-
-    .legal-section {
-        margin-bottom: 42px;
-    }
-
-    .legal-section h2 {
-        font-size: 11px;
-    }
-
-    .legal-section p {
-        font-size: 13px;
-
-        line-height: 1.65;
-    }
-
-
-    /* =====================================================
-       CONTACT
-    ===================================================== */
-
-    .contact-page-support-only {
-        width:
-            min(
-                88%,
-                720px
-            );
-
-        padding:
-            50px
-            0
-            70px;
-    }
-
-    .live-support-label {
-        font-size: 9px;
-    }
-
-    .live-support h2 {
-        max-width: 620px;
-
-        font-size: 48px;
-    }
-
-    .live-support-description {
-        max-width: 560px;
-
-        font-size: 13px;
-    }
-
-    .live-chat-button {
-        padding:
-            18px
-            18px;
-
-        font-size: 10px;
-    }
-
-
-    /* =====================================================
-       MINIMIZED CHAT
-    ===================================================== */
-
-    .support-dock {
-        width:
-            min(
-                calc(
-                    100%
-                    -
-                    40px
-                ),
-                460px
-            );
-
-        height: 60px;
-
-        padding:
-            0
-            22px;
-    }
-
-    .support-dock-text {
-        font-size: 10px;
-    }
-
-
-    /* =====================================================
-       SEA OF SEES — COMING SOON
-    ===================================================== */
-
-    .coming-soon-page {
-        min-height: 115svh;
-
-        padding:
-            60px
-            24px
-            90px;
-    }
-
-    .coming-soon-content {
-        max-width: 420px;
-    }
-
-    .coming-soon-content h1 {
-        font-size: 34px;
-    }
-
-    .coming-soon-status {
-        margin-top: 14px;
-
-        font-size: 9px;
-
-        letter-spacing: 4px;
-    }
-
-
-    /* =====================================================
-       FOOTER
-    ===================================================== */
-
-    .site-footer {
-        padding:
-            32px
-            5%
-            36px;
-    }
-
-    .site-footer > p {
-        font-size: 10px;
-    }
-
-    .footer-links {
-        gap: 7px;
-    }
-
-    .footer-links a,
-    .footer-links span {
-        font-size: 10px;
-    }
-
-
-    /* =====================================================
-       SHOPPING BAG
-    ===================================================== */
-
-    .shopping-bag {
-        width: 380px;
-
-        padding: 26px;
-    }
-
-    .bag-item-name {
-        font-size: 17px;
-    }
-
-}
-
-
-/* =========================================================
-   17. INTRO TRANSITION TIMING
-========================================================= */
-
-.summertide-intro,
-.summertide-intro-image,
-.sea-intro,
-.sea-intro-image {
-    transition-duration:
-        2s !important;
-}
-
-
-/* =========================================================
-   17. REDUCED MOTION ACCESSIBILITY
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    .transition-artwork,
-    .protected-lightbox-image,
-    #lightboxTitle,
-    .lightbox-counter,
-    .lightbox-arrow,
-    .lightbox-close,
-    .live-support,
-    .support-dock {
-        transition:
-            none !important;
-
-        animation:
-            none !important;
-    }
-
-}
