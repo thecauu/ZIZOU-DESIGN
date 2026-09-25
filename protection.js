@@ -12,6 +12,7 @@
    08. Desktop trackpad zoom protection
    09. Keyboard zoom protection
    10. Print / Save-as-PDF protection
+   11. Artwork protection
 ========================================================= */
 
 
@@ -450,5 +451,126 @@
         }
     );
 
+
+/* =========================================================
+   11. ZIZOU DESIGN
+   ARTWORK PROTECTION
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* ---------------------------------------------------------
+     SUMMERTIDE ARTWORKS
+     --------------------------------------------------------- */
+
+  const protectedArtworks = [
+    "amber-breeze",
+    "peridot-float",
+    "patina-del-mar",
+    "pátina-del-mar",
+    "sage-quietude",
+    "eter-do-luar",
+    "éter-do-luar",
+    "oneiric-glow"
+  ];
+
+
+  /* ---------------------------------------------------------
+     CHECK IF IMAGE IS A PROTECTED ARTWORK
+     --------------------------------------------------------- */
+
+  function isProtectedArtwork(img) {
+
+    const src =
+      (
+        img.getAttribute("src") ||
+        img.getAttribute("data-src") ||
+        img.getAttribute("data-full") ||
+        ""
+      ).toLowerCase();
+
+    const alt = (img.getAttribute("alt") || "")
+      .toLowerCase()
+      .replace(/\s+/g, "-");
+
+    return protectedArtworks.some(name =>
+      src.includes(name) || alt.includes(name)
+    );
+  }
+
+
+  /* ---------------------------------------------------------
+     CREATE PROTECTION LAYER
+     --------------------------------------------------------- */
+
+  function protectImage(img) {
+
+    /* Prevent duplicate protection */
+    if (img.dataset.zizouProtected === "true") return;
+
+    if (!isProtectedArtwork(img)) return;
+
+    img.dataset.zizouProtected = "true";
+
+    /*
+       Add protection class directly to image.
+       Its parent becomes the positioning container.
+    */
+
+    const container = img.parentElement;
+
+    if (!container) return;
+
+    container.classList.add("zizou-art-protected");
+
+
+    /* -------------------------------------------------------
+       CREATE TEXTURE OVERLAY
+       ------------------------------------------------------- */
+
+    const texture = document.createElement("span");
+
+    texture.className = "zizou-art-texture";
+    texture.setAttribute("aria-hidden", "true");
+
+    container.appendChild(texture);
+  }
+
+
+  /* ---------------------------------------------------------
+     SCAN PAGE
+     --------------------------------------------------------- */
+
+  function scanForArtwork() {
+
+    document.querySelectorAll("img").forEach(img => {
+      protectImage(img);
+    });
+
+  }
+
+
+  /* Initial scan */
+  scanForArtwork();
+
+
+  /* ---------------------------------------------------------
+     WATCH FOR GALLERY / LIGHTBOX IMAGES
+
+     This catches artwork added after the page loads,
+     such as when somebody clicks an artwork and the
+     gallery opens dynamically.
+     --------------------------------------------------------- */
+
+  const observer = new MutationObserver(() => {
+    scanForArtwork();
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+
+});
 
 })();
