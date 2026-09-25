@@ -121,4 +121,52 @@ document.addEventListener(
     }
 );
 
+
+/* =========================================================
+   ZIZOU DESIGN — BLOCK ARTWORK PINCH ZOOM
+========================================================= */
+
+const protectedArtSelector =
+    ".protected-home-image, " +
+    ".protected-collection-image, " +
+    ".protected-lightbox-image";
+
+
+document.addEventListener(
+    "gesturestart",
+    function (event) {
+
+        if (
+            event.target.closest(
+                protectedArtSelector
+            )
+        ) {
+            event.preventDefault();
+        }
+
+    },
+    {
+        passive: false
+    }
+);
+
+
+document.addEventListener(
+    "gesturechange",
+    function (event) {
+
+        if (
+            event.target.closest(
+                protectedArtSelector
+            )
+        ) {
+            event.preventDefault();
+        }
+
+    },
+    {
+        passive: false
+    }
+);
+
 });
