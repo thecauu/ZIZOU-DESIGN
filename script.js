@@ -23,27 +23,51 @@ const contactMenuLink =
 
 if (menuButton && sideMenu) {
 
-    menuButton.addEventListener("click", () => {
-        sideMenu.classList.add("open");
-    });
+    menuButton.addEventListener(
+        "click",
+        () => {
+
+            sideMenu.classList.add(
+                "open"
+            );
+
+        }
+    );
 
 }
 
 
 if (closeMenu && sideMenu) {
 
-    closeMenu.addEventListener("click", () => {
-        sideMenu.classList.remove("open");
-    });
+    closeMenu.addEventListener(
+        "click",
+        () => {
+
+            sideMenu.classList.remove(
+                "open"
+            );
+
+        }
+    );
 
 }
 
 
-if (collectionsButton && collectionsMenu) {
+if (
+    collectionsButton &&
+    collectionsMenu
+) {
 
-    collectionsButton.addEventListener("click", () => {
-        collectionsMenu.classList.toggle("open");
-    });
+    collectionsButton.addEventListener(
+        "click",
+        () => {
+
+            collectionsMenu.classList.toggle(
+                "open"
+            );
+
+        }
+    );
 
 }
 
@@ -54,13 +78,17 @@ if (collectionsButton && collectionsMenu) {
 
 if (contactMenuLink) {
 
-    contactMenuLink.addEventListener("click", (event) => {
+    contactMenuLink.addEventListener(
+        "click",
+        (event) => {
 
-        event.preventDefault();
+            event.preventDefault();
 
-        window.location.href = "contact.html";
+            window.location.href =
+                "contact.html";
 
-    });
+        }
+    );
 
 }
 
@@ -69,21 +97,27 @@ if (contactMenuLink) {
    ESCAPE KEY
 ========================= */
 
-document.addEventListener("keydown", (event) => {
+document.addEventListener(
+    "keydown",
+    (event) => {
 
-    if (
-        event.key === "Escape" &&
-        sideMenu
-    ) {
+        if (
+            event.key === "Escape" &&
+            sideMenu
+        ) {
 
-        sideMenu.classList.remove("open");
+            sideMenu.classList.remove(
+                "open"
+            );
+
+        }
 
     }
-    
-    
-    
-    /* =========================
-   BLOCK RIGHT-CLICK AND DRAGGING
+);
+
+
+/* =========================
+   PROTECTED ARTWORK
 ========================= */
 
 const protectedArtwork =
@@ -91,120 +125,48 @@ const protectedArtwork =
     ".protected-collection-image, " +
     ".protected-lightbox-image";
 
+
+/* =========================
+   BLOCK RIGHT-CLICK
+========================= */
+
 document.addEventListener(
     "contextmenu",
     function (event) {
 
         if (
+            event.target instanceof Element &&
             event.target.closest(
                 protectedArtwork
             )
         ) {
+
             event.preventDefault();
+
         }
 
     }
 );
+
+
+/* =========================
+   BLOCK DRAGGING
+========================= */
 
 document.addEventListener(
     "dragstart",
     function (event) {
 
         if (
+            event.target instanceof Element &&
             event.target.closest(
                 protectedArtwork
             )
         ) {
+
             event.preventDefault();
+
         }
 
-    }
-);
-
-
-/* =========================================================
-   ZIZOU DESIGN — BLOCK ARTWORK PINCH ZOOM
-========================================================= */
-
-const protectedArtworkSelector =
-    ".protected-home-image, " +
-    ".protected-collection-image, " +
-    ".protected-lightbox-image";
-
-document.addEventListener(
-    "touchstart",
-    function (event) {
-
-        if (
-            event.touches.length > 1 &&
-            event.target.closest(
-                protectedArtworkSelector
-            )
-        ) {
-            event.preventDefault();
-        }
-
-    },
-    {
-        passive: false,
-        capture: true
-    }
-);
-
-document.addEventListener(
-    "touchmove",
-    function (event) {
-
-        if (
-            event.touches.length > 1 &&
-            event.target.closest(
-                protectedArtworkSelector
-            )
-        ) {
-            event.preventDefault();
-        }
-
-    },
-    {
-        passive: false,
-        capture: true
-    }
-);
-
-document.addEventListener(
-    "gesturestart",
-    function (event) {
-
-        if (
-            event.target.closest(
-                protectedArtworkSelector
-            )
-        ) {
-            event.preventDefault();
-        }
-
-    },
-    {
-        passive: false,
-        capture: true
-    }
-);
-
-document.addEventListener(
-    "gesturechange",
-    function (event) {
-
-        if (
-            event.target.closest(
-                protectedArtworkSelector
-            )
-        ) {
-            event.preventDefault();
-        }
-
-    },
-    {
-        passive: false,
-        capture: true
     }
 );
