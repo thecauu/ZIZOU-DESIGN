@@ -128,7 +128,7 @@ patina: {
         gallery: [
             {
                 src: "images/sage portrait.JPG",
-                alt: "Sage portrait"
+                alt: "Sage portrait",
                 
                 protectShape:
                 "polygon(19.0% 19.2%, 81.0% 19.2%, 81.0% 76.4%, 19.0% 76.4%)"
@@ -160,7 +160,7 @@ patina: {
         gallery: [
             {
                 src: "images/eter portrait.JPG",
-                alt: "Éter portrait"
+                alt: "Éter portrait",
                 
                 protectShape:
                 "polygon(19.0% 19.2%, 81.0% 19.2%, 81.0% 76.4%, 19.0% 76.4%)"
@@ -192,7 +192,7 @@ patina: {
         gallery: [
             {
                 src: "images/oneiric portrait.JPG",
-                alt: "Oneiric portrait"
+                alt: "Oneiric portrait",
                 
                 protectShape:
                 "polygon(19.0% 19.2%, 81.0% 19.2%, 81.0% 76.4%, 19.0% 76.4%)"
