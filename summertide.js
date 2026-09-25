@@ -79,7 +79,7 @@ peridot: {
 },
 
 
-    patina: {
+patina: {
     name: "Pátina del Mar",
     product: "patina-del-mar",
     price: "19.99",
@@ -94,25 +94,34 @@ peridot: {
             src: "images/patina portrait.JPG",
             alt: "Pátina portrait",
 
-            protectShape:
-                "polygon(18.9% 19.2%, 81.1% 19.2%, 81.1% 76.4%, 18.9% 76.4%)"
+            protectBox: {
+                x: 16.8,
+                y: 18.8,
+                width: 66.0,
+                height: 58.8
+            }
         },
-
         {
             src: "images/patina mock room.jpg",
             alt: "Pátina mock room 1",
 
-            protectShape:
-
-                "polygon(60.8% 26.5%, 78.3% 26.5%, 78.3% 43.1%, 60.8% 43.1%)"
+            protectBox: {
+                x: 42.2,
+                y: 18.8,
+                width: 24.2,
+                height: 25.4
+            }
         },
-
         {
             src: "images/patina mock room 2.JPG",
             alt: "Pátina mock room 2",
 
-            protectShape:
-                "polygon(56.7% 19.0%, 74.2% 19.0%, 74.2% 38.7%, 56.7% 38.7%)"
+            protectBox: {
+                x: 49.2,
+                y: 13.7,
+                width: 18.7,
+                height: 25.7
+            }
         }
     ]
 },
