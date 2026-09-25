@@ -1,5 +1,30 @@
 /* =========================================================
-   ZIZOU DESIGN — GLOBAL RESET
+   ZIZOU DESIGN
+   STYLE.CSS
+
+   01. GLOBAL
+   02. ARTWORK PROTECTION
+   03. HOMEPAGE
+   04. SIDE MENU
+   05. COLLECTION PAGE — SHARED
+   06. SUMMERTIDE
+   07. SEA OF SEES
+   08. ARTWORK LIGHTBOX
+   09. ARTWORK TRANSITIONS
+   10. ABOUT
+   11. LEGAL
+   12. CONTACT
+   13. FOOTER
+   14. SHOPPING BAG
+   15. MOBILE
+   16. TABLET / DESKTOP
+   17. MOTION / ACCESSIBILITY
+   18. PRINT PROTECTION
+========================================================= */
+
+
+/* =========================================================
+   01. GLOBAL RESET
 ========================================================= */
 
 * {
@@ -15,8 +40,10 @@ html {
 body {
     margin: 0;
     min-height: 100%;
+
     background: #ffffff;
     color: #111111;
+
     font-family:
         Arial,
         Helvetica,
@@ -25,7 +52,21 @@ body {
 
 
 /* =========================================================
-   HOMEPAGE — FULL SCREEN HERO
+   02. ARTWORK PROTECTION
+========================================================= */
+
+.protected-home-image,
+.protected-collection-image,
+.protected-lightbox-image {
+    -webkit-touch-callout: none !important;
+
+    -webkit-user-select: none !important;
+    user-select: none !important;
+}
+
+
+/* =========================================================
+   03. HOMEPAGE — HERO
 ========================================================= */
 
 .hero {
@@ -77,7 +118,7 @@ body {
 
 
 /* =========================================================
-   HOMEPAGE — NAVIGATION
+   03. HOMEPAGE — NAVIGATION
 ========================================================= */
 
 .navbar {
@@ -175,19 +216,19 @@ body {
 }
 
 .bag-button {
-    font-size: 35px;
-
     display: flex;
 
     align-items: center;
     justify-content: center;
 
     gap: 5px;
+
+    font-size: 35px;
 }
 
 
 /* =========================================================
-   HOMEPAGE — VIEW COLLECTION BUTTON
+   03. HOMEPAGE — VIEW COLLECTION BUTTON
 ========================================================= */
 
 .collection-button {
@@ -245,7 +286,7 @@ body {
 
 
 /* =========================================================
-   HOMEPAGE — COLLECTION
+   03. HOMEPAGE — COLLECTION
 ========================================================= */
 
 .collection {
@@ -260,14 +301,16 @@ body {
 }
 
 .collection-brand {
+    margin-bottom: 20px;
+
     font-size: 13px;
 
     letter-spacing: 5px;
-
-    margin-bottom: 20px;
 }
 
 .collection h1 {
+    margin-bottom: 50px;
+
     font-family:
         "Times New Roman",
         Times,
@@ -281,8 +324,6 @@ body {
         );
 
     font-weight: 400;
-
-    margin-bottom: 50px;
 }
 
 .collection-grid {
@@ -335,10 +376,6 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    user-select: none;
 }
 
 .artwork img {
@@ -367,7 +404,7 @@ body {
 
 
 /* =========================================================
-   HOMEPAGE — VIEW FULL COLLECTION
+   03. HOMEPAGE — VIEW FULL COLLECTION
 ========================================================= */
 
 .view-more {
@@ -408,7 +445,7 @@ body {
 
 
 /* =========================================================
-   SIDE MENU
+   04. SIDE MENU
 ========================================================= */
 
 .side-menu {
@@ -485,7 +522,7 @@ body {
 
 
 /* =========================================================
-   SIDE MENU — COLLECTIONS
+   04. SIDE MENU — COLLECTION DROPDOWN
 ========================================================= */
 
 .dropdown-button {
@@ -573,7 +610,78 @@ body {
 
 
 /* =========================================================
-   SUMMERTIDE — CINEMATIC INTRO COVER
+   05. COLLECTION PAGE — SHARED NAVIGATION
+========================================================= */
+
+.collection-page-nav {
+    position: relative;
+
+    z-index: 1;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        auto
+        1fr;
+
+    align-items: center;
+
+    padding:
+        28px
+        6%;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.82
+        );
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
+}
+
+.back-link {
+    justify-self: start;
+
+    color: #111111;
+
+    text-decoration: none;
+
+    font-size: 30px;
+}
+
+.collection-page-logo {
+    justify-self: center;
+
+    color: #111111;
+
+    text-decoration: none;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 26px;
+
+    letter-spacing: 1px;
+
+    white-space: nowrap;
+}
+
+.collection-page-spacer {
+    justify-self: end;
+}
+
+
+/* =========================================================
+   06. SUMMERTIDE — CINEMATIC INTRO
 ========================================================= */
 
 body.summertide-intro-active {
@@ -683,7 +791,174 @@ body.summertide-intro-active {
 
 
 /* =========================================================
-   SEA OF SEES — CINEMATIC INTRO COVER
+   06. SUMMERTIDE — PERMANENT BACKGROUND
+========================================================= */
+
+.summertide-background {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100vh;
+    height: 100dvh;
+
+    background:
+        linear-gradient(
+            rgba(
+                255,
+                255,
+                255,
+                0.76
+            ),
+            rgba(
+                255,
+                255,
+                255,
+                0.76
+            )
+        ),
+        url(
+            "images/IMG_2322.jpeg"
+        );
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   06. SUMMERTIDE — COLLECTION PAGE
+========================================================= */
+
+.collection-page {
+    position: relative;
+
+    z-index: 1;
+
+    background: transparent;
+
+    padding:
+        60px
+        6%
+        100px;
+}
+
+.collection-page-label {
+    margin-bottom: 18px;
+
+    font-size: 12px;
+
+    letter-spacing: 5px;
+}
+
+.collection-page h1 {
+    margin-bottom: 55px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            48px,
+            9vw,
+            84px
+        );
+
+    font-weight: 400;
+}
+
+
+/* =========================================================
+   06. SUMMERTIDE — COLLECTION GRID
+========================================================= */
+
+.full-collection-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            1fr
+        );
+
+    gap:
+        42px
+        18px;
+}
+
+.collection-product {
+    width: 100%;
+}
+
+.collection-item {
+    display: block;
+
+    width: 100%;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    text-align: left;
+
+    cursor: pointer;
+}
+
+.protected-collection-image {
+    display: block;
+
+    width: 100%;
+
+    aspect-ratio: 4 / 5;
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+}
+
+.product-info {
+    padding-top: 14px;
+}
+
+.product-title {
+    font-size: 16px;
+
+    font-weight: 400;
+
+    line-height: 1.3;
+}
+
+.product-price {
+    margin-top: 5px;
+
+    font-size: 14px;
+
+    line-height: 1.3;
+}
+
+.collection-product
+.add-to-bag {
+    display: none;
+}
+
+
+/* =========================================================
+   07. SEA OF SEES — CINEMATIC INTRO
 ========================================================= */
 
 body.sea-intro-active {
@@ -723,7 +998,7 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   SEA OF SEES — IPHONE COVER
+   07. SEA OF SEES — IPHONE INTRO COVER
 ========================================================= */
 
 .sea-intro-image {
@@ -771,11 +1046,6 @@ body.sea-intro-active {
     user-select: none;
 }
 
-
-/* =========================================================
-   SEA OF SEES — COVER ENTERS
-========================================================= */
-
 .sea-intro.is-visible
 .sea-intro-image {
     opacity: 1;
@@ -786,11 +1056,6 @@ body.sea-intro-active {
     filter:
         blur(0);
 }
-
-
-/* =========================================================
-   SEA OF SEES — COVER EXITS
-========================================================= */
 
 .sea-intro.is-leaving {
     opacity: 0;
@@ -807,7 +1072,7 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   SEA OF SEES — COLLECTION PAGE
+   07. SEA OF SEES — PAGE
 ========================================================= */
 
 .sea-of-sees-body {
@@ -820,7 +1085,7 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   SEA OF SEES — PERMANENT BACKGROUND
+   07. SEA OF SEES — PERMANENT BACKGROUND
 ========================================================= */
 
 .sea-of-sees-background {
@@ -868,78 +1133,7 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   COLLECTION PAGE — NAVIGATION
-========================================================= */
-
-.collection-page-nav {
-    position: relative;
-
-    z-index: 1;
-
-    display: grid;
-
-    grid-template-columns:
-        1fr
-        auto
-        1fr;
-
-    align-items: center;
-
-    padding:
-        28px
-        6%;
-
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            0.82
-        );
-
-    backdrop-filter:
-        blur(8px);
-
-    -webkit-backdrop-filter:
-        blur(8px);
-}
-
-.back-link {
-    justify-self: start;
-
-    color: #111111;
-
-    text-decoration: none;
-
-    font-size: 30px;
-}
-
-.collection-page-logo {
-    justify-self: center;
-
-    color: #111111;
-
-    text-decoration: none;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size: 26px;
-
-    letter-spacing: 1px;
-
-    white-space: nowrap;
-}
-
-.collection-page-spacer {
-    justify-self: end;
-}
-
-
-/* =========================================================
-   SEA OF SEES — NAVIGATION
+   07. SEA OF SEES — NAVIGATION
 ========================================================= */
 
 .sea-of-sees-body
@@ -974,7 +1168,7 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   SEA OF SEES — COMING SOON AREA
+   07. SEA OF SEES — COMING SOON
 ========================================================= */
 
 .coming-soon-page {
@@ -1059,7 +1253,7 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   SEA OF SEES — FOOTER
+   07. SEA OF SEES — FOOTER
 ========================================================= */
 
 .sea-of-sees-body
@@ -1103,178 +1297,7 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   SUMMERTIDE — PERMANENT BACKGROUND
-========================================================= */
-
-.summertide-background {
-    position: fixed;
-
-    inset: 0;
-
-    width: 100%;
-
-    height: 100vh;
-    height: 100dvh;
-
-    background:
-        linear-gradient(
-            rgba(
-                255,
-                255,
-                255,
-                0.76
-            ),
-            rgba(
-                255,
-                255,
-                255,
-                0.76
-            )
-        ),
-        url(
-            "images/IMG_2322.jpeg"
-        );
-
-    background-size: cover;
-
-    background-position: center;
-
-    background-repeat: no-repeat;
-
-    z-index: 0;
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   SUMMERTIDE — COLLECTION PAGE
-========================================================= */
-
-.collection-page {
-    position: relative;
-
-    z-index: 1;
-
-    background: transparent;
-
-    padding:
-        60px
-        6%
-        100px;
-}
-
-.collection-page-label {
-    margin-bottom: 18px;
-
-    font-size: 12px;
-
-    letter-spacing: 5px;
-}
-
-.collection-page h1 {
-    margin-bottom: 55px;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size:
-        clamp(
-            48px,
-            9vw,
-            84px
-        );
-
-    font-weight: 400;
-}
-
-
-/* =========================================================
-   SUMMERTIDE — COLLECTION GRID
-========================================================= */
-
-.full-collection-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(
-            2,
-            1fr
-        );
-
-    gap:
-        42px
-        18px;
-}
-
-.collection-product {
-    width: 100%;
-}
-
-.collection-item {
-    display: block;
-
-    width: 100%;
-
-    padding: 0;
-
-    border: none;
-
-    background: transparent;
-
-    text-align: left;
-
-    cursor: pointer;
-}
-
-.protected-collection-image {
-    display: block;
-
-    width: 100%;
-
-    aspect-ratio: 4 / 5;
-
-    background-size: cover;
-
-    background-position: center;
-
-    background-repeat: no-repeat;
-
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    user-select: none;
-}
-
-.product-info {
-    padding-top: 14px;
-}
-
-.product-title {
-    font-size: 16px;
-
-    font-weight: 400;
-
-    line-height: 1.3;
-}
-
-.product-price {
-    margin-top: 5px;
-
-    font-size: 14px;
-
-    line-height: 1.3;
-}
-
-.collection-product
-.add-to-bag {
-    display: none;
-}
-
-
-/* =========================================================
-   OPENED ARTWORK / PRODUCT VIEW
+   08. ARTWORK LIGHTBOX — CONTAINER
 ========================================================= */
 
 .lightbox {
@@ -1304,7 +1327,7 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   OPENED ARTWORK — IMAGE AREA
+   08. ARTWORK LIGHTBOX — IMAGE AREA
 ========================================================= */
 
 .artwork-viewer {
@@ -1366,15 +1389,11 @@ body.sea-intro-active {
             0.3,
             1
         );
-
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    user-select: none;
 }
 
 
 /* =========================================================
-   OPENED ARTWORK — IMAGE COUNTER
+   08. ARTWORK LIGHTBOX — IMAGE COUNTER
 ========================================================= */
 
 .lightbox-counter {
@@ -1417,7 +1436,7 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   OPENED ARTWORK — CLOSE BUTTON
+   08. ARTWORK LIGHTBOX — CLOSE BUTTON
 ========================================================= */
 
 .lightbox-close {
@@ -1466,7 +1485,7 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   OPENED ARTWORK — GALLERY ARROWS
+   08. ARTWORK LIGHTBOX — GALLERY ARROWS
 ========================================================= */
 
 .lightbox-arrow {
@@ -1517,7 +1536,7 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   OPENED ARTWORK — PRODUCT INFORMATION
+   08. ARTWORK LIGHTBOX — PRODUCT INFORMATION
 ========================================================= */
 
 .artwork-product-info {
@@ -1563,7 +1582,7 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   OPENED ARTWORK — ADD TO BAG
+   08. ARTWORK LIGHTBOX — ADD TO BAG
 ========================================================= */
 
 .artwork-add-to-bag {
@@ -1605,7 +1624,7 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   OPENED ARTWORK — DESCRIPTION
+   08. ARTWORK LIGHTBOX — DESCRIPTION
 ========================================================= */
 
 .artwork-description {
@@ -1628,7 +1647,7 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   OPENED ARTWORK — ACCORDIONS
+   08. ARTWORK LIGHTBOX — ACCORDIONS
 ========================================================= */
 
 .artwork-accordion {
@@ -1776,7 +1795,7 @@ span:first-child {
 
 
 /* =========================================================
-   CINEMATIC ARTWORK TRANSITION
+   09. ARTWORK TRANSITIONS — OPENING
 ========================================================= */
 
 .transition-artwork {
@@ -1846,22 +1865,16 @@ span:first-child {
         scale(0.96);
 }
 
-
-/* =========================================================
-   OPENING TRANSITION
-========================================================= */
-
 .lightbox.transition-opening {
     background: #ffffff;
 }
 
 
 /* =========================================================
-   ROOM IMAGE REVEAL
+   09. ARTWORK TRANSITIONS — ROOM IMAGE
 ========================================================= */
 
-.protected-lightbox-image
-.room-image-reveal {
+.protected-lightbox-image.room-image-reveal {
     animation:
         roomRevealSmooth
         1.8s
@@ -1906,10 +1919,10 @@ span:first-child {
 
 
 /* =========================================================
-   GALLERY CONTROLS TRANSITION
+   09. ARTWORK TRANSITIONS — GALLERY CONTROLS
 ========================================================= */
 
-.lightbox-title,
+#lightboxTitle,
 .lightbox-counter,
 .lightbox-arrow,
 .lightbox-close {
@@ -1921,19 +1934,17 @@ span:first-child {
 
 
 /* =========================================================
-   NORMAL GALLERY SLIDE TRANSITION
+   09. ARTWORK TRANSITIONS — NORMAL GALLERY SLIDE
 ========================================================= */
 
-.protected-lightbox-image
-.gallery-fade-out {
+.protected-lightbox-image.gallery-fade-out {
     opacity: 0;
 
     transform:
         scale(0.985);
 }
 
-.protected-lightbox-image
-.gallery-fade-in {
+.protected-lightbox-image.gallery-fade-in {
     animation:
         normalGalleryFade
         0.55s
@@ -1960,7 +1971,7 @@ span:first-child {
 
 
 /* =========================================================
-   ABOUT PAGE
+   10. ABOUT PAGE
 ========================================================= */
 
 .about-body {
@@ -2129,7 +2140,7 @@ span:first-child {
 
 
 /* =========================================================
-   LEGAL & CONTACT PAGES
+   11. LEGAL PAGES
 ========================================================= */
 
 .legal-body {
@@ -2283,9 +2294,24 @@ span:first-child {
     letter-spacing: 0.2px;
 }
 
+.legal-page a,
+.legal-page a:visited {
+    color: #111111;
+
+    text-decoration-color:
+        #111111;
+}
+
+.legal-page a:hover,
+.legal-page a:active {
+    color: #111111;
+
+    opacity: 0.7;
+}
+
 
 /* =========================================================
-   CONTACT — SUPPORT ONLY PAGE
+   12. CONTACT — SUPPORT PAGE
 ========================================================= */
 
 .contact-page-support-only {
@@ -2318,7 +2344,7 @@ span:first-child {
 
 
 /* =========================================================
-   CONTACT — LIVE SUPPORT
+   12. CONTACT — LIVE SUPPORT
 ========================================================= */
 
 .contact-page-support-only
@@ -2438,7 +2464,7 @@ span:first-child {
 
 
 /* =========================================================
-   CONTACT — MINIMIZED ACTIVE CHAT
+   12. CONTACT — MINIMIZED ACTIVE CHAT
 ========================================================= */
 
 .support-dock {
@@ -2600,7 +2626,7 @@ span:first-child {
 
 
 /* =========================================================
-   FOOTER
+   13. FOOTER
 ========================================================= */
 
 .site-footer {
@@ -2661,27 +2687,7 @@ span:first-child {
 
 
 /* =========================================================
-   LEGAL PAGE LINKS
-========================================================= */
-
-.legal-page a,
-.legal-page a:visited {
-    color: #111111;
-
-    text-decoration-color:
-        #111111;
-}
-
-.legal-page a:hover,
-.legal-page a:active {
-    color: #111111;
-
-    opacity: 0.7;
-}
-
-
-/* =========================================================
-   SHOPPING BAG
+   14. SHOPPING BAG
 ========================================================= */
 
 .shopping-bag {
@@ -2866,7 +2872,7 @@ span:first-child {
 
 
 /* =========================================================
-   ZIZOU CART LOGO
+   14. SHOPPING BAG — ZIZOU LOGO
 ========================================================= */
 
 .bag-logo {
@@ -2886,7 +2892,7 @@ span:first-child {
 
 
 /* =========================================================
-   GLOBAL BAG BUTTON
+   14. SHOPPING BAG — GLOBAL BUTTON
 ========================================================= */
 
 .global-bag-button {
@@ -2918,28 +2924,11 @@ span:first-child {
 
 
 /* =========================================================
-   ARTWORK LONG-PRESS PROTECTION
-========================================================= */
-
-.protected-home-image,
-.protected-collection-image,
-.protected-lightbox-image {
-    -webkit-touch-callout:
-        none !important;
-
-    -webkit-user-select:
-        none !important;
-
-    user-select:
-        none !important;
-}
-
-
-/* =========================================================
-   MOBILE — IPHONE
+   15. MOBILE — IPHONE
 ========================================================= */
 
 @media (max-width: 600px) {
+
 
     /* =====================================================
        HOMEPAGE
@@ -3305,13 +3294,14 @@ span:first-child {
 
 
 /* =========================================================
-   TABLET / DESKTOP — MOBILE-LIKE PROPORTIONS
+   16. TABLET / DESKTOP
 ========================================================= */
 
 @media (min-width: 601px) {
 
+
     /* =====================================================
-       SEA OF SEES — IPAD / TABLET INTRO COVER
+       SEA OF SEES — IPAD / TABLET INTRO
     ===================================================== */
 
     .sea-intro-image {
@@ -3354,7 +3344,7 @@ span:first-child {
 
 
     /* =====================================================
-       HOMEPAGE VIEW COLLECTION BUTTON
+       HOMEPAGE COLLECTION BUTTON
     ===================================================== */
 
     .collection-button {
@@ -3456,7 +3446,7 @@ span:first-child {
 
 
     /* =====================================================
-       COLLECTION PAGE NAVIGATION
+       COLLECTION NAVIGATION
     ===================================================== */
 
     .collection-page-nav {
@@ -3571,7 +3561,7 @@ span:first-child {
 
 
     /* =====================================================
-       ABOUT PAGE
+       ABOUT
     ===================================================== */
 
     .about-nav {
@@ -3636,7 +3626,7 @@ span:first-child {
 
 
     /* =====================================================
-       LEGAL PAGES
+       LEGAL
     ===================================================== */
 
     .legal-nav {
@@ -3690,7 +3680,7 @@ span:first-child {
 
 
     /* =====================================================
-       CONTACT PAGE
+       CONTACT
     ===================================================== */
 
     .contact-page-support-only {
@@ -3831,7 +3821,7 @@ span:first-child {
 
 
 /* =========================================================
-   REDUCED MOTION
+   17. INTRO TRANSITION TIMING
 ========================================================= */
 
 .summertide-intro,
@@ -3842,11 +3832,16 @@ span:first-child {
         2s !important;
 }
 
+
+/* =========================================================
+   17. REDUCED MOTION ACCESSIBILITY
+========================================================= */
+
 @media (prefers-reduced-motion: reduce) {
 
     .transition-artwork,
     .protected-lightbox-image,
-    .lightbox-title,
+    #lightboxTitle,
     .lightbox-counter,
     .lightbox-arrow,
     .lightbox-close,
@@ -3859,8 +3854,11 @@ span:first-child {
             none !important;
     }
 
+}
+
+
 /* =========================================================
-   BLOCK PRINTING/SAVE AS PDF
+   18. PRINT / SAVE-AS-PDF ARTWORK PROTECTION
 ========================================================= */
 
 @media print {
@@ -3868,24 +3866,11 @@ span:first-child {
     .protected-home-image,
     .protected-collection-image,
     .protected-lightbox-image {
-        background-image: none !important;
-        background: #111111 !important;
+        background-image:
+            none !important;
+
+        background:
+            #111111 !important;
     }
-    
-    
-/* =========================================================
-   ZIZOU DESIGN — BLOCK ARTWORK ZOOM
-========================================================= */
 
-.protected-home-image,
-.protected-collection-image,
-.protected-lightbox-image {
-    touch-action: pan-y;
-
-    -webkit-touch-callout: none !important;
-    -webkit-user-select: none !important;
-    user-select: none !important;
-}
-
-}
 }
