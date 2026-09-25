@@ -126,11 +126,50 @@ document.addEventListener(
    ZIZOU DESIGN — BLOCK ARTWORK PINCH ZOOM
 ========================================================= */
 
-const protectedArtSelector =
+const protectedArtworkSelector =
     ".protected-home-image, " +
     ".protected-collection-image, " +
     ".protected-lightbox-image";
 
+document.addEventListener(
+    "touchstart",
+    function (event) {
+
+        if (
+            event.touches.length > 1 &&
+            event.target.closest(
+                protectedArtworkSelector
+            )
+        ) {
+            event.preventDefault();
+        }
+
+    },
+    {
+        passive: false,
+        capture: true
+    }
+);
+
+document.addEventListener(
+    "touchmove",
+    function (event) {
+
+        if (
+            event.touches.length > 1 &&
+            event.target.closest(
+                protectedArtworkSelector
+            )
+        ) {
+            event.preventDefault();
+        }
+
+    },
+    {
+        passive: false,
+        capture: true
+    }
+);
 
 document.addEventListener(
     "gesturestart",
@@ -138,7 +177,7 @@ document.addEventListener(
 
         if (
             event.target.closest(
-                protectedArtSelector
+                protectedArtworkSelector
             )
         ) {
             event.preventDefault();
@@ -146,10 +185,10 @@ document.addEventListener(
 
     },
     {
-        passive: false
+        passive: false,
+        capture: true
     }
 );
-
 
 document.addEventListener(
     "gesturechange",
@@ -157,7 +196,7 @@ document.addEventListener(
 
         if (
             event.target.closest(
-                protectedArtSelector
+                protectedArtworkSelector
             )
         ) {
             event.preventDefault();
@@ -165,8 +204,7 @@ document.addEventListener(
 
     },
     {
-        passive: false
+        passive: false,
+        capture: true
     }
 );
-
-});
