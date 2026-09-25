@@ -17,15 +17,26 @@ const artworks = {
         gallery: [
             {
                 src: "images/amber portrait.JPG",
-                alt: "Amber portrait"
+                alt: "Amber portrait",
+
+                protectShape:
+                    "polygon(16.5% 18%, 81.5% 18%, 81.5% 73%, 16.5% 73%)"
             },
+
             {
                 src: "images/amber mock room.jpg",
-                alt: "Amber mock room 1"
+                alt: "Amber mock room 1",
+
+                protectShape:
+                    "polygon(33.5% 19%, 69.2% 19%, 69.2% 59.2%, 33.5% 59.2%)"
             },
+
             {
                 src: "images/amber mock room 2.JPG",
-                alt: "Amber mock room 2"
+                alt: "Amber mock room 2",
+
+                protectShape:
+                    "polygon(37% 19.5%, 60.3% 19.5%, 60.3% 54.5%, 37% 54.5%)"
             }
         ]
     },
@@ -102,7 +113,7 @@ const artworks = {
             },
             {
                 src: "images/sage mock room 1.JPG",
-                alt: "Sage mock room 1.JPG"
+                alt: "Sage mock room 1"
             },
             {
                 src: "images/sage mock room 2.JPG",
@@ -251,10 +262,13 @@ document
 ========================================== */
 
 let activeArtwork = null;
+
 let activeGallery = [];
+
 let activeIndex = 0;
 
 let touchStartX = 0;
+
 let touchEndX = 0;
 
 let transitionRunning = false;
@@ -359,16 +373,34 @@ function updateSlide() {
 
 
     /*
-       IMPORTANT:
+       lightboxImage is a DIV.
 
-       lightboxImage is now a DIV.
-
-       The artwork is loaded as a CSS
-       background instead of IMG src.
+       The gallery image is loaded as a CSS
+       background instead of an IMG src.
     */
 
     lightboxImage.style.backgroundImage =
         `url("${slide.src}")`;
+
+
+    /*
+       ARTWORK PROTECTION SHAPE
+
+       Each gallery image can define its own
+       protection polygon.
+
+       Amber Breeze currently has custom
+       protection coordinates for all 3 slides.
+
+       Artworks without a protectShape will
+       continue using the full image until
+       custom coordinates are added later.
+    */
+
+    lightboxImage.style.setProperty(
+        "--protect-shape",
+        slide.protectShape || "inset(0)"
+    );
 
 
     lightboxImage.setAttribute(
@@ -388,7 +420,9 @@ function updateSlide() {
    PRELOAD GALLERY
 ========================================== */
 
-function preloadGalleryImages(gallery) {
+function preloadGalleryImages(
+    gallery
+) {
 
     gallery.forEach((slide) => {
 
@@ -402,6 +436,7 @@ function preloadGalleryImages(gallery) {
 
         const image =
             new Image();
+
 
         image.src =
             slide.src;
@@ -463,7 +498,7 @@ function openGallery(
 
 
     /*
-       Preload the first room preview before
+       Preload the first gallery image before
        opening the product viewer.
     */
 
@@ -559,11 +594,14 @@ function runZoomOutTransition(
     transitionImage.style.top =
         `${startRect.top}px`;
 
+
     transitionImage.style.left =
         `${startRect.left}px`;
 
+
     transitionImage.style.width =
         `${startRect.width}px`;
+
 
     transitionImage.style.height =
         `${startRect.height}px`;
@@ -600,14 +638,18 @@ function runZoomOutTransition(
     lightboxImage.style.opacity =
         "0";
 
+
     lightboxCounter.style.opacity =
         "0";
+
 
     lightboxPrev.style.opacity =
         "0";
 
+
     lightboxNext.style.opacity =
         "0";
+
 
     lightboxClose.style.opacity =
         "0";
@@ -624,14 +666,18 @@ function runZoomOutTransition(
             transitionImage.style.top =
                 `${destination.top}px`;
 
+
             transitionImage.style.left =
                 `${destination.left}px`;
+
 
             transitionImage.style.width =
                 `${destination.width}px`;
 
+
             transitionImage.style.height =
                 `${destination.height}px`;
+
 
             transitionImage.style.transform =
                 "scale(1.06)";
@@ -660,11 +706,14 @@ function runZoomOutTransition(
                 lightboxCounter.style.opacity =
                     "1";
 
+
                 lightboxPrev.style.opacity =
                     "1";
 
+
                 lightboxNext.style.opacity =
                     "1";
+
 
                 lightboxClose.style.opacity =
                     "1";
@@ -727,6 +776,14 @@ function changeSlide(
         activeIndex =
             newIndex;
 
+
+        /*
+           updateSlide() changes:
+           - Gallery background image
+           - Protection polygon
+           - Accessibility label
+           - Gallery counter
+        */
 
         updateSlide();
 
@@ -831,13 +888,30 @@ function closeGallery() {
         )
         .forEach(
             element => {
+
                 element.remove();
+
             }
         );
 
 
+    /*
+       Reset the gallery position.
+    */
+
     lightbox.scrollTop =
         0;
+
+
+    /*
+       Reset the protection shape so the
+       previous artwork does not remain
+       attached between gallery sessions.
+    */
+
+    lightboxImage.style.removeProperty(
+        "--protect-shape"
+    );
 
 
     closeAllAccordions();
@@ -861,9 +935,9 @@ document
             () => {
 
                 /*
-                   The clicked artwork is now
-                   the protected SPAN rather
-                   than an IMG element.
+                   The clicked artwork is the
+                   protected SPAN rather than
+                   an IMG element.
                 */
 
                 const clickedImage =
@@ -1035,21 +1109,30 @@ document.addEventListener(
         }
 
 
-        if (event.key === "Escape") {
+        if (
+            event.key ===
+            "Escape"
+        ) {
 
             closeGallery();
 
         }
 
 
-        if (event.key === "ArrowRight") {
+        if (
+            event.key ===
+            "ArrowRight"
+        ) {
 
             nextSlide();
 
         }
 
 
-        if (event.key === "ArrowLeft") {
+        if (
+            event.key ===
+            "ArrowLeft"
+        ) {
 
             previousSlide();
 
@@ -1069,7 +1152,9 @@ lightboxImage.addEventListener(
     event => {
 
         touchStartX =
-            event.changedTouches[0].screenX;
+            event
+                .changedTouches[0]
+                .screenX;
 
     },
     {
@@ -1083,7 +1168,9 @@ lightboxImage.addEventListener(
     event => {
 
         touchEndX =
-            event.changedTouches[0].screenX;
+            event
+                .changedTouches[0]
+                .screenX;
 
 
         handleSwipe();
@@ -1111,7 +1198,9 @@ function handleSwipe() {
     }
 
 
-    if (distance > 0) {
+    if (
+        distance > 0
+    ) {
 
         nextSlide();
 
