@@ -2,42 +2,44 @@
    ZIZOU DESIGN — SUMMERTIDE ARTWORKS
 ========================================== */
 
-amber: {
-    name: "Amber Breeze",
-    product: "amber-breeze",
-    price: "19.99",
-    year: "2024",
-    number: "01",
+const artworks = {
 
-    description:
-        "The scent of a summer floral breeze captivating the soul.",
+    amber: {
+        name: "Amber Breeze",
+        product: "amber-breeze",
+        price: "19.99",
+        year: "2024",
+        number: "01",
 
-    gallery: [
-        {
-            src: "images/amber portrait.JPG",
-            alt: "Amber portrait",
+        description:
+            "The scent of a summer floral breeze captivating the soul.",
 
-            protectShape:
-                "polygon(17.4% 19.1%, 82.9% 19.1%, 82.9% 76.8%, 17.4% 76.8%)"
-        },
+        gallery: [
+            {
+                src: "images/amber portrait.JPG",
+                alt: "Amber portrait",
 
-        {
-            src: "images/amber mock room.jpg",
-            alt: "Amber mock room 1",
+                protectShape:
+                    "polygon(17.4% 19.1%, 82.9% 19.1%, 82.9% 76.8%, 17.4% 76.8%)"
+            },
 
-            protectShape:
-                "polygon(32.8% 17.2%, 70.9% 17.2%, 70.9% 50.7%, 32.8% 50.7%)"
-        },
+            {
+                src: "images/amber mock room.jpg",
+                alt: "Amber mock room 1",
 
-        {
-            src: "images/amber mock room 2.JPG",
-            alt: "Amber mock room 2",
+                protectShape:
+                    "polygon(32.8% 17.2%, 70.9% 17.2%, 70.9% 50.7%, 32.8% 50.7%)"
+            },
 
-            protectShape:
-                "polygon(37.2% 17.8%, 70.5% 17.8%, 70.5% 46.4%, 37.2% 46.4%)"
-        }
-    ]
-},
+            {
+                src: "images/amber mock room 2.JPG",
+                alt: "Amber mock room 2",
+
+                protectShape:
+                    "polygon(37.2% 17.8%, 70.5% 17.8%, 70.5% 46.4%, 37.2% 46.4%)"
+            }
+        ]
+    },
 
 
     peridot: {
@@ -55,10 +57,12 @@ amber: {
                 src: "images/peridot portrait.JPG",
                 alt: "Peridot portrait"
             },
+
             {
                 src: "images/peridot mock room 1.JPG",
                 alt: "Peridot mock room 1"
             },
+
             {
                 src: "images/peridot mock room 2.JPG",
                 alt: "Peridot mock room 2"
@@ -82,10 +86,12 @@ amber: {
                 src: "images/patina portrait.JPG",
                 alt: "Pátina portrait"
             },
+
             {
                 src: "images/patina mock room.jpg",
                 alt: "Pátina mock room 1"
             },
+
             {
                 src: "images/patina mock room 2.JPG",
                 alt: "Pátina mock room 2"
@@ -109,10 +115,12 @@ amber: {
                 src: "images/sage portrait.JPG",
                 alt: "Sage portrait"
             },
+
             {
                 src: "images/sage mock room 1.JPG",
                 alt: "Sage mock room 1"
             },
+
             {
                 src: "images/sage mock room 2.JPG",
                 alt: "Sage mock room 2"
@@ -136,10 +144,12 @@ amber: {
                 src: "images/eter portrait.JPG",
                 alt: "Éter portrait"
             },
+
             {
                 src: "images/eter mock room.jpg",
                 alt: "Éter mock room 1"
             },
+
             {
                 src: "images/eter mock room 2.jpg",
                 alt: "Éter mock room 2"
@@ -163,10 +173,12 @@ amber: {
                 src: "images/oneiric portrait.JPG",
                 alt: "Oneiric portrait"
             },
+
             {
                 src: "images/oneiric mock room 1.JPG",
                 alt: "Oneiric mock room 1"
             },
+
             {
                 src: "images/oneiric mock room 2.JPG",
                 alt: "Oneiric mock room 2"
@@ -228,11 +240,12 @@ const artworkAddToBag =
 ========================================== */
 
 /*
-   The collection artwork is no longer
-   displayed with normal IMG elements.
+   Collection artwork is displayed using
+   background images instead of normal IMG
+   elements.
 
-   Instead, each image is loaded as the
-   background of a SPAN element.
+   Each protected span receives its image
+   from data-image in the HTML.
 */
 
 document
@@ -244,9 +257,11 @@ document
         const source =
             image.dataset.image;
 
+
         if (!source) {
             return;
         }
+
 
         image.style.backgroundImage =
             `url("${source}")`;
@@ -284,6 +299,7 @@ artworkAddToBag.addEventListener(
         if (!activeArtwork) {
             return;
         }
+
 
         addToGlobalBag(
             activeArtwork.product
@@ -326,6 +342,7 @@ function updateArtworkInfo() {
         artworkDescription.textContent =
             activeArtwork.description;
 
+
         artworkDescription.style.display =
             "";
 
@@ -336,6 +353,7 @@ function updateArtworkInfo() {
         artworkDescription.textContent =
             "";
 
+
         artworkDescription.style.display =
             "none";
 
@@ -345,8 +363,10 @@ function updateArtworkInfo() {
     artworkAddToBag.dataset.product =
         activeArtwork.product;
 
+
     artworkAddToBag.dataset.name =
         activeArtwork.name;
+
 
     artworkAddToBag.dataset.price =
         activeArtwork.price;
@@ -371,10 +391,7 @@ function updateSlide() {
 
 
     /*
-       lightboxImage is a DIV.
-
-       The gallery image is loaded as a CSS
-       background instead of an IMG src.
+       Load the current gallery image.
     */
 
     lightboxImage.style.backgroundImage =
@@ -382,17 +399,14 @@ function updateSlide() {
 
 
     /*
-       ARTWORK PROTECTION SHAPE
+       Apply the custom protection area.
 
-       Each gallery image can define its own
-       protection polygon.
+       Amber Breeze currently has individual
+       polygons for all three gallery slides.
 
-       Amber Breeze currently has custom
-       protection coordinates for all 3 slides.
-
-       Artworks without a protectShape will
-       continue using the full image until
-       custom coordinates are added later.
+       Artworks without protectShape continue
+       using protection across the full image
+       until their coordinates are added.
     */
 
     lightboxImage.style.setProperty(
@@ -426,10 +440,11 @@ function preloadGalleryImages(
 
         /*
            These Image objects exist only in
-           JavaScript memory to preload files.
+           JavaScript memory.
 
-           They are NOT placed on the webpage
-           and therefore cannot be long-pressed.
+           They preload the gallery without
+           placing normal IMG elements on the
+           webpage.
         */
 
         const image =
@@ -497,14 +512,14 @@ function openGallery(
 
     /*
        Preload the first gallery image before
-       opening the product viewer.
+       beginning the opening transition.
     */
 
-    const roomImage =
+    const firstGalleryImage =
         new Image();
 
 
-    roomImage.src =
+    firstGalleryImage.src =
         activeGallery[0].src;
 
 
@@ -513,11 +528,6 @@ function openGallery(
 
 
     function startTransition() {
-
-        /*
-           Prevent the transition from running
-           twice when the image is already cached.
-        */
 
         if (transitionStarted) {
             return;
@@ -535,15 +545,29 @@ function openGallery(
     }
 
 
-    roomImage.onload =
+    firstGalleryImage.onload =
         startTransition;
 
 
-    if (roomImage.complete) {
+    /*
+       If the browser already cached the image,
+       begin immediately.
+    */
+
+    if (firstGalleryImage.complete) {
 
         startTransition();
 
     }
+
+
+    /*
+       Prevent a broken image from permanently
+       locking the gallery transition.
+    */
+
+    firstGalleryImage.onerror =
+        startTransition;
 
 }
 
@@ -572,7 +596,7 @@ function runZoomOutTransition(
 
 
     /*
-       Clone the protected background element
+       Clone the protected collection artwork
        for the opening animation.
     */
 
@@ -681,6 +705,11 @@ function runZoomOutTransition(
                 "scale(1.06)";
 
 
+            /*
+               Begin revealing the full gallery
+               image underneath the transition.
+            */
+
             setTimeout(() => {
 
                 transitionImage.classList.add(
@@ -698,6 +727,10 @@ function runZoomOutTransition(
 
             }, 900);
 
+
+            /*
+               Reveal gallery controls.
+            */
 
             setTimeout(() => {
 
@@ -718,6 +751,10 @@ function runZoomOutTransition(
 
             }, 1750);
 
+
+            /*
+               Clean up transition element.
+            */
 
             setTimeout(() => {
 
@@ -776,11 +813,11 @@ function changeSlide(
 
 
         /*
-           updateSlide() changes:
-           - Gallery background image
+           updateSlide handles:
+           - Gallery image
            - Protection polygon
            - Accessibility label
-           - Gallery counter
+           - Counter
         */
 
         updateSlide();
@@ -815,10 +852,18 @@ function changeSlide(
 
 
 /* ==========================================
-   NEXT / PREVIOUS
+   NEXT SLIDE
 ========================================== */
 
 function nextSlide() {
+
+    if (
+        !activeGallery ||
+        activeGallery.length === 0
+    ) {
+        return;
+    }
+
 
     const newIndex =
         (
@@ -835,7 +880,19 @@ function nextSlide() {
 
 
 
+/* ==========================================
+   PREVIOUS SLIDE
+========================================== */
+
 function previousSlide() {
+
+    if (
+        !activeGallery ||
+        activeGallery.length === 0
+    ) {
+        return;
+    }
+
 
     const newIndex =
         (
@@ -884,17 +941,15 @@ function closeGallery() {
         .querySelectorAll(
             ".transition-artwork"
         )
-        .forEach(
-            element => {
+        .forEach((element) => {
 
-                element.remove();
+            element.remove();
 
-            }
-        );
+        });
 
 
     /*
-       Reset the gallery position.
+       Reset gallery scroll.
     */
 
     lightbox.scrollTop =
@@ -902,9 +957,8 @@ function closeGallery() {
 
 
     /*
-       Reset the protection shape so the
-       previous artwork does not remain
-       attached between gallery sessions.
+       Remove previous artwork's protection
+       shape before another artwork opens.
     */
 
     lightboxImage.style.removeProperty(
@@ -933,15 +987,19 @@ document
             () => {
 
                 /*
-                   The clicked artwork is the
-                   protected SPAN rather than
-                   an IMG element.
+                   Collection artwork uses the
+                   protected background SPAN.
                 */
 
                 const clickedImage =
                     item.querySelector(
                         ".protected-collection-image"
                     );
+
+
+                if (!clickedImage) {
+                    return;
+                }
 
 
                 openGallery(
@@ -1044,6 +1102,10 @@ accordionButtons.forEach(
 
 
 
+/* ==========================================
+   CLOSE ALL ACCORDIONS
+========================================== */
+
 function closeAllAccordions() {
 
     document
@@ -1096,7 +1158,7 @@ function closeAllAccordions() {
 
 document.addEventListener(
     "keydown",
-    event => {
+    (event) => {
 
         if (
             !lightbox.classList.contains(
@@ -1142,12 +1204,12 @@ document.addEventListener(
 
 
 /* ==========================================
-   MOBILE SWIPE
+   MOBILE SWIPE — START
 ========================================== */
 
 lightboxImage.addEventListener(
     "touchstart",
-    event => {
+    (event) => {
 
         touchStartX =
             event
@@ -1161,9 +1223,14 @@ lightboxImage.addEventListener(
 );
 
 
+
+/* ==========================================
+   MOBILE SWIPE — END
+========================================== */
+
 lightboxImage.addEventListener(
     "touchend",
-    event => {
+    (event) => {
 
         touchEndX =
             event
@@ -1181,12 +1248,20 @@ lightboxImage.addEventListener(
 
 
 
+/* ==========================================
+   MOBILE SWIPE — DIRECTION
+========================================== */
+
 function handleSwipe() {
 
     const distance =
         touchStartX
         - touchEndX;
 
+
+    /*
+       Ignore tiny accidental movements.
+    */
 
     if (
         Math.abs(distance)
@@ -1196,6 +1271,10 @@ function handleSwipe() {
     }
 
 
+    /*
+       Swipe left = next image.
+    */
+
     if (
         distance > 0
     ) {
@@ -1203,6 +1282,11 @@ function handleSwipe() {
         nextSlide();
 
     }
+
+
+    /*
+       Swipe right = previous image.
+    */
 
     else {
 
