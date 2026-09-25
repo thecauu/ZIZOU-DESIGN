@@ -42,32 +42,41 @@ amber: {
 
 
     peridot: {
-        name: "Peridot Afloat",
-        product: "peridot-afloat",
-        price: "19.99",
-        year: "2024",
-        number: "02",
+    name: "Peridot Afloat",
+    product: "peridot-afloat",
+    price: "19.99",
+    year: "2024",
+    number: "02",
 
-        description:
-            "A peaceful state of solitude guided by crystalline ripples.",
+    description:
+        "A peaceful state of solitude guided by crystalline ripples.",
 
-        gallery: [
-            {
-                src: "images/peridot portrait.JPG",
-                alt: "Peridot portrait"
-            },
+    gallery: [
+        {
+            src: "images/peridot portrait.JPG",
+            alt: "Peridot portrait",
 
-            {
-                src: "images/peridot mock room 1.JPG",
-                alt: "Peridot mock room 1"
-            },
+            protectShape:
+                "polygon(18.8% 19.3%, 81.2% 19.3%, 81.2% 76.5%, 18.8% 76.5%)"
+        },
 
-            {
-                src: "images/peridot mock room 2.JPG",
-                alt: "Peridot mock room 2"
-            }
-        ]
-    },
+        {
+            src: "images/peridot mock room 1.JPG",
+            alt: "Peridot mock room 1",
+
+            protectShape:
+                "polygon(46.0% 20.4%, 83.7% 20.4%, 83.7% 49.6%, 46.0% 49.6%)"
+        },
+
+        {
+            src: "images/peridot mock room 2.JPG",
+            alt: "Peridot mock room 2",
+
+            protectShape:
+                "polygon(52.2% 21.0%, 78.9% 21.0%, 78.9% 43.2%, 52.2% 43.2%)"
+        }
+    ]
+},
 
 
     patina: {
