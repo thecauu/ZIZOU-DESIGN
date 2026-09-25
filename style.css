@@ -194,6 +194,20 @@ body {
 
 
 /* =========================================================
+   02. ARTWORK PROTECTION — LIGHTBOX TARGETING
+========================================================= */
+
+.protected-lightbox-image::before,
+.protected-lightbox-image::after {
+    clip-path:
+        var(
+            --protect-shape,
+            inset(0)
+        );
+}
+
+
+/* =========================================================
    03. HOMEPAGE — HERO
 ========================================================= */
 
