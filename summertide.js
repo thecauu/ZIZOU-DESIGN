@@ -94,34 +94,24 @@ patina: {
             src: "images/patina portrait.JPG",
             alt: "Pátina portrait",
 
-            protectBox: {
-                x: 17.4,
-                y: 19.1,
-                width: 65.2,
-                height: 57.7
-            }
+            protectShape:
+                "polygon(16.8% 18.8%, 82.8% 18.8%, 82.8% 77.6%, 16.8% 77.6%)"
         },
+
         {
             src: "images/patina mock room.jpg",
             alt: "Pátina mock room 1",
 
-            protectBox: {
-                x: 41.6,
-                y: 19.5,
-                width: 33.3,
-                height: 30.5
-            }
+            protectShape:
+                "polygon(42.2% 18.8%, 66.4% 18.8%, 66.4% 44.2%, 42.2% 44.2%)"
         },
+
         {
             src: "images/patina mock room 2.JPG",
             alt: "Pátina mock room 2",
 
-            protectBox: {
-                x: 60.0,
-                y: 24.0,
-                width: 23.8,
-                height: 21.3
-            }
+            protectShape:
+                "polygon(49.2% 13.7%, 67.9% 13.7%, 67.9% 39.4%, 49.2% 39.4%)"
         }
     ]
 },
