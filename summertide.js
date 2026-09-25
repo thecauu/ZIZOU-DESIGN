@@ -95,10 +95,10 @@ patina: {
             alt: "Pátina portrait",
 
             protectBox: {
-                x: 16.8,
-                y: 18.8,
-                width: 66.0,
-                height: 58.8
+                x: 17.4,
+                y: 19.1,
+                width: 65.2,
+                height: 57.7
             }
         },
         {
@@ -106,10 +106,10 @@ patina: {
             alt: "Pátina mock room 1",
 
             protectBox: {
-                x: 42.2,
-                y: 18.8,
-                width: 24.2,
-                height: 25.4
+                x: 41.6,
+                y: 19.5,
+                width: 33.3,
+                height: 30.5
             }
         },
         {
@@ -117,10 +117,10 @@ patina: {
             alt: "Pátina mock room 2",
 
             protectBox: {
-                x: 49.2,
-                y: 13.7,
-                width: 18.7,
-                height: 25.7
+                x: 60.0,
+                y: 24.0,
+                width: 23.8,
+                height: 21.3
             }
         }
     ]
