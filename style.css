@@ -75,30 +75,9 @@ body {
 ========================================================= */
 
 :root {
-
-    --protection-light:
-        rgba(
-            255,
-            255,
-            255,
-            0.03
-        );
-
-    --protection-dark:
-        rgba(
-            0,
-            0,
-            0,
-            0.025
-        );
-
-    --protection-dot:
-        rgba(
-            255,
-            255,
-            255,
-            0.04
-        );
+    --protection-light: rgba(255, 255, 255, 0.35);
+    --protection-dark: rgba(0, 0, 0, 0.30);
+    --protection-dot: rgba(255, 255, 255, 0.40);
 }
 
 
