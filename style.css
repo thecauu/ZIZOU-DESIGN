@@ -193,17 +193,46 @@ body {
 }
 
 
-/* =========================================================
-   02. ARTWORK PROTECTION — LIGHTBOX TARGETING
-========================================================= */
+/* ==========================================
+   LIGHTBOX PROTECTION OVERLAY
+========================================== */
 
-.protected-lightbox-image::before,
-.protected-lightbox-image::after {
-    clip-path:
-        var(
-            --protect-shape,
-            inset(0)
+#lightboxImage {
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    overflow: hidden;
+}
+
+.lightbox-protection-overlay {
+    position: absolute;
+    display: none;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.30;
+
+    /*
+       Replace this background with your own
+       protection effect if you already have one.
+    */
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,0.26) 0px,
+            rgba(255,255,255,0.26) 1px,
+            transparent 1px,
+            transparent 10px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            rgba(255,255,255,0.26) 0px,
+            rgba(255,255,255,0.26) 1px,
+            transparent 1px,
+            transparent 10px
         );
+
+    mix-blend-mode: screen;
 }
 
 
