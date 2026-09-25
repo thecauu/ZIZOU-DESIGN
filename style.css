@@ -74,66 +74,36 @@ body {
    02. ARTWORK PROTECTION — VARIABLES
 ========================================================= */
 
-/*
-   TEST MODE:
-
-   These values are intentionally strong so the protection
-   texture is easy to see while positioning the artwork masks.
-
-   Later, reduce them for the final website.
-*/
-
 :root {
-    --protection-light:
-        rgba(
-            255,
-            255,
-            255,
-            0.35
-        );
-
-    --protection-dark:
-        rgba(
-            0,
-            0,
-            0,
-            0.30
-        );
-
-    --protection-dot:
-        rgba(
-            255,
-            255,
-            255,
-            0.40
-        );
+    --protection-light: rgba(255, 255, 255, 0.35);
+    --protection-dark: rgba(0, 0, 0, 0.30);
+    --protection-dot: rgba(255, 255, 255, 0.40);
 }
 
 
 /* =========================================================
-   02. ARTWORK PROTECTION — HOMEPAGE / COLLECTION SURFACES
+   02. ARTWORK PROTECTION — PROTECTED SURFACES
 ========================================================= */
 
 .protected-home-image,
-.protected-collection-image {
+.protected-collection-image,
+.protected-lightbox-image {
     position: relative;
-
     isolation: isolate;
-
     overflow: hidden;
 }
 
 
 /* =========================================================
-   02. ARTWORK PROTECTION — HOMEPAGE / COLLECTION CROSSHATCH
+   02. ARTWORK PROTECTION — CROSSHATCH
 ========================================================= */
 
 .protected-home-image::before,
-.protected-collection-image::before {
+.protected-collection-image::before,
+.protected-lightbox-image::before {
     content: "";
 
     position: absolute;
-
     inset: 0;
 
     z-index: 2;
@@ -141,54 +111,36 @@ body {
     pointer-events: none;
 
     background:
-
         repeating-linear-gradient(
             17deg,
-
-            var(--protection-light)
-            0,
-
-            var(--protection-light)
-            0.7px,
-
-            transparent
-            0.7px,
-
-            transparent
-            3px
+            var(--protection-light) 0,
+            var(--protection-light) 0.7px,
+            transparent 0.7px,
+            transparent 3px
         ),
 
         repeating-linear-gradient(
             107deg,
-
-            var(--protection-dark)
-            0,
-
-            var(--protection-dark)
-            0.7px,
-
-            transparent
-            0.7px,
-
-            transparent
-            3.4px
+            var(--protection-dark) 0,
+            var(--protection-dark) 0.7px,
+            transparent 0.7px,
+            transparent 3.4px
         );
 
-    mix-blend-mode:
-        soft-light;
+    mix-blend-mode: soft-light;
 }
 
 
 /* =========================================================
-   02. ARTWORK PROTECTION — HOMEPAGE / COLLECTION MICRO-DOTS
+   02. ARTWORK PROTECTION — MICRO DOTS
 ========================================================= */
 
 .protected-home-image::after,
-.protected-collection-image::after {
+.protected-collection-image::after,
+.protected-lightbox-image::after {
     content: "";
 
     position: absolute;
-
     inset: 0;
 
     z-index: 3;
@@ -198,146 +150,37 @@ body {
     background-image:
         radial-gradient(
             circle,
-
-            var(--protection-dot)
-            0.45px,
-
-            transparent
-            0.6px
+            var(--protection-dot) 0.45px,
+            transparent 0.6px
         );
 
     background-size:
-        3.1px
-        3.1px;
-
-    background-position:
-        0.35px
-        0.65px;
-
-    mix-blend-mode:
-        soft-light;
-}
-
-
-/* =========================================================
-   02. ARTWORK PROTECTION — LIGHTBOX IMAGE CONTAINER
-========================================================= */
-
-/*
-   IMPORTANT:
-
-   There are intentionally NO ::before or ::after protection
-   layers on .protected-lightbox-image.
-
-   The old full-image lightbox filter has been removed.
-
-   Only .lightbox-protection-overlay creates protection
-   inside the gallery.
-*/
-
-#lightboxImage {
-    position: relative;
-
-    overflow: hidden;
-
-    isolation: isolate;
-
-    background-repeat:
-        no-repeat;
-
-    background-position:
-        center;
-
-    background-size:
-        contain;
-}
-
-
-/* =========================================================
-   02. ARTWORK PROTECTION — TARGETED LIGHTBOX OVERLAY
-========================================================= */
-
-/*
-   JavaScript dynamically sets:
-
-   left
-   top
-   width
-   height
-
-   based on the protectBox coordinates belonging to
-   the current gallery slide.
-
-   Therefore this texture exists only over the artwork itself.
-*/
-
-.lightbox-protection-overlay {
-    position: absolute;
-
-    display: none;
-
-    pointer-events: none;
-
-    z-index: 4;
-
-    overflow: hidden;
-
-    background:
-
-        repeating-linear-gradient(
-            17deg,
-
-            var(--protection-light)
-            0,
-
-            var(--protection-light)
-            0.7px,
-
-            transparent
-            0.7px,
-
-            transparent
-            3px
-        ),
-
-        repeating-linear-gradient(
-            107deg,
-
-            var(--protection-dark)
-            0,
-
-            var(--protection-dark)
-            0.7px,
-
-            transparent
-            0.7px,
-
-            transparent
-            3.4px
-        ),
-
-        radial-gradient(
-            circle,
-
-            var(--protection-dot)
-            0.45px,
-
-            transparent
-            0.6px
-        );
-
-    background-size:
-        auto,
-        auto,
         3.1px 3.1px;
 
     background-position:
-        0 0,
-        0 0,
         0.35px 0.65px;
 
-    mix-blend-mode:
-        soft-light;
+    mix-blend-mode: soft-light;
+}
+
+
+/* =========================================================
+   02. ARTWORK PROTECTION — LIGHTBOX MASK
+   Only the artwork region receives the texture.
+========================================================= */
+
+.protected-lightbox-image::before,
+.protected-lightbox-image::after {
+    clip-path:
+        var(
+            --protect-shape,
+            polygon(
+                0 0,
+                0 0,
+                0 0,
+                0 0
+            )
+        );
 }
 
 
