@@ -95,21 +95,21 @@ patina: {
             alt: "Pátina portrait",
 
             protectShape:
-                "polygon(16.8% 18.8%, 82.8% 18.8%, 82.8% 77.6%, 16.8% 77.6%)"
+                "polygon(19.0% 19.2%, 81.0% 19.2%, 81.0% 76.4%, 19.0% 76.4%)"
         },
         {
             src: "images/patina mock room.jpg",
             alt: "Pátina mock room 1",
 
             protectShape:
-                "polygon(41.5% 19.0%, 74.8% 19.0%, 74.8% 50.0%, 41.5% 50.0%)"
+                "polygon(42.3% 19.8%, 74.0% 19.8%, 74.0% 49.2%, 42.3% 49.2%)"
         },
         {
             src: "images/patina mock room 2.JPG",
             alt: "Pátina mock room 2",
 
             protectShape:
-                "polygon(56.8% 21.8%, 83.2% 21.8%, 83.2% 50.2%, 56.8% 50.2%)"
+                "polygon(57.6% 22.6%, 82.4% 22.6%, 82.4% 49.4%, 57.6% 49.4%)"
         }
     ]
 },
@@ -129,6 +129,9 @@ patina: {
             {
                 src: "images/sage portrait.JPG",
                 alt: "Sage portrait"
+                
+                protectShape:
+                "polygon(19.0% 19.2%, 81.0% 19.2%, 81.0% 76.4%, 19.0% 76.4%)"
             },
 
             {
@@ -158,6 +161,9 @@ patina: {
             {
                 src: "images/eter portrait.JPG",
                 alt: "Éter portrait"
+                
+                protectShape:
+                "polygon(19.0% 19.2%, 81.0% 19.2%, 81.0% 76.4%, 19.0% 76.4%)"
             },
 
             {
@@ -187,6 +193,9 @@ patina: {
             {
                 src: "images/oneiric portrait.JPG",
                 alt: "Oneiric portrait"
+                
+                protectShape:
+                "polygon(19.0% 19.2%, 81.0% 19.2%, 81.0% 76.4%, 19.0% 76.4%)"
             },
 
             {
