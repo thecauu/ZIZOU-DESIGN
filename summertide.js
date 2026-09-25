@@ -4,42 +4,42 @@
 
 const artworks = {
 
-    amber: {
-        name: "Amber Breeze",
-        product: "amber-breeze",
-        price: "19.99",
-        year: "2024",
-        number: "01",
+amber: {
+    name: "Amber Breeze",
+    product: "amber-breeze",
+    price: "19.99",
+    year: "2024",
+    number: "01",
 
-        description:
-            "The scent of a summer floral breeze captivating the soul.",
+    description:
+        "The scent of a summer floral breeze captivating the soul.",
 
-        gallery: [
-            {
-                src: "images/amber portrait.JPG",
-                alt: "Amber portrait",
+    gallery: [
+        {
+            src: "images/amber portrait.JPG",
+            alt: "Amber portrait",
 
-                protectShape:
-                    "polygon(17.4% 19.1%, 82.9% 19.1%, 82.9% 76.8%, 17.4% 76.8%)"
-            },
+            protectShape:
+                "polygon(19.2% 19.2%, 81.0% 19.2%, 81.0% 76.6%, 19.2% 76.6%)"
+        },
 
-            {
-                src: "images/amber mock room.jpg",
-                alt: "Amber mock room 1",
+        {
+            src: "images/amber mock room.jpg",
+            alt: "Amber mock room 1",
 
-                protectShape:
-                    "polygon(32.8% 17.2%, 70.9% 17.2%, 70.9% 50.7%, 32.8% 50.7%)"
-            },
+            protectShape:
+                "polygon(34.0% 17.4%, 69.6% 17.4%, 69.6% 50.5%, 34.0% 50.5%)"
+        },
 
-            {
-                src: "images/amber mock room 2.JPG",
-                alt: "Amber mock room 2",
+        {
+            src: "images/amber mock room 2.JPG",
+            alt: "Amber mock room 2",
 
-                protectShape:
-                    "polygon(37.2% 17.8%, 70.5% 17.8%, 70.5% 46.4%, 37.2% 46.4%)"
-            }
-        ]
-    },
+            protectShape:
+                "polygon(38.1% 17.9%, 69.2% 17.9%, 69.2% 46.2%, 38.1% 46.2%)"
+        }
+    ]
+},
 
 
     peridot: {
