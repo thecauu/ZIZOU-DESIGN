@@ -401,6 +401,37 @@ function updateArtworkInfo() {
 }
 
 
+/* ==========================================
+   PROTECTION OVERLAY
+========================================== */
+
+const imageSizeCache =
+    new Map();
+
+let protectionOverlay =
+    null;
+
+
+function getProtectionOverlay() {
+
+    if (protectionOverlay) {
+        return protectionOverlay;
+    }
+
+    protectionOverlay =
+        document.createElement("div");
+
+    protectionOverlay.className =
+        "lightbox-protection-overlay";
+
+    lightboxImage.appendChild(
+        protectionOverlay
+    );
+
+    return protectionOverlay;
+
+}
+
 
 /* ==========================================
    UPDATE CURRENT SLIDE
@@ -435,11 +466,6 @@ function updateSlide() {
        using protection across the full image
        until their coordinates are added.
     */
-
-    lightboxImage.style.setProperty(
-        "--protect-shape",
-        slide.protectShape || "inset(0)"
-    );
 
 
     lightboxImage.setAttribute(
@@ -533,6 +559,12 @@ function openGallery(
 
     updateArtworkInfo();
 
+const overlay =
+    getProtectionOverlay();
+
+overlay.style.display =
+    "none";
+
 
     closeAllAccordions();
 
@@ -598,6 +630,203 @@ function openGallery(
 
 }
 
+
+function getImageSize(
+    source,
+    callback
+) {
+
+    if (
+        imageSizeCache.has(source)
+    ) {
+
+        callback(
+            imageSizeCache.get(source)
+        );
+
+        return;
+    }
+
+
+    const image =
+        new Image();
+
+
+    image.onload =
+        () => {
+
+            const size = {
+                width:
+                    image.naturalWidth,
+
+                height:
+                    image.naturalHeight
+            };
+
+
+            imageSizeCache.set(
+                source,
+                size
+            );
+
+
+            callback(
+                size
+            );
+
+        };
+
+
+    image.src =
+        source;
+
+}
+
+
+
+function positionProtectionOverlay(
+    slide
+) {
+
+    const overlay =
+        getProtectionOverlay();
+
+
+    if (
+        !slide ||
+        !slide.protectBox
+    ) {
+
+        overlay.style.display =
+            "none";
+
+        return;
+    }
+
+
+    getImageSize(
+        slide.src,
+        (size) => {
+
+            if (
+                activeGallery[activeIndex]
+                !== slide
+            ) {
+                return;
+            }
+
+
+            const containerWidth =
+                lightboxImage.clientWidth;
+
+
+            const containerHeight =
+                lightboxImage.clientHeight;
+
+
+            const imageWidth =
+                size.width;
+
+
+            const imageHeight =
+                size.height;
+
+
+            const scale =
+                Math.min(
+                    containerWidth
+                    / imageWidth,
+
+                    containerHeight
+                    / imageHeight
+                );
+
+
+            const renderedWidth =
+                imageWidth
+                * scale;
+
+
+            const renderedHeight =
+                imageHeight
+                * scale;
+
+
+            const offsetX =
+                (
+                    containerWidth
+                    - renderedWidth
+                )
+                / 2;
+
+
+            const offsetY =
+                (
+                    containerHeight
+                    - renderedHeight
+                )
+                / 2;
+
+
+            const left =
+                offsetX
+                +
+                (
+                    slide.protectBox.x
+                    / 100
+                )
+                * renderedWidth;
+
+
+            const top =
+                offsetY
+                +
+                (
+                    slide.protectBox.y
+                    / 100
+                )
+                * renderedHeight;
+
+
+            const width =
+                (
+                    slide.protectBox.width
+                    / 100
+                )
+                * renderedWidth;
+
+
+            const height =
+                (
+                    slide.protectBox.height
+                    / 100
+                )
+                * renderedHeight;
+
+
+            overlay.style.display =
+                "block";
+
+
+            overlay.style.left =
+                `${left}px`;
+
+
+            overlay.style.top =
+                `${top}px`;
+
+
+            overlay.style.width =
+                `${width}px`;
+
+
+            overlay.style.height =
+                `${height}px`;
+
+        }
+    );
+
+}
 
 
 /* ==========================================
@@ -988,9 +1217,7 @@ function closeGallery() {
        shape before another artwork opens.
     */
 
-    lightboxImage.style.removeProperty(
-        "--protect-shape"
-    );
+    
 
 
     closeAllAccordions();
@@ -1322,3 +1549,33 @@ function handleSwipe() {
     }
 
 }
+
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        if (
+            !lightbox.classList.contains(
+                "open"
+            )
+        ) {
+            return;
+        }
+
+
+        const slide =
+            activeGallery[activeIndex];
+
+
+        if (!slide) {
+            return;
+        }
+
+
+        positionProtectionOverlay(
+            slide
+        );
+
+    }
+);
