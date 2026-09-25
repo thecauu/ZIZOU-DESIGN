@@ -3859,4 +3859,18 @@ span:first-child {
             none !important;
     }
 
+/* =========================================================
+   BLOCK PRINTING/SAVE AS PDF
+========================================================= */
+
+@media print {
+
+    .protected-home-image,
+    .protected-collection-image,
+    .protected-lightbox-image {
+        background-image: none !important;
+        background: #111111 !important;
+    }
+
+}
 }
