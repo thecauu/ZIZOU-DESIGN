@@ -2,44 +2,42 @@
    ZIZOU DESIGN — SUMMERTIDE ARTWORKS
 ========================================== */
 
-const artworks = {
+amber: {
+    name: "Amber Breeze",
+    product: "amber-breeze",
+    price: "19.99",
+    year: "2024",
+    number: "01",
 
-    amber: {
-        name: "Amber Breeze",
-        product: "amber-breeze",
-        price: "19.99",
-        year: "2024",
-        number: "01",
+    description:
+        "The scent of a summer floral breeze captivating the soul.",
 
-        description:
-            "The scent of a summer floral breeze captivating the soul.",
+    gallery: [
+        {
+            src: "images/amber portrait.JPG",
+            alt: "Amber portrait",
 
-        gallery: [
-            {
-                src: "images/amber portrait.JPG",
-                alt: "Amber portrait",
+            protectShape:
+                "polygon(17.4% 19.1%, 82.9% 19.1%, 82.9% 76.8%, 17.4% 76.8%)"
+        },
 
-                protectShape:
-                    "polygon(16.5% 18%, 81.5% 18%, 81.5% 73%, 16.5% 73%)"
-            },
+        {
+            src: "images/amber mock room.jpg",
+            alt: "Amber mock room 1",
 
-            {
-                src: "images/amber mock room.jpg",
-                alt: "Amber mock room 1",
+            protectShape:
+                "polygon(32.8% 17.2%, 70.9% 17.2%, 70.9% 50.7%, 32.8% 50.7%)"
+        },
 
-                protectShape:
-                    "polygon(33.5% 19%, 69.2% 19%, 69.2% 59.2%, 33.5% 59.2%)"
-            },
+        {
+            src: "images/amber mock room 2.JPG",
+            alt: "Amber mock room 2",
 
-            {
-                src: "images/amber mock room 2.JPG",
-                alt: "Amber mock room 2",
-
-                protectShape:
-                    "polygon(37% 19.5%, 60.3% 19.5%, 60.3% 54.5%, 37% 54.5%)"
-            }
-        ]
-    },
+            protectShape:
+                "polygon(37.2% 17.8%, 70.5% 17.8%, 70.5% 46.4%, 37.2% 46.4%)"
+        }
+    ]
+},
 
 
     peridot: {
