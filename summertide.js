@@ -80,32 +80,41 @@ peridot: {
 
 
     patina: {
-        name: "Pátina del Mar",
-        product: "patina-del-mar",
-        price: "19.99",
-        year: "2024",
-        number: "03",
+    name: "Pátina del Mar",
+    product: "patina-del-mar",
+    price: "19.99",
+    year: "2024",
+    number: "03",
 
-        description:
-            "The sea has a way of illustrating a story wherever it touches.",
+    description:
+        "The sea has a way of illustrating a story wherever it touches.",
 
-        gallery: [
-            {
-                src: "images/patina portrait.JPG",
-                alt: "Pátina portrait"
-            },
+    gallery: [
+        {
+            src: "images/patina portrait.JPG",
+            alt: "Pátina portrait",
 
-            {
-                src: "images/patina mock room.jpg",
-                alt: "Pátina mock room 1"
-            },
+            protectShape:
+                "polygon(18.9% 19.2%, 81.1% 19.2%, 81.1% 76.4%, 18.9% 76.4%)"
+        },
 
-            {
-                src: "images/patina mock room 2.JPG",
-                alt: "Pátina mock room 2"
-            }
-        ]
-    },
+        {
+            src: "images/patina mock room.jpg",
+            alt: "Pátina mock room 1",
+
+            protectShape:
+                "polygon(40.0% 18.3%, 74.7% 18.3%, 74.7% 48.0%, 40.0% 48.0%)"
+        },
+
+        {
+            src: "images/patina mock room 2.JPG",
+            alt: "Pátina mock room 2",
+
+            protectShape:
+                "polygon(54.8% 17.0%, 77.7% 17.0%, 77.7% 41.0%, 54.8% 41.0%)"
+        }
+    ]
+},
 
 
     sage: {
