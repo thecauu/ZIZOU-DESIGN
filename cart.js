@@ -15,10 +15,54 @@ const zizouProducts = {
         image: "images/amber breeze home page.jpg",
         checkout:
             "https://zizoudesign.lemonsqueezy.com/checkout/buy/8c922568-b22d-4f21-b7cb-9faaf3298379?embed=1&logo=0"
+    },
+
+
+    "peridot-afloat": {
+        name: "Peridot Afloat",
+        type: "DIGITAL ART PHOTOGRAPHY",
+        image: "images/peridot portrait.JPG",
+        checkout:
+            "https://zizoudesign.lemonsqueezy.com/checkout/buy/abc2b98d-45ce-45bd-887c-efc1b88dee7a?embed=1&logo=0"
+    },
+
+
+    "patina-del-mar": {
+        name: "Pátina del Mar",
+        type: "DIGITAL ART PHOTOGRAPHY",
+        image: "images/patina portrait.JPG",
+        checkout:
+            "https://zizoudesign.lemonsqueezy.com/checkout/buy/f4ae5232-7bb9-483b-80e3-409481dbc854?embed=1&logo=0"
+    },
+
+
+    "sage-quietude": {
+        name: "Sage Quietude",
+        type: "DIGITAL ART PHOTOGRAPHY",
+        image: "images/sage portrait.JPG",
+        checkout:
+            "https://zizoudesign.lemonsqueezy.com/checkout/buy/e1ce0a2d-41b9-45bd-9c00-035946e0150f?embed=1&logo=0"
+    },
+
+
+    "eter-do-luar": {
+        name: "Éter do Luar",
+        type: "DIGITAL ART PHOTOGRAPHY",
+        image: "images/eter portrait.JPG",
+        checkout:
+            "https://zizoudesign.lemonsqueezy.com/checkout/buy/61b4e990-1c81-4e82-bb2c-9d21b277a886?embed=1&logo=0"
+    },
+
+
+    "oneiric-glow": {
+        name: "Oneiric Glow",
+        type: "DIGITAL ART PHOTOGRAPHY",
+        image: "images/oneiric portrait.JPG",
+        checkout:
+            "https://zizoudesign.lemonsqueezy.com/checkout/buy/dbf89c46-0580-43ec-a549-47d135fcce9a?embed=1&logo=0"
     }
 
 };
-
 
 /* -----------------------------------------
    LOAD SAVED CART
