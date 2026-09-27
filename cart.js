@@ -4,6 +4,14 @@
 
 
 /* -----------------------------------------
+   MULTI-ARTWORK CHECKOUT
+----------------------------------------- */
+
+const ZIZOU_MULTI_CHECKOUT_ENDPOINT =
+    "https://zizoudownloads.cesarur1997.workers.dev/create-checkout";
+
+
+/* -----------------------------------------
    PRODUCTS
 ----------------------------------------- */
 
@@ -63,6 +71,7 @@ const zizouProducts = {
     }
 
 };
+
 
 /* -----------------------------------------
    LOAD SAVED CART
@@ -201,13 +210,13 @@ function createGlobalBag() {
             id="bagCheckoutArea"
         >
 
-            <a
-                href="#"
-                class="lemonsqueezy-button checkout-button"
+            <button
+                type="button"
+                class="checkout-button"
                 id="checkoutButton"
             >
                 CHECKOUT
-            </a>
+            </button>
 
         </div>
 
@@ -246,6 +255,16 @@ function createGlobalBag() {
                 );
 
             }
+        );
+
+
+    /* CHECKOUT */
+
+    document
+        .getElementById("checkoutButton")
+        .addEventListener(
+            "click",
+            startGlobalCheckout
         );
 
 
@@ -355,11 +374,6 @@ function updateGlobalBag() {
     const checkoutArea =
         document.getElementById(
             "bagCheckoutArea"
-        );
-
-    const checkoutButton =
-        document.getElementById(
-            "checkoutButton"
         );
 
 
@@ -480,21 +494,179 @@ function updateGlobalBag() {
         }
     );
 
+}
 
-    /* CHECKOUT */
 
-    if (
-        zizouCart.length === 1 &&
-        zizouProducts[zizouCart[0]] &&
-        checkoutButton
-    ) {
+/* -----------------------------------------
+   START CHECKOUT
+----------------------------------------- */
 
-        checkoutButton.href =
+async function startGlobalCheckout() {
+
+    if (zizouCart.length === 0) {
+        return;
+    }
+
+
+    const checkoutButton =
+        document.getElementById(
+            "checkoutButton"
+        );
+
+
+    if (!checkoutButton) {
+        return;
+    }
+
+
+    /*
+       ONE ARTWORK
+
+       Keep the existing individual
+       Lemon checkout exactly as before.
+    */
+
+    if (zizouCart.length === 1) {
+
+        const product =
             zizouProducts[
                 zizouCart[0]
-            ].checkout;
+            ];
+
+
+        if (!product) {
+            return;
+        }
+
+
+        openLemonCheckout(
+            product.checkout
+        );
+
+
+        return;
 
     }
+
+
+    /*
+       TWO TO SIX ARTWORKS
+
+       Cloudflare creates one custom
+       Lemon checkout containing the
+       selected artwork names.
+    */
+
+    checkoutButton.disabled =
+        true;
+
+    checkoutButton.textContent =
+        "LOADING...";
+
+
+    try {
+
+        const response =
+            await fetch(
+                ZIZOU_MULTI_CHECKOUT_ENDPOINT,
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify({
+                            items:
+                                zizouCart
+                        })
+                }
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (
+            !response.ok ||
+            !result.checkoutUrl
+        ) {
+
+            throw new Error(
+                result.error ||
+                "Checkout could not be created."
+            );
+
+        }
+
+
+        openLemonCheckout(
+            result.checkoutUrl
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "ZIZOU checkout error:",
+            error
+        );
+
+
+        alert(
+            "Checkout could not be opened. Please try again."
+        );
+
+    }
+
+    finally {
+
+        checkoutButton.disabled =
+            false;
+
+        checkoutButton.textContent =
+            "CHECKOUT";
+
+    }
+
+}
+
+
+/* -----------------------------------------
+   OPEN LEMON CHECKOUT
+----------------------------------------- */
+
+function openLemonCheckout(
+    checkoutUrl
+) {
+
+    if (
+        window.LemonSqueezy &&
+        window.LemonSqueezy.Url &&
+        typeof window.LemonSqueezy.Url.Open
+            === "function"
+    ) {
+
+        window.LemonSqueezy.Url.Open(
+            checkoutUrl
+        );
+
+        return;
+
+    }
+
+
+    /*
+       Fallback if Lemon.js has not
+       loaded for some reason.
+    */
+
+    window.location.href =
+        checkoutUrl;
 
 }
 
