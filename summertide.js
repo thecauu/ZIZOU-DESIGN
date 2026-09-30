@@ -136,12 +136,18 @@ patina: {
 
             {
                 src: "images/sage mock room 1.JPG",
-                alt: "Sage mock room 1"
+                alt: "Sage mock room 1",
+                
+                protectShape:
+                "polygon(28.5% 16.6%, 65.0% 16.6%, 65.0% 51.1%, 28.5% 51.1%)"
             },
 
             {
                 src: "images/sage mock room 2.JPG",
-                alt: "Sage mock room 2"
+                alt: "Sage mock room 2",
+                
+                protectShape:
+                "polygon(29.6% 15.2%, 69.4% 15.2%, 69.4% 52.6%, 29.6% 52.6%)"
             }
         ]
     },
