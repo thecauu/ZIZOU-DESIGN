@@ -212,12 +212,18 @@ patina: {
 
             {
                 src: "images/oneiric mock room 1.JPG",
-                alt: "Oneiric mock room 1"
+                alt: "Oneiric mock room 1",
+                
+                protectShape:
+                "polygon(24.9% 22.4%, 57.7% 22.4%, 57.7% 43.9%, 24.9% 43.9%)"
             },
 
             {
                 src: "images/oneiric mock room 2.JPG",
-                alt: "Oneiric mock room 2"
+                alt: "Oneiric mock room 2",
+                
+                protectShape:
+                "polygon(21.6% 22.4%, 42.6% 22.4%, 42.6% 36.1%, 21.6% 36.1%)"
             }
         ]
     }
