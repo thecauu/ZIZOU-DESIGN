@@ -175,11 +175,17 @@ patina: {
             {
                 src: "images/eter mock room.jpg",
                 alt: "Éter mock room 1"
+                
+                protectShape:
+                "polygon(34.7% 25.8%, 61.9% 25.8%, 61.9% 58.8%, 34.7% 58.8%)"
             },
 
             {
                 src: "images/eter mock room 2.jpg",
                 alt: "Éter mock room 2"
+                
+                protectShape:
+                "polygon(40.8% 46.4%, 67.0% 46.4%, 67.0% 77.4%, 40.8% 77.4%)"
             }
         ]
     },
