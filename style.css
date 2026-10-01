@@ -3482,56 +3482,24 @@ span:first-child {
 @media (min-width: 601px) {
 
 /* =====================================================
-        TABLET / DESKTOP — PREVENT CROPPED / ZOOMED IMAGES
+   TABLET / DESKTOP — ARTWORK SIZE
 ===================================================== */
 
-    .summertide-intro-image {
-        background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
+.collection-grid {
+    width: 100%;
+    max-width: 680px;
 
-        transform: scale(1);
-    }
+    margin-left: auto;
+    margin-right: auto;
+}
 
-    .summertide-intro.is-visible
-    .summertide-intro-image {
-        transform: scale(1);
-    }
+.full-collection-grid {
+    width: 100%;
+    max-width: 680px;
 
-    .summertide-intro.is-leaving
-    .summertide-intro-image {
-        transform: scale(1);
-    }
-
-
-    .sea-intro-image {
-        background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
-
-        transform: scale(1);
-    }
-
-
-    .hero-image,
-    .hero-video {
-        object-fit: contain;
-        object-position: center;
-    }
-
-
-    .protected-home-image,
-    .protected-collection-image {
-        background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-
-
-    img {
-        max-width: 100%;
-        height: auto;
-    }
+    margin-left: auto;
+    margin-right: auto;
+}
 
 
     /* =====================================================
