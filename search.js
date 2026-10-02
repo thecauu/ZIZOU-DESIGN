@@ -399,6 +399,24 @@ document.addEventListener(
             );
 
 
+        const menuButton =
+            document.getElementById(
+                "menuButton"
+            );
+
+
+        const sideMenu =
+            document.getElementById(
+                "sideMenu"
+            );
+
+
+        const collectionsMenu =
+            document.getElementById(
+                "collectionsMenu"
+            );
+
+
         if (
             searchButtons.length === 0
         ) {
@@ -518,7 +536,7 @@ document.addEventListener(
 
 
         /* -----------------------------------------
-           SAVE ORIGINAL SEARCH ICON
+           SAVE ORIGINAL SEARCH LABEL
         ----------------------------------------- */
 
         searchButtons.forEach(
@@ -534,7 +552,68 @@ document.addEventListener(
 
 
         /* =========================================
-           04. OPEN SEARCH
+           04. MENU → SEARCH HANDOFF
+        ========================================= */
+
+        function closeMenuForSearch() {
+
+            if (
+                !sideMenu ||
+                !menuButton
+            ) {
+                return;
+            }
+
+
+            if (
+                !sideMenu.classList.contains(
+                    "open"
+                )
+            ) {
+                return;
+            }
+
+
+            sideMenu.classList.remove(
+                "open"
+            );
+
+
+            menuButton.classList.remove(
+                "menu-button-active"
+            );
+
+
+            menuButton.setAttribute(
+                "aria-label",
+                "Open menu"
+            );
+
+
+            menuButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+
+            document.body.classList.remove(
+                "menu-open"
+            );
+
+
+            if (collectionsMenu) {
+
+                collectionsMenu.classList.remove(
+                    "open"
+                );
+
+            }
+
+        }
+
+
+        /* =========================================
+           05. OPEN SEARCH
         ========================================= */
 
         function openSearch(button) {
@@ -573,6 +652,17 @@ document.addEventListener(
             }
 
 
+            /*
+               If the menu is currently open,
+               close it before opening search.
+
+               MENU X → ☰
+               SEARCH ⌕ → X
+            */
+
+            closeMenuForSearch();
+
+
             activeSearchButton =
                 button;
 
@@ -597,9 +687,6 @@ document.addEventListener(
                SEARCH ICON → X
             ----------------------------------------- */
 
-
-
-
             button.setAttribute(
                 "aria-label",
                 "Close search"
@@ -616,11 +703,6 @@ document.addEventListener(
                 "search-button-active"
             );
 
-
-            /*
-               Ensures the X remains visible
-               over the white search screen.
-            */
 
             button.style.position =
                 "relative";
@@ -688,7 +770,7 @@ document.addEventListener(
 
 
         /* =========================================
-           05. CLOSE SEARCH
+           06. CLOSE SEARCH
         ========================================= */
 
         function closeSearch() {
@@ -743,11 +825,11 @@ document.addEventListener(
 
 
             /* -----------------------------------------
-               X → ORIGINAL SEARCH ICON
+               SEARCH X → ORIGINAL ICON
             ----------------------------------------- */
 
             if (activeSearchButton) {
-                
+
 
                 activeSearchButton.setAttribute(
                     "aria-label",
@@ -827,7 +909,7 @@ document.addEventListener(
 
 
         /* =========================================
-           06. SEARCH BUTTON BEHAVIOR
+           07. SEARCH BUTTON BEHAVIOR
         ========================================= */
 
         searchButtons.forEach(
@@ -847,13 +929,6 @@ document.addEventListener(
 
                         event.stopPropagation();
 
-
-                        /*
-                           SAME BUTTON CONTROLS
-                           OPEN + CLOSE.
-
-                           🔍 → × → 🔍
-                        */
 
                         if (
                             searchOverlay.classList.contains(
@@ -881,7 +956,50 @@ document.addEventListener(
 
 
         /* =========================================
-           07. ESCAPE KEY
+           08. SEARCH → MENU HANDOFF
+        ========================================= */
+
+        if (menuButton) {
+
+            /*
+               Capture phase is intentional.
+
+               When search is open and ☰ is pressed:
+
+               1. Search closes here first.
+               2. Search X becomes ⌕.
+               3. Existing script.js then receives
+                  the same menu click.
+               4. Menu opens.
+               5. ☰ becomes X.
+
+               Result: the X appears to jump
+               from search to menu.
+            */
+
+            menuButton.addEventListener(
+                "click",
+                () => {
+
+                    if (
+                        searchOverlay.classList.contains(
+                            "open"
+                        )
+                    ) {
+
+                        closeSearch();
+
+                    }
+
+                },
+                true
+            );
+
+        }
+
+
+        /* =========================================
+           09. ESCAPE KEY
         ========================================= */
 
         document.addEventListener(
@@ -905,7 +1023,7 @@ document.addEventListener(
 
 
         /* =========================================
-           08. LIVE SEARCH
+           10. LIVE SEARCH
         ========================================= */
 
         searchInput.addEventListener(
