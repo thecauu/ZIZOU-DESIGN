@@ -3007,7 +3007,13 @@ body.search-open
 
     position: absolute;
 
-    top: 50%;
+    top:
+        calc(
+            50%
+            +
+            3.5px
+        );
+
     left: 50%;
 
     width: 20px;
