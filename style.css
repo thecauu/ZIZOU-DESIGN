@@ -2481,12 +2481,11 @@ span:first-child {
     display: block;
 
     width: 100%;
-
     height: auto;
 
-    max-height: 760px;
+    max-height: none;
 
-    object-fit: cover;
+    object-fit: contain;
 
     object-position: center;
 }
