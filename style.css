@@ -1979,9 +1979,9 @@ span:first-child {
     opacity: 0.58;
 
     filter:
-        brightness(1.08)
+        brightness(1.10)
         saturate(0.96)
-        blur(0.8px);
+        blur(1.0px);
 }
 
 
@@ -1991,9 +1991,9 @@ span:first-child {
     opacity: 0;
 
     filter:
-        brightness(1.16)
+        brightness(1.20)
         saturate(0.90)
-        blur(1.8px);
+        blur(2.0px);
 
     transform:
         scale(1.06);
