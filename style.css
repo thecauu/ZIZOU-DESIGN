@@ -1973,14 +1973,15 @@ span:first-child {
 }
 
 
-/* SOFT FADE TOWARD WHITE WHILE ZOOMING */
+/* STRONGER SOFT FADE WHILE ZOOMING */
 
 .transition-artwork-brightening {
-    opacity: 0.75;
+    opacity: 0.58;
 
     filter:
-        brightness(2.0)
-        blur(1.0px);
+        brightness(1.08)
+        saturate(0.96)
+        blur(0.8px);
 }
 
 
@@ -1990,8 +1991,9 @@ span:first-child {
     opacity: 0;
 
     filter:
-        brightness(2.0)
-        blur(1.5px);
+        brightness(1.16)
+        saturate(0.90)
+        blur(1.8px);
 
     transform:
         scale(1.06);
