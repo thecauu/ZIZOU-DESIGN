@@ -924,6 +924,9 @@ function runZoomOutTransition(clickedImage) {
             const destination =
                 lightboxImage.getBoundingClientRect();
 
+             transitionImage.classList.add(
+                 "transition-artwork-brightening"
+             );
 
             transitionImage.style.top =
                 `${destination.top}px`;
