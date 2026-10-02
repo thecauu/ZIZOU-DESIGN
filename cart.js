@@ -3,17 +3,17 @@
 ========================================= */
 
 
-/* -----------------------------------------
-   MULTI-ARTWORK CHECKOUT
------------------------------------------ */
+/* =========================================
+   01. MULTI-ARTWORK CHECKOUT
+========================================= */
 
 const ZIZOU_MULTI_CHECKOUT_ENDPOINT =
     "https://zizoudownloads.cesarur1997.workers.dev/create-checkout";
 
 
-/* -----------------------------------------
-   PRODUCTS
------------------------------------------ */
+/* =========================================
+   02. PRODUCTS
+========================================= */
 
 const zizouProducts = {
 
@@ -73,51 +73,292 @@ const zizouProducts = {
 };
 
 
-/* -----------------------------------------
-   LOAD SAVED CART
------------------------------------------ */
+/* =========================================
+   03. LOAD SAVED CART
+========================================= */
 
 let zizouCart = [];
+
 
 try {
 
     zizouCart =
         JSON.parse(
-            localStorage.getItem("zizouCart")
+            localStorage.getItem(
+                "zizouCart"
+            )
         ) || [];
 
-} catch (error) {
+}
+
+catch (error) {
 
     zizouCart = [];
 
 }
 
 
+/* =========================================
+   04. PANEL HANDOFF HELPERS
+========================================= */
+
+
 /* -----------------------------------------
-   CREATE GLOBAL BAG
+   CLOSE MENU BEFORE CART
 ----------------------------------------- */
+
+function closeMenuForCart() {
+
+    const sideMenu =
+        document.getElementById(
+            "sideMenu"
+        );
+
+
+    const menuButton =
+        document.getElementById(
+            "menuButton"
+        );
+
+
+    if (
+        !sideMenu ||
+        !menuButton ||
+        !sideMenu.classList.contains(
+            "open"
+        )
+    ) {
+        return;
+    }
+
+
+    /*
+       Use the existing menu button so
+       script.js performs its normal
+       closing procedure.
+    */
+
+    menuButton.click();
+
+}
+
+
+/* -----------------------------------------
+   CLOSE SEARCH BEFORE CART
+----------------------------------------- */
+
+function closeSearchForCart() {
+
+    const searchOverlay =
+        document.querySelector(
+            ".search-overlay"
+        );
+
+
+    if (
+        !searchOverlay ||
+        !searchOverlay.classList.contains(
+            "open"
+        )
+    ) {
+        return;
+    }
+
+
+    const activeSearchButton =
+        document.querySelector(
+            ".search-button-active"
+        );
+
+
+    const searchButton =
+        activeSearchButton ||
+        document.querySelector(
+            ".search-button"
+        );
+
+
+    if (searchButton) {
+
+        /*
+           Use search.js's existing close
+           behavior instead of duplicating it.
+        */
+
+        searchButton.click();
+
+    }
+
+}
+
+
+/* -----------------------------------------
+   CLOSE OTHER PANELS
+----------------------------------------- */
+
+function closeOtherPanelsForCart() {
+
+    closeMenuForCart();
+
+    closeSearchForCart();
+
+}
+
+
+/* =========================================
+   05. CART PANEL STATE
+========================================= */
+
+function openGlobalBag() {
+
+    const shoppingBag =
+        document.getElementById(
+            "shoppingBag"
+        );
+
+
+    const bagButton =
+        document.getElementById(
+            "bagButton"
+        );
+
+
+    if (!shoppingBag) {
+        return;
+    }
+
+
+    /*
+       Menu and search must close before
+       the bag opens.
+    */
+
+    closeOtherPanelsForCart();
+
+
+    shoppingBag.classList.add(
+        "open"
+    );
+
+
+    if (bagButton) {
+
+        bagButton.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+
+    }
+
+}
+
+
+function closeGlobalBag() {
+
+    const shoppingBag =
+        document.getElementById(
+            "shoppingBag"
+        );
+
+
+    const bagButton =
+        document.getElementById(
+            "bagButton"
+        );
+
+
+    if (!shoppingBag) {
+        return;
+    }
+
+
+    shoppingBag.classList.remove(
+        "open"
+    );
+
+
+    if (bagButton) {
+
+        bagButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+    }
+
+}
+
+
+function toggleGlobalBag() {
+
+    const shoppingBag =
+        document.getElementById(
+            "shoppingBag"
+        );
+
+
+    if (!shoppingBag) {
+        return;
+    }
+
+
+    if (
+        shoppingBag.classList.contains(
+            "open"
+        )
+    ) {
+
+        closeGlobalBag();
+
+    }
+
+    else {
+
+        openGlobalBag();
+
+    }
+
+}
+
+
+/* =========================================
+   06. CREATE GLOBAL BAG
+========================================= */
 
 function createGlobalBag() {
 
     const oldBag =
-        document.getElementById("shoppingBag");
+        document.getElementById(
+            "shoppingBag"
+        );
+
 
     if (oldBag) {
+
         oldBag.remove();
+
     }
 
 
     let bagButton =
-        document.getElementById("bagButton");
+        document.getElementById(
+            "bagButton"
+        );
 
 
     if (!bagButton) {
 
         bagButton =
-            document.querySelector(".bag-button");
+            document.querySelector(
+                ".bag-button"
+            );
+
 
         if (bagButton) {
-            bagButton.id = "bagButton";
+
+            bagButton.id =
+                "bagButton";
+
         }
 
     }
@@ -126,21 +367,28 @@ function createGlobalBag() {
     if (!bagButton) {
 
         bagButton =
-            document.createElement("button");
+            document.createElement(
+                "button"
+            );
+
 
         bagButton.id =
             "bagButton";
 
+
         bagButton.className =
             "bag-button global-bag-button";
 
+
         bagButton.type =
             "button";
+
 
         bagButton.setAttribute(
             "aria-label",
             "Shopping bag"
         );
+
 
         document.body.appendChild(
             bagButton
@@ -149,11 +397,18 @@ function createGlobalBag() {
     }
 
 
+    bagButton.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+
     /* -----------------------------------------
        ZIZOU CART LOGO
     ----------------------------------------- */
 
     bagButton.innerHTML = `
+
         <img
             src="images/ZIZOU LOGO.PNG"
             alt=""
@@ -163,15 +418,23 @@ function createGlobalBag() {
         <span id="bagCount">
             0
         </span>
+
     `;
 
 
+    /* -----------------------------------------
+       CREATE BAG PANEL
+    ----------------------------------------- */
+
     const shoppingBag =
-        document.createElement("aside");
+        document.createElement(
+            "aside"
+        );
 
 
     shoppingBag.className =
         "shopping-bag";
+
 
     shoppingBag.id =
         "shoppingBag";
@@ -181,7 +444,9 @@ function createGlobalBag() {
 
         <div class="shopping-bag-header">
 
-            <h2>YOUR BAG</h2>
+            <h2>
+                YOUR BAG
+            </h2>
 
             <button
                 id="closeBag"
@@ -228,44 +493,159 @@ function createGlobalBag() {
     );
 
 
-    /* OPEN BAG */
+    /* =========================================
+       07. CART BUTTON
+    ========================================= */
 
     bagButton.addEventListener(
         "click",
-        () => {
+        event => {
 
-            shoppingBag.classList.add(
-                "open"
+            event.preventDefault();
+
+
+            /*
+               BAG ICON CONTROLS BOTH STATES:
+
+               closed → open
+               open   → closed
+            */
+
+            toggleGlobalBag();
+
+        }
+    );
+
+
+    /* =========================================
+       08. CLOSE BUTTON
+    ========================================= */
+
+    const closeBagButton =
+        document.getElementById(
+            "closeBag"
+        );
+
+
+    if (closeBagButton) {
+
+        closeBagButton.addEventListener(
+            "click",
+            event => {
+
+                event.preventDefault();
+
+                closeGlobalBag();
+
+            }
+        );
+
+    }
+
+
+    /* =========================================
+       09. CART → MENU HANDOFF
+    ========================================= */
+
+    const menuButton =
+        document.getElementById(
+            "menuButton"
+        );
+
+
+    if (menuButton) {
+
+        /*
+           Capture phase closes the cart BEFORE
+           script.js receives the menu click.
+
+           BAG closes
+               ↓
+           existing menu listener opens menu
+        */
+
+        menuButton.addEventListener(
+            "click",
+            () => {
+
+                if (
+                    shoppingBag.classList.contains(
+                        "open"
+                    )
+                ) {
+
+                    closeGlobalBag();
+
+                }
+
+            },
+            true
+        );
+
+    }
+
+
+    /* =========================================
+       10. CART → SEARCH HANDOFF
+    ========================================= */
+
+    const searchButtons =
+        document.querySelectorAll(
+            ".search-button"
+        );
+
+
+    searchButtons.forEach(
+        searchButton => {
+
+            /*
+               Same principle:
+
+               BAG closes
+                   ↓
+               search.js opens search
+            */
+
+            searchButton.addEventListener(
+                "click",
+                () => {
+
+                    if (
+                        shoppingBag.classList.contains(
+                            "open"
+                        )
+                    ) {
+
+                        closeGlobalBag();
+
+                    }
+
+                },
+                true
             );
 
         }
     );
 
 
-    /* CLOSE BAG */
+    /* =========================================
+       11. CHECKOUT
+    ========================================= */
 
-    document
-        .getElementById("closeBag")
-        .addEventListener(
-            "click",
-            () => {
-
-                shoppingBag.classList.remove(
-                    "open"
-                );
-
-            }
+    const checkoutButton =
+        document.getElementById(
+            "checkoutButton"
         );
 
 
-    /* CHECKOUT */
+    if (checkoutButton) {
 
-    document
-        .getElementById("checkoutButton")
-        .addEventListener(
+        checkoutButton.addEventListener(
             "click",
             startGlobalCheckout
         );
+
+    }
 
 
     updateGlobalBag();
@@ -273,28 +653,34 @@ function createGlobalBag() {
 }
 
 
-/* -----------------------------------------
-   SAVE CART
------------------------------------------ */
+/* =========================================
+   12. SAVE CART
+========================================= */
 
 function saveGlobalCart() {
 
     localStorage.setItem(
         "zizouCart",
-        JSON.stringify(zizouCart)
+        JSON.stringify(
+            zizouCart
+        )
     );
 
 }
 
 
-/* -----------------------------------------
-   ADD PRODUCT
------------------------------------------ */
+/* =========================================
+   13. ADD PRODUCT
+========================================= */
 
-function addToGlobalBag(productId) {
+function addToGlobalBag(
+    productId
+) {
 
     const product =
-        zizouProducts[productId];
+        zizouProducts[
+            productId
+        ];
 
 
     if (!product) {
@@ -302,9 +688,16 @@ function addToGlobalBag(productId) {
     }
 
 
-    if (!zizouCart.includes(productId)) {
+    if (
+        !zizouCart.includes(
+            productId
+        )
+    ) {
 
-        zizouCart.push(productId);
+        zizouCart.push(
+            productId
+        );
+
 
         saveGlobalCart();
 
@@ -314,32 +707,29 @@ function addToGlobalBag(productId) {
     updateGlobalBag();
 
 
-    const shoppingBag =
-        document.getElementById(
-            "shoppingBag"
-        );
+    /*
+       Opening the bag through an
+       Add To Bag button also closes
+       menu/search first.
+    */
 
-
-    if (shoppingBag) {
-
-        shoppingBag.classList.add(
-            "open"
-        );
-
-    }
+    openGlobalBag();
 
 }
 
 
-/* -----------------------------------------
-   REMOVE PRODUCT
------------------------------------------ */
+/* =========================================
+   14. REMOVE PRODUCT
+========================================= */
 
-function removeFromGlobalBag(productId) {
+function removeFromGlobalBag(
+    productId
+) {
 
     zizouCart =
         zizouCart.filter(
-            item => item !== productId
+            item =>
+                item !== productId
         );
 
 
@@ -350,9 +740,9 @@ function removeFromGlobalBag(productId) {
 }
 
 
-/* -----------------------------------------
-   UPDATE BAG
------------------------------------------ */
+/* =========================================
+   15. UPDATE BAG
+========================================= */
 
 function updateGlobalBag() {
 
@@ -361,15 +751,18 @@ function updateGlobalBag() {
             "bagItems"
         );
 
+
     const bagCount =
         document.getElementById(
             "bagCount"
         );
 
+
     const bagEmpty =
         document.getElementById(
             "bagEmpty"
         );
+
 
     const checkoutArea =
         document.getElementById(
@@ -394,9 +787,13 @@ function updateGlobalBag() {
     }
 
 
-    /* EMPTY BAG */
+    /* -----------------------------------------
+       EMPTY BAG
+    ----------------------------------------- */
 
-    if (zizouCart.length === 0) {
+    if (
+        zizouCart.length === 0
+    ) {
 
         if (bagEmpty) {
 
@@ -405,12 +802,14 @@ function updateGlobalBag() {
 
         }
 
+
         if (checkoutArea) {
 
             checkoutArea.style.display =
                 "none";
 
         }
+
 
         return;
 
@@ -433,13 +832,17 @@ function updateGlobalBag() {
     }
 
 
-    /* DISPLAY PRODUCTS */
+    /* -----------------------------------------
+       DISPLAY PRODUCTS
+    ----------------------------------------- */
 
     zizouCart.forEach(
         productId => {
 
             const product =
-                zizouProducts[productId];
+                zizouProducts[
+                    productId
+                ];
 
 
             if (!product) {
@@ -497,13 +900,15 @@ function updateGlobalBag() {
 }
 
 
-/* -----------------------------------------
-   START CHECKOUT
------------------------------------------ */
+/* =========================================
+   16. START CHECKOUT
+========================================= */
 
 async function startGlobalCheckout() {
 
-    if (zizouCart.length === 0) {
+    if (
+        zizouCart.length === 0
+    ) {
         return;
     }
 
@@ -519,14 +924,13 @@ async function startGlobalCheckout() {
     }
 
 
-    /*
+    /* -----------------------------------------
        ONE ARTWORK
+    ----------------------------------------- */
 
-       Keep the existing individual
-       Lemon checkout exactly as before.
-    */
-
-    if (zizouCart.length === 1) {
+    if (
+        zizouCart.length === 1
+    ) {
 
         const product =
             zizouProducts[
@@ -549,16 +953,13 @@ async function startGlobalCheckout() {
     }
 
 
-    /*
+    /* -----------------------------------------
        TWO TO SIX ARTWORKS
-
-       Cloudflare creates one custom
-       Lemon checkout containing the
-       selected artwork names.
-    */
+    ----------------------------------------- */
 
     checkoutButton.disabled =
         true;
+
 
     checkoutButton.textContent =
         "LOADING...";
@@ -570,7 +971,8 @@ async function startGlobalCheckout() {
             await fetch(
                 ZIZOU_MULTI_CHECKOUT_ENDPOINT,
                 {
-                    method: "POST",
+                    method:
+                        "POST",
 
                     headers: {
                         "Content-Type":
@@ -628,6 +1030,7 @@ async function startGlobalCheckout() {
         checkoutButton.disabled =
             false;
 
+
         checkoutButton.textContent =
             "CHECKOUT";
 
@@ -636,9 +1039,9 @@ async function startGlobalCheckout() {
 }
 
 
-/* -----------------------------------------
-   OPEN LEMON CHECKOUT
------------------------------------------ */
+/* =========================================
+   17. OPEN LEMON CHECKOUT
+========================================= */
 
 function openLemonCheckout(
     checkoutUrl
@@ -647,13 +1050,15 @@ function openLemonCheckout(
     if (
         window.LemonSqueezy &&
         window.LemonSqueezy.Url &&
-        typeof window.LemonSqueezy.Url.Open
-            === "function"
+        typeof window.LemonSqueezy
+            .Url
+            .Open === "function"
     ) {
 
         window.LemonSqueezy.Url.Open(
             checkoutUrl
         );
+
 
         return;
 
@@ -671,16 +1076,18 @@ function openLemonCheckout(
 }
 
 
-/* -----------------------------------------
-   ADD / REMOVE BUTTON CLICKS
------------------------------------------ */
+/* =========================================
+   18. ADD / REMOVE BUTTON CLICKS
+========================================= */
 
 document.addEventListener(
     "click",
-    (event) => {
+    event => {
 
 
-        /* ADD TO BAG */
+        /* -----------------------------------------
+           ADD TO BAG
+        ----------------------------------------- */
 
         const addButton =
             event.target.closest(
@@ -702,12 +1109,15 @@ document.addEventListener(
 
             }
 
+
             return;
 
         }
 
 
-        /* REMOVE FROM BAG */
+        /* -----------------------------------------
+           REMOVE FROM BAG
+        ----------------------------------------- */
 
         const removeButton =
             event.target.closest(
@@ -735,9 +1145,9 @@ document.addEventListener(
 );
 
 
-/* -----------------------------------------
-   START
------------------------------------------ */
+/* =========================================
+   19. START
+========================================= */
 
 document.addEventListener(
     "DOMContentLoaded",
