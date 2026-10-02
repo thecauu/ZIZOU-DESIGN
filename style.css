@@ -351,9 +351,33 @@ body {
     align-items: center;
     justify-content: center;
 
-    gap: 5px;
+    gap: 6px;
 
-    font-size: 35px;
+    border: none;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    padding: 0;
+
+    line-height: 1;
+}
+
+.bag-icon {
+    width: 22px;
+    height: 22px;
+
+    fill: none;
+
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    flex-shrink: 0;
 }
 
 
@@ -3575,23 +3599,6 @@ body.search-open
 
 
 /* =========================================================
-   14. SHOPPING BAG — ZIZOU LOGO
-========================================================= */
-
-.bag-logo {
-    display: block;
-
-    width: auto;
-
-    height: 28px;
-
-    object-fit: contain;
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
    14. SHOPPING BAG — GLOBAL BUTTON
 ========================================================= */
 
@@ -3656,9 +3663,14 @@ body.search-open
         font-size: 29px;
     }
 
-    .bag-button {
-        font-size: 30px;
-    }
+.bag-button {
+    font-size: 30px;
+}
+
+.bag-icon {
+    width: 20px;
+    height: 20px;
+}
 
     .collection-button {
         width: 77%;
