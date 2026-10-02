@@ -369,40 +369,69 @@ document.addEventListener(
 
         searchOverlay.innerHTML = `
 
-            <div class="search-panel">
+    <div class="search-panel">
 
-                <div class="search-header">
+        <div class="search-header">
 
-                    <p>SEARCH</p>
+            <a
+                href="index.html"
+                class="search-logo"
+            >
+                ZIZOU DESIGN
+            </a>
 
-                    <button
-                        class="search-close"
-                        type="button"
-                        aria-label="Close search"
-                    >
-                        ×
-                    </button>
+            <button
+                class="search-close"
+                type="button"
+                aria-label="Close search"
+            >
+                ×
+            </button>
 
-                </div>
-
-
-                <input
-                    type="search"
-                    id="siteSearchInput"
-                    class="site-search-input"
-                    placeholder="Search ZIZOU DESIGN"
-                    autocomplete="off"
-                >
+        </div>
 
 
-                <div
-                    id="siteSearchResults"
-                    class="site-search-results"
-                ></div>
+        <div class="search-input-row">
 
-            </div>
+            <svg
+                class="search-input-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+            >
+                <circle
+                    cx="11"
+                    cy="11"
+                    r="7"
+                ></circle>
 
-        `;
+                <line
+                    x1="16"
+                    y1="16"
+                    x2="21"
+                    y2="21"
+                ></line>
+            </svg>
+
+
+            <input
+                type="search"
+                id="siteSearchInput"
+                class="site-search-input"
+                aria-label="Search ZIZOU DESIGN"
+                autocomplete="off"
+            >
+
+        </div>
+
+
+        <div
+            id="siteSearchResults"
+            class="site-search-results"
+        ></div>
+
+    </div>
+
+`;
 
 
         document.body.appendChild(
