@@ -2934,7 +2934,7 @@ span:first-child {
 
 
 /* =========================================================
-   SEARCH — KEEP ORIGINAL NAVBAR
+   SEARCH — ORIGINAL NAVBAR
 ========================================================= */
 
 body.search-open
@@ -2942,11 +2942,6 @@ body.search-open
     z-index: 13001;
 }
 
-
-/*
-   Original navbar changes from white to black
-   while the white search panel is open.
-*/
 
 body.search-open
 .logo,
@@ -2964,59 +2959,50 @@ body.search-open
 
 
 /* =========================================================
-   SEARCH — SEARCH ICON BECOMES X
+   SEARCH — SEARCH BUTTON / X
+   Same button box is used in both states.
 ========================================================= */
 
-body.search-open
 .search-button {
-    position: relative;
-
-    z-index: 13002;
-}
-
-
-body.search-open
-.search-button-active {
     position: relative;
 
     display: flex;
 
     align-items: center;
     justify-content: center;
-
-    width: 30px;
-    height: 30px;
-
-    padding: 0;
-
-    border: none;
-
-    background: transparent;
-
-    color: #111111;
-
-    cursor: pointer;
 }
 
 
-/* =========================================================
-   SEARCH — CLOSE ICON
-========================================================= */
+body.search-open
+.search-button {
+    z-index: 13002;
+}
 
-.search-close-icon {
+
+/*
+   Hide the original magnifying glass visually,
+   but keep its original space and position.
+*/
+
+.search-button-active {
     position: relative;
 
-    display: block;
-
-    width: 21px;
-    height: 21px;
-
-    flex-shrink: 0;
+    color: transparent !important;
 }
 
 
-.search-close-icon::before,
-.search-close-icon::after {
+.search-button-active svg {
+    opacity: 0;
+}
+
+
+/*
+   Draw the X directly in the center of the
+   original search-button box.
+*/
+
+.search-button-active::before,
+.search-button-active::after {
     content: "";
 
     position: absolute;
@@ -3024,27 +3010,32 @@ body.search-open
     top: 50%;
     left: 50%;
 
-    width: 23px;
-    height: 1.7px;
+    width: 20px;
+    height: 1.6px;
 
-    background: currentColor;
+    background: #111111;
+
+    border-radius: 1px;
 
     transform-origin: center;
+
+    pointer-events: none;
 }
 
 
-.search-close-icon::before {
+.search-button-active::before {
     transform:
         translate(-50%, -50%)
         rotate(45deg);
 }
 
 
-.search-close-icon::after {
+.search-button-active::after {
     transform:
         translate(-50%, -50%)
         rotate(-45deg);
 }
+
 
 /* =========================================================
    SEARCH — PANEL CONTENT
@@ -3128,6 +3119,19 @@ body.search-open
 
     color: #111111;
 
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 22px;
+
+    font-weight: 400;
+
+    line-height: 1.2;
+
+    appearance: none;
+
     -webkit-appearance: none;
 }
 
@@ -3137,11 +3141,8 @@ body.search-open
 ========================================================= */
 
 .site-search-input::-webkit-search-decoration,
-
 .site-search-input::-webkit-search-cancel-button,
-
 .site-search-input::-webkit-search-results-button,
-
 .site-search-input::-webkit-search-results-decoration {
     -webkit-appearance: none;
 }
@@ -3268,12 +3269,10 @@ body.search-open
     }
 
 
-    body.search-open
-    .search-button-active {
-        width: 32px;
-        height: 32px;
-
-        font-size: 36px;
+    .search-button-active::before,
+    .search-button-active::after {
+        width: 19px;
+        height: 1.5px;
     }
 
 }
