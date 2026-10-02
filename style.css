@@ -640,16 +640,104 @@ body {
     pointer-events: auto;
 }
 
+/* =========================================================
+   04. SIDE MENU — CLOSE BUTTON
+   The separate panel X is no longer used.
+========================================================= */
+
 .close-menu {
-    border: none;
+    display: none;
+}
 
-    background: transparent;
 
-    color: #ffffff;
+/* =========================================================
+   04. SIDE MENU — MENU ICON BECOMES X
+========================================================= */
 
-    font-size: 40px;
+.menu-button {
+    position: relative;
 
-    cursor: pointer;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+body.menu-open
+.navbar {
+    z-index: 13001;
+}
+
+
+body.menu-open
+.menu-button {
+    z-index: 13002;
+}
+
+
+/*
+   Hide the original hamburger without changing
+   the physical button position.
+*/
+
+.menu-button-active {
+    position: relative;
+
+    color: transparent !important;
+}
+
+
+.menu-button-active svg {
+    opacity: 0;
+}
+
+
+/*
+   Draw the X in the exact same menu-button slot.
+*/
+
+.menu-button-active::before,
+.menu-button-active::after {
+    content: "";
+
+    position: absolute;
+
+    top:
+        calc(
+            50%
+            +
+            3.5px
+        );
+
+    left: 50%;
+
+    width: 20px;
+    height: 1.6px;
+
+    background: currentColor;
+
+    background: #ffffff;
+
+    border-radius: 1px;
+
+    transform-origin: center;
+
+    pointer-events: none;
+}
+
+
+.menu-button-active::before {
+    transform:
+        translate(-50%, -50%)
+        rotate(45deg);
+}
+
+
+.menu-button-active::after {
+    transform:
+        translate(-50%, -50%)
+        rotate(-45deg);
 }
 
 .menu-nav {
