@@ -1955,8 +1955,7 @@ span:first-child {
 
     pointer-events: none;
 
-    transform-origin:
-        center center;
+    transform-origin: center center;
 
     filter:
         brightness(1)
@@ -1964,65 +1963,35 @@ span:first-child {
         blur(0);
 
     transition:
-        top
-        2.2s
-        cubic-bezier(
-            0.16,
-            1,
-            0.3,
-            1
-        ),
-        left
-        2.2s
-        cubic-bezier(
-            0.16,
-            1,
-            0.3,
-            1
-        ),
-        width
-        2.2s
-        cubic-bezier(
-            0.16,
-            1,
-            0.3,
-            1
-        ),
-        height
-        2.2s
-        cubic-bezier(
-            0.16,
-            1,
-            0.3,
-            1
-        ),
-        transform
-        2.2s
-        cubic-bezier(
-            0.16,
-            1,
-            0.3,
-            1
-        ),
-        filter
-        1.1s
-        ease,
-        opacity
-        1.1s
-        ease;
+        top 2.2s cubic-bezier(0.16, 1, 0.3, 1),
+        left 2.2s cubic-bezier(0.16, 1, 0.3, 1),
+        width 2.2s cubic-bezier(0.16, 1, 0.3, 1),
+        height 2.2s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 2.2s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 2.2s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.7s ease;
 }
 
+
+/* Starts at the same moment as the zoom */
+
+.transition-artwork-brightening {
+    filter:
+        brightness(2.35)
+        saturate(0.45)
+        blur(2px);
+}
+
+
+/* Final wash into white */
 
 .transition-artwork-fade {
     opacity: 0;
 
     filter:
-        brightness(3)
-        saturate(0.25)
-        blur(3px);
-
-    transform:
-        scale(1.06);
+        brightness(3.4)
+        saturate(0)
+        blur(4px);
 }
 
 
