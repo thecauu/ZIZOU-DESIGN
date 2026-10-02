@@ -866,6 +866,133 @@ body.menu-open
     letter-spacing: 1px;
 }
 
+/* =========================================================
+   04. SHARED NAVIGATION — INTERNAL PAGES
+========================================================= */
+
+.shared-page-navbar {
+    position: relative;
+
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+
+    width: 100%;
+
+    z-index: 10;
+
+    background: #ffffff;
+
+    padding:
+        max(
+            28px,
+            env(safe-area-inset-top)
+        )
+        28px
+        28px;
+}
+
+
+/* -----------------------------------------
+   INTERNAL PAGE COLORS
+----------------------------------------- */
+
+.shared-page-navbar
+.logo,
+
+.shared-page-navbar
+.icon-button,
+
+.shared-page-navbar
+.bag-button {
+    color: #111111;
+}
+
+
+/* =========================================
+   MENU OPEN
+========================================= */
+
+body.menu-open
+.shared-page-navbar {
+    background: transparent;
+}
+
+
+body.menu-open
+.shared-page-navbar
+.logo,
+
+body.menu-open
+.shared-page-navbar
+.search-button,
+
+body.menu-open
+.shared-page-navbar
+.bag-button {
+    color: #ffffff;
+}
+
+
+body.menu-open
+.shared-page-navbar
+.bag-logo {
+    filter:
+        invert(1);
+}
+
+
+/* =========================================
+   SEARCH OPEN
+========================================= */
+
+body.search-open
+.shared-page-navbar {
+    background: transparent;
+}
+
+
+body.search-open
+.shared-page-navbar
+.logo,
+
+body.search-open
+.shared-page-navbar
+.menu-button,
+
+body.search-open
+.shared-page-navbar
+.search-button,
+
+body.search-open
+.shared-page-navbar
+.bag-button {
+    color: #111111;
+}
+
+
+body.search-open
+.shared-page-navbar
+.bag-logo {
+    filter: none;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .shared-page-navbar {
+        padding-left: 18px;
+        padding-right: 18px;
+        padding-bottom: 24px;
+    }
+
+}
+
 
 /* =========================================================
    05. COLLECTION PAGES — SHARED NAVIGATION
