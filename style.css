@@ -1969,29 +1969,29 @@ span:first-child {
         height 2.2s cubic-bezier(0.16, 1, 0.3, 1),
         transform 2.2s cubic-bezier(0.16, 1, 0.3, 1),
         filter 2.2s cubic-bezier(0.16, 1, 0.3, 1),
-        opacity 0.7s ease;
+        opacity 2.2s ease;
 }
 
 
-/* BRIGHTENS GRADUALLY WHILE ZOOMING */
+/* SOFT FADE TOWARD WHITE WHILE ZOOMING */
 
 .transition-artwork-brightening {
+    opacity: 0.72;
+
     filter:
-        brightness(1.16)
-        saturate(0.92)
-        blur(0.6px);
+        brightness(1.04)
+        blur(0.5px);
 }
 
 
-/* SOFT FINAL FADE */
+/* FINAL SOFT DISSOLVE */
 
 .transition-artwork-fade {
     opacity: 0;
 
     filter:
-        brightness(1.32)
-        saturate(0.82)
-        blur(1.6px);
+        brightness(1.08)
+        blur(1.4px);
 
     transform:
         scale(1.06);
