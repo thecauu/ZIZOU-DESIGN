@@ -601,8 +601,12 @@ document.addEventListener(
                SEARCH ICON → X
             ----------------------------------------- */
 
-            button.innerHTML =
-                "×";
+button.innerHTML = `
+    <span
+        class="search-close-icon"
+        aria-hidden="true"
+    ></span>
+`;
 
 
             button.setAttribute(
