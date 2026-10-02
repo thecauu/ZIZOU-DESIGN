@@ -43,30 +43,25 @@ const menuButton =
         "menuButton"
     );
 
-
-const closeMenuButton =
+const closeMenu =
     document.getElementById(
         "closeMenu"
     );
-
 
 const sideMenu =
     document.getElementById(
         "sideMenu"
     );
 
-
 const collectionsButton =
     document.getElementById(
         "collectionsButton"
     );
 
-
 const collectionsMenu =
     document.getElementById(
         "collectionsMenu"
     );
-
 
 const contactMenuLink =
     document.getElementById(
@@ -75,141 +70,7 @@ const contactMenuLink =
 
 
 /* -----------------------------------------
-   MENU STATE
------------------------------------------ */
-
-function isMenuOpen() {
-
-    return (
-        sideMenu &&
-        sideMenu.classList.contains(
-            "open"
-        )
-    );
-
-}
-
-
-/* -----------------------------------------
-   OPEN MENU
------------------------------------------ */
-
-function openMenu() {
-
-    if (
-        !menuButton ||
-        !sideMenu
-    ) {
-        return;
-    }
-
-
-    sideMenu.classList.add(
-        "open"
-    );
-
-
-    menuButton.classList.add(
-        "menu-button-active"
-    );
-
-
-    menuButton.setAttribute(
-        "aria-label",
-        "Close menu"
-    );
-
-
-    document.body.classList.add(
-        "menu-open"
-    );
-
-
-    document.body.style.overflow =
-        "hidden";
-
-}
-
-
-/* -----------------------------------------
-   CLOSE MENU
------------------------------------------ */
-
-function closeMenu() {
-
-    if (
-        !menuButton ||
-        !sideMenu
-    ) {
-        return;
-    }
-
-
-    sideMenu.classList.remove(
-        "open"
-    );
-
-
-    menuButton.classList.remove(
-        "menu-button-active"
-    );
-
-
-    menuButton.setAttribute(
-        "aria-label",
-        "Open menu"
-    );
-
-
-    document.body.classList.remove(
-        "menu-open"
-    );
-
-
-    document.body.style.overflow =
-        "";
-
-
-    /*
-       Close collection dropdown
-       whenever the main menu closes.
-    */
-
-    if (collectionsMenu) {
-
-        collectionsMenu.classList.remove(
-            "open"
-        );
-
-    }
-
-}
-
-
-/* -----------------------------------------
-   TOGGLE MENU
------------------------------------------ */
-
-function toggleMenu() {
-
-    if (isMenuOpen()) {
-
-        closeMenu();
-
-    }
-
-    else {
-
-        openMenu();
-
-    }
-
-}
-
-
-/* -----------------------------------------
-   MENU BUTTON
-   ☰ becomes X while menu is open.
+   OPEN / CLOSE MAIN MENU
 ----------------------------------------- */
 
 if (
@@ -219,11 +80,64 @@ if (
 
     menuButton.addEventListener(
         "click",
-        (event) => {
+        () => {
 
-            event.preventDefault();
+            const menuIsOpen =
+                sideMenu.classList.contains(
+                    "open"
+                );
 
-            toggleMenu();
+
+            if (menuIsOpen) {
+
+                sideMenu.classList.remove(
+                    "open"
+                );
+
+                menuButton.classList.remove(
+                    "menu-button-active"
+                );
+
+                document.body.classList.remove(
+                    "menu-open"
+                );
+
+                menuButton.setAttribute(
+                    "aria-label",
+                    "Open menu"
+                );
+
+
+                if (collectionsMenu) {
+
+                    collectionsMenu.classList.remove(
+                        "open"
+                    );
+
+                }
+
+            }
+
+            else {
+
+                sideMenu.classList.add(
+                    "open"
+                );
+
+                menuButton.classList.add(
+                    "menu-button-active"
+                );
+
+                document.body.classList.add(
+                    "menu-open"
+                );
+
+                menuButton.setAttribute(
+                    "aria-label",
+                    "Close menu"
+                );
+
+            }
 
         }
     );
@@ -233,19 +147,49 @@ if (
 
 /* -----------------------------------------
    OLD CLOSE BUTTON
-   Kept for compatibility if it still
-   exists in the HTML.
+   Kept so existing HTML still works.
 ----------------------------------------- */
 
-if (closeMenuButton) {
+if (
+    closeMenu &&
+    sideMenu
+) {
 
-    closeMenuButton.addEventListener(
+    closeMenu.addEventListener(
         "click",
-        (event) => {
+        () => {
 
-            event.preventDefault();
+            sideMenu.classList.remove(
+                "open"
+            );
 
-            closeMenu();
+
+            if (menuButton) {
+
+                menuButton.classList.remove(
+                    "menu-button-active"
+                );
+
+                menuButton.setAttribute(
+                    "aria-label",
+                    "Open menu"
+                );
+
+            }
+
+
+            document.body.classList.remove(
+                "menu-open"
+            );
+
+
+            if (collectionsMenu) {
+
+                collectionsMenu.classList.remove(
+                    "open"
+                );
+
+            }
 
         }
     );
@@ -264,14 +208,13 @@ if (
 
     collectionsButton.addEventListener(
         "click",
-        (event) => {
+        () => {
 
-            event.preventDefault();
-
-
-            collectionsMenu.classList.toggle(
-                "open"
-            );
+            collectionsMenu
+                .classList
+                .toggle(
+                    "open"
+                );
 
         }
     );
@@ -290,10 +233,6 @@ if (contactMenuLink) {
         (event) => {
 
             event.preventDefault();
-
-
-            closeMenu();
-
 
             window.location.href =
                 "contact.html";
@@ -314,15 +253,45 @@ document.addEventListener(
 
         if (
             event.key === "Escape" &&
-            isMenuOpen()
+            sideMenu &&
+            sideMenu.classList.contains(
+                "open"
+            )
         ) {
 
-            closeMenu();
+            sideMenu.classList.remove(
+                "open"
+            );
+
+
+            if (menuButton) {
+
+                menuButton.classList.remove(
+                    "menu-button-active"
+                );
+
+                menuButton.setAttribute(
+                    "aria-label",
+                    "Open menu"
+                );
+
+            }
+
+
+            document.body.classList.remove(
+                "menu-open"
+            );
+
+
+            if (collectionsMenu) {
+
+                collectionsMenu.classList.remove(
+                    "open"
+                );
+
+            }
 
         }
-
-    }
-);        }
 
     }
 );
