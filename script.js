@@ -1,32 +1,4 @@
-const menuButton =
-    document.getElementById(
-        "menuButton"
-    );
 
-const closeMenu =
-    document.getElementById(
-        "closeMenu"
-    );
-
-const sideMenu =
-    document.getElementById(
-        "sideMenu"
-    );
-
-const collectionsButton =
-    document.getElementById(
-        "collectionsButton"
-    );
-
-const collectionsMenu =
-    document.getElementById(
-        "collectionsMenu"
-    );
-
-const contactMenuLink =
-    document.getElementById(
-        "contactMenuLink"
-    );
 
 
 /* =========================================
