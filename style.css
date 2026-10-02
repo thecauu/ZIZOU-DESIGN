@@ -1705,14 +1705,22 @@ body.sea-intro-active {
 }
 
 /* =========================================================
-   08. LIGHTBOX — HIDE WEBSITE FOOTER
+   08. FOOTER — NORMAL STATE
 ========================================================= */
 
-body:has(.lightbox.open)
+.site-footer {
+    display: block;
+}
+
+
+/* =========================================================
+   08. FOOTER — HIDE ONLY WHILE ARTWORK VIEWER IS OPEN
+========================================================= */
+
+body.artwork-viewer-open
 .site-footer {
     display: none !important;
 }
-
 
 /* =========================================================
    08. ARTWORK LIGHTBOX — IMAGE AREA
