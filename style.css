@@ -617,10 +617,10 @@ body {
     pointer-events: none;
 
     backdrop-filter:
-        blur(2px);
+        blur(15px);
 
     -webkit-backdrop-filter:
-        blur(2px);
+        blur(15px);
 
     transition:
         transform
