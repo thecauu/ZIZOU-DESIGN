@@ -342,3 +342,256 @@ function searchZizouSite(query) {
         );
 
 }
+
+/* =========================================
+   SEARCH INTERFACE
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        const searchButtons =
+            document.querySelectorAll(
+                ".search-button"
+            );
+
+
+        /* CREATE SEARCH PANEL */
+
+        const searchOverlay =
+            document.createElement("div");
+
+
+        searchOverlay.className =
+            "search-overlay";
+
+
+        searchOverlay.innerHTML = `
+
+            <div class="search-panel">
+
+                <div class="search-header">
+
+                    <p>SEARCH</p>
+
+                    <button
+                        class="search-close"
+                        type="button"
+                        aria-label="Close search"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+
+                <input
+                    type="search"
+                    id="siteSearchInput"
+                    class="site-search-input"
+                    placeholder="Search ZIZOU DESIGN"
+                    autocomplete="off"
+                >
+
+
+                <div
+                    id="siteSearchResults"
+                    class="site-search-results"
+                ></div>
+
+            </div>
+
+        `;
+
+
+        document.body.appendChild(
+            searchOverlay
+        );
+
+
+        const searchInput =
+            document.getElementById(
+                "siteSearchInput"
+            );
+
+
+        const searchResults =
+            document.getElementById(
+                "siteSearchResults"
+            );
+
+
+        const searchClose =
+            searchOverlay.querySelector(
+                ".search-close"
+            );
+
+
+        /* OPEN SEARCH */
+
+        searchButtons.forEach(
+            button => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        searchOverlay.classList.add(
+                            "open"
+                        );
+
+                        document.body.style.overflow =
+                            "hidden";
+
+
+                        setTimeout(
+                            () => {
+
+                                searchInput.focus();
+
+                            },
+                            100
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* CLOSE SEARCH */
+
+        function closeSearch() {
+
+            searchOverlay.classList.remove(
+                "open"
+            );
+
+            document.body.style.overflow =
+                "";
+
+            searchInput.value =
+                "";
+
+            searchResults.innerHTML =
+                "";
+
+        }
+
+
+        searchClose.addEventListener(
+            "click",
+            closeSearch
+        );
+
+
+        document.addEventListener(
+            "keydown",
+            event => {
+
+                if (
+                    event.key === "Escape" &&
+                    searchOverlay.classList.contains(
+                        "open"
+                    )
+                ) {
+
+                    closeSearch();
+
+                }
+
+            }
+        );
+
+
+        /* LIVE SEARCH */
+
+        searchInput.addEventListener(
+            "input",
+            () => {
+
+                const query =
+                    searchInput.value;
+
+
+                const results =
+                    searchZizouSite(
+                        query
+                    );
+
+
+                searchResults.innerHTML =
+                    "";
+
+
+                if (
+                    query.trim() === ""
+                ) {
+
+                    return;
+
+                }
+
+
+                if (
+                    results.length === 0
+                ) {
+
+                    searchResults.innerHTML = `
+
+                        <p class="search-no-results">
+                            No results found.
+                        </p>
+
+                    `;
+
+                    return;
+
+                }
+
+
+                results.forEach(
+                    result => {
+
+                        const link =
+                            document.createElement(
+                                "a"
+                            );
+
+
+                        link.className =
+                            "search-result";
+
+
+                        link.href =
+                            result.url;
+
+
+                        link.innerHTML = `
+
+                            <span class="search-result-type">
+                                ${result.type}
+                            </span>
+
+                            <span class="search-result-title">
+                                ${result.title}
+                            </span>
+
+                        `;
+
+
+                        searchResults.appendChild(
+                            link
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+    }
+);
+
