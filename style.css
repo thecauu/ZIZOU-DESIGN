@@ -1704,15 +1704,13 @@ body.sea-intro-active {
     display: block;
 }
 
-/* Hide website footer while artwork viewer is open
-   on phones and tablets */
+/* =========================================================
+   08. LIGHTBOX — HIDE WEBSITE FOOTER
+========================================================= */
 
-@media (max-width: 1199px) {
-
-    .lightbox.open ~ .site-footer {
-        display: none;
-    }
-
+body:has(.lightbox.open)
+.site-footer {
+    display: none !important;
 }
 
 
