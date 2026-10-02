@@ -3,13 +3,15 @@
 ========================================= */
 
 
-/* -----------------------------------------
-   SEARCH INDEX
------------------------------------------ */
+/* =========================================
+   01. SEARCH INDEX
+========================================= */
 
 const zizouSearchIndex = [
 
-    /* COLLECTIONS */
+    /* -----------------------------------------
+       COLLECTIONS
+    ----------------------------------------- */
 
     {
         title: "Summertide",
@@ -37,7 +39,9 @@ const zizouSearchIndex = [
     },
 
 
-    /* SUMMERTIDE ARTWORK */
+    /* -----------------------------------------
+       SUMMERTIDE ARTWORK
+    ----------------------------------------- */
 
     {
         title: "Amber Breeze",
@@ -141,7 +145,9 @@ const zizouSearchIndex = [
     },
 
 
-    /* INFORMATION */
+    /* -----------------------------------------
+       INFORMATION
+    ----------------------------------------- */
 
     {
         title: "About ZIZOU DESIGN",
@@ -244,9 +250,9 @@ const zizouSearchIndex = [
 ];
 
 
-/* -----------------------------------------
-   NORMALIZE SEARCH TEXT
------------------------------------------ */
+/* =========================================
+   02. SEARCH HELPERS
+========================================= */
 
 function normalizeSearchText(text) {
 
@@ -258,10 +264,6 @@ function normalizeSearchText(text) {
 
 }
 
-
-/* -----------------------------------------
-   SEARCH
------------------------------------------ */
 
 function searchZizouSite(query) {
 
@@ -284,34 +286,35 @@ function searchZizouSite(query) {
 
         .map((item) => {
 
-            const title =
+            const normalizedTitle =
                 normalizeSearchText(
                     item.title
                 );
 
 
-            const keywords =
+            const normalizedKeywords =
                 item.keywords
                     .map(normalizeSearchText)
                     .join(" ");
 
 
             const searchableText =
-                `${title} ${keywords}`;
+                `${normalizedTitle} ${normalizedKeywords}`;
 
 
             let score = 0;
 
 
             if (
-                title === normalizedQuery
+                normalizedTitle ===
+                normalizedQuery
             ) {
                 score += 100;
             }
 
 
             if (
-                title.startsWith(
+                normalizedTitle.startsWith(
                     normalizedQuery
                 )
             ) {
@@ -320,7 +323,7 @@ function searchZizouSite(query) {
 
 
             if (
-                title.includes(
+                normalizedTitle.includes(
                     normalizedQuery
                 )
             ) {
@@ -329,7 +332,7 @@ function searchZizouSite(query) {
 
 
             if (
-                keywords.includes(
+                normalizedKeywords.includes(
                     normalizedQuery
                 )
             ) {
@@ -372,7 +375,7 @@ function searchZizouSite(query) {
 
 
 /* =========================================
-   SEARCH INTERFACE
+   03. SEARCH INTERFACE
 ========================================= */
 
 document.addEventListener(
@@ -380,9 +383,19 @@ document.addEventListener(
     () => {
 
 
+        /* -----------------------------------------
+           ELEMENTS
+        ----------------------------------------- */
+
         const searchButtons =
             document.querySelectorAll(
                 ".search-button"
+            );
+
+
+        const navbar =
+            document.querySelector(
+                ".navbar"
             );
 
 
@@ -407,13 +420,11 @@ document.addEventListener(
             "search-overlay";
 
 
-        /*
-           No duplicate ZIZOU header.
-           No separate close button.
+        searchOverlay.setAttribute(
+            "aria-hidden",
+            "true"
+        );
 
-           The existing search icon in the navbar
-           becomes the X.
-        */
 
         searchOverlay.innerHTML = `
 
@@ -482,12 +493,28 @@ document.addEventListener(
             );
 
 
+        /* -----------------------------------------
+           STATE
+        ----------------------------------------- */
+
         let activeSearchButton =
             null;
 
 
-        let clearSearchTimer =
+        let clearTimer =
             null;
+
+
+        let focusTimer =
+            null;
+
+
+        let originalBodyOverflow =
+            "";
+
+
+        let originalNavbarZIndex =
+            "";
 
 
         /* -----------------------------------------
@@ -510,20 +537,41 @@ document.addEventListener(
         );
 
 
-        /* -----------------------------------------
-           OPEN SEARCH
-        ----------------------------------------- */
+        /* =========================================
+           04. OPEN SEARCH
+        ========================================= */
 
         function openSearch(button) {
 
 
-            if (clearSearchTimer) {
+            if (
+                searchOverlay.classList.contains(
+                    "open"
+                )
+            ) {
+                return;
+            }
+
+
+            if (clearTimer) {
 
                 clearTimeout(
-                    clearSearchTimer
+                    clearTimer
                 );
 
-                clearSearchTimer =
+                clearTimer =
+                    null;
+
+            }
+
+
+            if (focusTimer) {
+
+                clearTimeout(
+                    focusTimer
+                );
+
+                focusTimer =
                     null;
 
             }
@@ -533,9 +581,25 @@ document.addEventListener(
                 button;
 
 
-            /*
-               Search icon becomes X.
-            */
+            /* -----------------------------------------
+               KEEP REAL NAVBAR ABOVE SEARCH PANEL
+            ----------------------------------------- */
+
+            if (navbar) {
+
+                originalNavbarZIndex =
+                    navbar.style.zIndex;
+
+
+                navbar.style.zIndex =
+                    "13001";
+
+            }
+
+
+            /* -----------------------------------------
+               SEARCH ICON → X
+            ----------------------------------------- */
 
             button.innerHTML =
                 "×";
@@ -547,18 +611,46 @@ document.addEventListener(
             );
 
 
+            button.setAttribute(
+                "aria-expanded",
+                "true"
+            );
+
+
             button.classList.add(
                 "search-button-active"
             );
 
 
             /*
-               Open from the RIGHT.
-               CSS controls the actual movement.
+               Ensures the X remains visible
+               over the white search screen.
             */
+
+            button.style.position =
+                "relative";
+
+
+            button.style.zIndex =
+                "13002";
+
+
+            button.style.color =
+                "#111111";
+
+
+            /* -----------------------------------------
+               OPEN PANEL
+            ----------------------------------------- */
 
             searchOverlay.classList.add(
                 "open"
+            );
+
+
+            searchOverlay.setAttribute(
+                "aria-hidden",
+                "false"
             );
 
 
@@ -567,44 +659,82 @@ document.addEventListener(
             );
 
 
+            originalBodyOverflow =
+                document.body.style.overflow;
+
+
             document.body.style.overflow =
                 "hidden";
 
 
-            /*
-               Wait slightly so the keyboard does
-               not interrupt the opening animation.
-            */
+            /* -----------------------------------------
+               FOCUS SEARCH FIELD
+            ----------------------------------------- */
 
-            setTimeout(
-                () => {
+            focusTimer =
+                setTimeout(
+                    () => {
 
-                    if (
-                        searchOverlay.classList.contains(
-                            "open"
-                        )
-                    ) {
+                        if (
+                            searchOverlay.classList.contains(
+                                "open"
+                            )
+                        ) {
 
-                        searchInput.focus();
+                            searchInput.focus();
 
-                    }
+                        }
 
-                },
-                320
-            );
+                    },
+                    320
+                );
 
         }
 
 
-        /* -----------------------------------------
-           CLOSE SEARCH
-        ----------------------------------------- */
+        /* =========================================
+           05. CLOSE SEARCH
+        ========================================= */
 
         function closeSearch() {
 
 
+            if (
+                !searchOverlay.classList.contains(
+                    "open"
+                )
+            ) {
+                return;
+            }
+
+
+            if (focusTimer) {
+
+                clearTimeout(
+                    focusTimer
+                );
+
+                focusTimer =
+                    null;
+
+            }
+
+
+            searchInput.blur();
+
+
+            /* -----------------------------------------
+               CLOSE PANEL
+            ----------------------------------------- */
+
             searchOverlay.classList.remove(
                 "open"
+            );
+
+
+            searchOverlay.setAttribute(
+                "aria-hidden",
+                "true"
             );
 
 
@@ -614,15 +744,12 @@ document.addEventListener(
 
 
             document.body.style.overflow =
-                "";
+                originalBodyOverflow;
 
 
-            searchInput.blur();
-
-
-            /*
-               Restore original search icon.
-            */
+            /* -----------------------------------------
+               X → ORIGINAL SEARCH ICON
+            ----------------------------------------- */
 
             if (activeSearchButton) {
 
@@ -638,9 +765,27 @@ document.addEventListener(
                 );
 
 
+                activeSearchButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+
                 activeSearchButton.classList.remove(
                     "search-button-active"
                 );
+
+
+                activeSearchButton.style.position =
+                    "";
+
+
+                activeSearchButton.style.zIndex =
+                    "";
+
+
+                activeSearchButton.style.color =
+                    "";
 
             }
 
@@ -649,12 +794,23 @@ document.addEventListener(
                 null;
 
 
-            /*
-               Wait until closing animation finishes
-               before clearing the contents.
-            */
+            /* -----------------------------------------
+               RESTORE NAVBAR STACKING
+            ----------------------------------------- */
 
-            clearSearchTimer =
+            if (navbar) {
+
+                navbar.style.zIndex =
+                    originalNavbarZIndex;
+
+            }
+
+
+            /* -----------------------------------------
+               CLEAR AFTER CLOSING ANIMATION
+            ----------------------------------------- */
+
+            clearTimer =
                 setTimeout(
                     () => {
 
@@ -679,12 +835,18 @@ document.addEventListener(
         }
 
 
-        /* -----------------------------------------
-           SEARCH BUTTON
-        ----------------------------------------- */
+        /* =========================================
+           06. SEARCH BUTTON BEHAVIOR
+        ========================================= */
 
         searchButtons.forEach(
             button => {
+
+                button.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
 
                 button.addEventListener(
                     "click",
@@ -692,6 +854,15 @@ document.addEventListener(
 
                         event.preventDefault();
 
+                        event.stopPropagation();
+
+
+                        /*
+                           SAME BUTTON CONTROLS
+                           OPEN + CLOSE.
+
+                           🔍 → × → 🔍
+                        */
 
                         if (
                             searchOverlay.classList.contains(
@@ -718,9 +889,9 @@ document.addEventListener(
         );
 
 
-        /* -----------------------------------------
-           ESCAPE KEY
-        ----------------------------------------- */
+        /* =========================================
+           07. ESCAPE KEY
+        ========================================= */
 
         document.addEventListener(
             "keydown",
@@ -742,9 +913,9 @@ document.addEventListener(
         );
 
 
-        /* -----------------------------------------
-           LIVE SEARCH
-        ----------------------------------------- */
+        /* =========================================
+           08. LIVE SEARCH
+        ========================================= */
 
         searchInput.addEventListener(
             "input",
@@ -755,12 +926,6 @@ document.addEventListener(
                     searchInput.value;
 
 
-                const results =
-                    searchZizouSite(
-                        query
-                    );
-
-
                 searchResults.innerHTML =
                     "";
 
@@ -768,10 +933,14 @@ document.addEventListener(
                 if (
                     query.trim() === ""
                 ) {
-
                     return;
-
                 }
+
+
+                const results =
+                    searchZizouSite(
+                        query
+                    );
 
 
                 if (
@@ -809,17 +978,42 @@ document.addEventListener(
                             result.url;
 
 
-                        link.innerHTML = `
+                        const resultType =
+                            document.createElement(
+                                "span"
+                            );
 
-                            <span class="search-result-type">
-                                ${result.type}
-                            </span>
 
-                            <span class="search-result-title">
-                                ${result.title}
-                            </span>
+                        resultType.className =
+                            "search-result-type";
 
-                        `;
+
+                        resultType.textContent =
+                            result.type;
+
+
+                        const resultTitle =
+                            document.createElement(
+                                "span"
+                            );
+
+
+                        resultTitle.className =
+                            "search-result-title";
+
+
+                        resultTitle.textContent =
+                            result.title;
+
+
+                        link.appendChild(
+                            resultType
+                        );
+
+
+                        link.appendChild(
+                            resultTitle
+                        );
 
 
                         searchResults.appendChild(
