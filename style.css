@@ -2529,7 +2529,7 @@ span:first-child {
 
     font-size:
         clamp(
-            10px,
+            12.5px,
             1.5vw,
             15px
         );
@@ -3993,7 +3993,7 @@ body.search-open
     }
 
     .about-story p {
-        font-size: 10px;
+        font-size: 12.5px;
 
         line-height: 1.5;
     }
