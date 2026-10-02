@@ -279,7 +279,6 @@ body {
         0;
 }
 
-
 .nav-left {
     display: flex;
 
@@ -290,7 +289,6 @@ body {
     justify-self: start;
 }
 
-
 .nav-right {
     display: flex;
 
@@ -298,7 +296,6 @@ body {
 
     justify-self: end;
 }
-
 
 .logo {
     justify-self: center;
@@ -321,7 +318,6 @@ body {
     white-space: nowrap;
 }
 
-
 .icon-button,
 .bag-button {
     appearance: none;
@@ -339,18 +335,15 @@ body {
     line-height: 1;
 }
 
-
 .menu-button {
     font-size: 32px;
 
     font-weight: 200;
 }
 
-
 .search-button {
     font-size: 34px;
 }
-
 
 .bag-button {
     display: flex;
@@ -364,56 +357,6 @@ body {
 }
 
 
-/* =========================================================
-   HOMEPAGE — BAG ICON
-========================================================= */
-
-.bag-icon {
-    position: relative;
-
-    display: block;
-
-    width: 19px;
-    height: 17px;
-
-    flex: 0 0 19px;
-
-    border:
-        1.5px solid
-        currentColor;
-
-    border-radius: 1px;
-
-    pointer-events: none;
-}
-
-
-.bag-icon::before {
-    content: "";
-
-    position: absolute;
-
-    top: -7px;
-    left: 50%;
-
-    width: 8px;
-    height: 7px;
-
-    border:
-        1.5px solid
-        currentColor;
-
-    border-bottom: none;
-
-    border-radius:
-        6px
-        6px
-        0
-        0;
-
-    transform:
-        translateX(-50%);
-}
 
 
 /* =========================================================
@@ -3662,6 +3605,22 @@ body.search-open
     margin-left: 3px;
 
     font-size: 10px;
+}
+
+/* =========================================================
+   14. SHOPPING BAG — ZIZOU LOGO
+========================================================= */
+
+.bag-logo {
+    display: block;
+
+    width: auto;
+
+    height: 28px;
+
+    object-fit: contain;
+
+    pointer-events: none;
 }
 
 
