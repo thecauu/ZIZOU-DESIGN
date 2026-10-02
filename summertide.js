@@ -888,6 +888,10 @@ function runZoomOutTransition(clickedImage) {
         "open",
         "transition-opening"
     );
+    
+    document.body.classList.add(
+    "artwork-viewer-open"
+);
 
 
     lightbox.setAttribute(
@@ -1140,6 +1144,10 @@ function closeGallery() {
         "open",
         "transition-opening"
     );
+    
+    document.body.classList.remove(
+    "artwork-viewer-open"
+);
 
 
     lightbox.setAttribute(
