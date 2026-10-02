@@ -970,77 +970,52 @@ function runZoomOutTransition(
                image underneath the transition.
             */
 
-            setTimeout(() => {
+            /* BEGIN BRIGHTENING + SOFT BLUR */
 
-                transitionImage.classList.add(
-                    "transition-artwork-fade"
-                );
+setTimeout(() => {
 
+    transitionImage.classList.add(
+        "transition-artwork-bright"
+    );
 
-                lightboxImage.classList.add(
-                    "room-image-reveal"
-                );
-
-
-                lightboxImage.style.opacity =
-                    "1";
-
-            }, 900);
+}, 650);
 
 
-            /*
-               Reveal gallery controls.
-            */
+/* WASH PREVIEW INTO WHITE + REVEAL GALLERY */
 
-            setTimeout(() => {
+setTimeout(() => {
 
-                lightboxCounter.style.opacity =
-                    "1";
+    transitionImage.classList.add(
+        "transition-artwork-fade"
+    );
 
+    lightboxImage.classList.add(
+        "room-image-reveal"
+    );
 
-                lightboxPrev.style.opacity =
-                    "1";
+    lightboxImage.style.opacity =
+        "1";
 
-
-                lightboxNext.style.opacity =
-                    "1";
-
-
-                lightboxClose.style.opacity =
-                    "1";
-
-            }, 1750);
+}, 1150);
 
 
-            /*
-               Clean up transition element.
-            */
+/* REVEAL CONTROLS */
 
-            setTimeout(() => {
+setTimeout(() => {
 
-                transitionImage.remove();
+    lightboxCounter.style.opacity =
+        "1";
 
+    lightboxPrev.style.opacity =
+        "1";
 
-                lightbox.classList.remove(
-                    "transition-opening"
-                );
+    lightboxNext.style.opacity =
+        "1";
 
+    lightboxClose.style.opacity =
+        "1";
 
-                lightboxImage.classList.remove(
-                    "room-image-reveal"
-                );
-
-
-                transitionRunning =
-                    false;
-
-            }, 2400);
-
-        });
-
-    });
-
-}
+}, 1750);
 
 
 
