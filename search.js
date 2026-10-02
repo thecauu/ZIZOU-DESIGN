@@ -250,7 +250,7 @@ const zizouSearchIndex = [
 
 function normalizeSearchText(text) {
 
-    return text
+    return String(text)
         .toLowerCase()
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "")
@@ -274,7 +274,14 @@ function searchZizouSite(query) {
     }
 
 
+    const queryWords =
+        normalizedQuery
+            .split(/\s+/)
+            .filter(Boolean);
+
+
     return zizouSearchIndex
+
         .map((item) => {
 
             const title =
@@ -289,10 +296,16 @@ function searchZizouSite(query) {
                     .join(" ");
 
 
+            const searchableText =
+                `${title} ${keywords}`;
+
+
             let score = 0;
 
 
-            if (title === normalizedQuery) {
+            if (
+                title === normalizedQuery
+            ) {
                 score += 100;
             }
 
@@ -324,6 +337,20 @@ function searchZizouSite(query) {
             }
 
 
+            const allWordsMatch =
+                queryWords.every(
+                    word =>
+                        searchableText.includes(
+                            word
+                        )
+                );
+
+
+            if (allWordsMatch) {
+                score += 20;
+            }
+
+
             return {
                 ...item,
                 score
@@ -343,6 +370,7 @@ function searchZizouSite(query) {
 
 }
 
+
 /* =========================================
    SEARCH INTERFACE
 ========================================= */
@@ -351,87 +379,90 @@ document.addEventListener(
     "DOMContentLoaded",
     () => {
 
+
         const searchButtons =
             document.querySelectorAll(
                 ".search-button"
             );
 
 
-        /* CREATE SEARCH PANEL */
+        if (
+            searchButtons.length === 0
+        ) {
+            return;
+        }
+
+
+        /* -----------------------------------------
+           CREATE SEARCH PANEL
+        ----------------------------------------- */
 
         const searchOverlay =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
 
         searchOverlay.className =
             "search-overlay";
 
 
+        /*
+           No duplicate ZIZOU header.
+           No separate close button.
+
+           The existing search icon in the navbar
+           becomes the X.
+        */
+
         searchOverlay.innerHTML = `
 
-    <div class="search-panel">
+            <div class="search-panel">
 
-        <div class="search-header">
+                <div class="search-input-row">
 
-            <a
-                href="index.html"
-                class="search-logo"
-            >
-                ZIZOU DESIGN
-            </a>
+                    <svg
+                        class="search-input-icon"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
 
-            <button
-                class="search-close"
-                type="button"
-                aria-label="Close search"
-            >
-                ×
-            </button>
+                        <circle
+                            cx="11"
+                            cy="11"
+                            r="7"
+                        ></circle>
 
-        </div>
+                        <line
+                            x1="16"
+                            y1="16"
+                            x2="21"
+                            y2="21"
+                        ></line>
 
-
-        <div class="search-input-row">
-
-            <svg
-                class="search-input-icon"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-            >
-                <circle
-                    cx="11"
-                    cy="11"
-                    r="7"
-                ></circle>
-
-                <line
-                    x1="16"
-                    y1="16"
-                    x2="21"
-                    y2="21"
-                ></line>
-            </svg>
+                    </svg>
 
 
-            <input
-                type="search"
-                id="siteSearchInput"
-                class="site-search-input"
-                aria-label="Search ZIZOU DESIGN"
-                autocomplete="off"
-            >
+                    <input
+                        type="search"
+                        id="siteSearchInput"
+                        class="site-search-input"
+                        aria-label="Search ZIZOU DESIGN"
+                        autocomplete="off"
+                        spellcheck="false"
+                    >
 
-        </div>
+                </div>
 
 
-        <div
-            id="siteSearchResults"
-            class="site-search-results"
-        ></div>
+                <div
+                    id="siteSearchResults"
+                    class="site-search-results"
+                ></div>
 
-    </div>
+            </div>
 
-`;
+        `;
 
 
         document.body.appendChild(
@@ -440,48 +471,245 @@ document.addEventListener(
 
 
         const searchInput =
-            document.getElementById(
-                "siteSearchInput"
+            searchOverlay.querySelector(
+                "#siteSearchInput"
             );
 
 
         const searchResults =
-            document.getElementById(
-                "siteSearchResults"
-            );
-
-
-        const searchClose =
             searchOverlay.querySelector(
-                ".search-close"
+                "#siteSearchResults"
             );
 
 
-        /* OPEN SEARCH */
+        let activeSearchButton =
+            null;
+
+
+        let clearSearchTimer =
+            null;
+
+
+        /* -----------------------------------------
+           SAVE ORIGINAL SEARCH ICON
+        ----------------------------------------- */
+
+        searchButtons.forEach(
+            button => {
+
+                button.dataset.originalSearchHtml =
+                    button.innerHTML;
+
+
+                button.dataset.originalSearchLabel =
+                    button.getAttribute(
+                        "aria-label"
+                    ) || "Search";
+
+            }
+        );
+
+
+        /* -----------------------------------------
+           OPEN SEARCH
+        ----------------------------------------- */
+
+        function openSearch(button) {
+
+
+            if (clearSearchTimer) {
+
+                clearTimeout(
+                    clearSearchTimer
+                );
+
+                clearSearchTimer =
+                    null;
+
+            }
+
+
+            activeSearchButton =
+                button;
+
+
+            /*
+               Search icon becomes X.
+            */
+
+            button.innerHTML =
+                "×";
+
+
+            button.setAttribute(
+                "aria-label",
+                "Close search"
+            );
+
+
+            button.classList.add(
+                "search-button-active"
+            );
+
+
+            /*
+               Open from the RIGHT.
+               CSS controls the actual movement.
+            */
+
+            searchOverlay.classList.add(
+                "open"
+            );
+
+
+            document.body.classList.add(
+                "search-open"
+            );
+
+
+            document.body.style.overflow =
+                "hidden";
+
+
+            /*
+               Wait slightly so the keyboard does
+               not interrupt the opening animation.
+            */
+
+            setTimeout(
+                () => {
+
+                    if (
+                        searchOverlay.classList.contains(
+                            "open"
+                        )
+                    ) {
+
+                        searchInput.focus();
+
+                    }
+
+                },
+                320
+            );
+
+        }
+
+
+        /* -----------------------------------------
+           CLOSE SEARCH
+        ----------------------------------------- */
+
+        function closeSearch() {
+
+
+            searchOverlay.classList.remove(
+                "open"
+            );
+
+
+            document.body.classList.remove(
+                "search-open"
+            );
+
+
+            document.body.style.overflow =
+                "";
+
+
+            searchInput.blur();
+
+
+            /*
+               Restore original search icon.
+            */
+
+            if (activeSearchButton) {
+
+                activeSearchButton.innerHTML =
+                    activeSearchButton.dataset
+                        .originalSearchHtml;
+
+
+                activeSearchButton.setAttribute(
+                    "aria-label",
+                    activeSearchButton.dataset
+                        .originalSearchLabel
+                );
+
+
+                activeSearchButton.classList.remove(
+                    "search-button-active"
+                );
+
+            }
+
+
+            activeSearchButton =
+                null;
+
+
+            /*
+               Wait until closing animation finishes
+               before clearing the contents.
+            */
+
+            clearSearchTimer =
+                setTimeout(
+                    () => {
+
+                        if (
+                            !searchOverlay.classList.contains(
+                                "open"
+                            )
+                        ) {
+
+                            searchInput.value =
+                                "";
+
+                            searchResults.innerHTML =
+                                "";
+
+                        }
+
+                    },
+                    450
+                );
+
+        }
+
+
+        /* -----------------------------------------
+           SEARCH BUTTON
+        ----------------------------------------- */
 
         searchButtons.forEach(
             button => {
 
                 button.addEventListener(
                     "click",
-                    () => {
+                    event => {
 
-                        searchOverlay.classList.add(
-                            "open"
-                        );
-
-                        document.body.style.overflow =
-                            "hidden";
+                        event.preventDefault();
 
 
-                        setTimeout(
-                            () => {
+                        if (
+                            searchOverlay.classList.contains(
+                                "open"
+                            )
+                        ) {
 
-                                searchInput.focus();
+                            closeSearch();
 
-                            },
-                            100
-                        );
+                        }
+
+                        else {
+
+                            openSearch(
+                                button
+                            );
+
+                        }
 
                     }
                 );
@@ -490,38 +718,17 @@ document.addEventListener(
         );
 
 
-        /* CLOSE SEARCH */
-
-        function closeSearch() {
-
-            searchOverlay.classList.remove(
-                "open"
-            );
-
-            document.body.style.overflow =
-                "";
-
-            searchInput.value =
-                "";
-
-            searchResults.innerHTML =
-                "";
-
-        }
-
-
-        searchClose.addEventListener(
-            "click",
-            closeSearch
-        );
-
+        /* -----------------------------------------
+           ESCAPE KEY
+        ----------------------------------------- */
 
         document.addEventListener(
             "keydown",
             event => {
 
                 if (
-                    event.key === "Escape" &&
+                    event.key === "Escape"
+                    &&
                     searchOverlay.classList.contains(
                         "open"
                     )
@@ -535,11 +742,14 @@ document.addEventListener(
         );
 
 
-        /* LIVE SEARCH */
+        /* -----------------------------------------
+           LIVE SEARCH
+        ----------------------------------------- */
 
         searchInput.addEventListener(
             "input",
             () => {
+
 
                 const query =
                     searchInput.value;
@@ -584,6 +794,7 @@ document.addEventListener(
                 results.forEach(
                     result => {
 
+
                         const link =
                             document.createElement(
                                 "a"
@@ -621,6 +832,6 @@ document.addEventListener(
             }
         );
 
+
     }
 );
-
