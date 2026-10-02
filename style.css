@@ -2845,6 +2845,197 @@ span:first-child {
     text-decoration: underline;
 }
 
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.search-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 12000;
+
+    display: none;
+
+    background:
+        rgba(
+            247,
+            246,
+            243,
+            0.98
+        );
+
+    color: #111111;
+
+    overflow-y: auto;
+}
+
+.search-overlay.open {
+    display: block;
+}
+
+.search-panel {
+    width:
+        min(
+            90%,
+            800px
+        );
+
+    margin:
+        0
+        auto;
+
+    padding:
+        max(
+            40px,
+            env(safe-area-inset-top)
+        )
+        0
+        80px;
+}
+
+.search-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    padding-bottom: 25px;
+
+    border-bottom:
+        1px solid
+        rgba(
+            17,
+            17,
+            17,
+            0.35
+        );
+}
+
+.search-header p {
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+.search-close {
+    border: none;
+
+    background: transparent;
+
+    color: #111111;
+
+    font-size: 36px;
+
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+.site-search-input {
+    width: 100%;
+
+    margin-top: 45px;
+
+    padding:
+        18px
+        0;
+
+    border: none;
+
+    border-bottom:
+        1px solid
+        #111111;
+
+    outline: none;
+
+    background: transparent;
+
+    color: #111111;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            28px,
+            5vw,
+            50px
+        );
+}
+
+.site-search-input::placeholder {
+    color:
+        rgba(
+            17,
+            17,
+            17,
+            0.35
+        );
+}
+
+.site-search-results {
+    margin-top: 35px;
+}
+
+.search-result {
+    display: block;
+
+    padding:
+        20px
+        0;
+
+    border-bottom:
+        1px solid
+        rgba(
+            17,
+            17,
+            17,
+            0.18
+        );
+
+    color: #111111;
+
+    text-decoration: none;
+}
+
+.search-result-type {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    opacity: 0.55;
+}
+
+.search-result-title {
+    display: block;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 22px;
+}
+
+.search-no-results {
+    padding:
+        25px
+        0;
+
+    font-size: 13px;
+
+    opacity: 0.6;
+}
 
 /* =========================================================
    14. SHOPPING BAG — PANEL
