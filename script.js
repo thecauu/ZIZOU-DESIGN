@@ -29,9 +29,188 @@ const contactMenuLink =
     );
 
 
-/* =========================
-   SIDE MENU
-========================= */
+/* =========================================
+   ZIZOU DESIGN — SIDE MENU
+========================================= */
+
+
+/* -----------------------------------------
+   ELEMENTS
+----------------------------------------- */
+
+const menuButton =
+    document.getElementById(
+        "menuButton"
+    );
+
+
+const closeMenuButton =
+    document.getElementById(
+        "closeMenu"
+    );
+
+
+const sideMenu =
+    document.getElementById(
+        "sideMenu"
+    );
+
+
+const collectionsButton =
+    document.getElementById(
+        "collectionsButton"
+    );
+
+
+const collectionsMenu =
+    document.getElementById(
+        "collectionsMenu"
+    );
+
+
+const contactMenuLink =
+    document.getElementById(
+        "contactMenuLink"
+    );
+
+
+/* -----------------------------------------
+   MENU STATE
+----------------------------------------- */
+
+function isMenuOpen() {
+
+    return (
+        sideMenu &&
+        sideMenu.classList.contains(
+            "open"
+        )
+    );
+
+}
+
+
+/* -----------------------------------------
+   OPEN MENU
+----------------------------------------- */
+
+function openMenu() {
+
+    if (
+        !menuButton ||
+        !sideMenu
+    ) {
+        return;
+    }
+
+
+    sideMenu.classList.add(
+        "open"
+    );
+
+
+    menuButton.classList.add(
+        "menu-button-active"
+    );
+
+
+    menuButton.setAttribute(
+        "aria-label",
+        "Close menu"
+    );
+
+
+    document.body.classList.add(
+        "menu-open"
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+/* -----------------------------------------
+   CLOSE MENU
+----------------------------------------- */
+
+function closeMenu() {
+
+    if (
+        !menuButton ||
+        !sideMenu
+    ) {
+        return;
+    }
+
+
+    sideMenu.classList.remove(
+        "open"
+    );
+
+
+    menuButton.classList.remove(
+        "menu-button-active"
+    );
+
+
+    menuButton.setAttribute(
+        "aria-label",
+        "Open menu"
+    );
+
+
+    document.body.classList.remove(
+        "menu-open"
+    );
+
+
+    document.body.style.overflow =
+        "";
+
+
+    /*
+       Close collection dropdown
+       whenever the main menu closes.
+    */
+
+    if (collectionsMenu) {
+
+        collectionsMenu.classList.remove(
+            "open"
+        );
+
+    }
+
+}
+
+
+/* -----------------------------------------
+   TOGGLE MENU
+----------------------------------------- */
+
+function toggleMenu() {
+
+    if (isMenuOpen()) {
+
+        closeMenu();
+
+    }
+
+    else {
+
+        openMenu();
+
+    }
+
+}
+
+
+/* -----------------------------------------
+   MENU BUTTON
+   ☰ becomes X while menu is open.
+----------------------------------------- */
 
 if (
     menuButton &&
@@ -40,11 +219,11 @@ if (
 
     menuButton.addEventListener(
         "click",
-        () => {
+        (event) => {
 
-            sideMenu.classList.add(
-                "open"
-            );
+            event.preventDefault();
+
+            toggleMenu();
 
         }
     );
@@ -52,24 +231,31 @@ if (
 }
 
 
-if (
-    closeMenu &&
-    sideMenu
-) {
+/* -----------------------------------------
+   OLD CLOSE BUTTON
+   Kept for compatibility if it still
+   exists in the HTML.
+----------------------------------------- */
 
-    closeMenu.addEventListener(
+if (closeMenuButton) {
+
+    closeMenuButton.addEventListener(
         "click",
-        () => {
+        (event) => {
 
-            sideMenu.classList.remove(
-                "open"
-            );
+            event.preventDefault();
+
+            closeMenu();
 
         }
     );
 
 }
 
+
+/* -----------------------------------------
+   COLLECTION DROPDOWN
+----------------------------------------- */
 
 if (
     collectionsButton &&
@@ -78,13 +264,14 @@ if (
 
     collectionsButton.addEventListener(
         "click",
-        () => {
+        (event) => {
 
-            collectionsMenu
-                .classList
-                .toggle(
-                    "open"
-                );
+            event.preventDefault();
+
+
+            collectionsMenu.classList.toggle(
+                "open"
+            );
 
         }
     );
@@ -92,9 +279,9 @@ if (
 }
 
 
-/* =========================
+/* -----------------------------------------
    CONTACT LINK
-========================= */
+----------------------------------------- */
 
 if (contactMenuLink) {
 
@@ -103,6 +290,10 @@ if (contactMenuLink) {
         (event) => {
 
             event.preventDefault();
+
+
+            closeMenu();
+
 
             window.location.href =
                 "contact.html";
@@ -113,25 +304,25 @@ if (contactMenuLink) {
 }
 
 
-/* =========================
+/* -----------------------------------------
    ESCAPE KEY
-========================= */
+----------------------------------------- */
 
 document.addEventListener(
     "keydown",
     (event) => {
 
         if (
-            event.key ===
-                "Escape" &&
-            sideMenu
+            event.key === "Escape" &&
+            isMenuOpen()
         ) {
 
-            sideMenu.classList.remove(
-                "open"
-            );
+            closeMenu();
 
         }
+
+    }
+);        }
 
     }
 );
