@@ -2510,10 +2510,10 @@ span:first-child {
 
 .about-role {
     margin-bottom:
-        25px !important;
+        30px !important;
 
     font-size:
-        10px !important;
+        15px !important;
 
     font-weight: 600;
 
@@ -2525,11 +2525,11 @@ span:first-child {
 .about-story p {
     max-width: 900px;
 
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 
     font-size:
         clamp(
-            15px,
+            10px,
             1.5vw,
             15px
         );
@@ -3993,7 +3993,7 @@ body.search-open
     }
 
     .about-story p {
-        font-size: 15px;
+        font-size: 10px;
 
         line-height: 1.5;
     }
