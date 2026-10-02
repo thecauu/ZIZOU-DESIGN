@@ -1973,25 +1973,28 @@ span:first-child {
 }
 
 
-/* Starts at the same moment as the zoom */
+/* BRIGHTENS GRADUALLY WHILE ZOOMING */
 
 .transition-artwork-brightening {
     filter:
-        brightness(2.35)
-        saturate(0.45)
-        blur(2px);
+        brightness(1.16)
+        saturate(0.92)
+        blur(0.6px);
 }
 
 
-/* Final wash into white */
+/* SOFT FINAL FADE */
 
 .transition-artwork-fade {
     opacity: 0;
 
     filter:
-        brightness(3.4)
-        saturate(0)
-        blur(4px);
+        brightness(1.32)
+        saturate(0.82)
+        blur(1.6px);
+
+    transform:
+        scale(1.06);
 }
 
 
