@@ -33,227 +33,281 @@ const contactMenuLink =
    ZIZOU DESIGN — SIDE MENU
 ========================================= */
 
+(() => {
 
-/* -----------------------------------------
-   ELEMENTS
------------------------------------------ */
+    function initSideMenu() {
 
-const menuButton =
-    document.getElementById(
-        "menuButton"
-    );
+        /* -----------------------------------------
+           ELEMENTS
+        ----------------------------------------- */
 
-const closeMenu =
-    document.getElementById(
-        "closeMenu"
-    );
+        const menuButton =
+            document.getElementById(
+                "menuButton"
+            );
 
-const sideMenu =
-    document.getElementById(
-        "sideMenu"
-    );
+        const sideMenu =
+            document.getElementById(
+                "sideMenu"
+            );
 
-const collectionsButton =
-    document.getElementById(
-        "collectionsButton"
-    );
+        const oldCloseButton =
+            document.getElementById(
+                "closeMenu"
+            );
 
-const collectionsMenu =
-    document.getElementById(
-        "collectionsMenu"
-    );
+        const collectionsButton =
+            document.getElementById(
+                "collectionsButton"
+            );
 
-const contactMenuLink =
-    document.getElementById(
-        "contactMenuLink"
-    );
+        const collectionsMenu =
+            document.getElementById(
+                "collectionsMenu"
+            );
 
-
-/* -----------------------------------------
-   CLOSE MENU
------------------------------------------ */
-
-function closeSideMenu() {
-
-    if (!sideMenu) {
-        return;
-    }
+        const contactMenuLink =
+            document.getElementById(
+                "contactMenuLink"
+            );
 
 
-    sideMenu.classList.remove(
-        "open"
-    );
-
-
-    if (menuButton) {
-
-        menuButton.classList.remove(
-            "menu-button-active"
-        );
-
-        menuButton.setAttribute(
-            "aria-label",
-            "Open menu"
-        );
-
-    }
-
-
-    document.body.classList.remove(
-        "menu-open"
-    );
-
-
-    if (collectionsMenu) {
-
-        collectionsMenu.classList.remove(
-            "open"
-        );
-
-    }
-
-}
-
-
-/* -----------------------------------------
-   MENU BUTTON
-   ☰ → X → ☰
------------------------------------------ */
-
-if (
-    menuButton &&
-    sideMenu
-) {
-
-    menuButton.addEventListener(
-        "click",
-        () => {
-
-            const menuIsOpen =
-                sideMenu.classList.contains(
-                    "open"
-                );
-
-
-            if (menuIsOpen) {
-
-                closeSideMenu();
-
-            }
-
-            else {
-
-                sideMenu.classList.add(
-                    "open"
-                );
-
-
-                menuButton.classList.add(
-                    "menu-button-active"
-                );
-
-
-                menuButton.setAttribute(
-                    "aria-label",
-                    "Close menu"
-                );
-
-
-                document.body.classList.add(
-                    "menu-open"
-                );
-
-            }
-
+        if (
+            !menuButton ||
+            !sideMenu
+        ) {
+            return;
         }
-    );
-
-}
 
 
-/* -----------------------------------------
-   OLD CLOSE BUTTON
-   Kept for compatibility.
------------------------------------------ */
+        /* -----------------------------------------
+           OPEN MENU
+        ----------------------------------------- */
 
-if (closeMenu) {
+        function openSideMenu() {
 
-    closeMenu.addEventListener(
-        "click",
-        () => {
-
-            closeSideMenu();
-
-        }
-    );
-
-}
-
-
-/* -----------------------------------------
-   COLLECTION DROPDOWN
------------------------------------------ */
-
-if (
-    collectionsButton &&
-    collectionsMenu
-) {
-
-    collectionsButton.addEventListener(
-        "click",
-        () => {
-
-            collectionsMenu.classList.toggle(
+            sideMenu.classList.add(
                 "open"
             );
 
-        }
-    );
+            menuButton.classList.add(
+                "menu-button-active"
+            );
 
-}
+            document.body.classList.add(
+                "menu-open"
+            );
 
+            menuButton.setAttribute(
+                "aria-label",
+                "Close menu"
+            );
 
-/* -----------------------------------------
-   CONTACT LINK
------------------------------------------ */
-
-if (contactMenuLink) {
-
-    contactMenuLink.addEventListener(
-        "click",
-        (event) => {
-
-            event.preventDefault();
-
-
-            window.location.href =
-                "contact.html";
+            menuButton.setAttribute(
+                "aria-expanded",
+                "true"
+            );
 
         }
-    );
-
-}
 
 
-/* -----------------------------------------
-   ESCAPE KEY
------------------------------------------ */
+        /* -----------------------------------------
+           CLOSE MENU
+        ----------------------------------------- */
 
-document.addEventListener(
-    "keydown",
-    (event) => {
+        function closeSideMenu() {
+
+            sideMenu.classList.remove(
+                "open"
+            );
+
+            menuButton.classList.remove(
+                "menu-button-active"
+            );
+
+            document.body.classList.remove(
+                "menu-open"
+            );
+
+            menuButton.setAttribute(
+                "aria-label",
+                "Open menu"
+            );
+
+            menuButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+
+            if (collectionsMenu) {
+
+                collectionsMenu.classList.remove(
+                    "open"
+                );
+
+            }
+
+        }
+
+
+        /* -----------------------------------------
+           MENU BUTTON
+           ☰ → X → ☰
+        ----------------------------------------- */
+
+        menuButton.addEventListener(
+            "click",
+            (event) => {
+
+                event.preventDefault();
+
+
+                if (
+                    sideMenu.classList.contains(
+                        "open"
+                    )
+                ) {
+
+                    closeSideMenu();
+
+                }
+
+                else {
+
+                    openSideMenu();
+
+                }
+
+            }
+        );
+
+
+        /* -----------------------------------------
+           OLD CLOSE BUTTON
+           Only used if still present in HTML.
+        ----------------------------------------- */
+
+        if (oldCloseButton) {
+
+            oldCloseButton.addEventListener(
+                "click",
+                (event) => {
+
+                    event.preventDefault();
+
+                    closeSideMenu();
+
+                }
+            );
+
+        }
+
+
+        /* -----------------------------------------
+           COLLECTION DROPDOWN
+        ----------------------------------------- */
 
         if (
-            event.key === "Escape" &&
-            sideMenu &&
-            sideMenu.classList.contains(
-                "open"
-            )
+            collectionsButton &&
+            collectionsMenu
         ) {
 
-            closeSideMenu();
+            collectionsButton.addEventListener(
+                "click",
+                (event) => {
+
+                    event.preventDefault();
+
+                    collectionsMenu.classList.toggle(
+                        "open"
+                    );
+
+                }
+            );
 
         }
 
+
+        /* -----------------------------------------
+           CONTACT
+        ----------------------------------------- */
+
+        if (contactMenuLink) {
+
+            contactMenuLink.addEventListener(
+                "click",
+                (event) => {
+
+                    event.preventDefault();
+
+                    window.location.href =
+                        "contact.html";
+
+                }
+            );
+
+        }
+
+
+        /* -----------------------------------------
+           ESCAPE KEY
+        ----------------------------------------- */
+
+        document.addEventListener(
+            "keydown",
+            (event) => {
+
+                if (
+                    event.key === "Escape" &&
+                    sideMenu.classList.contains(
+                        "open"
+                    )
+                ) {
+
+                    closeSideMenu();
+
+                }
+
+            }
+        );
+
+
+        /* -----------------------------------------
+           INITIAL STATE
+        ----------------------------------------- */
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
     }
-);
+
+
+    /* -----------------------------------------
+       INITIALIZE SAFELY
+    ----------------------------------------- */
+
+    if (
+        document.readyState ===
+        "loading"
+    ) {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            initSideMenu,
+            {
+                once: true
+            }
+        );
+
+    }
+
+    else {
+
+        initSideMenu();
+
+    }
+
+})();
