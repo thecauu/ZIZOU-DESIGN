@@ -837,28 +837,17 @@ function positionProtectionOverlay(
    REALISTIC ZOOM-OUT EFFECT
 ========================================== */
 
-function runZoomOutTransition(
-    clickedImage
-) {
+function runZoomOutTransition(clickedImage) {
 
     if (!clickedImage) {
-
-        transitionRunning =
-            false;
-
+        transitionRunning = false;
         return;
-
     }
 
 
     const startRect =
         clickedImage.getBoundingClientRect();
 
-
-    /*
-       Clone the protected collection artwork
-       for the opening animation.
-    */
 
     const transitionImage =
         clickedImage.cloneNode(true);
@@ -872,18 +861,14 @@ function runZoomOutTransition(
     transitionImage.style.position =
         "fixed";
 
-
     transitionImage.style.top =
         `${startRect.top}px`;
-
 
     transitionImage.style.left =
         `${startRect.left}px`;
 
-
     transitionImage.style.width =
         `${startRect.width}px`;
-
 
     transitionImage.style.height =
         `${startRect.height}px`;
@@ -894,9 +879,7 @@ function runZoomOutTransition(
     );
 
 
-    activeIndex =
-        0;
-
+    activeIndex = 0;
 
     updateSlide();
 
@@ -920,18 +903,14 @@ function runZoomOutTransition(
     lightboxImage.style.opacity =
         "0";
 
-
     lightboxCounter.style.opacity =
         "0";
-
 
     lightboxPrev.style.opacity =
         "0";
 
-
     lightboxNext.style.opacity =
         "0";
-
 
     lightboxClose.style.opacity =
         "0";
@@ -941,6 +920,7 @@ function runZoomOutTransition(
 
         requestAnimationFrame(() => {
 
+
             const destination =
                 lightboxImage.getBoundingClientRect();
 
@@ -948,74 +928,75 @@ function runZoomOutTransition(
             transitionImage.style.top =
                 `${destination.top}px`;
 
-
             transitionImage.style.left =
                 `${destination.left}px`;
-
 
             transitionImage.style.width =
                 `${destination.width}px`;
 
-
             transitionImage.style.height =
                 `${destination.height}px`;
-
 
             transitionImage.style.transform =
                 "scale(1.06)";
 
 
-            /*
-               Begin revealing the full gallery
-               image underneath the transition.
-            */
+            setTimeout(() => {
 
-            /* BEGIN BRIGHTENING + SOFT BLUR */
+                transitionImage.classList.add(
+                    "transition-artwork-fade"
+                );
 
-setTimeout(() => {
+                lightboxImage.classList.add(
+                    "room-image-reveal"
+                );
 
-    transitionImage.classList.add(
-        "transition-artwork-bright"
-    );
+                lightboxImage.style.opacity =
+                    "1";
 
-}, 650);
-
-
-/* WASH PREVIEW INTO WHITE + REVEAL GALLERY */
-
-setTimeout(() => {
-
-    transitionImage.classList.add(
-        "transition-artwork-fade"
-    );
-
-    lightboxImage.classList.add(
-        "room-image-reveal"
-    );
-
-    lightboxImage.style.opacity =
-        "1";
-
-}, 1150);
+            }, 900);
 
 
-/* REVEAL CONTROLS */
+            setTimeout(() => {
 
-setTimeout(() => {
+                lightboxCounter.style.opacity =
+                    "1";
 
-    lightboxCounter.style.opacity =
-        "1";
+                lightboxPrev.style.opacity =
+                    "1";
 
-    lightboxPrev.style.opacity =
-        "1";
+                lightboxNext.style.opacity =
+                    "1";
 
-    lightboxNext.style.opacity =
-        "1";
+                lightboxClose.style.opacity =
+                    "1";
 
-    lightboxClose.style.opacity =
-        "1";
+            }, 1750);
 
-}, 1750);
+
+            setTimeout(() => {
+
+                transitionImage.remove();
+
+                lightbox.classList.remove(
+                    "transition-opening"
+                );
+
+                lightboxImage.classList.remove(
+                    "room-image-reveal"
+                );
+
+                transitionRunning =
+                    false;
+
+            }, 2400);
+
+
+        });
+
+    });
+
+}
 
 
 
