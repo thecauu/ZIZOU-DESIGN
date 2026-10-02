@@ -86,9 +86,9 @@ body {
 ========================================================= */
 
 :root {
-    --protection-light: rgba(255, 255, 255, 0.01);
-    --protection-dark: rgba(0, 0, 0, 0.01);
-    --protection-dot: rgba(255, 255, 255, 0.01);
+    --protection-light: rgba(255, 255, 255, 0.00);
+    --protection-dark: rgba(0, 0, 0, 0.00);
+    --protection-dot: rgba(255, 255, 255, 0.00);
 }
 
 
@@ -3583,9 +3583,9 @@ span:first-child {
     background-position: center;
     background-repeat: no-repeat;
     
-    --protection-light: rgba(255, 255, 255, 0.01);
-    --protection-dark: rgba(0, 0, 0, 0.01);
-    --protection-dot: rgba(255, 255, 255, 0.01);
+    --protection-light: rgba(255, 255, 255, 0.00);
+    --protection-dark: rgba(0, 0, 0, 0.00);
+    --protection-dot: rgba(255, 255, 255, 0.00);
 }
 
 
