@@ -1958,6 +1958,11 @@ span:first-child {
     transform-origin:
         center center;
 
+    filter:
+        brightness(1)
+        saturate(1)
+        blur(0);
+
     transition:
         top
         2.2s
@@ -1999,20 +2004,37 @@ span:first-child {
             0.3,
             1
         ),
+        filter
+        0.85s
+        ease,
         opacity
-        1.1s
+        0.7s
         ease;
 }
+
+
+/* PREVIEW BEGINS WASHING OUT */
+
+.transition-artwork-bright {
+    filter:
+        brightness(2.15)
+        saturate(0.45)
+        blur(2px);
+}
+
+
+/* PREVIEW FINISHES INTO WHITE */
 
 .transition-artwork-fade {
     opacity: 0;
 
-    transform:
-        scale(0.96);
-}
+    filter:
+        brightness(3.2)
+        saturate(0)
+        blur(4px);
 
-.lightbox.transition-opening {
-    background: #ffffff;
+    transform:
+        scale(1.06);
 }
 
 
