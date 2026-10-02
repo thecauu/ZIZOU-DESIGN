@@ -4220,3 +4220,26 @@ body.search-open
     }
 
 }
+
+/* =========================================================
+   NAVBAR — POSITION SAFETY
+========================================================= */
+
+.hero > .navbar {
+    position: absolute !important;
+
+    top: 0 !important;
+    right: 0 !important;
+    bottom: auto !important;
+    left: 0 !important;
+
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+
+    margin: 0 !important;
+
+    transform: none !important;
+
+    align-self: auto !important;
+}
