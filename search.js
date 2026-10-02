@@ -524,10 +524,6 @@ document.addEventListener(
         searchButtons.forEach(
             button => {
 
-                button.dataset.originalSearchHtml =
-                    button.innerHTML;
-
-
                 button.dataset.originalSearchLabel =
                     button.getAttribute(
                         "aria-label"
@@ -601,12 +597,7 @@ document.addEventListener(
                SEARCH ICON → X
             ----------------------------------------- */
 
-button.innerHTML = `
-    <span
-        class="search-close-icon"
-        aria-hidden="true"
-    ></span>
-`;
+
 
 
             button.setAttribute(
@@ -756,11 +747,7 @@ button.innerHTML = `
             ----------------------------------------- */
 
             if (activeSearchButton) {
-
-                activeSearchButton.innerHTML =
-                    activeSearchButton.dataset
-                        .originalSearchHtml;
-
+                
 
                 activeSearchButton.setAttribute(
                     "aria-label",
