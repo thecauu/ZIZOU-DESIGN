@@ -398,29 +398,51 @@ body {
 
 
 .bag-icon {
+    position: relative;
+
     display: block;
 
-    width: 22px;
-    height: 22px;
+    width: 19px;
+    height: 17px;
 
-    min-width: 22px;
-    min-height: 22px;
+    flex: 0 0 19px;
 
-    max-width: 22px;
-    max-height: 22px;
+    border:
+        1.5px solid
+        currentColor;
 
-    flex: 0 0 22px;
+    border-radius:
+        1px;
 
-    fill: none;
+    pointer-events: none;
+}
 
-    stroke: currentColor;
 
-    stroke-width: 1.7;
+.bag-icon::before {
+    content: "";
 
-    stroke-linecap: round;
-    stroke-linejoin: round;
+    position: absolute;
 
-    overflow: visible;
+    top: -7px;
+    left: 50%;
+
+    width: 8px;
+    height: 7px;
+
+    border:
+        1.5px solid
+        currentColor;
+
+    border-bottom: none;
+
+    border-radius:
+        6px
+        6px
+        0
+        0;
+
+    transform:
+        translateX(-50%);
 }
 
 
@@ -3710,9 +3732,8 @@ body.search-open
     font-size: 30px;
 }
 
-.bag-icon {
-    width: 20px;
-    height: 20px;
+.bag-button {
+    font-size: 30px;
 }
 
     .collection-button {
