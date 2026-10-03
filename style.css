@@ -140,7 +140,7 @@ body {
 
 
 /* =========================================================
-   02. ARTWORK PROTECTION — CROSSHATCH
+   02. ARTWORK PROTECTION — SOFT BLUR
 ========================================================= */
 
 .protected-home-image::before,
@@ -157,60 +157,18 @@ body {
     pointer-events: none;
 
     background:
-        repeating-linear-gradient(
-            17deg,
-            var(--protection-light) 0,
-            var(--protection-light) 0.7px,
-            transparent 0.7px,
-            transparent 3px
-        ),
-        repeating-linear-gradient(
-            107deg,
-            var(--protection-dark) 0,
-            var(--protection-dark) 0.7px,
-            transparent 0.7px,
-            transparent 3.4px
+        rgba(
+            255,
+            255,
+            255,
+            0.01
         );
 
-    mix-blend-mode:
-        soft-light;
-}
+    backdrop-filter:
+        blur(0.8px);
 
-
-/* =========================================================
-   02. ARTWORK PROTECTION — MICRO DOTS
-========================================================= */
-
-.protected-home-image::after,
-.protected-collection-image::after,
-.protected-lightbox-image::after {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    z-index: 3;
-
-    pointer-events: none;
-
-    background-image:
-        radial-gradient(
-            circle,
-            var(--protection-dot) 0.45px,
-            transparent 0.6px
-        );
-
-    background-size:
-        3.1px
-        3.1px;
-
-    background-position:
-        0.35px
-        0.65px;
-
-    mix-blend-mode:
-        soft-light;
+    -webkit-backdrop-filter:
+        blur(0.8px);
 }
 
 
