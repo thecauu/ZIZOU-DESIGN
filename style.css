@@ -632,7 +632,7 @@ body {
             1
         ),
         opacity
-        0.2
+        0.20
         0.50s
         ease,
         visibility
@@ -3555,6 +3555,8 @@ body.search-open
         0.35,
         1
     );
+    
+}
 
 .shopping-bag.open {
     right: 0;
