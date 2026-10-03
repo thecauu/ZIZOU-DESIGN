@@ -470,6 +470,52 @@
 
 </footer>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const video =
+        document.querySelector(".hero-video");
+
+    const playButton =
+        document.querySelector(".hero-play");
+
+    if (!video || !playButton) return;
+
+
+    video.muted = true;
+
+
+    const attempt =
+        video.play();
+
+
+    if (attempt) {
+
+        attempt.catch(function () {
+
+            playButton.classList.add("show");
+
+        });
+
+    }
+
+
+    playButton.addEventListener(
+        "click",
+        function () {
+
+            video.play().then(function () {
+
+                playButton.classList.remove("show");
+
+            });
+
+        }
+    );
+
+});
+</script>
+
 
 
 <!-- =========================================
