@@ -312,6 +312,64 @@ body {
     pointer-events: none;
 }
 
+/* =========================================================
+   03. HOMEPAGE — HERO VIDEO CONTROL
+========================================================= */
+
+.hero-video-control {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    z-index: 12;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.hero-video-control-icon {
+    display: block;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 22px;
+
+    font-weight: 400;
+
+    line-height: 1;
+
+    text-shadow:
+        0
+        1px
+        5px
+        rgba(0, 0, 0, 0.35);
+}
+
 
 /* =========================================================
    03. HOMEPAGE — NAVIGATION
