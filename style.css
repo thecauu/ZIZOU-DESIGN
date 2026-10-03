@@ -624,18 +624,19 @@ body {
 
     transition:
         transform
-        0.42s
+        0.70s
         cubic-bezier(
-            0.16,
+            0.25,
             1,
-            0.3,
+            0.35,
             1
         ),
         opacity
-        0.28s
+        0.2
+        0.50s
         ease,
         visibility
-        0.42s
+        0.75s
         ease;
 }
 
