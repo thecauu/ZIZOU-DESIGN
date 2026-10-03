@@ -266,6 +266,61 @@ body {
     object-position: center;
 }
 
+.hero-play {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    z-index: 9;
+
+    width: 34px;
+    height: 34px;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    cursor: pointer;
+
+    display: none;
+}
+
+.hero-play::before {
+    content: "";
+
+    display: block;
+
+    width: 0;
+    height: 0;
+
+    margin: auto;
+
+    border-top:
+        8px solid
+        transparent;
+
+    border-bottom:
+        8px solid
+        transparent;
+
+    border-left:
+        12px solid
+        #ffffff;
+}
+
+.hero-play.show {
+    display: block;
+}
+
 .hero::after {
     content: "";
 
