@@ -312,44 +312,6 @@ body {
     pointer-events: none;
 }
 
-/* =========================================================
-   03. HOMEPAGE — HERO PLAY BUTTON
-========================================================= */
-
-.hero-play-button {
-    position: absolute;
-
-    top: 50%;
-    left: 50%;
-
-    transform:
-        translate(-50%, -50%);
-
-    z-index: 12;
-
-    display: none;
-
-    padding: 0;
-
-    border: none;
-
-    background: transparent;
-
-    color: #ffffff;
-
-    font-size: 30px;
-
-    line-height: 1;
-
-    cursor: pointer;
-
-    appearance: none;
-    -webkit-appearance: none;
-}
-
-.hero-play-button.show {
-    display: block;
-}
 
 /* =========================================================
    03. HOMEPAGE — HERO VIDEO CONTROL
