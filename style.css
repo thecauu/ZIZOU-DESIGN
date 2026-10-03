@@ -165,10 +165,10 @@ body {
         );
 
     backdrop-filter:
-        blur(0.3px);
+        blur(0.4px);
 
     -webkit-backdrop-filter:
-        blur(0.3px);
+        blur(0.4px);
 }
 
 
