@@ -3547,10 +3547,14 @@ body.search-open
     overflow-y: auto;
 
     transition:
-        right
-        0.4s
-        ease;
-}
+    right
+    0.75s
+    cubic-bezier(
+        0.25,
+        1,
+        0.35,
+        1
+    );
 
 .shopping-bag.open {
     right: 0;
