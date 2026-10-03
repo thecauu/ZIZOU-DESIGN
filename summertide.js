@@ -996,7 +996,7 @@ function runZoomOutTransition(clickedImage) {
                 transitionRunning =
                     false;
 
-            }, 2400);
+            }, 3200);
 
 
         });
