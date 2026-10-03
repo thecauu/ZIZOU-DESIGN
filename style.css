@@ -2934,15 +2934,16 @@ body.sea-intro-active {
 ========================================================= */
 
 .artwork-add-to-bag {
-    width:
-        100%;
+    width: auto;
+
+    min-width: 180px;
 
     margin-top:
         36px;
 
     padding:
-        17px
-        15px;
+        13px
+        24px;
 
     border:
         none;
@@ -2959,7 +2960,7 @@ body.sea-intro-active {
         sans-serif;
 
     font-size:
-        12px;
+        11px;
 
     letter-spacing:
         1px;
@@ -4983,17 +4984,20 @@ body.artwork-viewer-open
             17px;
     }
 
-    .artwork-add-to-bag {
-        margin-top:
-            34px;
+.artwork-add-to-bag {
+    margin-top:
+        34px;
 
-        padding:
-            16px
-            12px;
+    min-width:
+        165px;
 
-        font-size:
-            12px;
-    }
+    padding:
+        12px
+        20px;
+
+    font-size:
+        11px;
+}
 
     .artwork-description {
         margin:
