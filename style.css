@@ -3251,10 +3251,10 @@ span:first-child {
 
 .transition-artwork-brightening {
     opacity:
-        0.75;
+        0.90;
 
     filter:
-        brightness(1.25)
+        brightness(1)
         saturate(1)
         blur(2px);
 }
@@ -3264,12 +3264,9 @@ span:first-child {
         0;
 
     filter:
-        brightness(1.35)
-        saturate(0.95)
-        blur(3px);
-
-    transform:
-        scale(1.06);
+        brightness(1)
+        saturate(1)
+        blur(2.5px);
 }
 
 
@@ -3296,18 +3293,21 @@ span:first-child {
             0;
 
         transform:
-            scale(1.12);
+            scale(1);
 
         filter:
-            blur(5px);
+            blur(1px);
     }
 
     50% {
         opacity:
-            0.65;
+            0.75;
+
+        transform:
+            scale(1);
 
         filter:
-            blur(2px);
+            blur(0.4px);
     }
 
     100% {
