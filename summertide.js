@@ -2,117 +2,125 @@
    ZIZOU DESIGN — SUMMERTIDE ARTWORKS
 ========================================== */
 
+
+/* ==========================================
+   01. ARTWORK DATA
+========================================== */
+
 const artworks = {
 
-amber: {
-    name: "Amber Breeze",
-    product: "amber-breeze",
-    price: "19.99",
-    year: "2024",
-    number: "01",
+    amber: {
+        name: "Amber Breeze",
+        product: "amber-breeze",
+        price: "19.99",
+        year: "2024",
+        number: "01",
 
-    description:
-        "The scent of a summer floral breeze captivating the soul.",
+        description:
+            "The scent of a summer floral breeze captivating the soul.",
 
-    gallery: [
-        {
-            src: "images/amber portrait.JPG",
-            alt: "Amber portrait",
+        gallery: [
+            {
+                src: "images/amber portrait.JPG",
+                alt: "Amber portrait",
 
-            protectShape:
-                "polygon(19.2% 19.2%, 81.0% 19.2%, 81.0% 76.6%, 19.2% 76.6%)"
-        },
+                protectShape:
+                    "polygon(19.2% 19.2%, 81.0% 19.2%, 81.0% 76.6%, 19.2% 76.6%)"
+            },
 
-        {
-            src: "images/amber mock room.jpg",
-            alt: "Amber mock room 1",
+            {
+                src: "images/amber mock room.jpg",
+                alt: "Amber mock room 1",
 
-            protectShape:
-                "polygon(34.8% 17.4%, 69.6% 17.4%, 69.6% 50.5%, 34.8% 50.5%)"        },
+                protectShape:
+                    "polygon(34.8% 17.4%, 69.6% 17.4%, 69.6% 50.5%, 34.8% 50.5%)"
+            },
 
-        {
-            src: "images/amber mock room 2.JPG",
-            alt: "Amber mock room 2",
+            {
+                src: "images/amber mock room 2.JPG",
+                alt: "Amber mock room 2",
 
-            protectShape:
-                "polygon(38.7% 17.9%, 69.2% 17.9%, 69.2% 46.2%, 38.7% 46.2%)"
-        }
-    ]
-},
-
-
-peridot: {
-    name: "Peridot Afloat",
-    product: "peridot-afloat",
-    price: "19.99",
-    year: "2024",
-    number: "02",
-
-    description:
-        "A peaceful state of solitude guided by crystalline ripples.",
-
-    gallery: [
-        {
-            src: "images/peridot portrait.JPG",
-            alt: "Peridot portrait",
-
-            protectShape:
-                "polygon(19.0% 19.2%, 81.0% 19.2%, 81.0% 76.4%, 19.0% 76.4%)"
-        },
-
-        {
-            src: "images/peridot mock room 1.JPG",
-            alt: "Peridot mock room 1",
-
-            protectShape:
-                "polygon(48.6% 17.5%, 78.4% 17.5%, 78.4% 45.6%, 48.6% 45.6%)"
-        },
-
-        {
-            src: "images/peridot mock room 2.JPG",
-            alt: "Peridot mock room 2",
-
-            protectShape:
-                "polygon(51.5% 14.0%, 79.8% 14.0%, 79.8% 41.0%, 51.5% 41.0%)"
-        }
-    ]
-},
+                protectShape:
+                    "polygon(38.7% 17.9%, 69.2% 17.9%, 69.2% 46.2%, 38.7% 46.2%)"
+            }
+        ]
+    },
 
 
-patina: {
-    name: "Pátina del Mar",
-    product: "patina-del-mar",
-    price: "19.99",
-    year: "2024",
-    number: "03",
+    peridot: {
+        name: "Peridot Afloat",
+        product: "peridot-afloat",
+        price: "19.99",
+        year: "2024",
+        number: "02",
 
-    description:
-        "The sea has a way of illustrating a story wherever it touches.",
+        description:
+            "A peaceful state of solitude guided by crystalline ripples.",
 
-    gallery: [
-        {
-            src: "images/patina portrait.JPG",
-            alt: "Pátina portrait",
+        gallery: [
+            {
+                src: "images/peridot portrait.JPG",
+                alt: "Peridot portrait",
 
-            protectShape:
-                "polygon(19.0% 19.2%, 81.0% 19.2%, 81.0% 76.4%, 19.0% 76.4%)"
-        },
-        {
-            src: "images/patina mock room.jpg",
-            alt: "Pátina mock room 1",
+                protectShape:
+                    "polygon(19.0% 19.2%, 81.0% 19.2%, 81.0% 76.4%, 19.0% 76.4%)"
+            },
 
-            protectShape:
-                 "polygon(42.03% 19.86%, 73.77% 19.98%, 73.77% 50.00%, 41.89% 49.89%)"
-        },
-        {
-            src: "images/patina mock room 2.JPG",
-            alt: "Pátina mock room 2",
+            {
+                src: "images/peridot mock room 1.JPG",
+                alt: "Peridot mock room 1",
 
-            protectShape:
-                  "polygon(58.39% 24.04%, 81.24% 24.15%, 80.96% 45.26%, 58.25% 45.26%)"
-        }
-    ]
-},
+                protectShape:
+                    "polygon(48.6% 17.5%, 78.4% 17.5%, 78.4% 45.6%, 48.6% 45.6%)"
+            },
+
+            {
+                src: "images/peridot mock room 2.JPG",
+                alt: "Peridot mock room 2",
+
+                protectShape:
+                    "polygon(51.5% 14.0%, 79.8% 14.0%, 79.8% 41.0%, 51.5% 41.0%)"
+            }
+        ]
+    },
+
+
+    patina: {
+        name: "Pátina del Mar",
+        product: "patina-del-mar",
+        price: "19.99",
+        year: "2024",
+        number: "03",
+
+        description:
+            "The sea has a way of illustrating a story wherever it touches.",
+
+        gallery: [
+            {
+                src: "images/patina portrait.JPG",
+                alt: "Pátina portrait",
+
+                protectShape:
+                    "polygon(19.0% 19.2%, 81.0% 19.2%, 81.0% 76.4%, 19.0% 76.4%)"
+            },
+
+            {
+                src: "images/patina mock room.jpg",
+                alt: "Pátina mock room 1",
+
+                protectShape:
+                    "polygon(42.03% 19.86%, 73.77% 19.98%, 73.77% 50.00%, 41.89% 49.89%)"
+            },
+
+            {
+                src: "images/patina mock room 2.JPG",
+                alt: "Pátina mock room 2",
+
+                protectShape:
+                    "polygon(58.39% 24.04%, 81.24% 24.15%, 80.96% 45.26%, 58.25% 45.26%)"
+            }
+        ]
+    },
 
 
     sage: {
@@ -129,25 +137,25 @@ patina: {
             {
                 src: "images/sage portrait.JPG",
                 alt: "Sage portrait",
-                
+
                 protectShape:
-                "polygon(19.0% 19.2%, 81.0% 19.2%, 81.0% 76.4%, 19.0% 76.4%)"
+                    "polygon(19.0% 19.2%, 81.0% 19.2%, 81.0% 76.4%, 19.0% 76.4%)"
             },
 
             {
                 src: "images/sage mock room 1.JPG",
                 alt: "Sage mock room 1",
-                
+
                 protectShape:
-                "polygon(28.5% 16.6%, 65.0% 16.6%, 65.0% 51.1%, 28.5% 51.1%)"
+                    "polygon(28.5% 16.6%, 65.0% 16.6%, 65.0% 51.1%, 28.5% 51.1%)"
             },
 
             {
                 src: "images/sage mock room 2.JPG",
                 alt: "Sage mock room 2",
-                
+
                 protectShape:
-                "polygon(29.6% 15.2%, 69.4% 15.2%, 69.4% 52.6%, 29.6% 52.6%)"
+                    "polygon(29.6% 15.2%, 69.4% 15.2%, 69.4% 52.6%, 29.6% 52.6%)"
             }
         ]
     },
@@ -167,25 +175,25 @@ patina: {
             {
                 src: "images/eter portrait.JPG",
                 alt: "Éter portrait",
-                
+
                 protectShape:
-                "polygon(19.0% 19.2%, 81.0% 19.2%, 81.0% 76.4%, 19.0% 76.4%)"
+                    "polygon(19.0% 19.2%, 81.0% 19.2%, 81.0% 76.4%, 19.0% 76.4%)"
             },
 
             {
                 src: "images/eter mock room.jpg",
                 alt: "Éter mock room 1",
-                
+
                 protectShape:
-                "polygon(34.7% 20.1%, 62.2% 20.1%, 62.2% 46.2%, 34.7% 46.2%)"
+                    "polygon(34.7% 20.1%, 62.2% 20.1%, 62.2% 46.2%, 34.7% 46.2%)"
             },
 
             {
                 src: "images/eter mock room 2.jpg",
                 alt: "Éter mock room 2",
-                
+
                 protectShape:
-                 "polygon(42.5% 36.4%, 67.8% 36.4%, 67.8% 60.1%, 42.5% 60.1%)"
+                    "polygon(42.5% 36.4%, 67.8% 36.4%, 67.8% 60.1%, 42.5% 60.1%)"
             }
         ]
     },
@@ -205,25 +213,25 @@ patina: {
             {
                 src: "images/oneiric portrait.JPG",
                 alt: "Oneiric portrait",
-                
+
                 protectShape:
-                "polygon(19.0% 19.2%, 81.0% 19.2%, 81.0% 76.4%, 19.0% 76.4%)"
+                    "polygon(19.0% 19.2%, 81.0% 19.2%, 81.0% 76.4%, 19.0% 76.4%)"
             },
 
             {
                 src: "images/oneiric mock room 1.JPG",
                 alt: "Oneiric mock room 1",
-                
+
                 protectShape:
-                 "polygon(24.65% 23.32%, 62.79% 23.32%, 62.79% 59.35%, 24.65% 59.35%)"
+                    "polygon(24.65% 23.32%, 62.79% 23.32%, 62.79% 59.35%, 24.65% 59.35%)"
             },
 
             {
                 src: "images/oneiric mock room 2.JPG",
                 alt: "Oneiric mock room 2",
-                
+
                 protectShape:
-                 "polygon(22.2% 29.5%, 43.6% 29.5%, 43.6% 49.7%, 22.2% 49.7%)"
+                    "polygon(22.2% 29.5%, 43.6% 29.5%, 43.6% 49.7%, 22.2% 49.7%)"
             }
         ]
     }
@@ -231,129 +239,153 @@ patina: {
 };
 
 
-
 /* ==========================================
-   ELEMENTS
+   02. ELEMENTS
 ========================================== */
 
 const lightbox =
-    document.getElementById("lightbox");
+    document.getElementById(
+        "lightbox"
+    );
 
 const lightboxImage =
-    document.getElementById("lightboxImage");
+    document.getElementById(
+        "lightboxImage"
+    );
 
 const lightboxTitle =
-    document.getElementById("lightboxTitle");
+    document.getElementById(
+        "lightboxTitle"
+    );
 
 const lightboxCounter =
-    document.getElementById("lightboxCounter");
+    document.getElementById(
+        "lightboxCounter"
+    );
 
 const lightboxClose =
-    document.getElementById("lightboxClose");
+    document.getElementById(
+        "lightboxClose"
+    );
 
 const lightboxPrev =
-    document.getElementById("lightboxPrev");
+    document.getElementById(
+        "lightboxPrev"
+    );
 
 const lightboxNext =
-    document.getElementById("lightboxNext");
+    document.getElementById(
+        "lightboxNext"
+    );
 
 
-/* PRODUCT INFORMATION */
+/* ------------------------------------------
+   PRODUCT INFORMATION
+------------------------------------------ */
 
 const artworkPrice =
-    document.getElementById("artworkPrice");
+    document.getElementById(
+        "artworkPrice"
+    );
 
 const artworkDescription =
-    document.getElementById("artworkDescription");
+    document.getElementById(
+        "artworkDescription"
+    );
 
 const artworkYear =
-    document.getElementById("artworkYear");
+    document.getElementById(
+        "artworkYear"
+    );
 
 const artworkNumber =
-    document.getElementById("artworkNumber");
+    document.getElementById(
+        "artworkNumber"
+    );
 
 const artworkAddToBag =
-    document.getElementById("artworkAddToBag");
-
+    document.getElementById(
+        "artworkAddToBag"
+    );
 
 
 /* ==========================================
-   LOAD PROTECTED COLLECTION IMAGES
+   03. LOAD PROTECTED COLLECTION IMAGES
 ========================================== */
-
-/*
-   Collection artwork is displayed using
-   background images instead of normal IMG
-   elements.
-
-   Each protected span receives its image
-   from data-image in the HTML.
-*/
 
 document
     .querySelectorAll(
         ".protected-collection-image"
     )
-    .forEach((image) => {
+    .forEach(
+        image => {
 
-        const source =
-            image.dataset.image;
+            const source =
+                image.dataset.image;
 
 
-        if (!source) {
-            return;
+            if (!source) {
+                return;
+            }
+
+
+            image.style.backgroundImage =
+                `url("${source}")`;
+
         }
-
-
-        image.style.backgroundImage =
-            `url("${source}")`;
-
-    });
-
+    );
 
 
 /* ==========================================
-   ACTIVE ARTWORK / GALLERY
+   04. ACTIVE ARTWORK / GALLERY
 ========================================== */
 
-let activeArtwork = null;
+let activeArtwork =
+    null;
 
-let activeGallery = [];
+let activeGallery =
+    [];
 
-let activeIndex = 0;
+let activeIndex =
+    0;
 
-let touchStartX = 0;
+let touchStartX =
+    0;
 
-let touchEndX = 0;
+let touchEndX =
+    0;
 
-let transitionRunning = false;
-
+let transitionRunning =
+    false;
 
 
 /* ==========================================
-   ADD TO BAG
+   05. ADD TO BAG
 ========================================== */
 
-artworkAddToBag.addEventListener(
-    "click",
-    () => {
+if (artworkAddToBag) {
 
-        if (!activeArtwork) {
-            return;
+    artworkAddToBag.addEventListener(
+        "click",
+        () => {
+
+            if (!activeArtwork) {
+                return;
+            }
+
+
+            addToGlobalBag(
+                activeArtwork.product
+            );
+
         }
+    );
 
-
-        addToGlobalBag(
-            activeArtwork.product
-        );
-
-    }
-);
-
+}
 
 
 /* ==========================================
-   UPDATE ARTWORK INFORMATION
+   06. UPDATE ARTWORK INFORMATION
 ========================================== */
 
 function updateArtworkInfo() {
@@ -379,7 +411,9 @@ function updateArtworkInfo() {
         activeArtwork.number;
 
 
-    if (activeArtwork.description) {
+    if (
+        activeArtwork.description
+    ) {
 
         artworkDescription.textContent =
             activeArtwork.description;
@@ -417,11 +451,12 @@ function updateArtworkInfo() {
 
 
 /* ==========================================
-   PROTECTION OVERLAY
+   07. PROTECTION OVERLAY
 ========================================== */
 
 const imageSizeCache =
     new Map();
+
 
 let protectionOverlay =
     null;
@@ -429,19 +464,29 @@ let protectionOverlay =
 
 function getProtectionOverlay() {
 
-    if (protectionOverlay) {
+    if (
+        protectionOverlay
+    ) {
+
         return protectionOverlay;
+
     }
 
+
     protectionOverlay =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
+
 
     protectionOverlay.className =
         "lightbox-protection-overlay";
 
+
     lightboxImage.appendChild(
         protectionOverlay
     );
+
 
     return protectionOverlay;
 
@@ -449,13 +494,16 @@ function getProtectionOverlay() {
 
 
 /* ==========================================
-   UPDATE CURRENT SLIDE
+   08. UPDATE CURRENT SLIDE
 ========================================== */
 
 function updateSlide() {
 
     const slide =
-        activeGallery[activeIndex];
+        activeGallery[
+            activeIndex
+        ];
+
 
     if (!slide) {
         return;
@@ -481,44 +529,87 @@ function updateSlide() {
 
     lightboxCounter.textContent =
         `${activeIndex + 1}/${activeGallery.length}`;
+
 }
 
 
-
 /* ==========================================
-   PRELOAD GALLERY
+   09. PRELOAD GALLERY
 ========================================== */
 
 function preloadGalleryImages(
     gallery
 ) {
 
-    gallery.forEach((slide) => {
+    gallery.forEach(
+        slide => {
 
-        /*
-           These Image objects exist only in
-           JavaScript memory.
-
-           They preload the gallery without
-           placing normal IMG elements on the
-           webpage.
-        */
-
-        const image =
-            new Image();
+            const image =
+                new Image();
 
 
-        image.src =
-            slide.src;
+            image.src =
+                slide.src;
 
-    });
+        }
+    );
 
 }
 
 
+/* ==========================================
+   10. ACCORDION — CLOSE ALL
+========================================== */
+
+function closeAllAccordions() {
+
+    document
+        .querySelectorAll(
+            ".artwork-accordion"
+        )
+        .forEach(
+            accordion => {
+
+                const content =
+                    accordion.querySelector(
+                        ".accordion-content"
+                    );
+
+
+                const symbol =
+                    accordion.querySelector(
+                        ".accordion-symbol"
+                    );
+
+
+                accordion.classList.remove(
+                    "open"
+                );
+
+
+                if (content) {
+
+                    content.style.maxHeight =
+                        null;
+
+                }
+
+
+                if (symbol) {
+
+                    symbol.textContent =
+                        "+";
+
+                }
+
+            }
+        );
+
+}
+
 
 /* ==========================================
-   OPEN ARTWORK
+   11. OPEN ARTWORK
 ========================================== */
 
 function openGallery(
@@ -526,16 +617,22 @@ function openGallery(
     clickedImage
 ) {
 
-    if (transitionRunning) {
+    if (
+        transitionRunning
+    ) {
         return;
     }
 
 
     const selectedArtwork =
-        artworks[artworkName];
+        artworks[
+            artworkName
+        ];
 
 
-    if (!selectedArtwork) {
+    if (
+        !selectedArtwork
+    ) {
         return;
     }
 
@@ -563,19 +660,22 @@ function openGallery(
 
     updateArtworkInfo();
 
-const overlay =
-    getProtectionOverlay();
 
-overlay.style.display =
-    "none";
+    const overlay =
+        getProtectionOverlay();
+
+
+    overlay.style.display =
+        "none";
 
 
     closeAllAccordions();
 
 
     /*
-       Preload the first gallery image before
-       beginning the opening transition.
+       Preload the first gallery image
+       before beginning the opening
+       transition.
     */
 
     const firstGalleryImage =
@@ -592,7 +692,9 @@ overlay.style.display =
 
     function startTransition() {
 
-        if (transitionStarted) {
+        if (
+            transitionStarted
+        ) {
             return;
         }
 
@@ -612,22 +714,14 @@ overlay.style.display =
         startTransition;
 
 
-    /*
-       If the browser already cached the image,
-       begin immediately.
-    */
-
-    if (firstGalleryImage.complete) {
+    if (
+        firstGalleryImage.complete
+    ) {
 
         startTransition();
 
     }
 
-
-    /*
-       Prevent a broken image from permanently
-       locking the gallery transition.
-    */
 
     firstGalleryImage.onerror =
         startTransition;
@@ -635,20 +729,30 @@ overlay.style.display =
 }
 
 
+/* ==========================================
+   12. IMAGE SIZE CACHE
+========================================== */
+
 function getImageSize(
     source,
     callback
 ) {
 
     if (
-        imageSizeCache.has(source)
+        imageSizeCache.has(
+            source
+        )
     ) {
 
         callback(
-            imageSizeCache.get(source)
+            imageSizeCache.get(
+                source
+            )
         );
 
+
         return;
+
     }
 
 
@@ -660,11 +764,13 @@ function getImageSize(
         () => {
 
             const size = {
+
                 width:
                     image.naturalWidth,
 
                 height:
                     image.naturalHeight
+
             };
 
 
@@ -687,6 +793,9 @@ function getImageSize(
 }
 
 
+/* ==========================================
+   13. POSITION PROTECTION OVERLAY
+========================================== */
 
 function positionProtectionOverlay(
     slide
@@ -704,17 +813,20 @@ function positionProtectionOverlay(
         overlay.style.display =
             "none";
 
+
         return;
+
     }
 
 
     getImageSize(
         slide.src,
-        (size) => {
+        size => {
 
             if (
-                activeGallery[activeIndex]
-                !== slide
+                activeGallery[
+                    activeIndex
+                ] !== slide
             ) {
                 return;
             }
@@ -739,37 +851,45 @@ function positionProtectionOverlay(
             const scale =
                 Math.min(
                     containerWidth
-                    / imageWidth,
+                    /
+                    imageWidth,
 
                     containerHeight
-                    / imageHeight
+                    /
+                    imageHeight
                 );
 
 
             const renderedWidth =
                 imageWidth
-                * scale;
+                *
+                scale;
 
 
             const renderedHeight =
                 imageHeight
-                * scale;
+                *
+                scale;
 
 
             const offsetX =
                 (
                     containerWidth
-                    - renderedWidth
+                    -
+                    renderedWidth
                 )
-                / 2;
+                /
+                2;
 
 
             const offsetY =
                 (
                     containerHeight
-                    - renderedHeight
+                    -
+                    renderedHeight
                 )
-                / 2;
+                /
+                2;
 
 
             const left =
@@ -777,9 +897,11 @@ function positionProtectionOverlay(
                 +
                 (
                     slide.protectBox.x
-                    / 100
+                    /
+                    100
                 )
-                * renderedWidth;
+                *
+                renderedWidth;
 
 
             const top =
@@ -787,25 +909,31 @@ function positionProtectionOverlay(
                 +
                 (
                     slide.protectBox.y
-                    / 100
+                    /
+                    100
                 )
-                * renderedHeight;
+                *
+                renderedHeight;
 
 
             const width =
                 (
                     slide.protectBox.width
-                    / 100
+                    /
+                    100
                 )
-                * renderedWidth;
+                *
+                renderedWidth;
 
 
             const height =
                 (
                     slide.protectBox.height
-                    / 100
+                    /
+                    100
                 )
-                * renderedHeight;
+                *
+                renderedHeight;
 
 
             overlay.style.display =
@@ -834,23 +962,35 @@ function positionProtectionOverlay(
 
 
 /* ==========================================
-   REALISTIC ZOOM-OUT EFFECT
+   14. REALISTIC ZOOM-OUT EFFECT
 ========================================== */
 
-function runZoomOutTransition(clickedImage) {
+function runZoomOutTransition(
+    clickedImage
+) {
 
-    if (!clickedImage) {
-        transitionRunning = false;
+    if (
+        !clickedImage
+    ) {
+
+        transitionRunning =
+            false;
+
+
         return;
+
     }
 
 
     const startRect =
-        clickedImage.getBoundingClientRect();
+        clickedImage
+            .getBoundingClientRect();
 
 
     const transitionImage =
-        clickedImage.cloneNode(true);
+        clickedImage.cloneNode(
+            true
+        );
 
 
     transitionImage.classList.add(
@@ -861,14 +1001,18 @@ function runZoomOutTransition(clickedImage) {
     transitionImage.style.position =
         "fixed";
 
+
     transitionImage.style.top =
         `${startRect.top}px`;
+
 
     transitionImage.style.left =
         `${startRect.left}px`;
 
+
     transitionImage.style.width =
         `${startRect.width}px`;
+
 
     transitionImage.style.height =
         `${startRect.height}px`;
@@ -879,7 +1023,9 @@ function runZoomOutTransition(clickedImage) {
     );
 
 
-    activeIndex = 0;
+    activeIndex =
+        0;
+
 
     updateSlide();
 
@@ -888,10 +1034,11 @@ function runZoomOutTransition(clickedImage) {
         "open",
         "transition-opening"
     );
-    
+
+
     document.body.classList.add(
-    "artwork-viewer-open"
-);
+        "artwork-viewer-open"
+    );
 
 
     lightbox.setAttribute(
@@ -907,115 +1054,146 @@ function runZoomOutTransition(clickedImage) {
     lightboxImage.style.opacity =
         "0";
 
+
     lightboxCounter.style.opacity =
         "0";
+
 
     lightboxPrev.style.opacity =
         "0";
 
+
     lightboxNext.style.opacity =
         "0";
+
 
     lightboxClose.style.opacity =
         "0";
 
 
-    requestAnimationFrame(() => {
+    requestAnimationFrame(
+        () => {
 
-        requestAnimationFrame(() => {
+            requestAnimationFrame(
+                () => {
 
-
-            const destination =
-                lightboxImage.getBoundingClientRect();
-
-             transitionImage.classList.add(
-                 "transition-artwork-brightening"
-             );
-
-            transitionImage.style.top =
-                `${destination.top}px`;
-
-            transitionImage.style.left =
-                `${destination.left}px`;
-
-            transitionImage.style.width =
-                `${destination.width}px`;
-
-            transitionImage.style.height =
-                `${destination.height}px`;
-
-            transitionImage.style.transform =
-                "scale(1.06)";
+                    const destination =
+                        lightboxImage
+                            .getBoundingClientRect();
 
 
-            setTimeout(() => {
-
-                transitionImage.classList.add(
-                    "transition-artwork-fade"
-                );
-
-                lightboxImage.classList.add(
-                    "room-image-reveal"
-                );
-
-                lightboxImage.style.opacity =
-                    "1";
-
-            }, 900);
+                    transitionImage.classList.add(
+                        "transition-artwork-brightening"
+                    );
 
 
-            setTimeout(() => {
-
-                lightboxCounter.style.opacity =
-                    "1";
-
-                lightboxPrev.style.opacity =
-                    "1";
-
-                lightboxNext.style.opacity =
-                    "1";
-
-                lightboxClose.style.opacity =
-                    "1";
-
-            }, 1750);
+                    transitionImage.style.top =
+                        `${destination.top}px`;
 
 
-            setTimeout(() => {
-
-                transitionImage.remove();
-
-                lightbox.classList.remove(
-                    "transition-opening"
-                );
-
-                lightboxImage.classList.remove(
-                    "room-image-reveal"
-                );
-
-                transitionRunning =
-                    false;
-
-            }, 3200);
+                    transitionImage.style.left =
+                        `${destination.left}px`;
 
 
-        });
+                    transitionImage.style.width =
+                        `${destination.width}px`;
 
-    });
+
+                    transitionImage.style.height =
+                        `${destination.height}px`;
+
+
+                    transitionImage.style.transform =
+                        "scale(1.06)";
+
+
+                    setTimeout(
+                        () => {
+
+                            transitionImage.classList.add(
+                                "transition-artwork-fade"
+                            );
+
+
+                            lightboxImage.classList.add(
+                                "room-image-reveal"
+                            );
+
+
+                            lightboxImage.style.opacity =
+                                "1";
+
+                        },
+                        900
+                    );
+
+
+                    setTimeout(
+                        () => {
+
+                            lightboxCounter.style.opacity =
+                                "1";
+
+
+                            lightboxPrev.style.opacity =
+                                "1";
+
+
+                            lightboxNext.style.opacity =
+                                "1";
+
+
+                            lightboxClose.style.opacity =
+                                "1";
+
+                        },
+                        1750
+                    );
+
+
+                    setTimeout(
+                        () => {
+
+                            transitionImage.remove();
+
+
+                            lightbox.classList.remove(
+                                "transition-opening"
+                            );
+
+
+                            lightboxImage.classList.remove(
+                                "room-image-reveal"
+                            );
+
+
+                            transitionRunning =
+                                false;
+
+                        },
+                        3200
+                    );
+
+                }
+            );
+
+        }
+    );
 
 }
 
 
-
 /* ==========================================
-   CHANGE SLIDE
+   15. CHANGE SLIDE
 ========================================== */
 
 function changeSlide(
     newIndex
 ) {
 
-    if (transitionRunning) {
+    if (
+        transitionRunning
+    ) {
         return;
     }
 
@@ -1029,53 +1207,50 @@ function changeSlide(
     );
 
 
-    setTimeout(() => {
+    setTimeout(
+        () => {
 
-        activeIndex =
-            newIndex;
-
-
-        /*
-           updateSlide handles:
-           - Gallery image
-           - Protection polygon
-           - Accessibility label
-           - Counter
-        */
-
-        updateSlide();
+            activeIndex =
+                newIndex;
 
 
-        lightboxImage.classList.remove(
-            "gallery-fade-out"
-        );
+            updateSlide();
 
-
-        lightboxImage.classList.add(
-            "gallery-fade-in"
-        );
-
-
-        setTimeout(() => {
 
             lightboxImage.classList.remove(
+                "gallery-fade-out"
+            );
+
+
+            lightboxImage.classList.add(
                 "gallery-fade-in"
             );
 
 
-            transitionRunning =
-                false;
+            setTimeout(
+                () => {
 
-        }, 550);
+                    lightboxImage.classList.remove(
+                        "gallery-fade-in"
+                    );
 
-    }, 300);
+
+                    transitionRunning =
+                        false;
+
+                },
+                550
+            );
+
+        },
+        300
+    );
 
 }
 
 
-
 /* ==========================================
-   NEXT SLIDE
+   16. NEXT SLIDE
 ========================================== */
 
 function nextSlide() {
@@ -1090,9 +1265,12 @@ function nextSlide() {
 
     const newIndex =
         (
-            activeIndex + 1
+            activeIndex
+            +
+            1
         )
-        % activeGallery.length;
+        %
+        activeGallery.length;
 
 
     changeSlide(
@@ -1102,9 +1280,8 @@ function nextSlide() {
 }
 
 
-
 /* ==========================================
-   PREVIOUS SLIDE
+   17. PREVIOUS SLIDE
 ========================================== */
 
 function previousSlide() {
@@ -1120,10 +1297,13 @@ function previousSlide() {
     const newIndex =
         (
             activeIndex
-            - 1
-            + activeGallery.length
+            -
+            1
+            +
+            activeGallery.length
         )
-        % activeGallery.length;
+        %
+        activeGallery.length;
 
 
     changeSlide(
@@ -1133,9 +1313,8 @@ function previousSlide() {
 }
 
 
-
 /* ==========================================
-   CLOSE ARTWORK VIEW
+   18. CLOSE ARTWORK VIEW
 ========================================== */
 
 function closeGallery() {
@@ -1144,10 +1323,11 @@ function closeGallery() {
         "open",
         "transition-opening"
     );
-    
+
+
     document.body.classList.remove(
-    "artwork-viewer-open"
-);
+        "artwork-viewer-open"
+    );
 
 
     lightbox.setAttribute(
@@ -1168,27 +1348,17 @@ function closeGallery() {
         .querySelectorAll(
             ".transition-artwork"
         )
-        .forEach((element) => {
+        .forEach(
+            element => {
 
-            element.remove();
+                element.remove();
 
-        });
+            }
+        );
 
-
-    /*
-       Reset gallery scroll.
-    */
 
     lightbox.scrollTop =
         0;
-
-
-    /*
-       Remove previous artwork's protection
-       shape before another artwork opens.
-    */
-
-    
 
 
     closeAllAccordions();
@@ -1196,74 +1366,88 @@ function closeGallery() {
 }
 
 
-
 /* ==========================================
-   CLICK ARTWORK
+   19. CLICK ARTWORK
 ========================================== */
 
 document
     .querySelectorAll(
         ".collection-item"
     )
-    .forEach((item) => {
+    .forEach(
+        item => {
 
-        item.addEventListener(
-            "click",
-            () => {
+            item.addEventListener(
+                "click",
+                () => {
 
-                /*
-                   Collection artwork uses the
-                   protected background SPAN.
-                */
+                    const clickedImage =
+                        item.querySelector(
+                            ".protected-collection-image"
+                        );
 
-                const clickedImage =
-                    item.querySelector(
-                        ".protected-collection-image"
+
+                    if (
+                        !clickedImage
+                    ) {
+                        return;
+                    }
+
+
+                    openGallery(
+                        item.dataset.gallery,
+                        clickedImage
                     );
 
-
-                if (!clickedImage) {
-                    return;
                 }
+            );
 
-
-                openGallery(
-                    item.dataset.gallery,
-                    clickedImage
-                );
-
-            }
-        );
-
-    });
-
+        }
+    );
 
 
 /* ==========================================
-   GALLERY BUTTONS
+   20. GALLERY BUTTONS
 ========================================== */
 
-lightboxClose.addEventListener(
-    "click",
-    closeGallery
-);
+if (
+    lightboxClose
+) {
+
+    lightboxClose.addEventListener(
+        "click",
+        closeGallery
+    );
+
+}
 
 
-lightboxNext.addEventListener(
-    "click",
-    nextSlide
-);
+if (
+    lightboxNext
+) {
+
+    lightboxNext.addEventListener(
+        "click",
+        nextSlide
+    );
+
+}
 
 
-lightboxPrev.addEventListener(
-    "click",
-    previousSlide
-);
+if (
+    lightboxPrev
+) {
 
+    lightboxPrev.addEventListener(
+        "click",
+        previousSlide
+    );
+
+}
 
 
 /* ==========================================
-   ACCORDION / DROP MENUS
+   21. ACCORDION / DROP MENUS
 ========================================== */
 
 const accordionButtons =
@@ -1273,24 +1457,42 @@ const accordionButtons =
 
 
 accordionButtons.forEach(
-    (button) => {
+    button => {
 
         button.addEventListener(
             "click",
             () => {
 
                 const accordion =
-                    button.parentElement;
+                    button.closest(
+                        ".artwork-accordion"
+                    );
+
+
+                if (
+                    !accordion
+                ) {
+                    return;
+                }
 
 
                 const content =
-                    button.nextElementSibling;
+                    accordion.querySelector(
+                        ".accordion-content"
+                    );
 
 
                 const symbol =
                     button.querySelector(
                         ".accordion-symbol"
                     );
+
+
+                if (
+                    !content
+                ) {
+                    return;
+                }
 
 
                 const isOpen =
@@ -1302,17 +1504,27 @@ accordionButtons.forEach(
                 closeAllAccordions();
 
 
-                if (!isOpen) {
+                if (
+                    isOpen
+                ) {
+                    return;
+                }
 
-                    accordion.classList.add(
-                        "open"
-                    );
+
+                accordion.classList.add(
+                    "open"
+                );
 
 
-                    content.style.maxHeight =
-                        content.scrollHeight
-                        + "px";
+                content.style.maxHeight =
+                    content.scrollHeight
+                    +
+                    "px";
 
+
+                if (
+                    symbol
+                ) {
 
                     symbol.textContent =
                         "−";
@@ -1326,123 +1538,13 @@ accordionButtons.forEach(
 );
 
 
-
-/* =========================================
-   ACCORDIONS
-========================================= */
-
-document
-    .querySelectorAll(
-        ".accordion-button"
-    )
-    .forEach(
-        button => {
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    const accordion =
-                        button.closest(
-                            ".artwork-accordion"
-                        );
-
-                    const content =
-                        accordion.querySelector(
-                            ".accordion-content"
-                        );
-
-                    const symbol =
-                        accordion.querySelector(
-                            ".accordion-symbol"
-                        );
-
-
-                    const isOpen =
-                        accordion.classList.contains(
-                            "open"
-                        );
-
-
-                    document
-                        .querySelectorAll(
-                            ".artwork-accordion"
-                        )
-                        .forEach(
-                            item => {
-
-                                const itemContent =
-                                    item.querySelector(
-                                        ".accordion-content"
-                                    );
-
-                                const itemSymbol =
-                                    item.querySelector(
-                                        ".accordion-symbol"
-                                    );
-
-
-                                item.classList.remove(
-                                    "open"
-                                );
-
-
-                                if (itemContent) {
-
-                                    itemContent.style.maxHeight =
-                                        null;
-
-                                }
-
-
-                                if (itemSymbol) {
-
-                                    itemSymbol.textContent =
-                                        "+";
-
-                                }
-
-                            }
-                        );
-
-
-                    if (isOpen) {
-                        return;
-                    }
-
-
-                    accordion.classList.add(
-                        "open"
-                    );
-
-
-                    content.style.maxHeight =
-                        content.scrollHeight
-                        +
-                        "px";
-
-
-                    if (symbol) {
-
-                        symbol.textContent =
-                            "−";
-
-                    }
-
-                }
-            );
-
-        }
-    );
-
-
 /* ==========================================
-   KEYBOARD
+   22. KEYBOARD
 ========================================== */
 
 document.addEventListener(
     "keydown",
-    (event) => {
+    event => {
 
         if (
             !lightbox.classList.contains(
@@ -1486,14 +1588,13 @@ document.addEventListener(
 );
 
 
-
 /* ==========================================
-   MOBILE SWIPE — START
+   23. MOBILE SWIPE — START
 ========================================== */
 
 lightboxImage.addEventListener(
     "touchstart",
-    (event) => {
+    event => {
 
         touchStartX =
             event
@@ -1507,14 +1608,13 @@ lightboxImage.addEventListener(
 );
 
 
-
 /* ==========================================
-   MOBILE SWIPE — END
+   24. MOBILE SWIPE — END
 ========================================== */
 
 lightboxImage.addEventListener(
     "touchend",
-    (event) => {
+    event => {
 
         touchEndX =
             event
@@ -1531,33 +1631,28 @@ lightboxImage.addEventListener(
 );
 
 
-
 /* ==========================================
-   MOBILE SWIPE — DIRECTION
+   25. MOBILE SWIPE — DIRECTION
 ========================================== */
 
 function handleSwipe() {
 
     const distance =
         touchStartX
-        - touchEndX;
+        -
+        touchEndX;
 
-
-    /*
-       Ignore tiny accidental movements.
-    */
 
     if (
-        Math.abs(distance)
-        < 50
+        Math.abs(
+            distance
+        )
+        <
+        50
     ) {
         return;
     }
 
-
-    /*
-       Swipe left = next image.
-    */
 
     if (
         distance > 0
@@ -1567,11 +1662,6 @@ function handleSwipe() {
 
     }
 
-
-    /*
-       Swipe right = previous image.
-    */
-
     else {
 
         previousSlide();
@@ -1580,6 +1670,10 @@ function handleSwipe() {
 
 }
 
+
+/* ==========================================
+   26. RESIZE
+========================================== */
 
 window.addEventListener(
     "resize",
@@ -1595,10 +1689,14 @@ window.addEventListener(
 
 
         const slide =
-            activeGallery[activeIndex];
+            activeGallery[
+                activeIndex
+            ];
 
 
-        if (!slide) {
+        if (
+            !slide
+        ) {
             return;
         }
 
