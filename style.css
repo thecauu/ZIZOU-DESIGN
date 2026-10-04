@@ -5524,44 +5524,6 @@ body.artwork-viewer-open
             hidden;
     }
     
-/* =====================================================
-   ACCORDION — TABLET SAFARI FIX
-===================================================== */
-
-.accordion-content {
-    transition:
-        opacity
-        0.2s
-        ease !important;
-
-    transform:
-        none !important;
-
-    -webkit-transform:
-        none !important;
-
-    backface-visibility:
-        visible !important;
-
-    -webkit-backface-visibility:
-        visible !important;
-}
-
-.artwork-accordion {
-    transform:
-        none !important;
-
-    -webkit-transform:
-        none !important;
-
-    contain:
-        paint;
-}
-
-.artwork-product-info {
-    background:
-        #ffffff;
-}
 
     /* =====================================================
        LEFT SIDE — ARTWORK
