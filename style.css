@@ -5524,6 +5524,15 @@ body.artwork-viewer-open
             hidden;
     }
     
+    /* =====================================================
+   TABLET — ACCORDION TEST
+===================================================== */
+
+.accordion-content {
+    transition:
+        none;
+}
+    
 
     /* =====================================================
        LEFT SIDE — ARTWORK
