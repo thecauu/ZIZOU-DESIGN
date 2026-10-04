@@ -1331,105 +1331,6 @@ accordionButtons.forEach(
    ACCORDIONS
 ========================================= */
 
-function useTabletAccordionMode() {
-
-    return window.matchMedia(
-        "(min-width: 768px) and (hover: none)"
-    ).matches;
-
-}
-
-
-/* -----------------------------------------
-   CLOSE ALL ACCORDIONS
------------------------------------------ */
-
-function closeAllAccordions() {
-
-    document
-        .querySelectorAll(
-            ".artwork-accordion"
-        )
-        .forEach(
-            accordion => {
-
-                const content =
-                    accordion.querySelector(
-                        ".accordion-content"
-                    );
-
-                const symbol =
-                    accordion.querySelector(
-                        ".accordion-symbol"
-                    );
-
-
-                accordion.classList.remove(
-                    "open"
-                );
-
-
-                if (content) {
-
-                    if (
-                        useTabletAccordionMode()
-                    ) {
-
-                        /*
-                           iPad:
-                           Do not animate or calculate height.
-                           This avoids Safari repaint artifacts.
-                        */
-
-                        content.style.display =
-                            "none";
-
-                        content.style.maxHeight =
-                            "none";
-
-                        content.style.opacity =
-                            "0";
-
-                    }
-
-                    else {
-
-                        /*
-                           Phone / desktop:
-                           Keep the existing smooth animation.
-                        */
-
-                        content.style.display =
-                            "";
-
-                        content.style.maxHeight =
-                            null;
-
-                        content.style.opacity =
-                            "";
-
-                    }
-
-                }
-
-
-                if (symbol) {
-
-                    symbol.textContent =
-                        "+";
-
-                }
-
-            }
-        );
-
-}
-
-
-/* -----------------------------------------
-   ACCORDION BUTTONS
------------------------------------------ */
-
 document
     .querySelectorAll(
         ".accordion-button"
@@ -1446,17 +1347,10 @@ document
                             ".artwork-accordion"
                         );
 
-
-                    if (!accordion) {
-                        return;
-                    }
-
-
                     const content =
                         accordion.querySelector(
                             ".accordion-content"
                         );
-
 
                     const symbol =
                         accordion.querySelector(
@@ -1464,21 +1358,55 @@ document
                         );
 
 
-                    if (!content) {
-                        return;
-                    }
-
-
-                    const wasOpen =
+                    const isOpen =
                         accordion.classList.contains(
                             "open"
                         );
 
 
-                    closeAllAccordions();
+                    document
+                        .querySelectorAll(
+                            ".artwork-accordion"
+                        )
+                        .forEach(
+                            item => {
+
+                                const itemContent =
+                                    item.querySelector(
+                                        ".accordion-content"
+                                    );
+
+                                const itemSymbol =
+                                    item.querySelector(
+                                        ".accordion-symbol"
+                                    );
 
 
-                    if (wasOpen) {
+                                item.classList.remove(
+                                    "open"
+                                );
+
+
+                                if (itemContent) {
+
+                                    itemContent.style.maxHeight =
+                                        null;
+
+                                }
+
+
+                                if (itemSymbol) {
+
+                                    itemSymbol.textContent =
+                                        "+";
+
+                                }
+
+                            }
+                        );
+
+
+                    if (isOpen) {
                         return;
                     }
 
@@ -1488,46 +1416,10 @@ document
                     );
 
 
-                    if (
-                        useTabletAccordionMode()
-                    ) {
-
-                        /*
-                           iPad:
-                           Open instantly without
-                           max-height animation.
-                        */
-
-                        content.style.display =
-                            "block";
-
-                        content.style.maxHeight =
-                            "none";
-
-                        content.style.opacity =
-                            "1";
-
-                    }
-
-                    else {
-
-                        /*
-                           Phone / desktop:
-                           Preserve existing animation.
-                        */
-
-                        content.style.display =
-                            "";
-
-                        content.style.maxHeight =
-                            content.scrollHeight
-                            +
-                            "px";
-
-                        content.style.opacity =
-                            "";
-
-                    }
+                    content.style.maxHeight =
+                        content.scrollHeight
+                        +
+                        "px";
 
 
                     if (symbol) {
