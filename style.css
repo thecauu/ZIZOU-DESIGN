@@ -5524,13 +5524,14 @@ body.artwork-viewer-open
             hidden;
     }
     
-    /* =====================================================
-   TABLET — ACCORDION TEST
+/* =====================================================
+   TABLET — LIGHTBOX BLUR TEST
 ===================================================== */
 
-.accordion-content {
-    transition:
-        none;
+.protected-lightbox-image::before,
+.protected-lightbox-image::after {
+    content:
+        none !important;
 }
     
 
