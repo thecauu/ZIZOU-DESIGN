@@ -1327,9 +1327,22 @@ accordionButtons.forEach(
 
 
 
-/* ==========================================
+/* =========================================
+   ACCORDIONS
+========================================= */
+
+function useTabletAccordionMode() {
+
+    return window.matchMedia(
+        "(min-width: 768px) and (hover: none)"
+    ).matches;
+
+}
+
+
+/* -----------------------------------------
    CLOSE ALL ACCORDIONS
-========================================== */
+----------------------------------------- */
 
 function closeAllAccordions() {
 
@@ -1337,44 +1350,198 @@ function closeAllAccordions() {
         .querySelectorAll(
             ".artwork-accordion"
         )
-        .forEach((accordion) => {
+        .forEach(
+            accordion => {
 
-            accordion.classList.remove(
-                "open"
-            );
+                const content =
+                    accordion.querySelector(
+                        ".accordion-content"
+                    );
+
+                const symbol =
+                    accordion.querySelector(
+                        ".accordion-symbol"
+                    );
 
 
-            const content =
-                accordion.querySelector(
-                    ".accordion-content"
+                accordion.classList.remove(
+                    "open"
                 );
 
 
-            const symbol =
-                accordion.querySelector(
-                    ".accordion-symbol"
-                );
+                if (content) {
+
+                    if (
+                        useTabletAccordionMode()
+                    ) {
+
+                        /*
+                           iPad:
+                           Do not animate or calculate height.
+                           This avoids Safari repaint artifacts.
+                        */
+
+                        content.style.display =
+                            "none";
+
+                        content.style.maxHeight =
+                            "none";
+
+                        content.style.opacity =
+                            "0";
+
+                    }
+
+                    else {
+
+                        /*
+                           Phone / desktop:
+                           Keep the existing smooth animation.
+                        */
+
+                        content.style.display =
+                            "";
+
+                        content.style.maxHeight =
+                            null;
+
+                        content.style.opacity =
+                            "";
+
+                    }
+
+                }
 
 
-            if (content) {
+                if (symbol) {
 
-                content.style.maxHeight =
-                    null;
+                    symbol.textContent =
+                        "+";
+
+                }
 
             }
-
-
-            if (symbol) {
-
-                symbol.textContent =
-                    "+";
-
-            }
-
-        });
+        );
 
 }
 
+
+/* -----------------------------------------
+   ACCORDION BUTTONS
+----------------------------------------- */
+
+document
+    .querySelectorAll(
+        ".accordion-button"
+    )
+    .forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    const accordion =
+                        button.closest(
+                            ".artwork-accordion"
+                        );
+
+
+                    if (!accordion) {
+                        return;
+                    }
+
+
+                    const content =
+                        accordion.querySelector(
+                            ".accordion-content"
+                        );
+
+
+                    const symbol =
+                        accordion.querySelector(
+                            ".accordion-symbol"
+                        );
+
+
+                    if (!content) {
+                        return;
+                    }
+
+
+                    const wasOpen =
+                        accordion.classList.contains(
+                            "open"
+                        );
+
+
+                    closeAllAccordions();
+
+
+                    if (wasOpen) {
+                        return;
+                    }
+
+
+                    accordion.classList.add(
+                        "open"
+                    );
+
+
+                    if (
+                        useTabletAccordionMode()
+                    ) {
+
+                        /*
+                           iPad:
+                           Open instantly without
+                           max-height animation.
+                        */
+
+                        content.style.display =
+                            "block";
+
+                        content.style.maxHeight =
+                            "none";
+
+                        content.style.opacity =
+                            "1";
+
+                    }
+
+                    else {
+
+                        /*
+                           Phone / desktop:
+                           Preserve existing animation.
+                        */
+
+                        content.style.display =
+                            "";
+
+                        content.style.maxHeight =
+                            content.scrollHeight
+                            +
+                            "px";
+
+                        content.style.opacity =
+                            "";
+
+                    }
+
+
+                    if (symbol) {
+
+                        symbol.textContent =
+                            "−";
+
+                    }
+
+                }
+            );
+
+        }
+    );
 
 
 /* ==========================================
