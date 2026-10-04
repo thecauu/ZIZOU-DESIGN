@@ -4,7 +4,7 @@
 
 
 /* =========================================
-   01. MULTI-ARTWORK CHECKOUT
+   01. CHECKOUT CONFIGURATION
 ========================================= */
 
 const ZIZOU_MULTI_CHECKOUT_ENDPOINT =
@@ -20,6 +20,7 @@ const zizouProducts = {
     "amber-breeze": {
         name: "Amber Breeze",
         type: "DIGITAL ART PHOTOGRAPHY",
+        price: 19.99,
         image: "images/amber breeze home page.jpg",
         checkout:
             "https://zizoudesign.lemonsqueezy.com/checkout/buy/8c922568-b22d-4f21-b7cb-9faaf3298379?embed=1&logo=0"
@@ -29,6 +30,7 @@ const zizouProducts = {
     "peridot-afloat": {
         name: "Peridot Afloat",
         type: "DIGITAL ART PHOTOGRAPHY",
+        price: 19.99,
         image: "images/peridot portrait.JPG",
         checkout:
             "https://zizoudesign.lemonsqueezy.com/checkout/buy/abc2b98d-45ce-45bd-887c-efc1b88dee7a?embed=1&logo=0"
@@ -38,6 +40,7 @@ const zizouProducts = {
     "patina-del-mar": {
         name: "Pátina del Mar",
         type: "DIGITAL ART PHOTOGRAPHY",
+        price: 19.99,
         image: "images/patina portrait.JPG",
         checkout:
             "https://zizoudesign.lemonsqueezy.com/checkout/buy/f4ae5232-7bb9-483b-80e3-409481dbc854?embed=1&logo=0"
@@ -47,6 +50,7 @@ const zizouProducts = {
     "sage-quietude": {
         name: "Sage Quietude",
         type: "DIGITAL ART PHOTOGRAPHY",
+        price: 19.99,
         image: "images/sage portrait.JPG",
         checkout:
             "https://zizoudesign.lemonsqueezy.com/checkout/buy/e1ce0a2d-41b9-45bd-9c00-035946e0150f?embed=1&logo=0"
@@ -56,6 +60,7 @@ const zizouProducts = {
     "eter-do-luar": {
         name: "Éter do Luar",
         type: "DIGITAL ART PHOTOGRAPHY",
+        price: 19.99,
         image: "images/eter portrait.JPG",
         checkout:
             "https://zizoudesign.lemonsqueezy.com/checkout/buy/61b4e990-1c81-4e82-bb2c-9d21b277a886?embed=1&logo=0"
@@ -65,6 +70,7 @@ const zizouProducts = {
     "oneiric-glow": {
         name: "Oneiric Glow",
         type: "DIGITAL ART PHOTOGRAPHY",
+        price: 19.99,
         image: "images/oneiric portrait.JPG",
         checkout:
             "https://zizoudesign.lemonsqueezy.com/checkout/buy/dbf89c46-0580-43ec-a549-47d135fcce9a?embed=1&logo=0"
@@ -99,7 +105,22 @@ catch (error) {
 
 
 /* =========================================
-   04. PANEL HANDOFF HELPERS
+   04. PRICE FORMAT
+========================================= */
+
+function formatUSD(
+    amount
+) {
+
+    return (
+        `$${amount.toFixed(2)} USD`
+    );
+
+}
+
+
+/* =========================================
+   05. PANEL HANDOFF HELPERS
 ========================================= */
 
 
@@ -133,9 +154,8 @@ function closeMenuForCart() {
 
 
     /*
-       Use the existing menu button so
-       script.js performs its normal
-       closing procedure.
+       Use script.js's existing
+       menu closing behavior.
     */
 
     menuButton.click();
@@ -181,8 +201,8 @@ function closeSearchForCart() {
     if (searchButton) {
 
         /*
-           Use search.js's existing close
-           behavior instead of duplicating it.
+           Use search.js's existing
+           search closing behavior.
         */
 
         searchButton.click();
@@ -206,7 +226,7 @@ function closeOtherPanelsForCart() {
 
 
 /* =========================================
-   05. CART PANEL STATE
+   06. BAG PANEL STATE
 ========================================= */
 
 function openGlobalBag() {
@@ -227,11 +247,6 @@ function openGlobalBag() {
         return;
     }
 
-
-    /*
-       Menu and search must close before
-       the bag opens.
-    */
 
     closeOtherPanelsForCart();
 
@@ -322,7 +337,7 @@ function toggleGlobalBag() {
 
 
 /* =========================================
-   06. CREATE GLOBAL BAG
+   07. CREATE GLOBAL BAG
 ========================================= */
 
 function createGlobalBag() {
@@ -404,7 +419,7 @@ function createGlobalBag() {
 
 
     /* -----------------------------------------
-       ZIZOU CART LOGO
+       ZIZOU BAG LOGO
     ----------------------------------------- */
 
     bagButton.innerHTML = `
@@ -423,7 +438,7 @@ function createGlobalBag() {
 
 
     /* -----------------------------------------
-       CREATE BAG PANEL
+       BAG PANEL
     ----------------------------------------- */
 
     const shoppingBag =
@@ -459,7 +474,10 @@ function createGlobalBag() {
         </div>
 
 
-        <div id="bagItems"></div>
+        <div
+            class="bag-items"
+            id="bagItems"
+        ></div>
 
 
         <div
@@ -474,6 +492,19 @@ function createGlobalBag() {
             class="bag-checkout-area"
             id="bagCheckoutArea"
         >
+
+            <div class="bag-subtotal">
+
+                <span>
+                    SUBTOTAL
+                </span>
+
+                <span id="bagSubtotal">
+                    $0.00 USD
+                </span>
+
+            </div>
+
 
             <button
                 type="button"
@@ -494,7 +525,7 @@ function createGlobalBag() {
 
 
     /* =========================================
-       07. CART BUTTON
+       08. BAG BUTTON
     ========================================= */
 
     bagButton.addEventListener(
@@ -503,14 +534,6 @@ function createGlobalBag() {
 
             event.preventDefault();
 
-
-            /*
-               BAG ICON CONTROLS BOTH STATES:
-
-               closed → open
-               open   → closed
-            */
-
             toggleGlobalBag();
 
         }
@@ -518,7 +541,7 @@ function createGlobalBag() {
 
 
     /* =========================================
-       08. CLOSE BUTTON
+       09. CLOSE BUTTON
     ========================================= */
 
     const closeBagButton =
@@ -544,7 +567,7 @@ function createGlobalBag() {
 
 
     /* =========================================
-       09. CART → MENU HANDOFF
+       10. BAG → MENU HANDOFF
     ========================================= */
 
     const menuButton =
@@ -554,15 +577,6 @@ function createGlobalBag() {
 
 
     if (menuButton) {
-
-        /*
-           Capture phase closes the cart BEFORE
-           script.js receives the menu click.
-
-           BAG closes
-               ↓
-           existing menu listener opens menu
-        */
 
         menuButton.addEventListener(
             "click",
@@ -586,7 +600,7 @@ function createGlobalBag() {
 
 
     /* =========================================
-       10. CART → SEARCH HANDOFF
+       11. BAG → SEARCH HANDOFF
     ========================================= */
 
     const searchButtons =
@@ -597,14 +611,6 @@ function createGlobalBag() {
 
     searchButtons.forEach(
         searchButton => {
-
-            /*
-               Same principle:
-
-               BAG closes
-                   ↓
-               search.js opens search
-            */
 
             searchButton.addEventListener(
                 "click",
@@ -629,7 +635,7 @@ function createGlobalBag() {
 
 
     /* =========================================
-       11. CHECKOUT
+       12. CHECKOUT BUTTON
     ========================================= */
 
     const checkoutButton =
@@ -654,7 +660,7 @@ function createGlobalBag() {
 
 
 /* =========================================
-   12. SAVE CART
+   13. SAVE CART
 ========================================= */
 
 function saveGlobalCart() {
@@ -670,7 +676,7 @@ function saveGlobalCart() {
 
 
 /* =========================================
-   13. ADD PRODUCT
+   14. ADD PRODUCT
 ========================================= */
 
 function addToGlobalBag(
@@ -706,20 +712,13 @@ function addToGlobalBag(
 
     updateGlobalBag();
 
-
-    /*
-       Opening the bag through an
-       Add To Bag button also closes
-       menu/search first.
-    */
-
     openGlobalBag();
 
 }
 
 
 /* =========================================
-   14. REMOVE PRODUCT
+   15. REMOVE PRODUCT
 ========================================= */
 
 function removeFromGlobalBag(
@@ -741,7 +740,44 @@ function removeFromGlobalBag(
 
 
 /* =========================================
-   15. UPDATE BAG
+   16. CALCULATE SUBTOTAL
+========================================= */
+
+function calculateGlobalSubtotal() {
+
+    return zizouCart.reduce(
+        (
+            subtotal,
+            productId
+        ) => {
+
+            const product =
+                zizouProducts[
+                    productId
+                ];
+
+
+            if (!product) {
+
+                return subtotal;
+
+            }
+
+
+            return (
+                subtotal +
+                product.price
+            );
+
+        },
+        0
+    );
+
+}
+
+
+/* =========================================
+   17. UPDATE BAG
 ========================================= */
 
 function updateGlobalBag() {
@@ -770,6 +806,12 @@ function updateGlobalBag() {
         );
 
 
+    const bagSubtotal =
+        document.getElementById(
+            "bagSubtotal"
+        );
+
+
     if (!bagItems) {
         return;
     }
@@ -778,6 +820,10 @@ function updateGlobalBag() {
     bagItems.innerHTML =
         "";
 
+
+    /* -----------------------------------------
+       BAG COUNT
+    ----------------------------------------- */
 
     if (bagCount) {
 
@@ -811,10 +857,24 @@ function updateGlobalBag() {
         }
 
 
+        if (bagSubtotal) {
+
+            bagSubtotal.textContent =
+                formatUSD(
+                    0
+                );
+
+        }
+
+
         return;
 
     }
 
+
+    /* -----------------------------------------
+       ACTIVE BAG
+    ----------------------------------------- */
 
     if (bagEmpty) {
 
@@ -828,6 +888,24 @@ function updateGlobalBag() {
 
         checkoutArea.style.display =
             "block";
+
+    }
+
+
+    /* -----------------------------------------
+       SUBTOTAL
+    ----------------------------------------- */
+
+    if (bagSubtotal) {
+
+        const subtotal =
+            calculateGlobalSubtotal();
+
+
+        bagSubtotal.textContent =
+            formatUSD(
+                subtotal
+            );
 
     }
 
@@ -873,10 +951,6 @@ function updateGlobalBag() {
                         ${product.name}
                     </p>
 
-                    <p class="bag-item-type">
-                        ${product.type}
-                    </p>
-
                     <button
                         class="remove-item"
                         type="button"
@@ -901,7 +975,7 @@ function updateGlobalBag() {
 
 
 /* =========================================
-   16. START CHECKOUT
+   18. START CHECKOUT
 ========================================= */
 
 async function startGlobalCheckout() {
@@ -1040,7 +1114,7 @@ async function startGlobalCheckout() {
 
 
 /* =========================================
-   17. OPEN LEMON CHECKOUT
+   19. OPEN LEMON CHECKOUT
 ========================================= */
 
 function openLemonCheckout(
@@ -1066,8 +1140,8 @@ function openLemonCheckout(
 
 
     /*
-       Fallback if Lemon.js has not
-       loaded for some reason.
+       Fallback if Lemon.js
+       has not loaded.
     */
 
     window.location.href =
@@ -1077,7 +1151,7 @@ function openLemonCheckout(
 
 
 /* =========================================
-   18. ADD / REMOVE BUTTON CLICKS
+   20. ADD / REMOVE BUTTON CLICKS
 ========================================= */
 
 document.addEventListener(
@@ -1146,7 +1220,7 @@ document.addEventListener(
 
 
 /* =========================================
-   19. START
+   21. START
 ========================================= */
 
 document.addEventListener(
