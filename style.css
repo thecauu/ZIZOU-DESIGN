@@ -5523,6 +5523,32 @@ body.artwork-viewer-open
         overflow:
             hidden;
     }
+    
+    /* =====================================================
+   ACCORDION — IPAD RENDERING FIX
+===================================================== */
+
+.accordion-content {
+    -webkit-transform:
+        translateZ(0);
+
+    transform:
+        translateZ(0);
+
+    -webkit-backface-visibility:
+        hidden;
+
+    backface-visibility:
+        hidden;
+}
+
+.artwork-accordion {
+    -webkit-transform:
+        translateZ(0);
+
+    transform:
+        translateZ(0);
+}
 
 
     /* =====================================================
