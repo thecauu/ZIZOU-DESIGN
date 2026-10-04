@@ -4570,14 +4570,6 @@ body.artwork-viewer-open
         0
         38px;
 
-    border-bottom:
-        1px solid
-        rgba(
-            0,
-            0,
-            0,
-            0.18
-        );
 }
 
 
@@ -4717,15 +4709,6 @@ body.artwork-viewer-open
 
     margin-bottom:
         28px;
-
-    border-top:
-        1px solid
-        rgba(
-            0,
-            0,
-            0,
-            0.18
-        );
 
     color:
         #111111;
