@@ -5524,32 +5524,44 @@ body.artwork-viewer-open
             hidden;
     }
     
-    /* =====================================================
-   ACCORDION — IPAD RENDERING FIX
+/* =====================================================
+   ACCORDION — TABLET SAFARI FIX
 ===================================================== */
 
 .accordion-content {
-    -webkit-transform:
-        translateZ(0);
+    transition:
+        opacity
+        0.2s
+        ease !important;
 
     transform:
-        translateZ(0);
+        none !important;
 
-    -webkit-backface-visibility:
-        hidden;
+    -webkit-transform:
+        none !important;
 
     backface-visibility:
-        hidden;
+        visible !important;
+
+    -webkit-backface-visibility:
+        visible !important;
 }
 
 .artwork-accordion {
-    -webkit-transform:
-        translateZ(0);
-
     transform:
-        translateZ(0);
+        none !important;
+
+    -webkit-transform:
+        none !important;
+
+    contain:
+        paint;
 }
 
+.artwork-product-info {
+    background:
+        #ffffff;
+}
 
     /* =====================================================
        LEFT SIDE — ARTWORK
