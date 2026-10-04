@@ -5525,13 +5525,42 @@ body.artwork-viewer-open
     }
     
 /* =====================================================
-   TABLET — LIGHTBOX BLUR TEST
+   IPAD — ACCORDION DIVIDER RENDERING FIX
 ===================================================== */
 
-.protected-lightbox-image::before,
-.protected-lightbox-image::after {
-    content:
-        none !important;
+.artwork-accordion {
+    border-top:
+        none;
+}
+
+.artwork-accordion:last-child {
+    border-bottom:
+        none;
+}
+
+.accordion-button {
+    background-image:
+        linear-gradient(
+            to right,
+            rgba(17, 17, 17, 0.35),
+            rgba(17, 17, 17, 0.35)
+        );
+
+    background-repeat:
+        no-repeat;
+
+    background-position:
+        left top;
+
+    background-size:
+        100% 1px;
+}
+
+.artwork-accordion:last-child
+.accordion-button {
+    box-shadow:
+        inset 0 -1px 0
+        rgba(17, 17, 17, 0.35);
 }
     
 
