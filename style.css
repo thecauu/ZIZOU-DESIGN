@@ -4327,6 +4327,12 @@ body.artwork-viewer-open
     height:
         100svh;
 
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
     background:
         #f7f6f3;
 
@@ -4421,14 +4427,17 @@ body.artwork-viewer-open
 ========================================================= */
 
 .shopping-bag-header {
+    flex-shrink:
+        0;
+
     display:
         flex;
 
-    justify-content:
-        space-between;
-
     align-items:
         center;
+
+    justify-content:
+        space-between;
 
     padding-bottom:
         24px;
@@ -4439,6 +4448,14 @@ body.artwork-viewer-open
 }
 
 .shopping-bag-header h2 {
+    margin:
+        0;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     font-size:
         13px;
 
@@ -4450,14 +4467,32 @@ body.artwork-viewer-open
 }
 
 .shopping-bag-header button {
+    appearance:
+        none;
+
+    -webkit-appearance:
+        none;
+
     border:
         none;
 
     background:
         transparent;
 
+    color:
+        #111111;
+
+    padding:
+        0;
+
     font-size:
         32px;
+
+    font-weight:
+        200;
+
+    line-height:
+        1;
 
     cursor:
         pointer;
@@ -4489,6 +4524,11 @@ body.artwork-viewer-open
         55px
         0;
 
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     font-size:
         11px;
 
@@ -4498,7 +4538,17 @@ body.artwork-viewer-open
 
 
 /* =========================================================
-   14. SHOPPING BAG — ITEMS
+   14. SHOPPING BAG — ITEMS CONTAINER
+========================================================= */
+
+.bag-items {
+    width:
+        100%;
+}
+
+
+/* =========================================================
+   14. SHOPPING BAG — ITEM
 ========================================================= */
 
 .bag-item {
@@ -4506,15 +4556,19 @@ body.artwork-viewer-open
         grid;
 
     grid-template-columns:
-        90px
-        1fr;
+        120px
+        minmax(
+            0,
+            1fr
+        );
 
     gap:
-        18px;
+        22px;
 
     padding:
-        25px
-        0;
+        28px
+        0
+        38px;
 
     border-bottom:
         1px solid
@@ -4522,13 +4576,21 @@ body.artwork-viewer-open
             0,
             0,
             0,
-            0.2
+            0.18
         );
 }
 
+
+/* =========================================================
+   14. SHOPPING BAG — ITEM IMAGE
+========================================================= */
+
 .bag-item img {
+    display:
+        block;
+
     width:
-        90px;
+        120px;
 
     aspect-ratio:
         4 / 5;
@@ -4537,9 +4599,24 @@ body.artwork-viewer-open
         cover;
 }
 
+
+/* =========================================================
+   14. SHOPPING BAG — ITEM INFORMATION
+========================================================= */
+
+.bag-item-info {
+    min-width:
+        0;
+
+    padding-top:
+        2px;
+}
+
 .bag-item-name {
-    margin-bottom:
-        8px;
+    margin:
+        0
+        0
+        24px;
 
     font-family:
         Georgia,
@@ -4547,32 +4624,49 @@ body.artwork-viewer-open
         serif;
 
     font-size:
-        18px;
-}
-
-.bag-item-type {
-    margin-bottom:
         20px;
 
-    font-size:
-        9px;
+    font-weight:
+        400;
 
-    letter-spacing:
-        1.5px;
+    line-height:
+        1.2;
 }
 
+
+/* =========================================================
+   14. SHOPPING BAG — REMOVE ITEM
+========================================================= */
+
 .remove-item {
+    appearance:
+        none;
+
+    -webkit-appearance:
+        none;
+
     border:
         none;
 
     background:
         transparent;
 
+    color:
+        #111111;
+
     padding:
         0;
 
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     font-size:
         9px;
+
+    font-weight:
+        400;
 
     letter-spacing:
         1.5px;
@@ -4586,15 +4680,91 @@ body.artwork-viewer-open
 
 
 /* =========================================================
-   14. SHOPPING BAG — CHECKOUT
+   14. SHOPPING BAG — CHECKOUT AREA
 ========================================================= */
 
 .bag-checkout-area {
+    flex-shrink:
+        0;
+
     margin-top:
-        35px;
+        auto;
+
+    padding-top:
+        30px;
 }
 
+
+/* =========================================================
+   14. SHOPPING BAG — SUBTOTAL
+========================================================= */
+
+.bag-subtotal {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        20px;
+
+    padding-top:
+        24px;
+
+    margin-bottom:
+        28px;
+
+    border-top:
+        1px solid
+        rgba(
+            0,
+            0,
+            0,
+            0.18
+        );
+
+    color:
+        #111111;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        12px;
+
+    font-weight:
+        400;
+
+    letter-spacing:
+        1px;
+}
+
+#bagSubtotal {
+    text-align:
+        right;
+
+    white-space:
+        nowrap;
+}
+
+
+/* =========================================================
+   14. SHOPPING BAG — CHECKOUT BUTTON
+========================================================= */
+
 .checkout-button {
+    appearance:
+        none;
+
+    -webkit-appearance:
+        none;
+
     display:
         block;
 
@@ -4602,7 +4772,8 @@ body.artwork-viewer-open
         100%;
 
     padding:
-        18px;
+        15px
+        20px;
 
     border:
         1px solid
@@ -4617,14 +4788,33 @@ body.artwork-viewer-open
     text-align:
         center;
 
-    text-decoration:
-        none;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
     font-size:
         11px;
 
+    font-weight:
+        400;
+
     letter-spacing:
-        3px;
+        1.5px;
+
+    line-height:
+        1.2;
+
+    cursor:
+        pointer;
+}
+
+.checkout-button:disabled {
+    opacity:
+        0.55;
+
+    cursor:
+        default;
 }
 
 
@@ -4645,6 +4835,12 @@ body.artwork-viewer-open
     z-index:
         5500;
 
+    appearance:
+        none;
+
+    -webkit-appearance:
+        none;
+
     border:
         none;
 
@@ -4653,6 +4849,9 @@ body.artwork-viewer-open
 
     color:
         #111111;
+
+    padding:
+        0;
 
     font-size:
         30px;
