@@ -5524,6 +5524,26 @@ body.artwork-viewer-open
             hidden;
     }
     
+    /* =====================================================
+   IPAD — RIGHT PANEL SCROLL TEST
+===================================================== */
+
+.lightbox.open {
+    overflow-y:
+        auto;
+}
+
+.artwork-product-info {
+    height:
+        auto;
+
+    min-height:
+        100dvh;
+
+    overflow-y:
+        visible;
+}
+    
 /* =====================================================
    IPAD — ACCORDION DIVIDER RENDERING FIX
 ===================================================== */
