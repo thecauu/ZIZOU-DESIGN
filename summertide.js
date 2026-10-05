@@ -370,6 +370,47 @@ const detailsArtworkYear =
     document.getElementById(
         "detailsArtworkYear"
     );
+    
+const artworkSizeGuideLink =
+    document.getElementById(
+        "artworkSizeGuideLink"
+    );
+
+
+const sizeGuidePanel =
+    document.getElementById(
+        "sizeGuidePanel"
+    );
+
+
+const sizeGuideClose =
+    document.getElementById(
+        "sizeGuideClose"
+    );
+
+
+const sizeGuideArtworkName =
+    document.getElementById(
+        "sizeGuideArtworkName"
+    );
+
+
+const sizeGuideWallArt =
+    document.getElementById(
+        "sizeGuideWallArt"
+    );
+
+
+const sizeGuideSelectedSize =
+    document.getElementById(
+        "sizeGuideSelectedSize"
+    );
+
+
+const sizeGuideOptions =
+    document.querySelectorAll(
+        ".size-guide-option"
+    );
 
 /* ==========================================
    03. LOAD PROTECTED COLLECTION IMAGES
@@ -593,6 +634,230 @@ function updateProductDetails() {
     }
 
 }
+
+/* ==========================================
+   SIZE GUIDE — UPDATE ARTWORK
+========================================== */
+
+function updateSizeGuideArtwork() {
+
+    if (
+        !activeArtwork
+    ) {
+        return;
+    }
+
+
+    if (
+        sizeGuideArtworkName
+    ) {
+
+        sizeGuideArtworkName.textContent =
+            activeArtwork.name;
+
+    }
+
+
+    if (
+        sizeGuideWallArt &&
+        activeArtwork.gallery &&
+        activeArtwork.gallery[0]
+    ) {
+
+        sizeGuideWallArt.style.backgroundImage =
+            `url("${activeArtwork.gallery[0].src}")`;
+
+
+        sizeGuideWallArt.setAttribute(
+            "aria-label",
+            `${activeArtwork.name} size preview`
+        );
+
+    }
+
+}
+
+
+/* ==========================================
+   SIZE GUIDE — SELECT SIZE
+========================================== */
+
+function setSizeGuideSize(
+    button
+) {
+
+    if (
+        !button ||
+        !sizeGuideWallArt
+    ) {
+        return;
+    }
+
+
+    const width =
+        button.dataset.width;
+
+
+    const label =
+        button.dataset.label;
+
+
+    if (
+        !width
+    ) {
+        return;
+    }
+
+
+    sizeGuideWallArt.style.width =
+        `${width}%`;
+
+
+    if (
+        sizeGuideSelectedSize
+    ) {
+
+        sizeGuideSelectedSize.textContent =
+            label;
+
+    }
+
+
+    sizeGuideOptions.forEach(
+        option => {
+
+            option.classList.toggle(
+                "active",
+                option === button
+            );
+
+        }
+    );
+
+}
+
+
+/* ==========================================
+   SIZE GUIDE — OPEN
+========================================== */
+
+function openSizeGuide() {
+
+    if (
+        !sizeGuidePanel ||
+        !activeArtwork
+    ) {
+        return;
+    }
+
+
+    updateSizeGuideArtwork();
+
+
+    const defaultSize =
+        document.querySelector(
+            '.size-guide-option[data-size="30x45"]'
+        );
+
+
+    if (
+        defaultSize
+    ) {
+
+        setSizeGuideSize(
+            defaultSize
+        );
+
+    }
+
+
+    sizeGuidePanel.scrollTop =
+        0;
+
+
+    sizeGuidePanel.classList.add(
+        "open"
+    );
+
+
+    sizeGuidePanel.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+}
+
+
+/* ==========================================
+   SIZE GUIDE — CLOSE
+========================================== */
+
+function closeSizeGuide() {
+
+    if (
+        !sizeGuidePanel
+    ) {
+        return;
+    }
+
+
+    sizeGuidePanel.classList.remove(
+        "open"
+    );
+
+
+    sizeGuidePanel.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+}
+
+
+/* ==========================================
+   SIZE GUIDE — EVENTS
+========================================== */
+
+if (
+    artworkSizeGuideLink
+) {
+
+    artworkSizeGuideLink.addEventListener(
+        "click",
+        openSizeGuide
+    );
+
+}
+
+
+if (
+    sizeGuideClose
+) {
+
+    sizeGuideClose.addEventListener(
+        "click",
+        closeSizeGuide
+    );
+
+}
+
+
+sizeGuideOptions.forEach(
+    button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                setSizeGuideSize(
+                    button
+                );
+
+            }
+        );
+
+    }
+);
 
 /* ==========================================
    07. PROTECTION OVERLAY
@@ -2318,10 +2583,24 @@ document.addEventListener(
         }
 
 
-        if (
+if (
     event.key ===
     "Escape"
 ) {
+
+    if (
+        sizeGuidePanel &&
+        sizeGuidePanel.classList.contains(
+            "open"
+        )
+    ) {
+
+        closeSizeGuide();
+
+        return;
+
+    }
+
 
     if (
         productDetailsPanel &&
@@ -2340,7 +2619,6 @@ document.addEventListener(
     closeGallery();
 
 }
-
 
         if (
             event.key ===
