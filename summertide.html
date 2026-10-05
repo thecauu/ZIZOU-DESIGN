@@ -844,7 +844,409 @@
 
 </div>
 
-<!-- END LIGHTBOX -->
+<!-- =========================
+     PRODUCT DETAILS PANEL
+========================== -->
+
+<div
+    class="product-details-panel"
+    id="productDetailsPanel"
+    aria-hidden="true"
+>
+
+
+    <!-- =========================
+         CLOSE
+    ========================== -->
+
+    <button
+        class="product-details-close"
+        id="productDetailsClose"
+        type="button"
+        aria-label="Close product details"
+    >
+        ×
+    </button>
+
+
+
+    <!-- =========================
+         TABS
+    ========================== -->
+
+    <div
+        class="product-details-tabs"
+        role="tablist"
+    >
+
+
+        <button
+            class="product-details-tab active"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            data-details-tab="artwork"
+        >
+            ARTWORK DETAILS
+        </button>
+
+
+        <button
+            class="product-details-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-details-tab="printing"
+        >
+            PRINTING & DISPLAY
+        </button>
+
+
+        <button
+            class="product-details-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-details-tab="digital"
+        >
+            DIGITAL FILE & DELIVERY
+        </button>
+
+
+    </div>
+
+
+
+    <!-- =========================
+         DETAILS CONTENT
+    ========================== -->
+
+    <div class="product-details-content">
+
+
+
+        <!-- =========================
+             ARTWORK DETAILS
+        ========================== -->
+
+        <section
+            class="product-details-section active"
+            data-details-panel="artwork"
+        >
+
+
+            <div class="product-details-row">
+
+                <span>
+                    Artwork
+                </span>
+
+                <span id="detailsArtworkName"></span>
+
+            </div>
+
+
+            <div class="product-details-row">
+
+                <span>
+                    Artist
+                </span>
+
+                <span>
+                    Zizou
+                </span>
+
+            </div>
+
+
+            <div class="product-details-row">
+
+                <span>
+                    Collection
+                </span>
+
+                <span>
+                    Summertide
+                </span>
+
+            </div>
+
+
+            <div class="product-details-row">
+
+                <span>
+                    Work N°
+                </span>
+
+                <span id="detailsArtworkNumber"></span>
+
+            </div>
+
+
+            <div class="product-details-row">
+
+                <span>
+                    Year
+                </span>
+
+                <span id="detailsArtworkYear"></span>
+
+            </div>
+
+
+            <div class="product-details-row">
+
+                <span>
+                    Medium
+                </span>
+
+                <span>
+                    Photography
+                </span>
+
+            </div>
+
+
+            <div class="product-details-row">
+
+                <span>
+                    Aspect Ratio
+                </span>
+
+                <span>
+                    2:3
+                </span>
+
+            </div>
+
+
+            <div class="product-details-row">
+
+                <span>
+                    Orientation
+                </span>
+
+                <span>
+                    Portrait
+                </span>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             PRINTING & DISPLAY
+        ========================== -->
+
+        <section
+            class="product-details-section"
+            data-details-panel="printing"
+            hidden
+        >
+
+
+            <div class="product-details-row">
+
+                <span>
+                    Recommended Paper
+                </span>
+
+                <span>
+                    Fine-art baryta
+                </span>
+
+            </div>
+
+
+            <div class="product-details-row">
+
+                <span>
+                    Alternatives
+                </span>
+
+                <span>
+                    Satin or luster photographic paper
+                </span>
+
+            </div>
+
+
+            <div class="product-details-row">
+
+                <span>
+                    Print Ratio
+                </span>
+
+                <span>
+                    2:3
+                </span>
+
+            </div>
+
+
+            <div class="product-details-row">
+
+                <span>
+                    Recommended Sizes
+                </span>
+
+                <span>
+                    10 × 15, 20 × 30, 30 × 45,
+                    40 × 60, 50 × 75 and 60 × 90 cm
+                </span>
+
+            </div>
+
+
+            <div class="product-details-row">
+
+                <span>
+                    Framing
+                </span>
+
+                <span>
+                    Natural oak, black or white gallery frame
+                </span>
+
+            </div>
+
+
+            <div class="product-details-row">
+
+                <span>
+                    Matting
+                </span>
+
+                <span>
+                    Optional
+                </span>
+
+            </div>
+
+
+            <div class="product-details-note">
+
+                For the best reproduction of color,
+                contrast and detail, professional
+                printing is recommended. Avoid prolonged
+                direct sunlight and excessive humidity
+                when displaying the finished print.
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             DIGITAL FILE & DELIVERY
+        ========================== -->
+
+        <section
+            class="product-details-section"
+            data-details-panel="digital"
+            hidden
+        >
+
+
+            <div class="product-details-row">
+
+                <span>
+                    File Format
+                </span>
+
+                <span>
+                    PDF
+                </span>
+
+            </div>
+
+
+            <div class="product-details-row">
+
+                <span>
+                    Aspect Ratio
+                </span>
+
+                <span>
+                    2:3
+                </span>
+
+            </div>
+
+
+            <div class="product-details-row">
+
+                <span>
+                    Delivery
+                </span>
+
+                <span>
+                    Digital download
+                </span>
+
+            </div>
+
+
+            <div class="product-details-row">
+
+                <span>
+                    Physical Product
+                </span>
+
+                <span>
+                    Not included
+                </span>
+
+            </div>
+
+
+            <div class="product-details-row">
+
+                <span>
+                    Cropping
+                </span>
+
+                <span>
+                    None when printed at 2:3
+                </span>
+
+            </div>
+
+
+            <div class="product-details-row">
+
+                <span>
+                    License
+                </span>
+
+                <span>
+                    Personal-use digital license
+                </span>
+
+            </div>
+
+
+            <div class="product-details-note">
+
+                The purchased file is intended for
+                proportional printing at the listed
+                2:3 sizes. No physical artwork or
+                frame will be shipped.
+
+            </div>
+
+
+        </section>
+
+
+    </div>
+
+</div>
 
 
 
