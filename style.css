@@ -2866,12 +2866,22 @@ body.sea-intro-active {
         #111111;
 
     padding:
-        28px
+        34px
         4%
         max(
-            90px,
+            55px,
             env(safe-area-inset-bottom)
         );
+}
+
+
+/* =========================================================
+   08. ARTWORK LIGHTBOX — PRODUCT HEADING
+========================================================= */
+
+.artwork-product-heading {
+    width:
+        100%;
 }
 
 .artwork-product-info h2 {
@@ -2884,24 +2894,274 @@ body.sea-intro-active {
         sans-serif;
 
     font-size:
-        22px;
+        21px;
 
     font-weight:
         400;
 
     line-height:
-        1.1;
+        1.15;
 }
 
-.artwork-price {
+
+/* =========================================================
+   08. ARTWORK LIGHTBOX — INFORMATION LINKS
+========================================================= */
+
+.artwork-info-link {
+    appearance:
+        none;
+
+    -webkit-appearance:
+        none;
+
+    display:
+        block;
+
+    width:
+        fit-content;
+
+    margin-top:
+        13px;
+
+    padding:
+        0;
+
+    border:
+        none;
+
+    background:
+        transparent;
+
+    color:
+        #111111;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        13px;
+
+    font-weight:
+        400;
+
+    line-height:
+        1.2;
+
+    text-decoration:
+        underline;
+
+    text-underline-offset:
+        2px;
+
+    cursor:
+        pointer;
+}
+
+
+/* =========================================================
+   08. ARTWORK LIGHTBOX — COLLECTION NAVIGATOR
+========================================================= */
+
+.collection-artwork-navigator {
+    width:
+        100%;
+
+    margin-top:
+        52px;
+}
+
+
+.collection-artwork-track {
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    gap:
+        14px;
+
+    width:
+        100%;
+
+    overflow-x:
+        auto;
+
+    overflow-y:
+        hidden;
+
+    padding:
+        2px
+        0
+        6px;
+
+    scroll-snap-type:
+        x mandatory;
+
+    -webkit-overflow-scrolling:
+        touch;
+
+    overscroll-behavior-x:
+        contain;
+
+    scrollbar-width:
+        none;
+}
+
+
+.collection-artwork-track::-webkit-scrollbar {
+    display:
+        none;
+}
+
+
+/* =========================================================
+   08. ARTWORK LIGHTBOX — COLLECTION ARTWORK
+========================================================= */
+
+.collection-artwork-card {
+    appearance:
+        none;
+
+    -webkit-appearance:
+        none;
+
+    flex:
+        0
+        0
+        calc(
+            (
+                100%
+                -
+                28px
+            )
+            /
+            3
+        );
+
+    min-width:
+        0;
+
+    padding:
+        0;
+
+    border:
+        none;
+
+    background:
+        transparent;
+
+    color:
+        #111111;
+
+    text-align:
+        left;
+
+    cursor:
+        pointer;
+
+    scroll-snap-align:
+        start;
+}
+
+
+.collection-artwork-image {
+    display:
+        block;
+
+    width:
+        100%;
+
+    aspect-ratio:
+        4 / 5;
+
+    background-color:
+        #f3f1ed;
+
+    background-size:
+        cover;
+
+    background-position:
+        center;
+
+    background-repeat:
+        no-repeat;
+
+    transition:
+        opacity
+        0.25s
+        ease;
+}
+
+
+.collection-artwork-card.active
+.collection-artwork-image {
+    outline:
+        1px solid
+        #111111;
+
+    outline-offset:
+        2px;
+}
+
+
+.collection-artwork-card:not(.active):active
+.collection-artwork-image {
+    opacity:
+        0.72;
+}
+
+
+/* =========================================================
+   08. ARTWORK LIGHTBOX — COLLECTION TEXT
+========================================================= */
+
+.collection-artwork-name {
+    display:
+        block;
+
+    margin-top:
+        10px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        11px;
+
+    font-weight:
+        400;
+
+    line-height:
+        1.25;
+}
+
+
+.collection-artwork-price {
+    display:
+        block;
+
     margin-top:
         4px;
 
-    font-size:
-        17px;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
-    letter-spacing:
-        0;
+    font-size:
+        10px;
+
+    font-weight:
+        400;
+
+    line-height:
+        1.2;
 }
 
 
@@ -2910,13 +3170,32 @@ body.sea-intro-active {
 ========================================================= */
 
 .artwork-add-to-bag {
-    width: 100%;
+    appearance:
+        none;
+
+    -webkit-appearance:
+        none;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        20px;
+
+    width:
+        100%;
 
     margin-top:
-        32px;
+        48px;
 
     padding:
-        15px
+        17px
         20px;
 
     border:
@@ -2943,64 +3222,41 @@ body.sea-intro-active {
     letter-spacing:
         1.5px;
 
+    line-height:
+        1.2;
+
     text-align:
         left;
 
     cursor:
         pointer;
-
-    transition:
-        background
-        0.25s
-        ease,
-
-        color
-        0.25s
-        ease;
 }
 
-.artwork-add-to-bag:hover {
-    background:
-        #222222;
 
-    color:
-        #ffffff;
+#artworkAddToBagPrice {
+    flex-shrink:
+        0;
+
+    white-space:
+        nowrap;
 }
 
 
 /* =========================================================
-   08. ARTWORK LIGHTBOX — DESCRIPTION
+   08. ARTWORK LIGHTBOX — PRODUCT FOOTER
 ========================================================= */
 
-.artwork-description {
-    max-width:
-        720px;
-
-    margin:
-        20px
-        0
-        38px;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size:
-        16px;
-
-    line-height:
-        1.55;
-}
-
-
-/* =========================================================
-   08. ARTWORK LIGHTBOX — ACCORDIONS
-========================================================= */
-
-.artwork-accordion {
+.artwork-product-footer {
     width:
         100%;
+
+    margin-top:
+        115px;
+
+    padding:
+        32px
+        0
+        0;
 
     border-top:
         1px solid
@@ -3008,47 +3264,56 @@ body.sea-intro-active {
             17,
             17,
             17,
-            0.35
+            0.28
         );
+
+    text-align:
+        center;
 }
 
-.artwork-accordion:last-child {
-    border-bottom:
-        1px solid
-        rgba(
-            17,
-            17,
-            17,
-            0.35
-        );
+
+.artwork-product-footer > p {
+    margin:
+        0
+        0
+        18px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        10px;
+
+    font-weight:
+        400;
+
+    letter-spacing:
+        3px;
 }
 
-.accordion-button {
-    appearance:
-        none;
 
-    width:
-        100%;
-
+.artwork-product-footer-links {
     display:
         flex;
+
+    flex-wrap:
+        wrap;
 
     align-items:
         center;
 
     justify-content:
-        space-between;
+        center;
 
-    padding:
-        22px
-        0;
+    gap:
+        7px;
+}
 
-    border:
-        none;
 
-    background:
-        transparent;
-
+.artwork-product-footer-links a,
+.artwork-product-footer-links span {
     color:
         #111111;
 
@@ -3058,123 +3323,22 @@ body.sea-intro-active {
         sans-serif;
 
     font-size:
-        12px;
-
-    letter-spacing:
-        1.5px;
-
-    text-align:
-        left;
-
-    cursor:
-        pointer;
-}
-
-.accordion-symbol {
-    margin-left:
-        20px;
-
-    font-size:
-        20px;
+        9px;
 
     font-weight:
-        300;
+        400;
 
     line-height:
-        1;
+        1.4;
+
+    text-decoration:
+        none;
 }
 
-.accordion-content {
-    max-height:
-        0;
 
-    overflow:
-        hidden;
-
-    opacity:
-        0;
-
-    transition:
-        max-height
-        0.4s
-        ease,
-
-        opacity
-        0.3s
-        ease;
-}
-
-.artwork-accordion.open
-.accordion-content {
-    opacity:
-        1;
-}
-
-.artwork-spec {
-    display:
-        grid;
-
-    grid-template-columns:
-        minmax(
-            120px,
-            0.7fr
-        )
-        1.3fr;
-
-    gap:
-        25px;
-
-    padding:
-        8px
-        0;
-
-    font-size:
-        13px;
-
-    line-height:
-        1.5;
-}
-
-.artwork-spec
-span:first-child {
-    color:
-        rgba(
-            17,
-            17,
-            17,
-            0.58
-        );
-}
-
-.accordion-note {
-    max-width:
-        720px;
-
-    padding-bottom:
-        18px;
-
-    font-size:
-        13px;
-
-    line-height:
-        1.65;
-
-    color:
-        rgba(
-            17,
-            17,
-            17,
-            0.78
-        );
-}
-
-.accordion-content
-.artwork-spec:last-child,
-
-.accordion-content
-.accordion-note:last-child {
-    margin-bottom:
-        22px;
+.artwork-product-footer-links a:hover {
+    text-decoration:
+        underline;
 }
 
 
