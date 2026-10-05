@@ -323,6 +323,53 @@ const collectionArtworkTrack =
     document.getElementById(
         "collectionArtworkTrack"
     );
+    
+const artworkDetailsLink =
+    document.getElementById(
+        "artworkDetailsLink"
+    );
+
+
+const productDetailsPanel =
+    document.getElementById(
+        "productDetailsPanel"
+    );
+
+
+const productDetailsClose =
+    document.getElementById(
+        "productDetailsClose"
+    );
+
+
+const productDetailsTabs =
+    document.querySelectorAll(
+        ".product-details-tab"
+    );
+
+
+const productDetailsSections =
+    document.querySelectorAll(
+        ".product-details-section"
+    );
+
+
+const detailsArtworkName =
+    document.getElementById(
+        "detailsArtworkName"
+    );
+
+
+const detailsArtworkNumber =
+    document.getElementById(
+        "detailsArtworkNumber"
+    );
+
+
+const detailsArtworkYear =
+    document.getElementById(
+        "detailsArtworkYear"
+    );
 
 /* ==========================================
    03. LOAD PROTECTED COLLECTION IMAGES
@@ -498,9 +545,54 @@ function updateArtworkInfo() {
 
 
     updateCollectionNavigatorState();
+    updateProductDetails();
 
 }
 
+
+/* ==========================================
+   PRODUCT DETAILS — UPDATE DATA
+========================================== */
+
+function updateProductDetails() {
+
+    if (
+        !activeArtwork
+    ) {
+        return;
+    }
+
+
+    if (
+        detailsArtworkName
+    ) {
+
+        detailsArtworkName.textContent =
+            activeArtwork.name;
+
+    }
+
+
+    if (
+        detailsArtworkNumber
+    ) {
+
+        detailsArtworkNumber.textContent =
+            activeArtwork.number;
+
+    }
+
+
+    if (
+        detailsArtworkYear
+    ) {
+
+        detailsArtworkYear.textContent =
+            activeArtwork.year;
+
+    }
+
+}
 
 /* ==========================================
    07. PROTECTION OVERLAY
@@ -2023,6 +2115,193 @@ accordionButtons.forEach(
 
 
 /* ==========================================
+   PRODUCT DETAILS — OPEN
+========================================== */
+
+function openProductDetails() {
+
+    if (
+        !productDetailsPanel ||
+        !activeArtwork
+    ) {
+        return;
+    }
+
+
+    updateProductDetails();
+
+
+    activateProductDetailsTab(
+        "artwork"
+    );
+
+
+    productDetailsPanel.scrollTop =
+        0;
+
+
+    productDetailsPanel.classList.add(
+        "open"
+    );
+
+
+    productDetailsPanel.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+}
+
+
+/* ==========================================
+   PRODUCT DETAILS — CLOSE
+========================================== */
+
+function closeProductDetails() {
+
+    if (
+        !productDetailsPanel
+    ) {
+        return;
+    }
+
+
+    productDetailsPanel.classList.remove(
+        "open"
+    );
+
+
+    productDetailsPanel.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+}
+
+
+/* ==========================================
+   PRODUCT DETAILS — CHANGE TAB
+========================================== */
+
+function activateProductDetailsTab(
+    tabName
+) {
+
+    productDetailsTabs.forEach(
+        tab => {
+
+            const isActive =
+                tab.dataset.detailsTab
+                ===
+                tabName;
+
+
+            tab.classList.toggle(
+                "active",
+                isActive
+            );
+
+
+            tab.setAttribute(
+                "aria-selected",
+                isActive
+                    ?
+                    "true"
+                    :
+                    "false"
+            );
+
+        }
+    );
+
+
+    productDetailsSections.forEach(
+        section => {
+
+            const isActive =
+                section.dataset.detailsPanel
+                ===
+                tabName;
+
+
+            section.classList.toggle(
+                "active",
+                isActive
+            );
+
+
+            section.hidden =
+                !isActive;
+
+        }
+    );
+
+
+    if (
+        productDetailsPanel
+    ) {
+
+        productDetailsPanel.scrollTo(
+            {
+                top:
+                    0,
+
+                behavior:
+                    "smooth"
+            }
+        );
+
+    }
+
+}
+
+
+/* ==========================================
+   PRODUCT DETAILS — EVENTS
+========================================== */
+
+if (
+    artworkDetailsLink
+) {
+
+    artworkDetailsLink.addEventListener(
+        "click",
+        openProductDetails
+    );
+
+}
+
+
+if (
+    productDetailsClose
+) {
+
+    productDetailsClose.addEventListener(
+        "click",
+        closeProductDetails
+    );
+
+}
+
+
+productDetailsTabs.forEach(
+    tab => {
+
+        tab.addEventListener(
+            "click",
+            () => {
+
+                activateProductDetailsTab(
+                    tab.dataset.detailsTab
+                );
+
+            }
+        );
+
+    }
+);
+
+/* ==========================================
    22. KEYBOARD
 ========================================== */
 
@@ -2040,13 +2319,27 @@ document.addEventListener(
 
 
         if (
-            event.key ===
-            "Escape"
-        ) {
+    event.key ===
+    "Escape"
+) {
 
-            closeGallery();
+    if (
+        productDetailsPanel &&
+        productDetailsPanel.classList.contains(
+            "open"
+        )
+    ) {
 
-        }
+        closeProductDetails();
+
+        return;
+
+    }
+
+
+    closeGallery();
+
+}
 
 
         if (
