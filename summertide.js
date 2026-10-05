@@ -262,6 +262,11 @@ const lightboxCounter =
     document.getElementById(
         "lightboxCounter"
     );
+    
+    const lightboxSwipeIndicator =
+    document.getElementById(
+        "lightboxSwipeIndicator"
+    );
 
 const lightboxClose =
     document.getElementById(
@@ -497,6 +502,60 @@ function getProtectionOverlay() {
    08. UPDATE CURRENT SLIDE
 ========================================== */
 
+/* ==========================================
+   GALLERY SWIPE INDICATOR
+========================================== */
+
+function updateSwipeIndicator() {
+
+    if (
+        !lightboxSwipeIndicator ||
+        !activeGallery ||
+        !activeGallery.length
+    ) {
+        return;
+    }
+
+
+    lightboxSwipeIndicator.innerHTML =
+        "";
+
+
+    activeGallery.forEach(
+        (_, index) => {
+
+            const segment =
+                document.createElement(
+                    "span"
+                );
+
+
+            segment.className =
+                "lightbox-swipe-segment";
+
+
+            if (
+                index ===
+                activeIndex
+            ) {
+
+                segment.classList.add(
+                    "active"
+                );
+
+            }
+
+
+            lightboxSwipeIndicator
+                .appendChild(
+                    segment
+                );
+
+        }
+    );
+
+}
+
 function updateSlide() {
 
     const slide =
@@ -529,6 +588,8 @@ function updateSlide() {
 
     lightboxCounter.textContent =
         `${activeIndex + 1}/${activeGallery.length}`;
+        
+        updateSwipeIndicator();
 
 }
 
