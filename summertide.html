@@ -785,8 +785,81 @@
 
 
 
+<!-- =========================================================
+     PRODUCT DETAILS PANEL
+========================================================= -->
+
+<div
+    class="product-details-panel"
+    id="productDetailsPanel"
+    aria-hidden="true"
+>
+
+
     <!-- =====================================================
-         PRODUCT DETAILS CONTENT
+         CLOSE
+    ====================================================== -->
+
+    <button
+        class="product-details-close"
+        id="productDetailsClose"
+        type="button"
+        aria-label="Close product details"
+    >
+        ×
+    </button>
+
+
+
+    <!-- =====================================================
+         TABS
+    ====================================================== -->
+
+    <div
+        class="product-details-tabs"
+        role="tablist"
+    >
+
+
+        <button
+            class="product-details-tab active"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            data-details-tab="artwork"
+        >
+            ARTWORK DETAILS
+        </button>
+
+
+        <button
+            class="product-details-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-details-tab="printing"
+        >
+            PRINTING & CARE
+        </button>
+
+
+        <button
+            class="product-details-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-details-tab="digital"
+        >
+            FILE & LICENSE
+        </button>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         CONTENT
     ====================================================== -->
 
     <div class="product-details-content">
@@ -795,6 +868,7 @@
 
         <!-- =================================================
              ARTWORK DETAILS
+             Structured factual information
         ================================================== -->
 
         <section
@@ -878,19 +952,6 @@
             <div class="product-details-row">
 
                 <span>
-                    Aspect Ratio
-                </span>
-
-                <span>
-                    2:3
-                </span>
-
-            </div>
-
-
-            <div class="product-details-row">
-
-                <span>
                     Orientation
                 </span>
 
@@ -906,7 +967,8 @@
 
 
         <!-- =================================================
-             PRINTING & DISPLAY
+             PRINTING & CARE
+             Editorial information
         ================================================== -->
 
         <section
@@ -916,92 +978,89 @@
         >
 
 
-            <div class="product-details-row">
-
-                <span>
-                    Recommended Paper
-                </span>
-
-                <span>
-                    Fine-art baryta
-                </span>
-
-            </div>
+            <div class="product-details-editorial">
 
 
-            <div class="product-details-row">
+                <div class="product-details-editorial-group">
 
-                <span>
-                    Alternatives
-                </span>
-
-                <span>
-                    Satin or luster photographic paper
-                </span>
-
-            </div>
+                    <h3>
+                        Printing
+                    </h3>
 
 
-            <div class="product-details-row">
+                    <p>
 
-                <span>
-                    Print Ratio
-                </span>
+                        For the most faithful reproduction
+                        of the artwork, professional
+                        fine-art or photographic printing
+                        is recommended.
 
-                <span>
-                    2:3
-                </span>
-
-            </div>
+                    </p>
 
 
-            <div class="product-details-row">
+                    <p>
 
-                <span>
-                    Recommended Sizes
-                </span>
+                        The file is prepared in a 2:3
+                        proportion. Printing at a matching
+                        2:3 size preserves the complete
+                        composition without cropping.
 
-                <span>
-                    10 × 15, 20 × 30, 30 × 45,
-                    40 × 60, 50 × 75 and 60 × 90 cm
-                </span>
-
-            </div>
+                    </p>
 
 
-            <div class="product-details-row">
+                    <p>
 
-                <span>
-                    Framing
-                </span>
+                        Fine-art baryta paper is recommended
+                        when deeper blacks, contrast and
+                        fine detail are desired. Satin or
+                        luster photographic paper provides
+                        a smoother photographic finish with
+                        less surface texture.
 
-                <span>
-                    Natural oak, black or white gallery frame
-                </span>
+                    </p>
 
-            </div>
-
-
-            <div class="product-details-row">
-
-                <span>
-                    Matting
-                </span>
-
-                <span>
-                    Optional
-                </span>
-
-            </div>
+                </div>
 
 
-            <div class="product-details-note">
 
-                For the best reproduction of color,
-                contrast and detail, professional
-                printing is recommended. Avoid prolonged
-                direct sunlight and excessive humidity
-                when displaying the finished print.
+                <div class="product-details-editorial-group">
+
+                    <h3>
+                        Display & Care
+                    </h3>
+
+
+                    <p>
+
+                        Keep the finished print away from
+                        prolonged direct sunlight and
+                        excessive humidity.
+
+                    </p>
+
+
+                    <p>
+
+                        When displayed in a bright room,
+                        UV-filtering glazing can help
+                        reduce long-term fading and
+                        environmental exposure.
+
+                    </p>
+
+
+                    <p>
+
+                        Color and contrast may vary slightly
+                        between the digital file and the
+                        finished print depending on the
+                        monitor, printer, ink, paper and
+                        color-management settings used.
+
+                    </p>
+
+                </div>
+
 
             </div>
 
@@ -1011,7 +1070,8 @@
 
 
         <!-- =================================================
-             DIGITAL FILE & DELIVERY
+             FILE & LICENSE
+             Purchase and usage information
         ================================================== -->
 
         <section
@@ -1021,90 +1081,129 @@
         >
 
 
-            <div class="product-details-row">
-
-                <span>
-                    File Format
-                </span>
-
-                <span>
-                    PDF
-                </span>
-
-            </div>
+            <div class="product-details-groups">
 
 
-            <div class="product-details-row">
 
-                <span>
-                    Aspect Ratio
-                </span>
+                <!-- =========================================
+                     FILE
+                ========================================== -->
 
-                <span>
-                    2:3
-                </span>
-
-            </div>
+                <div class="product-details-group">
 
 
-            <div class="product-details-row">
-
-                <span>
-                    Delivery
-                </span>
-
-                <span>
-                    Digital download
-                </span>
-
-            </div>
+                    <h3>
+                        File
+                    </h3>
 
 
-            <div class="product-details-row">
+                    <div class="product-details-mini-row">
 
-                <span>
-                    Physical Product
-                </span>
+                        <span>
+                            Format
+                        </span>
 
-                <span>
-                    Not included
-                </span>
+                        <span>
+                            PDF
+                        </span>
 
-            </div>
-
-
-            <div class="product-details-row">
-
-                <span>
-                    Cropping
-                </span>
-
-                <span>
-                    None when printed at 2:3
-                </span>
-
-            </div>
+                    </div>
 
 
-            <div class="product-details-row">
+                    <div class="product-details-mini-row">
 
-                <span>
-                    License
-                </span>
+                        <span>
+                            Proportion
+                        </span>
 
-                <span>
-                    Personal-use digital license
-                </span>
+                        <span>
+                            2:3
+                        </span>
 
-            </div>
+                    </div>
 
 
-            <div class="product-details-note">
+                    <div class="product-details-mini-row">
 
-                The purchased file is intended for
-                proportional printing at the listed
-                2:3 sizes. No physical artwork or
-                frame will be shipped.
+                        <span>
+                            Delivery
+                        </span>
+
+                        <span>
+                            Digital download
+                        </span>
+
+                    </div>
+
+
+                    <div class="product-details-mini-row">
+
+                        <span>
+                            Physical item
+                        </span>
+
+                        <span>
+                            Not included
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =========================================
+                     LICENSE
+                ========================================== -->
+
+                <div class="product-details-group">
+
+
+                    <h3>
+                        License
+                    </h3>
+
+
+                    <div class="product-details-mini-row">
+
+                        <span>
+                            License type
+                        </span>
+
+                        <span>
+                            Personal-use digital license
+                        </span>
+
+                    </div>
+
+
+                    <div class="product-details-mini-row">
+
+                        <span>
+                            Printing
+                        </span>
+
+                        <span>
+                            Permitted for personal display
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        class="product-details-license-link"
+                        href="license.html"
+                    >
+                        View full Digital License
+                        <span aria-hidden="true">
+                            →
+                        </span>
+                    </a>
+
+
+                </div>
+
 
             </div>
 
@@ -1116,7 +1215,6 @@
 
 
 </div>
-
 
 
 <!-- =========================================================
