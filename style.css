@@ -3341,6 +3341,451 @@ body.sea-intro-active {
         underline;
 }
 
+/* =========================================================
+   08A. PRODUCT DETAILS — PANEL
+========================================================= */
+
+.product-details-panel {
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        15000;
+
+    width:
+        100%;
+
+    height:
+        100vh;
+
+    height:
+        100dvh;
+
+    padding:
+        max(
+            115px,
+            calc(
+                env(safe-area-inset-top)
+                +
+                75px
+            )
+        )
+        6%
+        max(
+            60px,
+            env(safe-area-inset-bottom)
+        );
+
+    background:
+        #ffffff;
+
+    color:
+        #111111;
+
+    overflow-y:
+        auto;
+
+    overflow-x:
+        hidden;
+
+    visibility:
+        hidden;
+
+    pointer-events:
+        none;
+
+    opacity:
+        0;
+
+    transform:
+        translate3d(
+            100%,
+            0,
+            0
+        );
+
+    transition:
+        transform
+        0.65s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        ),
+
+        opacity
+        0.35s
+        ease,
+
+        visibility
+        0.65s
+        step-end;
+}
+
+
+.product-details-panel.open {
+    visibility:
+        visible;
+
+    pointer-events:
+        auto;
+
+    opacity:
+        1;
+
+    transform:
+        translate3d(
+            0,
+            0,
+            0
+        );
+
+    transition:
+        transform
+        0.65s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        ),
+
+        opacity
+        0.35s
+        ease,
+
+        visibility
+        0s;
+}
+
+
+/* =========================================================
+   08A. PRODUCT DETAILS — CLOSE
+========================================================= */
+
+.product-details-close {
+    position:
+        absolute;
+
+    top:
+        max(
+            30px,
+            env(safe-area-inset-top)
+        );
+
+    right:
+        6%;
+
+    width:
+        40px;
+
+    height:
+        40px;
+
+    padding:
+        0;
+
+    border:
+        none;
+
+    background:
+        transparent;
+
+    color:
+        #111111;
+
+    font-size:
+        32px;
+
+    font-weight:
+        200;
+
+    line-height:
+        1;
+
+    cursor:
+        pointer;
+}
+
+
+/* =========================================================
+   08A. PRODUCT DETAILS — TABS
+========================================================= */
+
+.product-details-tabs {
+    display:
+        flex;
+
+    align-items:
+        flex-end;
+
+    width:
+        100%;
+
+    gap:
+        46px;
+
+    overflow-x:
+        auto;
+
+    overflow-y:
+        hidden;
+
+    border-bottom:
+        1px solid
+        rgba(
+            17,
+            17,
+            17,
+            0.18
+        );
+
+    scrollbar-width:
+        none;
+
+    -webkit-overflow-scrolling:
+        touch;
+}
+
+
+.product-details-tabs::-webkit-scrollbar {
+    display:
+        none;
+}
+
+
+.product-details-tab {
+    position:
+        relative;
+
+    flex-shrink:
+        0;
+
+    padding:
+        0
+        0
+        20px;
+
+    border:
+        none;
+
+    background:
+        transparent;
+
+    color:
+        rgba(
+            17,
+            17,
+            17,
+            0.42
+        );
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        11px;
+
+    font-weight:
+        400;
+
+    letter-spacing:
+        0.6px;
+
+    white-space:
+        nowrap;
+
+    cursor:
+        pointer;
+}
+
+
+.product-details-tab.active {
+    color:
+        #111111;
+}
+
+
+.product-details-tab.active::after {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    right:
+        0;
+
+    bottom:
+        -1px;
+
+    height:
+        2px;
+
+    background:
+        #111111;
+}
+
+
+/* =========================================================
+   08A. PRODUCT DETAILS — CONTENT
+========================================================= */
+
+.product-details-content {
+    width:
+        100%;
+
+    padding-top:
+        64px;
+}
+
+
+.product-details-section {
+    width:
+        100%;
+
+    opacity:
+        0;
+
+    transform:
+        translateY(
+            6px
+        );
+}
+
+
+.product-details-section.active {
+    opacity:
+        1;
+
+    transform:
+        translateY(
+            0
+        );
+
+    transition:
+        opacity
+        0.3s
+        ease,
+
+        transform
+        0.3s
+        ease;
+}
+
+
+/* =========================================================
+   08A. PRODUCT DETAILS — ROWS
+========================================================= */
+
+.product-details-row {
+    display:
+        grid;
+
+    grid-template-columns:
+        minmax(
+            115px,
+            0.9fr
+        )
+        1.1fr;
+
+    gap:
+        28px;
+
+    width:
+        100%;
+
+    padding:
+        24px
+        0;
+
+    border-bottom:
+        1px solid
+        rgba(
+            17,
+            17,
+            17,
+            0.15
+        );
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        13px;
+
+    line-height:
+        1.5;
+}
+
+
+.product-details-row:first-child {
+    border-top:
+        1px solid
+        rgba(
+            17,
+            17,
+            17,
+            0.15
+        );
+}
+
+
+.product-details-row
+span:first-child {
+    color:
+        rgba(
+            17,
+            17,
+            17,
+            0.58
+        );
+}
+
+
+/* =========================================================
+   08A. PRODUCT DETAILS — NOTE
+========================================================= */
+
+.product-details-note {
+    max-width:
+        720px;
+
+    padding:
+        38px
+        0
+        10px;
+
+    color:
+        rgba(
+            17,
+            17,
+            17,
+            0.78
+        );
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        13px;
+
+    line-height:
+        1.7;
+}
 
 /* =========================================================
    09. ARTWORK TRANSITIONS — OPENING
