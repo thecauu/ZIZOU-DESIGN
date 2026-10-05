@@ -313,6 +313,16 @@ const artworkAddToBag =
         "artworkAddToBag"
     );
 
+const artworkAddToBagPrice =
+    document.getElementById(
+        "artworkAddToBagPrice"
+    );
+
+
+const collectionArtworkTrack =
+    document.getElementById(
+        "collectionArtworkTrack"
+    );
 
 /* ==========================================
    03. LOAD PROTECTED COLLECTION IMAGES
@@ -348,8 +358,14 @@ document
 let activeArtwork =
     null;
 
+
+let activeArtworkKey =
+    null;
+
+
 let activeGallery =
     [];
+
 
 let activeIndex =
     0;
@@ -395,62 +411,93 @@ if (artworkAddToBag) {
 
 function updateArtworkInfo() {
 
-    if (!activeArtwork) {
+    if (
+        !activeArtwork
+    ) {
         return;
     }
 
 
-    lightboxTitle.textContent =
-        activeArtwork.name;
+    if (
+        lightboxTitle
+    ) {
 
+        lightboxTitle.textContent =
+            activeArtwork.name;
 
-    artworkPrice.textContent =
-        `$${activeArtwork.price} USD`;
-
-
-    artworkYear.textContent =
-        activeArtwork.year;
-
-
-    artworkNumber.textContent =
-        activeArtwork.number;
+    }
 
 
     if (
-        activeArtwork.description
+        artworkPrice
+    ) {
+
+        artworkPrice.textContent =
+            `$${activeArtwork.price} USD`;
+
+    }
+
+
+    if (
+        artworkAddToBagPrice
+    ) {
+
+        artworkAddToBagPrice.textContent =
+            `$${activeArtwork.price} USD`;
+
+    }
+
+
+    if (
+        artworkYear
+    ) {
+
+        artworkYear.textContent =
+            activeArtwork.year;
+
+    }
+
+
+    if (
+        artworkNumber
+    ) {
+
+        artworkNumber.textContent =
+            activeArtwork.number;
+
+    }
+
+
+    if (
+        artworkDescription
     ) {
 
         artworkDescription.textContent =
-            activeArtwork.description;
-
-
-        artworkDescription.style.display =
+            activeArtwork.description ||
             "";
 
     }
 
-    else {
 
-        artworkDescription.textContent =
-            "";
+    if (
+        artworkAddToBag
+    ) {
+
+        artworkAddToBag.dataset.product =
+            activeArtwork.product;
 
 
-        artworkDescription.style.display =
-            "none";
+        artworkAddToBag.dataset.name =
+            activeArtwork.name;
+
+
+        artworkAddToBag.dataset.price =
+            activeArtwork.price;
 
     }
 
 
-    artworkAddToBag.dataset.product =
-        activeArtwork.product;
-
-
-    artworkAddToBag.dataset.name =
-        activeArtwork.name;
-
-
-    artworkAddToBag.dataset.price =
-        activeArtwork.price;
+    updateCollectionNavigatorState();
 
 }
 
@@ -617,6 +664,378 @@ function preloadGalleryImages(
 
 }
 
+/* ==========================================
+   09A. COLLECTION ARTWORK NAVIGATOR
+========================================== */
+
+const artworkOrder = [
+    "amber",
+    "peridot",
+    "patina",
+    "sage",
+    "eter",
+    "oneiric"
+];
+
+
+function buildCollectionNavigator() {
+
+    if (
+        !collectionArtworkTrack
+    ) {
+        return;
+    }
+
+
+    collectionArtworkTrack.innerHTML =
+        "";
+
+
+    artworkOrder.forEach(
+        artworkKey => {
+
+            const artwork =
+                artworks[
+                    artworkKey
+                ];
+
+
+            if (
+                !artwork
+            ) {
+                return;
+            }
+
+
+            const card =
+                document.createElement(
+                    "button"
+                );
+
+
+            card.type =
+                "button";
+
+
+            card.className =
+                "collection-artwork-card";
+
+
+            card.dataset.artwork =
+                artworkKey;
+
+
+            card.setAttribute(
+                "aria-label",
+                `View ${artwork.name}`
+            );
+
+
+            const image =
+                document.createElement(
+                    "span"
+                );
+
+
+            image.className =
+                "collection-artwork-image";
+
+
+            image.style.backgroundImage =
+                `url("${artwork.gallery[0].src}")`;
+
+
+            const name =
+                document.createElement(
+                    "span"
+                );
+
+
+            name.className =
+                "collection-artwork-name";
+
+
+            name.textContent =
+                artwork.name;
+
+
+            const price =
+                document.createElement(
+                    "span"
+                );
+
+
+            price.className =
+                "collection-artwork-price";
+
+
+            price.textContent =
+                `$${artwork.price} USD`;
+
+
+            card.appendChild(
+                image
+            );
+
+
+            card.appendChild(
+                name
+            );
+
+
+            card.appendChild(
+                price
+            );
+
+
+            card.addEventListener(
+                "click",
+                () => {
+
+                    switchArtworkFromNavigator(
+                        artworkKey
+                    );
+
+                }
+            );
+
+
+            collectionArtworkTrack
+                .appendChild(
+                    card
+                );
+
+        }
+    );
+
+
+    updateCollectionNavigatorState(
+        false
+    );
+
+}
+
+
+/* ==========================================
+   09B. UPDATE COLLECTION NAVIGATOR
+========================================== */
+
+function updateCollectionNavigatorState(
+    smooth = true
+) {
+
+    if (
+        !collectionArtworkTrack
+    ) {
+        return;
+    }
+
+
+    const cards =
+        collectionArtworkTrack
+            .querySelectorAll(
+                ".collection-artwork-card"
+            );
+
+
+    let activeCard =
+        null;
+
+
+    cards.forEach(
+        card => {
+
+            const isActive =
+                card.dataset.artwork
+                ===
+                activeArtworkKey;
+
+
+            card.classList.toggle(
+                "active",
+                isActive
+            );
+
+
+            if (
+                isActive
+            ) {
+
+                activeCard =
+                    card;
+
+            }
+
+        }
+    );
+
+
+    if (
+        !activeCard
+    ) {
+        return;
+    }
+
+
+    const targetLeft =
+        activeCard.offsetLeft
+        -
+        (
+            collectionArtworkTrack.clientWidth
+            -
+            activeCard.clientWidth
+        )
+        /
+        2;
+
+
+    collectionArtworkTrack.scrollTo(
+        {
+            left:
+                Math.max(
+                    0,
+                    targetLeft
+                ),
+
+            behavior:
+                smooth
+                    ?
+                    "smooth"
+                    :
+                    "auto"
+        }
+    );
+
+}
+
+
+/* ==========================================
+   09C. SWITCH ARTWORK FROM NAVIGATOR
+========================================== */
+
+function switchArtworkFromNavigator(
+    artworkKey
+) {
+
+    if (
+        transitionRunning
+    ) {
+        return;
+    }
+
+
+    if (
+        artworkKey
+        ===
+        activeArtworkKey
+    ) {
+        return;
+    }
+
+
+    const selectedArtwork =
+        artworks[
+            artworkKey
+        ];
+
+
+    if (
+        !selectedArtwork
+    ) {
+        return;
+    }
+
+
+    transitionRunning =
+        true;
+
+
+    lightboxImage.classList.add(
+        "gallery-fade-out"
+    );
+
+
+    setTimeout(
+        () => {
+
+            activeArtworkKey =
+                artworkKey;
+
+
+            activeArtwork =
+                selectedArtwork;
+
+
+            activeGallery =
+                selectedArtwork.gallery;
+
+
+            activeIndex =
+                0;
+
+
+            preloadGalleryImages(
+                activeGallery
+            );
+
+
+            updateArtworkInfo();
+
+
+            updateSlide();
+
+
+            closeAllAccordions();
+
+
+            lightboxImage.classList.remove(
+                "gallery-fade-out"
+            );
+
+
+            lightboxImage.classList.add(
+                "gallery-fade-in"
+            );
+
+
+            if (
+                lightbox
+            ) {
+
+                lightbox.scrollTo(
+                    {
+                        top:
+                            0,
+
+                        behavior:
+                            "smooth"
+                    }
+                );
+
+            }
+
+
+            setTimeout(
+                () => {
+
+                    lightboxImage.classList.remove(
+                        "gallery-fade-in"
+                    );
+
+
+                    transitionRunning =
+                        false;
+
+                },
+                550
+            );
+
+        },
+        300
+    );
+
+}
+
 
 /* ==========================================
    10. ACCORDION — CLOSE ALL
@@ -702,12 +1121,16 @@ function openGallery(
         true;
 
 
-    activeArtwork =
-        selectedArtwork;
+    activeArtworkKey =
+    artworkName;
 
 
-    activeGallery =
-        selectedArtwork.gallery;
+activeArtwork =
+    selectedArtwork;
+
+
+activeGallery =
+    selectedArtwork.gallery;
 
 
     activeIndex =
@@ -1768,3 +2191,9 @@ window.addEventListener(
 
     }
 );
+
+/* ==========================================
+   27. BUILD COLLECTION NAVIGATOR
+========================================== */
+
+buildCollectionNavigator();
