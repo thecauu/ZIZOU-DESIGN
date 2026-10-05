@@ -384,52 +384,43 @@
 
 
 
-    <section class="artwork-viewer">
+<section class="artwork-viewer">
 
 
-        <button
-            class="lightbox-arrow lightbox-prev"
-            id="lightboxPrev"
-            type="button"
-            aria-label="Previous image"
-        >
-            ‹
-        </button>
+    <div class="lightbox-content">
 
 
-
-        <div class="lightbox-content">
-
-
-            <div
-                id="lightboxImage"
-                class="protected-lightbox-image"
-                role="img"
-                aria-label=""
-            ></div>
+        <div
+            id="lightboxImage"
+            class="protected-lightbox-image"
+            role="img"
+            aria-label=""
+        ></div>
 
 
-            <p
-                id="lightboxCounter"
-                class="lightbox-counter"
-            ></p>
+        <!-- Kept for existing JS compatibility -->
+        <p
+            id="lightboxCounter"
+            class="lightbox-counter"
+            aria-hidden="true"
+        ></p>
 
 
-        </div>
+    </div>
 
 
+    <!-- =========================
+         SWIPE POSITION INDICATOR
+    ========================== -->
 
-        <button
-            class="lightbox-arrow lightbox-next"
-            id="lightboxNext"
-            type="button"
-            aria-label="Next image"
-        >
-            ›
-        </button>
+    <div
+        id="lightboxSwipeIndicator"
+        class="lightbox-swipe-indicator"
+        aria-hidden="true"
+    ></div>
 
 
-    </section>
+</section>
 
 
 
