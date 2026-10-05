@@ -20,23 +20,35 @@
         Summertide Collection | ZIZOU DESIGN
     </title>
 
+
+    <!-- =========================
+         STYLESHEET
+    ========================== -->
+
     <link
         rel="stylesheet"
         href="style.css?v=34"
     >
-    
-<script
-    src="summertide.js?v=8"
-    defer
-></script>
 
-<script src="site-nav.js?v=1"></script>
-<script src="script.js?v=4"></script>
-<script src="search.js?v=5"></script>
-<script src="cart.js?v=6"></script>
-    
+
+    <!-- =========================
+         SITE JAVASCRIPT
+    ========================== -->
+
+    <script
+        src="summertide.js?v=8"
+        defer
+    ></script>
+
+    <script src="site-nav.js?v=1"></script>
+
+    <script src="script.js?v=4"></script>
+
+    <script src="search.js?v=5"></script>
+
+    <script src="cart.js?v=6"></script>
+
     <script src="protection.js"></script>
-
 
 </head>
 
@@ -44,9 +56,10 @@
 <body>
 
 
-<!-- =========================
+
+<!-- =========================================================
      SUMMERTIDE INTRO COVER
-========================== -->
+========================================================= -->
 
 <div
     class="summertide-intro"
@@ -66,9 +79,9 @@
 
 
 
-<!-- =========================
-     SUMMERTIDE BACKGROUND
-========================== -->
+<!-- =========================================================
+     SUMMERTIDE PERMANENT BACKGROUND
+========================================================= -->
 
 <div
     class="summertide-background"
@@ -77,11 +90,12 @@
 
 
 
-<!-- =========================
-     TOP NAV
-========================== -->
+<!-- =========================================================
+     COLLECTION PAGE NAVIGATION
+========================================================= -->
 
 <header class="collection-page-nav">
+
 
     <a
         href="index.html"
@@ -105,13 +119,14 @@
         aria-hidden="true"
     ></div>
 
+
 </header>
 
 
 
-<!-- =========================
-     COLLECTION
-========================== -->
+<!-- =========================================================
+     COLLECTION PAGE
+========================================================= -->
 
 <main class="collection-page">
 
@@ -127,17 +142,20 @@
 
 
 
-    <!-- =========================
+    <!-- =====================================================
          COLLECTION GRID
-    ========================== -->
+    ====================================================== -->
 
     <div class="full-collection-grid">
 
 
 
-        <!-- 01 — AMBER BREEZE -->
+        <!-- =================================================
+             01 — AMBER BREEZE
+        ================================================== -->
 
         <div class="collection-product">
+
 
             <button
                 class="collection-item"
@@ -168,13 +186,17 @@
 
             </div>
 
+
         </div>
 
 
 
-        <!-- 02 — PERIDOT AFLOAT -->
+        <!-- =================================================
+             02 — PERIDOT AFLOAT
+        ================================================== -->
 
         <div class="collection-product">
+
 
             <button
                 class="collection-item"
@@ -205,13 +227,17 @@
 
             </div>
 
+
         </div>
 
 
 
-        <!-- 03 — PÁTINA DEL MAR -->
+        <!-- =================================================
+             03 — PÁTINA DEL MAR
+        ================================================== -->
 
         <div class="collection-product">
+
 
             <button
                 class="collection-item"
@@ -242,13 +268,17 @@
 
             </div>
 
+
         </div>
 
 
 
-        <!-- 04 — SAGE QUIETUDE -->
+        <!-- =================================================
+             04 — SAGE QUIETUDE
+        ================================================== -->
 
         <div class="collection-product">
+
 
             <button
                 class="collection-item"
@@ -279,13 +309,17 @@
 
             </div>
 
+
         </div>
 
 
 
-        <!-- 05 — ÉTER DO LUAR -->
+        <!-- =================================================
+             05 — ÉTER DO LUAR
+        ================================================== -->
 
         <div class="collection-product">
+
 
             <button
                 class="collection-item"
@@ -316,13 +350,17 @@
 
             </div>
 
+
         </div>
 
 
 
-        <!-- 06 — ONEIRIC GLOW -->
+        <!-- =================================================
+             06 — ONEIRIC GLOW
+        ================================================== -->
 
         <div class="collection-product">
+
 
             <button
                 class="collection-item"
@@ -353,18 +391,20 @@
 
             </div>
 
+
         </div>
 
 
     </div>
 
+
 </main>
 
 
 
-<!-- =========================
+<!-- =========================================================
      ARTWORK PRODUCT VIEW
-========================== -->
+========================================================= -->
 
 <div
     class="lightbox"
@@ -372,6 +412,11 @@
     aria-hidden="true"
 >
 
+
+
+    <!-- =====================================================
+         CLOSE ARTWORK
+    ====================================================== -->
 
     <button
         class="lightbox-close"
@@ -384,469 +429,276 @@
 
 
 
-<section class="artwork-viewer">
+    <!-- =====================================================
+         ARTWORK GALLERY
+    ====================================================== -->
+
+    <section class="artwork-viewer">
 
 
-    <!--
-        KEPT FOR JAVASCRIPT COMPATIBILITY.
-        VISUALLY HIDDEN IN CSS.
-    -->
 
-    <button
-        class="lightbox-arrow lightbox-prev"
-        id="lightboxPrev"
-        type="button"
-        aria-label="Previous image"
-        tabindex="-1"
-    >
-        ‹
-    </button>
+        <!-- =================================================
+             PREVIOUS IMAGE
+             Kept for JavaScript compatibility.
+             Visibility is controlled through CSS.
+        ================================================== -->
+
+        <button
+            class="lightbox-arrow lightbox-prev"
+            id="lightboxPrev"
+            type="button"
+            aria-label="Previous image"
+            tabindex="-1"
+        >
+            ‹
+        </button>
 
 
-    <div class="lightbox-content">
 
+        <!-- =================================================
+             CURRENT GALLERY IMAGE
+        ================================================== -->
+
+        <div class="lightbox-content">
+
+
+            <div
+                id="lightboxImage"
+                class="protected-lightbox-image"
+                role="img"
+                aria-label=""
+            ></div>
+
+
+            <!--
+                Kept for existing JavaScript compatibility.
+                Current CSS hides the numeric counter.
+            -->
+
+            <p
+                id="lightboxCounter"
+                class="lightbox-counter"
+                aria-hidden="true"
+            ></p>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             NEXT IMAGE
+             Kept for JavaScript compatibility.
+             Visibility is controlled through CSS.
+        ================================================== -->
+
+        <button
+            class="lightbox-arrow lightbox-next"
+            id="lightboxNext"
+            type="button"
+            aria-label="Next image"
+            tabindex="-1"
+        >
+            ›
+        </button>
+
+
+
+        <!-- =================================================
+             GALLERY SWIPE INDICATOR
+        ================================================== -->
 
         <div
-            id="lightboxImage"
-            class="protected-lightbox-image"
-            role="img"
-            aria-label=""
-        ></div>
-
-
-        <p
-            id="lightboxCounter"
-            class="lightbox-counter"
+            id="lightboxSwipeIndicator"
+            class="lightbox-swipe-indicator"
             aria-hidden="true"
-        ></p>
-
-
-    </div>
-
-
-    <!--
-        KEPT FOR JAVASCRIPT COMPATIBILITY.
-        VISUALLY HIDDEN IN CSS.
-    -->
-
-    <button
-        class="lightbox-arrow lightbox-next"
-        id="lightboxNext"
-        type="button"
-        aria-label="Next image"
-        tabindex="-1"
-    >
-        ›
-    </button>
-
-
-    <!-- =========================
-         SWIPE POSITION INDICATOR
-    ========================== -->
-
-    <div
-        id="lightboxSwipeIndicator"
-        class="lightbox-swipe-indicator"
-        aria-hidden="true"
-    ></div>
-
-
-</section>
-
-
-<!-- =========================
-     PRODUCT INFORMATION
-========================== -->
-
-<section class="artwork-product-info">
-
-
-    <!-- =========================
-         PRODUCT HEADING
-    ========================== -->
-
-    <div class="artwork-product-heading">
-
-        <h2 id="lightboxTitle"></h2>
-
-
-        <button
-            id="artworkDetailsLink"
-            class="artwork-info-link"
-            type="button"
-        >
-            All product details
-        </button>
-
-
-        <button
-            id="artworkSizeGuideLink"
-            class="artwork-info-link"
-            type="button"
-        >
-            View size guide
-        </button>
-
-    </div>
-
-
-
-    <!-- =========================
-         COLLECTION NAVIGATOR
-         3 ARTWORKS VISIBLE
-    ========================== -->
-
-    <div class="collection-artwork-navigator">
-
-        <div
-            id="collectionArtworkTrack"
-            class="collection-artwork-track"
         ></div>
 
-    </div>
-
-
-
-    <!-- =========================
-         ADD TO BAG
-    ========================== -->
-
-    <button
-        id="artworkAddToBag"
-        class="artwork-add-to-bag"
-        type="button"
-    >
-
-        <span>
-            ADD TO BAG
-        </span>
-
-
-        <span id="artworkAddToBagPrice">
-            $19.99 USD
-        </span>
-
-    </button>
-
-
-
-    <!-- =========================
-         TEMPORARY JS DATA
-         Kept hidden until the
-         Product Details panel is built.
-    ========================== -->
-
-    <div
-        class="artwork-legacy-data"
-        hidden
-    >
-
-        <p id="artworkPrice"></p>
-
-        <p id="artworkDescription"></p>
-
-        <span id="artworkYear"></span>
-
-        <span id="artworkNumber"></span>
-
-    </div>
-
-
-
-    <!-- =========================
-         PRODUCT FOOTER
-    ========================== -->
-
-    <footer class="artwork-product-footer">
-
-        <p>
-            © ZIZOU DESIGN
-        </p>
-
-
-        <div class="artwork-product-footer-links">
-
-            <a href="terms.html">
-                Terms & Conditions
-            </a>
-
-            <span>·</span>
-
-
-            <a href="privacy.html">
-                Privacy Policy
-            </a>
-
-            <span>·</span>
-
-
-            <a href="license.html">
-                Digital License
-            </a>
-
-            <span>·</span>
-
-
-            <a href="refund.html">
-                Refund Policy
-            </a>
-
-            <span>·</span>
-
-
-            <a href="contact.html">
-                Contact
-            </a>
-
-        </div>
-
-    </footer>
-
-
-</section>
-
-
-        <!-- =========================
-             ARTWORK DETAILS
-        ========================== -->
-
-        <div class="artwork-accordion">
-
-
-            <button
-                class="accordion-button"
-                type="button"
-            >
-
-                <span>
-                    Artwork Details
-                </span>
-
-                <span class="accordion-symbol">
-                    +
-                </span>
-
-            </button>
-
-
-
-            <div class="accordion-content">
-
-
-                <div class="artwork-spec">
-
-                    <span>
-                        Artist
-                    </span>
-
-                    <span>
-                        Zizou
-                    </span>
-
-                </div>
-
-
-                <div class="artwork-spec">
-
-                    <span>
-                        Year
-                    </span>
-
-                    <span id="artworkYear"></span>
-
-                </div>
-
-
-                <div class="artwork-spec">
-
-                    <span>
-                        Medium
-                    </span>
-
-                    <span>
-                        Photography
-                    </span>
-
-                </div>
-
-
-                <div class="artwork-spec">
-
-                    <span>
-                        Collection
-                    </span>
-
-                    <span>
-                        Summertide
-                    </span>
-
-                </div>
-
-
-                <div class="artwork-spec">
-
-                    <span>
-                        Work N°
-                    </span>
-
-                    <span id="artworkNumber"></span>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-
-
-        <!-- =========================
-             DIGITAL FILE & PRINTING
-        ========================== -->
-
-        <div class="artwork-accordion">
-
-
-            <button
-                class="accordion-button"
-                type="button"
-            >
-
-                <span>
-                    Digital File & Printing
-                </span>
-
-                <span class="accordion-symbol">
-                    +
-                </span>
-
-            </button>
-
-
-
-            <div class="accordion-content">
-
-
-                <div class="artwork-spec">
-
-                    <span>
-                        File Format
-                    </span>
-
-                    <span>
-                        PDF
-                    </span>
-
-                </div>
-
-
-                <div class="artwork-spec">
-
-                    <span>
-                        Aspect Ratio
-                    </span>
-
-                    <span>
-                        2:3
-                    </span>
-
-                </div>
-
-
-                <div class="artwork-spec">
-
-                    <span>
-                        Delivery
-                    </span>
-
-                    <span>
-                        Digital Download
-                    </span>
-
-                </div>
-
-
-                <p class="accordion-note">
-
-                    Designed for proportional printing in
-                    10 × 15, 20 × 30, 30 × 45, 40 × 60,
-                    50 × 75, and 60 × 90 cm. Maintaining
-                    the original 2:3 ratio preserves the
-                    full composition without cropping.
-                    No physical product will be shipped.
-
-                </p>
-
-
-            </div>
-
-        </div>
-
-
-
-        <!-- =========================
-             PRINTING & DISPLAY
-        ========================== -->
-
-        <div class="artwork-accordion">
-
-
-            <button
-                class="accordion-button"
-                type="button"
-            >
-
-                <span>
-                    Printing & Display
-                </span>
-
-                <span class="accordion-symbol">
-                    +
-                </span>
-
-            </button>
-
-
-
-            <div class="accordion-content">
-
-
-                <p class="accordion-note">
-
-                    For the best reproduction of color,
-                    contrast, detail, and dark tones,
-                    professional printing on fine-art
-                    baryta paper is recommended.
-                    High-quality satin or luster
-                    photographic paper is an excellent 
-                    alternative.
-
-                </p>
-
-
-                <p class="accordion-note">
-
-                    Matte fine-art paper may also be used
-                    for a softer, low-reflection finish.
-                    Colors may vary slightly depending on
-                    the printer, paper, ink, and screen used.
-
-                </p>
-
-
-            </div>
-
-        </div>
 
     </section>
 
-    <!-- END ARTWORK PRODUCT INFO -->
+
+
+    <!-- =====================================================
+         PRODUCT INFORMATION
+    ====================================================== -->
+
+    <section class="artwork-product-info">
+
+
+
+        <!-- =================================================
+             PRODUCT HEADING
+        ================================================== -->
+
+        <div class="artwork-product-heading">
+
+
+            <h2 id="lightboxTitle"></h2>
+
+
+            <button
+                id="artworkDetailsLink"
+                class="artwork-info-link"
+                type="button"
+            >
+                All product details
+            </button>
+
+
+            <button
+                id="artworkSizeGuideLink"
+                class="artwork-info-link"
+                type="button"
+            >
+                View size guide
+            </button>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             COLLECTION NAVIGATOR
+             EXACTLY 3 ARTWORKS VISIBLE AT ONCE
+        ================================================== -->
+
+        <div class="collection-artwork-navigator">
+
+
+            <div
+                id="collectionArtworkTrack"
+                class="collection-artwork-track"
+            ></div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             ADD TO BAG
+        ================================================== -->
+
+        <button
+            id="artworkAddToBag"
+            class="artwork-add-to-bag"
+            type="button"
+        >
+
+
+            <span>
+                ADD TO BAG
+            </span>
+
+
+            <span id="artworkAddToBagPrice">
+                $19.99 USD
+            </span>
+
+
+        </button>
+
+
+
+        <!-- =================================================
+             HIDDEN LEGACY DATA
+
+             These elements remain because summertide.js
+             still references their IDs.
+
+             They are intentionally hidden from the buyer.
+        ================================================== -->
+
+        <div
+            class="artwork-legacy-data"
+            hidden
+        >
+
+
+            <p id="artworkPrice"></p>
+
+
+            <p id="artworkDescription"></p>
+
+
+            <span id="artworkYear"></span>
+
+
+            <span id="artworkNumber"></span>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             PRODUCT VIEW FOOTER
+        ================================================== -->
+
+        <footer class="artwork-product-footer">
+
+
+            <p>
+                © ZIZOU DESIGN
+            </p>
+
+
+            <div class="artwork-product-footer-links">
+
+
+                <a href="terms.html">
+                    Terms & Conditions
+                </a>
+
+                <span>·</span>
+
+
+                <a href="privacy.html">
+                    Privacy Policy
+                </a>
+
+                <span>·</span>
+
+
+                <a href="license.html">
+                    Digital License
+                </a>
+
+                <span>·</span>
+
+
+                <a href="refund.html">
+                    Refund Policy
+                </a>
+
+                <span>·</span>
+
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+
+            </div>
+
+
+        </footer>
+
+
+    </section>
+
 
 </div>
 
-<!-- =========================
+<!-- END ARTWORK PRODUCT VIEW -->
+
+
+
+<!-- =========================================================
      PRODUCT DETAILS PANEL
-========================== -->
+========================================================= -->
 
 <div
     class="product-details-panel"
@@ -855,9 +707,10 @@
 >
 
 
-    <!-- =========================
-         CLOSE
-    ========================== -->
+
+    <!-- =====================================================
+         CLOSE PRODUCT DETAILS
+    ====================================================== -->
 
     <button
         class="product-details-close"
@@ -870,15 +723,20 @@
 
 
 
-    <!-- =========================
-         TABS
-    ========================== -->
+    <!-- =====================================================
+         PRODUCT DETAILS TABS
+    ====================================================== -->
 
     <div
         class="product-details-tabs"
         role="tablist"
     >
 
+
+
+        <!-- =================================================
+             ARTWORK DETAILS TAB
+        ================================================== -->
 
         <button
             class="product-details-tab active"
@@ -891,6 +749,11 @@
         </button>
 
 
+
+        <!-- =================================================
+             PRINTING & DISPLAY TAB
+        ================================================== -->
+
         <button
             class="product-details-tab"
             type="button"
@@ -901,6 +764,11 @@
             PRINTING & DISPLAY
         </button>
 
+
+
+        <!-- =================================================
+             DIGITAL FILE & DELIVERY TAB
+        ================================================== -->
 
         <button
             class="product-details-tab"
@@ -917,17 +785,17 @@
 
 
 
-    <!-- =========================
-         DETAILS CONTENT
-    ========================== -->
+    <!-- =====================================================
+         PRODUCT DETAILS CONTENT
+    ====================================================== -->
 
     <div class="product-details-content">
 
 
 
-        <!-- =========================
+        <!-- =================================================
              ARTWORK DETAILS
-        ========================== -->
+        ================================================== -->
 
         <section
             class="product-details-section active"
@@ -1037,9 +905,9 @@
 
 
 
-        <!-- =========================
+        <!-- =================================================
              PRINTING & DISPLAY
-        ========================== -->
+        ================================================== -->
 
         <section
             class="product-details-section"
@@ -1142,9 +1010,9 @@
 
 
 
-        <!-- =========================
+        <!-- =================================================
              DIGITAL FILE & DELIVERY
-        ========================== -->
+        ================================================== -->
 
         <section
             class="product-details-section"
@@ -1246,12 +1114,14 @@
 
     </div>
 
+
 </div>
 
 
-<!-- =========================
+
+<!-- =========================================================
      SIZE GUIDE PANEL
-========================== -->
+========================================================= -->
 
 <div
     class="size-guide-panel"
@@ -1260,9 +1130,10 @@
 >
 
 
-    <!-- =========================
-         CLOSE
-    ========================== -->
+
+    <!-- =====================================================
+         CLOSE SIZE GUIDE
+    ====================================================== -->
 
     <button
         class="size-guide-close"
@@ -1275,32 +1146,36 @@
 
 
 
-    <!-- =========================
-         HEADER
-    ========================== -->
+    <!-- =====================================================
+         SIZE GUIDE HEADER
+    ====================================================== -->
 
     <div class="size-guide-header">
+
 
         <p class="size-guide-label">
             SIZE GUIDE
         </p>
 
+
         <h2 id="sizeGuideArtworkName">
             Peridot Afloat
         </h2>
+
 
         <p class="size-guide-intro">
             Preview the artwork at different print sizes
             within the same interior setting.
         </p>
 
+
     </div>
 
 
 
-    <!-- =========================
+    <!-- =====================================================
          ROOM PREVIEW
-    ========================== -->
+    ====================================================== -->
 
     <div
         class="size-guide-room"
@@ -1320,27 +1195,30 @@
 
 
 
-    <!-- =========================
-         SELECTED SIZE
-    ========================== -->
+    <!-- =====================================================
+         CURRENTLY SELECTED SIZE
+    ====================================================== -->
 
     <div class="size-guide-selected">
+
 
         <span>
             PRINT SIZE
         </span>
 
+
         <strong id="sizeGuideSelectedSize">
             30 × 45 cm
         </strong>
+
 
     </div>
 
 
 
-    <!-- =========================
+    <!-- =====================================================
          SIZE OPTIONS
-    ========================== -->
+    ====================================================== -->
 
     <div
         class="size-guide-options"
@@ -1348,6 +1226,9 @@
         aria-label="Select print size"
     >
 
+
+
+        <!-- 20 × 30 -->
 
         <button
             class="size-guide-option"
@@ -1360,6 +1241,9 @@
         </button>
 
 
+
+        <!-- 30 × 45 -->
+
         <button
             class="size-guide-option active"
             type="button"
@@ -1370,6 +1254,9 @@
             30 × 45
         </button>
 
+
+
+        <!-- 40 × 60 -->
 
         <button
             class="size-guide-option"
@@ -1382,6 +1269,9 @@
         </button>
 
 
+
+        <!-- 50 × 75 -->
+
         <button
             class="size-guide-option"
             type="button"
@@ -1392,6 +1282,9 @@
             50 × 75
         </button>
 
+
+
+        <!-- 60 × 90 -->
 
         <button
             class="size-guide-option"
@@ -1408,9 +1301,9 @@
 
 
 
-    <!-- =========================
-         NOTE
-    ========================== -->
+    <!-- =====================================================
+         SIZE GUIDE NOTE
+    ====================================================== -->
 
     <p class="size-guide-note">
 
@@ -1424,9 +1317,10 @@
 </div>
 
 
-<!-- =========================
-     FOOTER
-========================== -->
+
+<!-- =========================================================
+     NORMAL SITE FOOTER
+========================================================= -->
 
 <footer class="site-footer">
 
@@ -1479,9 +1373,9 @@
 
 
 
-<!-- =========================
-     JAVASCRIPT
-========================== -->
+<!-- =========================================================
+     LEMON SQUEEZY
+========================================================= -->
 
 <script
     src="https://assets.lemonsqueezy.com/lemon.js"
@@ -1490,9 +1384,9 @@
 
 
 
-<!-- =========================
+<!-- =========================================================
      SUMMERTIDE INTRO ANIMATION
-========================== -->
+========================================================= -->
 
 <script>
 
