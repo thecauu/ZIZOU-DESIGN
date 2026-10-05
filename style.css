@@ -2767,68 +2767,76 @@ body.sea-intro-active {
 
 
 /* =========================================================
-   08. ARTWORK LIGHTBOX — GALLERY ARROWS
+   08. ARTWORK LIGHTBOX — SWIPE INDICATOR
 ========================================================= */
 
-.lightbox-arrow {
-    position:
-        absolute;
-
-    top:
-        50%;
-
-    transform:
-        translateY(-50%);
-
-    z-index:
-        20;
-
-    border:
+.lightbox-counter {
+    display:
         none;
+}
 
-    background:
-        transparent;
 
-    color:
-        #ffffff;
+.lightbox-swipe-indicator {
+    width:
+        100%;
 
-    font-size:
-        40px;
+    display:
+        flex;
 
-    font-weight:
-        200;
+    align-items:
+        center;
 
-    line-height:
-        1;
+    justify-content:
+        center;
 
-    cursor:
-        pointer;
+    gap:
+        9px;
 
     padding:
-        10px;
-
-    text-shadow:
+        17px
         0
-        1px
-        5px
+        18px;
+
+    background:
+        #f3f1ed;
+
+    pointer-events:
+        none;
+}
+
+
+.lightbox-swipe-segment {
+    display:
+        block;
+
+    width:
+        42px;
+
+    height:
+        2px;
+
+    border-radius:
+        999px;
+
+    background:
         rgba(
-            0,
-            0,
-            0,
-            0.35
+            17,
+            17,
+            17,
+            0.18
         );
+
+    transition:
+        background
+        0.35s
+        ease;
 }
 
-.lightbox-prev {
-    left:
-        2px;
-}
 
-.lightbox-next {
-    right:
-        2px;
+.lightbox-swipe-segment.active {
+    background:
+        #111111;
 }
-
 
 /* =========================================================
    08. ARTWORK LIGHTBOX — PRODUCT INFORMATION
@@ -5524,6 +5532,8 @@ body.artwork-viewer-open
             hidden;
     }
     
+    
+    
     /* =====================================================
    IPAD — RIGHT PANEL SCROLL TEST
 ===================================================== */
@@ -5739,6 +5749,32 @@ body.artwork-viewer-open
     }
 
 }
+
+    .lightbox-swipe-indicator {
+        position:
+            absolute;
+
+        left:
+            50%;
+
+        bottom:
+            18px;
+
+        z-index:
+            30;
+
+        width:
+            auto;
+
+        padding:
+            0;
+
+        background:
+            transparent;
+
+        transform:
+            translateX(-50%);
+    }
 
 
 /* =========================================================
