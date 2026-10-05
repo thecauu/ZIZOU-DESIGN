@@ -3788,6 +3788,599 @@ span:first-child {
 }
 
 /* =========================================================
+   08B. SIZE GUIDE — PANEL
+========================================================= */
+
+.size-guide-panel {
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        15500;
+
+    width:
+        100%;
+
+    height:
+        100vh;
+
+    height:
+        100dvh;
+
+    padding:
+        max(
+            100px,
+            calc(
+                env(safe-area-inset-top)
+                +
+                65px
+            )
+        )
+        5%
+        max(
+            55px,
+            env(safe-area-inset-bottom)
+        );
+
+    background:
+        #ffffff;
+
+    color:
+        #111111;
+
+    overflow-y:
+        auto;
+
+    overflow-x:
+        hidden;
+
+    visibility:
+        hidden;
+
+    pointer-events:
+        none;
+
+    opacity:
+        0;
+
+    transform:
+        translate3d(
+            100%,
+            0,
+            0
+        );
+
+    transition:
+        transform
+        0.65s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        ),
+
+        opacity
+        0.35s
+        ease,
+
+        visibility
+        0.65s
+        step-end;
+}
+
+
+.size-guide-panel.open {
+    visibility:
+        visible;
+
+    pointer-events:
+        auto;
+
+    opacity:
+        1;
+
+    transform:
+        translate3d(
+            0,
+            0,
+            0
+        );
+
+    transition:
+        transform
+        0.65s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        ),
+
+        opacity
+        0.35s
+        ease,
+
+        visibility
+        0s;
+}
+
+
+/* =========================================================
+   08B. SIZE GUIDE — CLOSE
+========================================================= */
+
+.size-guide-close {
+    position:
+        absolute;
+
+    top:
+        max(
+            28px,
+            env(safe-area-inset-top)
+        );
+
+    right:
+        5%;
+
+    width:
+        40px;
+
+    height:
+        40px;
+
+    padding:
+        0;
+
+    border:
+        none;
+
+    background:
+        transparent;
+
+    color:
+        #111111;
+
+    font-size:
+        32px;
+
+    font-weight:
+        200;
+
+    line-height:
+        1;
+
+    cursor:
+        pointer;
+}
+
+
+/* =========================================================
+   08B. SIZE GUIDE — HEADER
+========================================================= */
+
+.size-guide-header {
+    width:
+        100%;
+
+    max-width:
+        760px;
+
+    margin:
+        0
+        auto
+        46px;
+}
+
+
+.size-guide-label {
+    margin:
+        0
+        0
+        18px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        10px;
+
+    letter-spacing:
+        3px;
+}
+
+
+.size-guide-header h2 {
+    margin:
+        0;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        25px;
+
+    font-weight:
+        400;
+
+    line-height:
+        1.15;
+}
+
+
+.size-guide-intro {
+    max-width:
+        580px;
+
+    margin-top:
+        18px;
+
+    color:
+        rgba(
+            17,
+            17,
+            17,
+            0.62
+        );
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        13px;
+
+    line-height:
+        1.55;
+}
+
+
+/* =========================================================
+   08B. SIZE GUIDE — ROOM
+========================================================= */
+
+.size-guide-room {
+    position:
+        relative;
+
+    width:
+        100%;
+
+    max-width:
+        760px;
+
+    aspect-ratio:
+        4 / 3;
+
+    margin:
+        0
+        auto;
+
+    overflow:
+        hidden;
+
+    background-color:
+        #efede8;
+
+    background-image:
+        url(
+            "images/size guide room.jpg"
+        );
+
+    background-size:
+        cover;
+
+    background-position:
+        center;
+
+    background-repeat:
+        no-repeat;
+}
+
+
+/* =========================================================
+   08B. SIZE GUIDE — WALL ART
+========================================================= */
+
+.size-guide-wall-art {
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    bottom:
+        30%;
+
+    width:
+        19.5%;
+
+    aspect-ratio:
+        2 / 3;
+
+    background-color:
+        #ffffff;
+
+    background-size:
+        cover;
+
+    background-position:
+        center;
+
+    background-repeat:
+        no-repeat;
+
+    box-shadow:
+        0
+        7px
+        18px
+        rgba(
+            0,
+            0,
+            0,
+            0.16
+        );
+
+    transform:
+        translateX(
+            -50%
+        );
+
+    transform-origin:
+        center
+        bottom;
+
+    transition:
+        width
+        0.7s
+        cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        );
+}
+
+
+/* =========================================================
+   08B. SIZE GUIDE — SELECTED SIZE
+========================================================= */
+
+.size-guide-selected {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        25px;
+
+    width:
+        100%;
+
+    max-width:
+        760px;
+
+    margin:
+        34px
+        auto
+        0;
+
+    padding-bottom:
+        18px;
+
+    border-bottom:
+        1px solid
+        rgba(
+            17,
+            17,
+            17,
+            0.18
+        );
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+
+.size-guide-selected span {
+    font-size:
+        10px;
+
+    letter-spacing:
+        2px;
+}
+
+
+.size-guide-selected strong {
+    font-size:
+        13px;
+
+    font-weight:
+        400;
+}
+
+
+/* =========================================================
+   08B. SIZE GUIDE — OPTIONS
+========================================================= */
+
+.size-guide-options {
+    display:
+        flex;
+
+    gap:
+        10px;
+
+    width:
+        100%;
+
+    max-width:
+        760px;
+
+    margin:
+        24px
+        auto
+        0;
+
+    overflow-x:
+        auto;
+
+    overflow-y:
+        hidden;
+
+    padding-bottom:
+        5px;
+
+    scroll-snap-type:
+        x proximity;
+
+    -webkit-overflow-scrolling:
+        touch;
+
+    scrollbar-width:
+        none;
+}
+
+
+.size-guide-options::-webkit-scrollbar {
+    display:
+        none;
+}
+
+
+.size-guide-option {
+    appearance:
+        none;
+
+    -webkit-appearance:
+        none;
+
+    flex:
+        0
+        0
+        auto;
+
+    min-width:
+        105px;
+
+    padding:
+        14px
+        16px;
+
+    border:
+        1px solid
+        rgba(
+            17,
+            17,
+            17,
+            0.30
+        );
+
+    background:
+        #ffffff;
+
+    color:
+        #111111;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        11px;
+
+    font-weight:
+        400;
+
+    text-align:
+        center;
+
+    cursor:
+        pointer;
+
+    scroll-snap-align:
+        start;
+
+    transition:
+        background
+        0.25s
+        ease,
+
+        color
+        0.25s
+        ease,
+
+        border-color
+        0.25s
+        ease;
+}
+
+
+.size-guide-option.active {
+    border-color:
+        #111111;
+
+    background:
+        #111111;
+
+    color:
+        #ffffff;
+}
+
+
+/* =========================================================
+   08B. SIZE GUIDE — NOTE
+========================================================= */
+
+.size-guide-note {
+    width:
+        100%;
+
+    max-width:
+        760px;
+
+    margin:
+        34px
+        auto
+        0;
+
+    color:
+        rgba(
+            17,
+            17,
+            17,
+            0.56
+        );
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        11px;
+
+    line-height:
+        1.6;
+}
+
+/* =========================================================
    09. ARTWORK TRANSITIONS — OPENING
 ========================================================= */
 
