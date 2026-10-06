@@ -6408,50 +6408,56 @@ body.artwork-viewer-open
 @media (min-width: 768px) {
 
 
-    /* =====================================================
-       EXISTING ARTWORK — GIVENCHY-STYLE FADE
-    ====================================================== */
+/* =====================================================
+   EXISTING ARTWORK — SOFT FADE BASE
+===================================================== */
 
-    .artwork-viewer {
-        position: relative;
-    }
+.artwork-viewer::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    z-index: 20;
+
+    pointer-events: none;
+
+    background:
+        rgba(
+            247,
+            246,
+            243,
+            0.68
+        );
+
+    backdrop-filter:
+        blur(1px);
+
+    -webkit-backdrop-filter:
+        blur(1px);
+
+    opacity: 0;
+
+    transition:
+        opacity
+        0.85s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
 
 
-    .lightbox.product-details-open
-    .artwork-viewer::after {
-        content: "";
+/* =====================================================
+   EXISTING ARTWORK — FADED STATE
+===================================================== */
 
-        position: absolute;
-        inset: 0;
-
-        z-index: 20;
-
-        pointer-events: none;
-
-        /*
-           Soft pale wash over the EXISTING artwork.
-           The artwork underneath does not move.
-        */
-
-        background:
-            rgba(
-                247,
-                246,
-                243,
-                0.68
-            );
-
-        backdrop-filter:
-            blur(1px);
-
-        -webkit-backdrop-filter:
-            blur(1px);
-
-        opacity: 1;
-
-        transition:
-            opacity 0.45s ease;
-    }
+.lightbox.product-details-open
+.artwork-viewer::after {
+    opacity: 1;
+}
 
 
     /* =====================================================
@@ -6544,23 +6550,23 @@ body.artwork-viewer-open
             none;
 
 
-        transition:
-            transform
-            0.65s
-            cubic-bezier(
-                0.16,
-                1,
-                0.3,
-                1
-            ),
+transition:
+    transform
+    0.8s
+    cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+    ),
 
-            opacity
-            0.35s
-            ease,
+    opacity
+    0.6s
+    ease,
 
-            visibility
-            0.65s
-            step-end;
+    visibility
+    0.8s
+    step-end;
     }
 
 
@@ -6581,22 +6587,22 @@ body.artwork-viewer-open
         pointer-events:
             auto;
 
-        transition:
-            transform
-            0.65s
-            cubic-bezier(
-                0.16,
-                1,
-                0.3,
-                1
-            ),
+transition:
+    transform
+    0.8s
+    cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+    ),
 
-            opacity
-            0.35s
-            ease,
+    opacity
+    0.6s
+    ease,
 
-            visibility
-            0s;
+    visibility
+    0s;
     }
 
 
