@@ -175,6 +175,51 @@ body {
 
 
 /* =========================================================
+   PROPORTIONS GUIDE — SOFT BLUR
+========================================================= */
+
+.proportions-guide-frame::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.01
+        );
+
+    backdrop-filter:
+        blur(0.4px);
+
+    -webkit-backdrop-filter:
+        blur(0.4px);
+
+    clip-path:
+        polygon(
+            1.6% 8.0%,
+            98.3% 8.0%,
+            98.3% 88.2%,
+            1.6% 88.2%
+        );
+
+    -webkit-clip-path:
+        polygon(
+            1.6% 8.0%,
+            98.3% 8.0%,
+            98.3% 88.2%,
+            1.6% 88.2%
+        );
+}
+
+/* =========================================================
    02. ARTWORK PROTECTION — LIGHTBOX MASK
 ========================================================= */
 
