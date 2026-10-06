@@ -2486,60 +2486,94 @@ function preloadGalleryImages(
 
 
 /* =========================================================
-   PRELOAD GUIDE IMAGE
+   PREPARE GUIDE IMAGE
 ========================================================= */
 
-const guideImageCache =
-    new Map();
-
-
-function preloadGuideImage(
-    artworkKey
-) {
+async function prepareGuideImage() {
 
     if (
-        !artworkKey ||
-        guideImageCache.has(
-            artworkKey
-        )
+        !activeArtworkKey
     ) {
         return;
     }
 
 
     const source =
-        `images/${artworkKey} size.PNG`;
-
-
-    const image =
-        new Image();
-
-
-    image.src =
-        source;
-
-
-    guideImageCache.set(
-        artworkKey,
-        image
-    );
+        `images/${activeArtworkKey} size.PNG`;
 
 
     /*
-        Ask the browser to decode the image
-        before the buyer opens either guide.
+       Load the real Size Guide <img>
+       immediately.
     */
 
     if (
-        typeof image.decode ===
-        "function"
+        sizeGuideWallImage
     ) {
 
-        image
-            .decode()
-            .catch(
-                () => {}
-            );
+        sizeGuideWallImage.fetchPriority =
+            "high";
+
+        sizeGuideWallImage.decoding =
+            "async";
+
+        sizeGuideWallImage.src =
+            source;
+
+    }
+
+
+    /*
+       Load the Proportions Guide image
+       immediately too.
+    */
+
+    if (
+        proportionsGuideImage
+    ) {
+
+        proportionsGuideImage.style.backgroundImage =
+            `url("${source}")`;
+
+    }
+
+
+    /*
+       Force browser download + decode now
+       instead of waiting for a guide to open.
+    */
+
+    const preload =
+        new Image();
+
+
+    preload.fetchPriority =
+        "high";
+
+
+    preload.decoding =
+        "async";
+
+
+    preload.src =
+        source;
+
+
+    try {
+
+        await preload.decode();
+
+    }
+
+    catch (
+        error
+    ) {
+
+        /*
+           Safari may occasionally reject
+           decode() even though the image
+           still loads normally.
+        */
 
     }
 
@@ -2851,20 +2885,28 @@ function switchArtworkFromNavigator(
     setTimeout(
         () => {
 
-            activeArtworkKey =
-                artworkKey;
+activeArtworkKey =
+    artworkKey;
 
 
-            activeArtwork =
-                selectedArtwork;
+activeArtwork =
+    selectedArtwork;
 
 
-            activeGallery =
-                selectedArtwork.gallery;
+activeGallery =
+    selectedArtwork.gallery;
 
 
-            activeIndex =
-                0;
+/*
+   Prepare this artwork's guide image
+   before the buyer opens either guide.
+*/
+
+prepareGuideImage();
+
+
+activeIndex =
+    0;
 
 
             preloadGalleryImages(
@@ -3027,20 +3069,28 @@ function openGallery(
         true;
 
 
-    activeArtworkKey =
-        artworkName;
+activeArtworkKey =
+    artworkName;
 
 
-    activeArtwork =
-        selectedArtwork;
+activeArtwork =
+    selectedArtwork;
 
 
-    activeGallery =
-        selectedArtwork.gallery;
+activeGallery =
+    selectedArtwork.gallery;
 
 
-    activeIndex =
-        0;
+/*
+   Start loading the Size Guide /
+   Proportions Guide PNG immediately.
+*/
+
+prepareGuideImage();
+
+
+activeIndex =
+    0;
 
 
     preloadGalleryImages(
