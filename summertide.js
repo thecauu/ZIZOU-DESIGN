@@ -514,7 +514,7 @@ if (
 ) {
 
     lightboxImage.addEventListener(
-        "click",
+        "pointerup",
         event => {
 
             if (
@@ -557,7 +557,6 @@ if (
     );
 
 }
-
 
 /* =========================================================
    PRODUCT INFORMATION
