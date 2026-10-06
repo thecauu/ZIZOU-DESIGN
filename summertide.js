@@ -1245,11 +1245,6 @@ function openProductDetails() {
     );
 
 
-    /*
-        Match the exact width and position
-        of the existing product-info column.
-    */
-
     syncProductDetailsToProductColumn();
 
 
@@ -1258,30 +1253,53 @@ function openProductDetails() {
 
 
     /*
-        Fade the EXISTING artwork side.
-
-        No duplicate artwork image is created.
+        Let the browser register the closed
+        state and exact column measurements
+        before starting the transition.
     */
 
-    if (
-        lightbox
-    ) {
+    requestAnimationFrame(
+        () => {
 
-        lightbox.classList.add(
-            "product-details-open"
-        );
-
-    }
+            requestAnimationFrame(
+                () => {
 
 
-    productDetailsPanel.classList.add(
-        "open"
-    );
+                    /*
+                        Fade the existing artwork.
+                    */
+
+                    if (
+                        lightbox
+                    ) {
+
+                        lightbox.classList.add(
+                            "product-details-open"
+                        );
+
+                    }
 
 
-    productDetailsPanel.setAttribute(
-        "aria-hidden",
-        "false"
+                    /*
+                        Glide the details panel
+                        into the existing product
+                        information column.
+                    */
+
+                    productDetailsPanel.classList.add(
+                        "open"
+                    );
+
+
+                    productDetailsPanel.setAttribute(
+                        "aria-hidden",
+                        "false"
+                    );
+
+                }
+            );
+
+        }
     );
 
 }
