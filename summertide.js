@@ -505,6 +505,59 @@ const lightboxNext =
     );
 
 
+/* =========================================================
+   TAP LEFT / RIGHT SIDE OF GALLERY IMAGE
+========================================================= */
+
+if (
+    lightboxImage
+) {
+
+    lightboxImage.addEventListener(
+        "click",
+        event => {
+
+            if (
+                transitionRunning
+            ) {
+                return;
+            }
+
+
+            const rect =
+                lightboxImage
+                    .getBoundingClientRect();
+
+
+            const tapX =
+                event.clientX
+                -
+                rect.left;
+
+
+            const midpoint =
+                rect.width / 2;
+
+
+            if (
+                tapX < midpoint
+            ) {
+
+                previousSlide();
+
+            }
+
+            else {
+
+                nextSlide();
+
+            }
+
+        }
+    );
+
+}
+
 
 /* =========================================================
    PRODUCT INFORMATION
