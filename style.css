@@ -6401,6 +6401,416 @@ body.artwork-viewer-open
 
 
 /* =========================================================
+   PRODUCT DETAILS — TABLET / DESKTOP
+   MATCH EXISTING PRODUCT INFO COLUMN
+========================================================= */
+
+@media (min-width: 768px) {
+
+
+    /* =====================================================
+       EXISTING ARTWORK — GIVENCHY-STYLE FADE
+    ====================================================== */
+
+    .artwork-viewer {
+        position: relative;
+    }
+
+
+    .lightbox.product-details-open
+    .artwork-viewer::after {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+
+        z-index: 20;
+
+        pointer-events: none;
+
+        /*
+           Soft pale wash over the EXISTING artwork.
+           The artwork underneath does not move.
+        */
+
+        background:
+            rgba(
+                247,
+                246,
+                243,
+                0.68
+            );
+
+        backdrop-filter:
+            blur(1px);
+
+        -webkit-backdrop-filter:
+            blur(1px);
+
+        opacity: 1;
+
+        transition:
+            opacity 0.45s ease;
+    }
+
+
+    /* =====================================================
+       PRODUCT DETAILS PANEL
+
+       Width/position come directly from the existing
+       .artwork-product-info measurements.
+    ====================================================== */
+
+    .product-details-panel {
+        position: fixed !important;
+
+        top:
+            var(
+                --details-panel-top,
+                0px
+            )
+            !important;
+
+        left:
+            var(
+                --details-panel-left,
+                50%
+            )
+            !important;
+
+        right:
+            auto
+            !important;
+
+        bottom:
+            auto
+            !important;
+
+        width:
+            var(
+                --details-panel-width,
+                50%
+            )
+            !important;
+
+        height:
+            var(
+                --details-panel-height,
+                100dvh
+            )
+            !important;
+
+
+        padding:
+            max(
+                88px,
+                calc(
+                    env(safe-area-inset-top)
+                    +
+                    58px
+                )
+            )
+            7%
+            60px
+            !important;
+
+
+        background:
+            #ffffff;
+
+
+        overflow-x:
+            hidden;
+
+        overflow-y:
+            auto;
+
+
+        transform:
+            translate3d(
+                100%,
+                0,
+                0
+            );
+
+
+        opacity:
+            0;
+
+        visibility:
+            hidden;
+
+        pointer-events:
+            none;
+
+
+        transition:
+            transform
+            0.65s
+            cubic-bezier(
+                0.16,
+                1,
+                0.3,
+                1
+            ),
+
+            opacity
+            0.35s
+            ease,
+
+            visibility
+            0.65s
+            step-end;
+    }
+
+
+    .product-details-panel.open {
+        transform:
+            translate3d(
+                0,
+                0,
+                0
+            );
+
+        opacity:
+            1;
+
+        visibility:
+            visible;
+
+        pointer-events:
+            auto;
+
+        transition:
+            transform
+            0.65s
+            cubic-bezier(
+                0.16,
+                1,
+                0.3,
+                1
+            ),
+
+            opacity
+            0.35s
+            ease,
+
+            visibility
+            0s;
+    }
+
+
+    /* =====================================================
+       CLOSE
+    ====================================================== */
+
+    .product-details-close {
+        position: absolute;
+
+        top:
+            max(
+                28px,
+                calc(
+                    env(safe-area-inset-top)
+                    +
+                    14px
+                )
+            );
+
+        right:
+            7%;
+
+        z-index:
+            5;
+    }
+
+
+    /* =====================================================
+       HORIZONTAL TABS
+    ====================================================== */
+
+    .product-details-tabs {
+        position:
+            relative
+            !important;
+
+        top:
+            auto
+            !important;
+
+        right:
+            auto
+            !important;
+
+        bottom:
+            auto
+            !important;
+
+        left:
+            auto
+            !important;
+
+
+        width:
+            100%
+            !important;
+
+        margin:
+            0
+            !important;
+
+        padding:
+            0
+            !important;
+
+
+        display:
+            flex;
+
+        flex-direction:
+            row;
+
+        flex-wrap:
+            nowrap;
+
+        align-items:
+            center;
+
+        gap:
+            30px;
+
+
+        overflow-x:
+            auto;
+
+        overflow-y:
+            hidden;
+
+
+        white-space:
+            nowrap;
+
+
+        border-bottom:
+            1px
+            solid
+            rgba(
+                17,
+                17,
+                17,
+                0.16
+            );
+
+
+        scrollbar-width:
+            none;
+
+        -webkit-overflow-scrolling:
+            touch;
+    }
+
+
+    .product-details-tabs::-webkit-scrollbar {
+        display:
+            none;
+    }
+
+
+    .product-details-tab {
+        flex:
+            0
+            0
+            auto;
+
+        margin:
+            0;
+
+        padding:
+            0
+            0
+            17px;
+
+        white-space:
+            nowrap;
+    }
+
+
+    /* =====================================================
+       CONTENT BELOW TABS
+    ====================================================== */
+
+    .product-details-content {
+        position:
+            relative
+            !important;
+
+        top:
+            auto
+            !important;
+
+        right:
+            auto
+            !important;
+
+        bottom:
+            auto
+            !important;
+
+        left:
+            auto
+            !important;
+
+
+        width:
+            100%
+            !important;
+
+        height:
+            auto
+            !important;
+
+
+        margin:
+            0
+            !important;
+
+        padding:
+            48px
+            0
+            0
+            !important;
+
+
+        overflow:
+            visible
+            !important;
+
+
+        background:
+            transparent;
+    }
+
+
+    .product-details-section,
+    .product-details-editorial,
+    .product-details-groups {
+        width:
+            100%;
+
+        max-width:
+            none;
+
+        margin-left:
+            0;
+
+        margin-right:
+            0;
+    }
+
+}
+
+
+/* =========================================================
    17. NAVBAR — POSITION SAFETY
    Protects homepage navbar from internal-page rules.
 ========================================================= */
