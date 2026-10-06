@@ -2263,6 +2263,11 @@ body.sea-intro-active {
 }
 
 .protected-lightbox-image {
+    touch-action: manipulation;
+    cursor: pointer;
+}
+
+.protected-lightbox-image {
     position: relative;
 
     display: block;
