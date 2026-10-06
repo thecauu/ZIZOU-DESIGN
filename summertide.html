@@ -413,7 +413,6 @@
 >
 
 
-
     <!-- =====================================================
          CLOSE ARTWORK
     ====================================================== -->
@@ -436,11 +435,9 @@
     <section class="artwork-viewer">
 
 
-
         <!-- =================================================
              PREVIOUS IMAGE
              Kept for JavaScript compatibility.
-             Visibility is controlled through CSS.
         ================================================== -->
 
         <button
@@ -470,11 +467,6 @@
             ></div>
 
 
-            <!--
-                Kept for existing JavaScript compatibility.
-                Current CSS hides the numeric counter.
-            -->
-
             <p
                 id="lightboxCounter"
                 class="lightbox-counter"
@@ -489,7 +481,6 @@
         <!-- =================================================
              NEXT IMAGE
              Kept for JavaScript compatibility.
-             Visibility is controlled through CSS.
         ================================================== -->
 
         <button
@@ -526,7 +517,6 @@
     <section class="artwork-product-info">
 
 
-
         <!-- =================================================
              PRODUCT HEADING
         ================================================== -->
@@ -561,17 +551,14 @@
 
         <!-- =================================================
              COLLECTION NAVIGATOR
-             EXACTLY 3 ARTWORKS VISIBLE AT ONCE
         ================================================== -->
 
         <div class="collection-artwork-navigator">
-
 
             <div
                 id="collectionArtworkTrack"
                 class="collection-artwork-track"
             ></div>
-
 
         </div>
 
@@ -587,7 +574,6 @@
             type="button"
         >
 
-
             <span>
                 ADD TO BAG
             </span>
@@ -597,18 +583,13 @@
                 $19.99 USD
             </span>
 
-
         </button>
 
 
 
         <!-- =================================================
              HIDDEN LEGACY DATA
-
-             These elements remain because summertide.js
-             still references their IDs.
-
-             They are intentionally hidden from the buyer.
+             Kept for existing JavaScript compatibility.
         ================================================== -->
 
         <div
@@ -616,18 +597,13 @@
             hidden
         >
 
-
             <p id="artworkPrice"></p>
-
 
             <p id="artworkDescription"></p>
 
-
             <span id="artworkYear"></span>
 
-
             <span id="artworkNumber"></span>
-
 
         </div>
 
@@ -646,7 +622,6 @@
 
 
             <div class="artwork-product-footer-links">
-
 
                 <a href="terms.html">
                     Terms & Conditions
@@ -679,7 +654,6 @@
                 <a href="contact.html">
                     Contact
                 </a>
-
 
             </div>
 
@@ -919,10 +893,11 @@
 
                 <div class="product-details-editorial-group">
 
+
                     <p>
                         For the most accurate reproduction of the
                         artwork, use a professional photo or fine-art
-                        printer and maintain the original 2:3
+                        printer and maintain the original A-series
                         proportion of the file. Avoid stretching,
                         reshaping or manually cropping the image,
                         as this can alter the intended composition.
@@ -945,6 +920,27 @@
                         when deeper blacks and greater tonal depth are
                         preferred.
                     </p>
+
+
+
+                    <!-- =====================================
+                         PROPORTIONS GUIDE LINK
+                    ====================================== -->
+
+                    <button
+                        id="artworkProportionsGuideLink"
+                        class="product-details-guide-link"
+                        type="button"
+                    >
+                        <span>
+                            PROPORTIONS GUIDE
+                        </span>
+
+                        <span aria-hidden="true">
+                            →
+                        </span>
+                    </button>
+
 
                 </div>
 
@@ -1040,7 +1036,7 @@
                         </span>
 
                         <span>
-                            2:3
+                            A-series · 1:√2
                         </span>
 
                     </div>
@@ -1144,8 +1140,130 @@
 
 </div>
 
+
+
+<!-- =========================================================
+     PROPORTIONS GUIDE PANEL
+     Structure prepared now.
+     Functionality and styling will be added next.
+========================================================= -->
+
+<div
+    class="proportions-guide-panel"
+    id="proportionsGuidePanel"
+    aria-hidden="true"
+>
+
+
+    <!-- =====================================================
+         CLOSE
+    ====================================================== -->
+
+    <button
+        class="proportions-guide-close"
+        id="proportionsGuideClose"
+        type="button"
+        aria-label="Close proportions guide"
+    >
+        ×
+    </button>
+
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <div class="proportions-guide-header">
+
+
+        <p class="proportions-guide-label">
+            PROPORTIONS GUIDE
+        </p>
+
+
+        <p class="proportions-guide-intro">
+            Compare common print proportions and how they
+            affect the original composition.
+        </p>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         ACTIVE PROPORTION
+    ====================================================== -->
+
+    <div class="proportions-guide-viewer">
+
+
+        <div
+            class="proportions-guide-frame"
+            id="proportionsGuideFrame"
+        >
+
+
+            <div
+                class="proportions-guide-image"
+                id="proportionsGuideImage"
+                role="img"
+                aria-label=""
+            ></div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         PROPORTION INFORMATION
+    ====================================================== -->
+
+    <div class="proportions-guide-information">
+
+
+        <span class="proportions-guide-format-label">
+            FORMAT
+        </span>
+
+
+        <strong id="proportionsGuideFormat">
+            A-series · 1:√2
+        </strong>
+
+
+        <p id="proportionsGuideImpact">
+            Original composition
+        </p>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         SWIPE POSITION INDICATOR
+    ====================================================== -->
+
+    <div
+        class="proportions-guide-indicator"
+        id="proportionsGuideIndicator"
+        aria-hidden="true"
+    ></div>
+
+
+</div>
+
+
+
 <!-- =========================================================
      SIZE GUIDE PANEL
+     Existing measurements remain unchanged for now.
 ========================================================= -->
 
 <div
@@ -1153,7 +1271,6 @@
     id="sizeGuidePanel"
     aria-hidden="true"
 >
-
 
 
     <!-- =====================================================
@@ -1252,9 +1369,6 @@
     >
 
 
-
-        <!-- 20 × 30 -->
-
         <button
             class="size-guide-option"
             type="button"
@@ -1265,9 +1379,6 @@
             20 × 30
         </button>
 
-
-
-        <!-- 30 × 45 -->
 
         <button
             class="size-guide-option active"
@@ -1280,9 +1391,6 @@
         </button>
 
 
-
-        <!-- 40 × 60 -->
-
         <button
             class="size-guide-option"
             type="button"
@@ -1294,9 +1402,6 @@
         </button>
 
 
-
-        <!-- 50 × 75 -->
-
         <button
             class="size-guide-option"
             type="button"
@@ -1307,9 +1412,6 @@
             50 × 75
         </button>
 
-
-
-        <!-- 60 × 90 -->
 
         <button
             class="size-guide-option"
