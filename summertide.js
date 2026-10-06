@@ -638,6 +638,12 @@ const sizeGuideWallArt =
     document.getElementById(
         "sizeGuideWallArt"
     );
+    
+    
+const sizeGuideWallImage =
+    document.getElementById(
+        "sizeGuideWallImage"
+    );
 
 
 const sizeGuideSelectedSize =
@@ -1307,21 +1313,19 @@ function updateSizeGuideArtwork() {
 
 
     if (
-        sizeGuideWallArt
+        sizeGuideWallImage
     ) {
 
         const sizeGuideImage =
-            `images/${activeArtworkKey} size.jpg`;
+            `images/${activeArtworkKey} size.PNG`;
 
 
-        sizeGuideWallArt.style.backgroundImage =
-            `url("${sizeGuideImage}")`;
+        sizeGuideWallImage.src =
+            sizeGuideImage;
 
 
-        sizeGuideWallArt.setAttribute(
-            "aria-label",
-            `${activeArtwork.name} size preview`
-        );
+        sizeGuideWallImage.alt =
+            `${activeArtwork.name} size preview`;
 
     }
 
