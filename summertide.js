@@ -1542,7 +1542,7 @@ function getProportionsGuideSource() {
         return "";
     }
 
-    return `images/${activeArtworkKey} size.jpg`;
+    return `images/${activeArtworkKey} size.PNG`;
 
 }
 
