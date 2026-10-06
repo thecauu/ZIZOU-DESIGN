@@ -8,7 +8,7 @@
 ========================================= */
 
 const ZIZOU_MULTI_CHECKOUT_ENDPOINT =
-    "https://zizoudownloads.cesarur1997.workers.dev/create-checkout";
+    "https://downloads.zizoudesign.workers.dev/create-checkout";
 
 
 /* =========================================
