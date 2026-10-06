@@ -2852,8 +2852,7 @@ function switchArtworkFromNavigator(
 
 
     if (
-        artworkKey
-        ===
+        artworkKey ===
         activeArtworkKey
     ) {
         return;
@@ -2885,38 +2884,38 @@ function switchArtworkFromNavigator(
     setTimeout(
         () => {
 
-activeArtworkKey =
-    artworkKey;
+            activeArtworkKey =
+                artworkKey;
 
 
-activeArtwork =
-    selectedArtwork;
+            activeArtwork =
+                selectedArtwork;
 
 
-activeGallery =
-    selectedArtwork.gallery;
+            activeGallery =
+                selectedArtwork.gallery;
 
 
-/*
-   Prepare this artwork's guide image
-   before the buyer opens either guide.
-*/
-
-prepareGuideImage();
+            activeIndex =
+                0;
 
 
-activeIndex =
-    0;
-
+            /*
+               Gallery images get priority.
+            */
 
             preloadGalleryImages(
                 activeGallery
             );
-            
-            
-            preloadGuideImage(
-                activeArtworkKey
-            );
+
+
+            /*
+               Prepare Size Guide /
+               Proportions Guide image
+               in the background.
+            */
+
+            prepareGuideImage();
 
 
             updateArtworkInfo();
@@ -2944,13 +2943,8 @@ activeIndex =
 
                 lightbox.scrollTo(
                     {
-
-                        top:
-                            0,
-
-                        behavior:
-                            "smooth"
-
+                        top: 0,
+                        behavior: "smooth"
                     }
                 );
 
