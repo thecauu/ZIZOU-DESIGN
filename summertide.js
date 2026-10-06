@@ -1150,6 +1150,24 @@ function openProductDetails() {
     }
 
 
+    /*
+        Tablet / desktop split-screen artwork.
+        Always uses the main portrait image.
+    */
+
+    if (
+        activeArtwork.gallery &&
+        activeArtwork.gallery[0]
+    ) {
+
+        productDetailsPanel.style.setProperty(
+            "--product-details-artwork-image",
+            `url("${activeArtwork.gallery[0].src}")`
+        );
+
+    }
+
+
     updateProductDetails();
 
 
@@ -1173,7 +1191,6 @@ function openProductDetails() {
     );
 
 }
-
 
 
 /* =========================================================
