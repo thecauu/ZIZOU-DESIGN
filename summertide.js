@@ -1547,21 +1547,6 @@ function getProportionsGuideSource() {
 }
 
 
-    if (
-        activeArtwork.gallery &&
-        activeArtwork.gallery.length
-    ) {
-
-        return activeArtwork.gallery[0].src;
-
-    }
-
-
-    return "";
-
-}
-
-
 
 /* =========================================================
    BUILD PROPORTIONS INDICATOR
