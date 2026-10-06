@@ -510,6 +510,12 @@ const lightboxNext =
    PRODUCT INFORMATION
 ========================================================= */
 
+const artworkProductInfo =
+    document.querySelector(
+        ".artwork-product-info"
+    );
+
+
 const artworkPrice =
     document.getElementById(
         "artworkPrice"
@@ -1134,7 +1140,88 @@ function updateProductDetails() {
 
 }
 
+/* =========================================================
+   PRODUCT DETAILS — MATCH EXISTING PRODUCT COLUMN
+========================================================= */
 
+function syncProductDetailsToProductColumn() {
+
+    if (
+        !productDetailsPanel ||
+        !artworkProductInfo
+    ) {
+        return;
+    }
+
+
+    /*
+        Mobile keeps the normal full-screen
+        Product Details layout.
+    */
+
+    if (
+        !window.matchMedia(
+            "(min-width: 768px)"
+        ).matches
+    ) {
+
+        productDetailsPanel.style.removeProperty(
+            "--details-panel-top"
+        );
+
+        productDetailsPanel.style.removeProperty(
+            "--details-panel-left"
+        );
+
+        productDetailsPanel.style.removeProperty(
+            "--details-panel-width"
+        );
+
+        productDetailsPanel.style.removeProperty(
+            "--details-panel-height"
+        );
+
+        return;
+
+    }
+
+
+    /*
+        Measure the CURRENT white product-info column.
+
+        Product Details will occupy these exact
+        same boundaries.
+    */
+
+    const rect =
+        artworkProductInfo
+            .getBoundingClientRect();
+
+
+    productDetailsPanel.style.setProperty(
+        "--details-panel-top",
+        `${rect.top}px`
+    );
+
+
+    productDetailsPanel.style.setProperty(
+        "--details-panel-left",
+        `${rect.left}px`
+    );
+
+
+    productDetailsPanel.style.setProperty(
+        "--details-panel-width",
+        `${rect.width}px`
+    );
+
+
+    productDetailsPanel.style.setProperty(
+        "--details-panel-height",
+        `${rect.height}px`
+    );
+
+}
 
 /* =========================================================
    OPEN PRODUCT DETAILS
@@ -1150,24 +1237,6 @@ function openProductDetails() {
     }
 
 
-    /*
-        Tablet / desktop split-screen artwork.
-        Always uses the main portrait image.
-    */
-
-    if (
-        activeArtwork.gallery &&
-        activeArtwork.gallery[0]
-    ) {
-
-        productDetailsPanel.style.setProperty(
-            "--product-details-artwork-image",
-            `url("${activeArtwork.gallery[0].src}")`
-        );
-
-    }
-
-
     updateProductDetails();
 
 
@@ -1176,8 +1245,33 @@ function openProductDetails() {
     );
 
 
+    /*
+        Match the exact width and position
+        of the existing product-info column.
+    */
+
+    syncProductDetailsToProductColumn();
+
+
     productDetailsPanel.scrollTop =
         0;
+
+
+    /*
+        Fade the EXISTING artwork side.
+
+        No duplicate artwork image is created.
+    */
+
+    if (
+        lightbox
+    ) {
+
+        lightbox.classList.add(
+            "product-details-open"
+        );
+
+    }
 
 
     productDetailsPanel.classList.add(
@@ -1215,6 +1309,17 @@ function closeProductDetails() {
         "aria-hidden",
         "true"
     );
+
+
+    if (
+        lightbox
+    ) {
+
+        lightbox.classList.remove(
+            "product-details-open"
+        );
+
+    }
 
 }
 
@@ -4105,6 +4210,26 @@ window.addEventListener(
     }
 );
 
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        if (
+            productDetailsPanel &&
+            productDetailsPanel
+                .classList
+                .contains(
+                    "open"
+                )
+        ) {
+
+            syncProductDetailsToProductColumn();
+
+        }
+
+    }
+);
 
 
 /* =========================================================
