@@ -642,7 +642,8 @@ function updateProductDetails() {
 function updateSizeGuideArtwork() {
 
     if (
-        !activeArtwork
+        !activeArtwork ||
+        !activeArtworkKey
     ) {
         return;
     }
@@ -659,13 +660,15 @@ function updateSizeGuideArtwork() {
 
 
     if (
-        sizeGuideWallArt &&
-        activeArtwork.gallery &&
-        activeArtwork.gallery[0]
+        sizeGuideWallArt
     ) {
 
+        const sizeGuideImage =
+            `images/${activeArtworkKey} size.jpg`;
+
+
         sizeGuideWallArt.style.backgroundImage =
-            `url("${activeArtwork.gallery[0].src}")`;
+            `url("${sizeGuideImage}")`;
 
 
         sizeGuideWallArt.setAttribute(
