@@ -1,282 +1,503 @@
-/* ==========================================
-   ZIZOU DESIGN — SUMMERTIDE ARTWORKS
-========================================== */
+/* =========================================================
+   ZIZOU DESIGN — SUMMERTIDE
+   SUMMERTIDE.JS
 
-
-/* ==========================================
    01. ARTWORK DATA
-========================================== */
+   02. ELEMENTS
+   03. LOAD COLLECTION IMAGES
+   04. STATE
+   05. ADD TO BAG
+   06. ARTWORK INFORMATION
+   07. PRODUCT DETAILS
+   08. SIZE GUIDE
+   09. PROPORTIONS GUIDE
+   10. PROTECTION OVERLAY
+   11. GALLERY SLIDE
+   12. GALLERY PRELOAD
+   13. COLLECTION NAVIGATOR
+   14. ACCORDIONS
+   15. OPEN ARTWORK
+   16. IMAGE SIZE CACHE
+   17. POSITION PROTECTION OVERLAY
+   18. OPENING TRANSITION
+   19. GALLERY NAVIGATION
+   20. CLOSE ARTWORK
+   21. ARTWORK EVENTS
+   22. PRODUCT DETAILS EVENTS
+   23. KEYBOARD
+   24. MOBILE GALLERY SWIPE
+   25. RESIZE
+   26. INITIALIZE
+========================================================= */
+
+
+
+/* =========================================================
+   01. ARTWORK DATA
+========================================================= */
 
 const artworks = {
 
     amber: {
-        name: "Amber Breeze",
-        product: "amber-breeze",
-        price: "19.99",
-        year: "2024",
-        number: "01",
+
+        name:
+            "Amber Breeze",
+
+        product:
+            "amber-breeze",
+
+        price:
+            "19.99",
+
+        year:
+            "2024",
+
+        number:
+            "01",
 
         description:
             "The scent of a summer floral breeze captivating the soul.",
 
+
         gallery: [
+
             {
-                src: "images/amber portrait.JPG",
-                alt: "Amber portrait",
+
+                src:
+                    "images/amber portrait.JPG",
+
+                alt:
+                    "Amber portrait",
 
                 protectShape:
                     "polygon(19.2% 19.2%, 81.0% 19.2%, 81.0% 76.6%, 19.2% 76.6%)"
+
             },
 
             {
-                src: "images/amber mock room.jpg",
-                alt: "Amber mock room 1",
+
+                src:
+                    "images/amber mock room.jpg",
+
+                alt:
+                    "Amber mock room 1",
 
                 protectShape:
                     "polygon(34.8% 17.4%, 69.6% 17.4%, 69.6% 50.5%, 34.8% 50.5%)"
+
             },
 
             {
-                src: "images/amber mock room 2.JPG",
-                alt: "Amber mock room 2",
+
+                src:
+                    "images/amber mock room 2.JPG",
+
+                alt:
+                    "Amber mock room 2",
 
                 protectShape:
                     "polygon(38.7% 17.9%, 69.2% 17.9%, 69.2% 46.2%, 38.7% 46.2%)"
+
             }
+
         ]
+
     },
 
 
+
     peridot: {
-        name: "Peridot Afloat",
-        product: "peridot-afloat",
-        price: "19.99",
-        year: "2024",
-        number: "02",
+
+        name:
+            "Peridot Afloat",
+
+        product:
+            "peridot-afloat",
+
+        price:
+            "19.99",
+
+        year:
+            "2024",
+
+        number:
+            "02",
 
         description:
             "A peaceful state of solitude guided by crystalline ripples.",
 
+
         gallery: [
+
             {
-                src: "images/peridot portrait.JPG",
-                alt: "Peridot portrait",
+
+                src:
+                    "images/peridot portrait.JPG",
+
+                alt:
+                    "Peridot portrait",
 
                 protectShape:
                     "polygon(19.0% 19.2%, 81.0% 19.2%, 81.0% 76.4%, 19.0% 76.4%)"
+
             },
 
             {
-                src: "images/peridot mock room 1.JPG",
-                alt: "Peridot mock room 1",
+
+                src:
+                    "images/peridot mock room 1.JPG",
+
+                alt:
+                    "Peridot mock room 1",
 
                 protectShape:
                     "polygon(48.6% 17.5%, 78.4% 17.5%, 78.4% 45.6%, 48.6% 45.6%)"
+
             },
 
             {
-                src: "images/peridot mock room 2.JPG",
-                alt: "Peridot mock room 2",
+
+                src:
+                    "images/peridot mock room 2.JPG",
+
+                alt:
+                    "Peridot mock room 2",
 
                 protectShape:
                     "polygon(51.5% 14.0%, 79.8% 14.0%, 79.8% 41.0%, 51.5% 41.0%)"
+
             }
+
         ]
+
     },
 
 
+
     patina: {
-        name: "Pátina del Mar",
-        product: "patina-del-mar",
-        price: "19.99",
-        year: "2024",
-        number: "03",
+
+        name:
+            "Pátina del Mar",
+
+        product:
+            "patina-del-mar",
+
+        price:
+            "19.99",
+
+        year:
+            "2024",
+
+        number:
+            "03",
 
         description:
             "The sea has a way of illustrating a story wherever it touches.",
 
+
         gallery: [
+
             {
-                src: "images/patina portrait.JPG",
-                alt: "Pátina portrait",
+
+                src:
+                    "images/patina portrait.JPG",
+
+                alt:
+                    "Pátina portrait",
 
                 protectShape:
                     "polygon(19.0% 19.2%, 81.0% 19.2%, 81.0% 76.4%, 19.0% 76.4%)"
+
             },
 
             {
-                src: "images/patina mock room.jpg",
-                alt: "Pátina mock room 1",
+
+                src:
+                    "images/patina mock room.jpg",
+
+                alt:
+                    "Pátina mock room 1",
 
                 protectShape:
                     "polygon(42.03% 19.86%, 73.77% 19.98%, 73.77% 50.00%, 41.89% 49.89%)"
+
             },
 
             {
-                src: "images/patina mock room 2.JPG",
-                alt: "Pátina mock room 2",
+
+                src:
+                    "images/patina mock room 2.JPG",
+
+                alt:
+                    "Pátina mock room 2",
 
                 protectShape:
                     "polygon(58.39% 24.04%, 81.24% 24.15%, 80.96% 45.26%, 58.25% 45.26%)"
+
             }
+
         ]
+
     },
 
 
+
     sage: {
-        name: "Sage Quietude",
-        product: "sage-quietude",
-        price: "19.99",
-        year: "2024",
-        number: "04",
+
+        name:
+            "Sage Quietude",
+
+        product:
+            "sage-quietude",
+
+        price:
+            "19.99",
+
+        year:
+            "2024",
+
+        number:
+            "04",
 
         description:
             "Restfulness begins with the first breath of release.",
 
+
         gallery: [
+
             {
-                src: "images/sage portrait.JPG",
-                alt: "Sage portrait",
+
+                src:
+                    "images/sage portrait.JPG",
+
+                alt:
+                    "Sage portrait",
 
                 protectShape:
                     "polygon(19.0% 19.2%, 81.0% 19.2%, 81.0% 76.4%, 19.0% 76.4%)"
+
             },
 
             {
-                src: "images/sage mock room 1.JPG",
-                alt: "Sage mock room 1",
+
+                src:
+                    "images/sage mock room 1.JPG",
+
+                alt:
+                    "Sage mock room 1",
 
                 protectShape:
                     "polygon(28.5% 16.6%, 65.0% 16.6%, 65.0% 51.1%, 28.5% 51.1%)"
+
             },
 
             {
-                src: "images/sage mock room 2.JPG",
-                alt: "Sage mock room 2",
+
+                src:
+                    "images/sage mock room 2.JPG",
+
+                alt:
+                    "Sage mock room 2",
 
                 protectShape:
                     "polygon(29.6% 15.2%, 69.4% 15.2%, 69.4% 52.6%, 29.6% 52.6%)"
+
             }
+
         ]
+
     },
 
 
+
     eter: {
-        name: "Éter do Luar",
-        product: "eter-do-luar",
-        price: "19.99",
-        year: "2024",
-        number: "05",
+
+        name:
+            "Éter do Luar",
+
+        product:
+            "eter-do-luar",
+
+        price:
+            "19.99",
+
+        year:
+            "2024",
+
+        number:
+            "05",
 
         description:
             "The aura enfolding the world with a gentle touch.",
 
+
         gallery: [
+
             {
-                src: "images/eter portrait.JPG",
-                alt: "Éter portrait",
+
+                src:
+                    "images/eter portrait.JPG",
+
+                alt:
+                    "Éter portrait",
 
                 protectShape:
                     "polygon(19.0% 19.2%, 81.0% 19.2%, 81.0% 76.4%, 19.0% 76.4%)"
+
             },
 
             {
-                src: "images/eter mock room.jpg",
-                alt: "Éter mock room 1",
+
+                src:
+                    "images/eter mock room.jpg",
+
+                alt:
+                    "Éter mock room 1",
 
                 protectShape:
                     "polygon(34.7% 20.1%, 62.2% 20.1%, 62.2% 46.2%, 34.7% 46.2%)"
+
             },
 
             {
-                src: "images/eter mock room 2.jpg",
-                alt: "Éter mock room 2",
+
+                src:
+                    "images/eter mock room 2.jpg",
+
+                alt:
+                    "Éter mock room 2",
 
                 protectShape:
                     "polygon(42.5% 36.4%, 67.8% 36.4%, 67.8% 60.1%, 42.5% 60.1%)"
+
             }
+
         ]
+
     },
 
 
+
     oneiric: {
-        name: "Oneiric Glow",
-        product: "oneiric-glow",
-        price: "19.99",
-        year: "2024",
-        number: "06",
+
+        name:
+            "Oneiric Glow",
+
+        product:
+            "oneiric-glow",
+
+        price:
+            "19.99",
+
+        year:
+            "2024",
+
+        number:
+            "06",
 
         description:
             "A moment of stillness can kindle a soul toward rediscovery.",
 
+
         gallery: [
+
             {
-                src: "images/oneiric portrait.JPG",
-                alt: "Oneiric portrait",
+
+                src:
+                    "images/oneiric portrait.JPG",
+
+                alt:
+                    "Oneiric portrait",
 
                 protectShape:
                     "polygon(19.0% 19.2%, 81.0% 19.2%, 81.0% 76.4%, 19.0% 76.4%)"
+
             },
 
             {
-                src: "images/oneiric mock room 1.JPG",
-                alt: "Oneiric mock room 1",
+
+                src:
+                    "images/oneiric mock room 1.JPG",
+
+                alt:
+                    "Oneiric mock room 1",
 
                 protectShape:
                     "polygon(24.65% 23.32%, 62.79% 23.32%, 62.79% 59.35%, 24.65% 59.35%)"
+
             },
 
             {
-                src: "images/oneiric mock room 2.JPG",
-                alt: "Oneiric mock room 2",
+
+                src:
+                    "images/oneiric mock room 2.JPG",
+
+                alt:
+                    "Oneiric mock room 2",
 
                 protectShape:
                     "polygon(22.2% 29.5%, 43.6% 29.5%, 43.6% 49.7%, 22.2% 49.7%)"
+
             }
+
         ]
+
     }
 
 };
 
 
-/* ==========================================
+
+/* =========================================================
    02. ELEMENTS
-========================================== */
+========================================================= */
+
+
+/* =========================================================
+   GALLERY
+========================================================= */
 
 const lightbox =
     document.getElementById(
         "lightbox"
     );
 
+
 const lightboxImage =
     document.getElementById(
         "lightboxImage"
     );
+
 
 const lightboxTitle =
     document.getElementById(
         "lightboxTitle"
     );
 
+
 const lightboxCounter =
     document.getElementById(
         "lightboxCounter"
     );
-    
-    const lightboxSwipeIndicator =
+
+
+const lightboxSwipeIndicator =
     document.getElementById(
         "lightboxSwipeIndicator"
     );
+
 
 const lightboxClose =
     document.getElementById(
         "lightboxClose"
     );
 
+
 const lightboxPrev =
     document.getElementById(
         "lightboxPrev"
     );
+
 
 const lightboxNext =
     document.getElementById(
@@ -284,34 +505,40 @@ const lightboxNext =
     );
 
 
-/* ------------------------------------------
+
+/* =========================================================
    PRODUCT INFORMATION
------------------------------------------- */
+========================================================= */
 
 const artworkPrice =
     document.getElementById(
         "artworkPrice"
     );
 
+
 const artworkDescription =
     document.getElementById(
         "artworkDescription"
     );
+
 
 const artworkYear =
     document.getElementById(
         "artworkYear"
     );
 
+
 const artworkNumber =
     document.getElementById(
         "artworkNumber"
     );
 
+
 const artworkAddToBag =
     document.getElementById(
         "artworkAddToBag"
     );
+
 
 const artworkAddToBagPrice =
     document.getElementById(
@@ -323,7 +550,13 @@ const collectionArtworkTrack =
     document.getElementById(
         "collectionArtworkTrack"
     );
-    
+
+
+
+/* =========================================================
+   PRODUCT DETAILS
+========================================================= */
+
 const artworkDetailsLink =
     document.getElementById(
         "artworkDetailsLink"
@@ -370,7 +603,13 @@ const detailsArtworkYear =
     document.getElementById(
         "detailsArtworkYear"
     );
-    
+
+
+
+/* =========================================================
+   SIZE GUIDE
+========================================================= */
+
 const artworkSizeGuideLink =
     document.getElementById(
         "artworkSizeGuideLink"
@@ -412,9 +651,70 @@ const sizeGuideOptions =
         ".size-guide-option"
     );
 
-/* ==========================================
-   03. LOAD PROTECTED COLLECTION IMAGES
-========================================== */
+
+
+/* =========================================================
+   PROPORTIONS GUIDE
+========================================================= */
+
+const artworkProportionsGuideLink =
+    document.getElementById(
+        "artworkProportionsGuideLink"
+    );
+
+
+const proportionsGuidePanel =
+    document.getElementById(
+        "proportionsGuidePanel"
+    );
+
+
+const proportionsGuideClose =
+    document.getElementById(
+        "proportionsGuideClose"
+    );
+
+
+const proportionsGuideViewer =
+    document.querySelector(
+        ".proportions-guide-viewer"
+    );
+
+
+const proportionsGuideFrame =
+    document.getElementById(
+        "proportionsGuideFrame"
+    );
+
+
+const proportionsGuideImage =
+    document.getElementById(
+        "proportionsGuideImage"
+    );
+
+
+const proportionsGuideFormat =
+    document.getElementById(
+        "proportionsGuideFormat"
+    );
+
+
+const proportionsGuideImpact =
+    document.getElementById(
+        "proportionsGuideImpact"
+    );
+
+
+const proportionsGuideIndicator =
+    document.getElementById(
+        "proportionsGuideIndicator"
+    );
+
+
+
+/* =========================================================
+   03. LOAD COLLECTION IMAGES
+========================================================= */
 
 document
     .querySelectorAll(
@@ -427,7 +727,9 @@ document
                 image.dataset.image;
 
 
-            if (!source) {
+            if (
+                !source
+            ) {
                 return;
             }
 
@@ -439,9 +741,15 @@ document
     );
 
 
-/* ==========================================
-   04. ACTIVE ARTWORK / GALLERY
-========================================== */
+
+/* =========================================================
+   04. STATE
+========================================================= */
+
+
+/* =========================================================
+   ACTIVE ARTWORK / GALLERY
+========================================================= */
 
 let activeArtwork =
     null;
@@ -458,27 +766,204 @@ let activeGallery =
 let activeIndex =
     0;
 
+
 let touchStartX =
     0;
 
+
 let touchEndX =
     0;
+
 
 let transitionRunning =
     false;
 
 
-/* ==========================================
-   05. ADD TO BAG
-========================================== */
 
-if (artworkAddToBag) {
+/* =========================================================
+   PROPORTIONS GUIDE STATE
+========================================================= */
+
+let activeProportionIndex =
+    0;
+
+
+let proportionsSwipeStartX =
+    0;
+
+
+let proportionsSwipeEndX =
+    0;
+
+
+
+/* =========================================================
+   PROPORTIONS GUIDE FORMATS
+
+   Native Summertide proportion:
+   A-series = 1 : √2
+========================================================= */
+
+const proportionsGuideFormats = [
+
+    {
+
+        key:
+            "a-series",
+
+        label:
+            "A-series · 1:√2",
+
+        ratio:
+            "1 / 1.41421356237",
+
+        fit:
+            "contain",
+
+        impact:
+            "Original composition"
+
+    },
+
+
+    {
+
+        key:
+            "5x7",
+
+        label:
+            "5:7",
+
+        ratio:
+            "5 / 7",
+
+        fit:
+            "cover",
+
+        impact:
+            "Minimal crop at the top and bottom"
+
+    },
+
+
+    {
+
+        key:
+            "2x3",
+
+        label:
+            "2:3",
+
+        ratio:
+            "2 / 3",
+
+        fit:
+            "cover",
+
+        impact:
+            "Slight crop on the left and right"
+
+    },
+
+
+    {
+
+        key:
+            "3x4",
+
+        label:
+            "3:4",
+
+        ratio:
+            "3 / 4",
+
+        fit:
+            "cover",
+
+        impact:
+            "Slight crop at the top and bottom"
+
+    },
+
+
+    {
+
+        key:
+            "4x5",
+
+        label:
+            "4:5",
+
+        ratio:
+            "4 / 5",
+
+        fit:
+            "cover",
+
+        impact:
+            "Moderate crop at the top and bottom"
+
+    },
+
+
+    {
+
+        key:
+            "11x14",
+
+        label:
+            "11:14",
+
+        ratio:
+            "11 / 14",
+
+        fit:
+            "cover",
+
+        impact:
+            "Moderate crop at the top and bottom"
+
+    },
+
+
+    {
+
+        key:
+            "1x1",
+
+        label:
+            "1:1",
+
+        ratio:
+            "1 / 1",
+
+        fit:
+            "cover",
+
+        impact:
+            "Significant crop at the top and bottom"
+
+    }
+
+];
+
+
+
+/* =========================================================
+   05. ADD TO BAG
+========================================================= */
+
+if (
+    artworkAddToBag
+) {
 
     artworkAddToBag.addEventListener(
         "click",
         () => {
 
-            if (!activeArtwork) {
+            if (
+                !activeArtwork
+            ) {
                 return;
             }
 
@@ -493,9 +978,10 @@ if (artworkAddToBag) {
 }
 
 
-/* ==========================================
-   06. UPDATE ARTWORK INFORMATION
-========================================== */
+
+/* =========================================================
+   06. ARTWORK INFORMATION
+========================================================= */
 
 function updateArtworkInfo() {
 
@@ -586,14 +1072,21 @@ function updateArtworkInfo() {
 
 
     updateCollectionNavigatorState();
+
     updateProductDetails();
 
 }
 
 
-/* ==========================================
-   PRODUCT DETAILS — UPDATE DATA
-========================================== */
+
+/* =========================================================
+   07. PRODUCT DETAILS
+========================================================= */
+
+
+/* =========================================================
+   UPDATE PRODUCT DETAILS
+========================================================= */
 
 function updateProductDetails() {
 
@@ -635,9 +1128,163 @@ function updateProductDetails() {
 
 }
 
-/* ==========================================
-   SIZE GUIDE — UPDATE ARTWORK
-========================================== */
+
+
+/* =========================================================
+   OPEN PRODUCT DETAILS
+========================================================= */
+
+function openProductDetails() {
+
+    if (
+        !productDetailsPanel ||
+        !activeArtwork
+    ) {
+        return;
+    }
+
+
+    updateProductDetails();
+
+
+    activateProductDetailsTab(
+        "artwork"
+    );
+
+
+    productDetailsPanel.scrollTop =
+        0;
+
+
+    productDetailsPanel.classList.add(
+        "open"
+    );
+
+
+    productDetailsPanel.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+}
+
+
+
+/* =========================================================
+   CLOSE PRODUCT DETAILS
+========================================================= */
+
+function closeProductDetails() {
+
+    if (
+        !productDetailsPanel
+    ) {
+        return;
+    }
+
+
+    productDetailsPanel.classList.remove(
+        "open"
+    );
+
+
+    productDetailsPanel.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+}
+
+
+
+/* =========================================================
+   CHANGE PRODUCT DETAILS TAB
+========================================================= */
+
+function activateProductDetailsTab(
+    tabName
+) {
+
+    productDetailsTabs.forEach(
+        tab => {
+
+            const isActive =
+                tab.dataset.detailsTab
+                ===
+                tabName;
+
+
+            tab.classList.toggle(
+                "active",
+                isActive
+            );
+
+
+            tab.setAttribute(
+                "aria-selected",
+                isActive
+                    ?
+                    "true"
+                    :
+                    "false"
+            );
+
+        }
+    );
+
+
+    productDetailsSections.forEach(
+        section => {
+
+            const isActive =
+                section.dataset.detailsPanel
+                ===
+                tabName;
+
+
+            section.classList.toggle(
+                "active",
+                isActive
+            );
+
+
+            section.hidden =
+                !isActive;
+
+        }
+    );
+
+
+    if (
+        productDetailsPanel
+    ) {
+
+        productDetailsPanel.scrollTo(
+            {
+
+                top:
+                    0,
+
+                behavior:
+                    "smooth"
+
+            }
+        );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   08. SIZE GUIDE
+========================================================= */
+
+
+/* =========================================================
+   UPDATE SIZE GUIDE ARTWORK
+========================================================= */
 
 function updateSizeGuideArtwork() {
 
@@ -681,9 +1328,10 @@ function updateSizeGuideArtwork() {
 }
 
 
-/* ==========================================
-   SIZE GUIDE — SELECT SIZE
-========================================== */
+
+/* =========================================================
+   SELECT SIZE
+========================================================= */
 
 function setSizeGuideSize(
     button
@@ -740,9 +1388,10 @@ function setSizeGuideSize(
 }
 
 
-/* ==========================================
-   SIZE GUIDE — OPEN
-========================================== */
+
+/* =========================================================
+   OPEN SIZE GUIDE
+========================================================= */
 
 function openSizeGuide() {
 
@@ -791,9 +1440,10 @@ function openSizeGuide() {
 }
 
 
-/* ==========================================
-   SIZE GUIDE — CLOSE
-========================================== */
+
+/* =========================================================
+   CLOSE SIZE GUIDE
+========================================================= */
 
 function closeSizeGuide() {
 
@@ -817,9 +1467,10 @@ function closeSizeGuide() {
 }
 
 
-/* ==========================================
-   SIZE GUIDE — EVENTS
-========================================== */
+
+/* =========================================================
+   SIZE GUIDE EVENTS
+========================================================= */
 
 if (
     artworkSizeGuideLink
@@ -862,9 +1513,597 @@ sizeGuideOptions.forEach(
     }
 );
 
-/* ==========================================
-   07. PROTECTION OVERLAY
-========================================== */
+
+
+/* =========================================================
+   09. PROPORTIONS GUIDE
+========================================================= */
+
+
+/* =========================================================
+   GET ARTWORK SOURCE
+
+   If a dedicated proportions preview is added later,
+   define:
+
+   proportionsSrc: "images/example.jpg"
+
+   inside the artwork data.
+
+   Until then, the first gallery image is used.
+========================================================= */
+
+function getProportionsGuideSource() {
+
+    if (
+        !activeArtwork
+    ) {
+        return "";
+    }
+
+
+    if (
+        activeArtwork.proportionsSrc
+    ) {
+
+        return activeArtwork.proportionsSrc;
+
+    }
+
+
+    if (
+        activeArtwork.gallery &&
+        activeArtwork.gallery.length
+    ) {
+
+        return activeArtwork.gallery[0].src;
+
+    }
+
+
+    return "";
+
+}
+
+
+
+/* =========================================================
+   BUILD PROPORTIONS INDICATOR
+========================================================= */
+
+function buildProportionsGuideIndicator() {
+
+    if (
+        !proportionsGuideIndicator
+    ) {
+        return;
+    }
+
+
+    proportionsGuideIndicator.innerHTML =
+        "";
+
+
+    proportionsGuideFormats.forEach(
+        (_, index) => {
+
+            const segment =
+                document.createElement(
+                    "span"
+                );
+
+
+            if (
+                index ===
+                activeProportionIndex
+            ) {
+
+                segment.classList.add(
+                    "active"
+                );
+
+            }
+
+
+            proportionsGuideIndicator
+                .appendChild(
+                    segment
+                );
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   UPDATE PROPORTIONS INDICATOR
+========================================================= */
+
+function updateProportionsGuideIndicator() {
+
+    if (
+        !proportionsGuideIndicator
+    ) {
+        return;
+    }
+
+
+    const segments =
+        proportionsGuideIndicator
+            .querySelectorAll(
+                "span"
+            );
+
+
+    segments.forEach(
+        (segment, index) => {
+
+            segment.classList.toggle(
+                "active",
+                index ===
+                activeProportionIndex
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   UPDATE PROPORTIONS ARTWORK
+========================================================= */
+
+function updateProportionsGuideArtwork() {
+
+    if (
+        !activeArtwork ||
+        !proportionsGuideImage
+    ) {
+        return;
+    }
+
+
+    const source =
+        getProportionsGuideSource();
+
+
+    if (
+        !source
+    ) {
+        return;
+    }
+
+
+    proportionsGuideImage
+        .style
+        .backgroundImage =
+        `url("${source}")`;
+
+
+    proportionsGuideImage.setAttribute(
+        "aria-label",
+        `${activeArtwork.name} proportions preview`
+    );
+
+}
+
+
+
+/* =========================================================
+   RENDER ACTIVE PROPORTION
+========================================================= */
+
+function renderProportionsGuide() {
+
+    const format =
+        proportionsGuideFormats[
+            activeProportionIndex
+        ];
+
+
+    if (
+        !format ||
+        !proportionsGuideFrame ||
+        !proportionsGuideImage
+    ) {
+        return;
+    }
+
+
+    /*
+        Change the visible frame shape.
+    */
+
+    proportionsGuideFrame
+        .style
+        .aspectRatio =
+        format.ratio;
+
+
+    /*
+        Native A-series:
+        preserve the entire composition.
+
+        Alternative ratios:
+        fill the selected shape so the
+        buyer can see the resulting crop.
+    */
+
+    proportionsGuideImage
+        .style
+        .backgroundSize =
+        format.fit;
+
+
+    proportionsGuideImage
+        .style
+        .backgroundPosition =
+        "center center";
+
+
+    if (
+        proportionsGuideFormat
+    ) {
+
+        proportionsGuideFormat.textContent =
+            format.label;
+
+    }
+
+
+    if (
+        proportionsGuideImpact
+    ) {
+
+        proportionsGuideImpact.textContent =
+            format.impact;
+
+    }
+
+
+    updateProportionsGuideIndicator();
+
+}
+
+
+
+/* =========================================================
+   NEXT PROPORTION
+========================================================= */
+
+function showNextProportion() {
+
+    activeProportionIndex =
+        (
+            activeProportionIndex
+            +
+            1
+        )
+        %
+        proportionsGuideFormats.length;
+
+
+    renderProportionsGuide();
+
+}
+
+
+
+/* =========================================================
+   PREVIOUS PROPORTION
+========================================================= */
+
+function showPreviousProportion() {
+
+    activeProportionIndex =
+        (
+            activeProportionIndex
+            -
+            1
+            +
+            proportionsGuideFormats.length
+        )
+        %
+        proportionsGuideFormats.length;
+
+
+    renderProportionsGuide();
+
+}
+
+
+
+/* =========================================================
+   OPEN PROPORTIONS GUIDE
+========================================================= */
+
+function openProportionsGuide() {
+
+    if (
+        !proportionsGuidePanel ||
+        !activeArtwork
+    ) {
+        return;
+    }
+
+
+    activeProportionIndex =
+        0;
+
+
+    updateProportionsGuideArtwork();
+
+
+    buildProportionsGuideIndicator();
+
+
+    renderProportionsGuide();
+
+
+    proportionsGuidePanel.scrollTop =
+        0;
+
+
+    proportionsGuidePanel.classList.add(
+        "open"
+    );
+
+
+    proportionsGuidePanel.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+}
+
+
+
+/* =========================================================
+   CLOSE PROPORTIONS GUIDE
+========================================================= */
+
+function closeProportionsGuide() {
+
+    if (
+        !proportionsGuidePanel
+    ) {
+        return;
+    }
+
+
+    proportionsGuidePanel.classList.remove(
+        "open"
+    );
+
+
+    proportionsGuidePanel.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+}
+
+
+
+/* =========================================================
+   PROPORTIONS GUIDE BUTTON EVENTS
+========================================================= */
+
+if (
+    artworkProportionsGuideLink
+) {
+
+    artworkProportionsGuideLink.addEventListener(
+        "click",
+        openProportionsGuide
+    );
+
+}
+
+
+if (
+    proportionsGuideClose
+) {
+
+    proportionsGuideClose.addEventListener(
+        "click",
+        closeProportionsGuide
+    );
+
+}
+
+
+
+/* =========================================================
+   PROPORTIONS GUIDE — TOUCH SWIPE
+========================================================= */
+
+if (
+    proportionsGuideViewer
+) {
+
+    proportionsGuideViewer.addEventListener(
+        "touchstart",
+        event => {
+
+            proportionsSwipeStartX =
+                event
+                    .changedTouches[0]
+                    .clientX;
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    proportionsGuideViewer.addEventListener(
+        "touchend",
+        event => {
+
+            proportionsSwipeEndX =
+                event
+                    .changedTouches[0]
+                    .clientX;
+
+
+            const distance =
+                proportionsSwipeStartX
+                -
+                proportionsSwipeEndX;
+
+
+            if (
+                Math.abs(
+                    distance
+                )
+                <
+                45
+            ) {
+                return;
+            }
+
+
+            if (
+                distance > 0
+            ) {
+
+                showNextProportion();
+
+            }
+
+            else {
+
+                showPreviousProportion();
+
+            }
+
+        },
+        {
+            passive: true
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   PROPORTIONS GUIDE — DESKTOP SWIPE
+========================================================= */
+
+if (
+    proportionsGuideViewer
+) {
+
+    let proportionsPointerActive =
+        false;
+
+
+    proportionsGuideViewer.addEventListener(
+        "pointerdown",
+        event => {
+
+            /*
+                Touch devices already use the
+                touch listeners above.
+            */
+
+            if (
+                event.pointerType ===
+                "touch"
+            ) {
+                return;
+            }
+
+
+            proportionsPointerActive =
+                true;
+
+
+            proportionsSwipeStartX =
+                event.clientX;
+
+        }
+    );
+
+
+    proportionsGuideViewer.addEventListener(
+        "pointerup",
+        event => {
+
+            if (
+                !proportionsPointerActive
+            ) {
+                return;
+            }
+
+
+            proportionsPointerActive =
+                false;
+
+
+            proportionsSwipeEndX =
+                event.clientX;
+
+
+            const distance =
+                proportionsSwipeStartX
+                -
+                proportionsSwipeEndX;
+
+
+            if (
+                Math.abs(
+                    distance
+                )
+                <
+                45
+            ) {
+                return;
+            }
+
+
+            if (
+                distance > 0
+            ) {
+
+                showNextProportion();
+
+            }
+
+            else {
+
+                showPreviousProportion();
+
+            }
+
+        }
+    );
+
+
+    proportionsGuideViewer.addEventListener(
+        "pointerleave",
+        () => {
+
+            proportionsPointerActive =
+                false;
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   10. PROTECTION OVERLAY
+========================================================= */
 
 const imageSizeCache =
     new Map();
@@ -872,6 +2111,7 @@ const imageSizeCache =
 
 let protectionOverlay =
     null;
+
 
 
 function getProtectionOverlay() {
@@ -905,13 +2145,15 @@ function getProtectionOverlay() {
 }
 
 
-/* ==========================================
-   08. UPDATE CURRENT SLIDE
-========================================== */
 
-/* ==========================================
+/* =========================================================
+   11. GALLERY SLIDE
+========================================================= */
+
+
+/* =========================================================
    GALLERY SWIPE INDICATOR
-========================================== */
+========================================================= */
 
 function updateSwipeIndicator() {
 
@@ -963,6 +2205,12 @@ function updateSwipeIndicator() {
 
 }
 
+
+
+/* =========================================================
+   UPDATE CURRENT SLIDE
+========================================================= */
+
 function updateSlide() {
 
     const slide =
@@ -971,7 +2219,9 @@ function updateSlide() {
         ];
 
 
-    if (!slide) {
+    if (
+        !slide
+    ) {
         return;
     }
 
@@ -995,15 +2245,17 @@ function updateSlide() {
 
     lightboxCounter.textContent =
         `${activeIndex + 1}/${activeGallery.length}`;
-        
-        updateSwipeIndicator();
+
+
+    updateSwipeIndicator();
 
 }
 
 
-/* ==========================================
-   09. PRELOAD GALLERY
-========================================== */
+
+/* =========================================================
+   12. GALLERY PRELOAD
+========================================================= */
 
 function preloadGalleryImages(
     gallery
@@ -1024,19 +2276,28 @@ function preloadGalleryImages(
 
 }
 
-/* ==========================================
-   09A. COLLECTION ARTWORK NAVIGATOR
-========================================== */
+
+
+/* =========================================================
+   13. COLLECTION NAVIGATOR
+========================================================= */
 
 const artworkOrder = [
+
     "amber",
     "peridot",
     "patina",
     "sage",
     "eter",
     "oneiric"
+
 ];
 
+
+
+/* =========================================================
+   BUILD COLLECTION NAVIGATOR
+========================================================= */
 
 function buildCollectionNavigator() {
 
@@ -1176,9 +2437,10 @@ function buildCollectionNavigator() {
 }
 
 
-/* ==========================================
-   09B. UPDATE COLLECTION NAVIGATOR
-========================================== */
+
+/* =========================================================
+   UPDATE COLLECTION NAVIGATOR
+========================================================= */
 
 function updateCollectionNavigatorState(
     smooth = true
@@ -1251,6 +2513,7 @@ function updateCollectionNavigatorState(
 
     collectionArtworkTrack.scrollTo(
         {
+
             left:
                 Math.max(
                     0,
@@ -1263,15 +2526,17 @@ function updateCollectionNavigatorState(
                     "smooth"
                     :
                     "auto"
+
         }
     );
 
 }
 
 
-/* ==========================================
-   09C. SWITCH ARTWORK FROM NAVIGATOR
-========================================== */
+
+/* =========================================================
+   SWITCH ARTWORK FROM NAVIGATOR
+========================================================= */
 
 function switchArtworkFromNavigator(
     artworkKey
@@ -1364,11 +2629,13 @@ function switchArtworkFromNavigator(
 
                 lightbox.scrollTo(
                     {
+
                         top:
                             0,
 
                         behavior:
                             "smooth"
+
                     }
                 );
 
@@ -1397,9 +2664,10 @@ function switchArtworkFromNavigator(
 }
 
 
-/* ==========================================
-   10. ACCORDION — CLOSE ALL
-========================================== */
+
+/* =========================================================
+   14. ACCORDIONS
+========================================================= */
 
 function closeAllAccordions() {
 
@@ -1427,7 +2695,9 @@ function closeAllAccordions() {
                 );
 
 
-                if (content) {
+                if (
+                    content
+                ) {
 
                     content.style.maxHeight =
                         null;
@@ -1435,7 +2705,9 @@ function closeAllAccordions() {
                 }
 
 
-                if (symbol) {
+                if (
+                    symbol
+                ) {
 
                     symbol.textContent =
                         "+";
@@ -1448,9 +2720,10 @@ function closeAllAccordions() {
 }
 
 
-/* ==========================================
-   11. OPEN ARTWORK
-========================================== */
+
+/* =========================================================
+   15. OPEN ARTWORK
+========================================================= */
 
 function openGallery(
     artworkName,
@@ -1482,15 +2755,15 @@ function openGallery(
 
 
     activeArtworkKey =
-    artworkName;
+        artworkName;
 
 
-activeArtwork =
-    selectedArtwork;
+    activeArtwork =
+        selectedArtwork;
 
 
-activeGallery =
-    selectedArtwork.gallery;
+    activeGallery =
+        selectedArtwork.gallery;
 
 
     activeIndex =
@@ -1517,9 +2790,9 @@ activeGallery =
 
 
     /*
-       Preload the first gallery image
-       before beginning the opening
-       transition.
+        Preload the first gallery image
+        before beginning the opening
+        transition.
     */
 
     const firstGalleryImage =
@@ -1573,9 +2846,10 @@ activeGallery =
 }
 
 
-/* ==========================================
-   12. IMAGE SIZE CACHE
-========================================== */
+
+/* =========================================================
+   16. IMAGE SIZE CACHE
+========================================================= */
 
 function getImageSize(
     source,
@@ -1637,9 +2911,10 @@ function getImageSize(
 }
 
 
-/* ==========================================
-   13. POSITION PROTECTION OVERLAY
-========================================== */
+
+/* =========================================================
+   17. POSITION PROTECTION OVERLAY
+========================================================= */
 
 function positionProtectionOverlay(
     slide
@@ -1670,7 +2945,9 @@ function positionProtectionOverlay(
             if (
                 activeGallery[
                     activeIndex
-                ] !== slide
+                ]
+                !==
+                slide
             ) {
                 return;
             }
@@ -1805,9 +3082,10 @@ function positionProtectionOverlay(
 }
 
 
-/* ==========================================
-   14. REALISTIC ZOOM-OUT EFFECT
-========================================== */
+
+/* =========================================================
+   18. OPENING TRANSITION
+========================================================= */
 
 function runZoomOutTransition(
     clickedImage
@@ -1951,6 +3229,11 @@ function runZoomOutTransition(
                         "scale(1.06)";
 
 
+                    /*
+                        DO NOT CHANGE:
+                        tuned opening-transition timing.
+                    */
+
                     setTimeout(
                         () => {
 
@@ -2027,9 +3310,15 @@ function runZoomOutTransition(
 }
 
 
-/* ==========================================
-   15. CHANGE SLIDE
-========================================== */
+
+/* =========================================================
+   19. GALLERY NAVIGATION
+========================================================= */
+
+
+/* =========================================================
+   CHANGE SLIDE
+========================================================= */
 
 function changeSlide(
     newIndex
@@ -2093,15 +3382,17 @@ function changeSlide(
 }
 
 
-/* ==========================================
-   16. NEXT SLIDE
-========================================== */
+
+/* =========================================================
+   NEXT SLIDE
+========================================================= */
 
 function nextSlide() {
 
     if (
         !activeGallery ||
-        activeGallery.length === 0
+        activeGallery.length ===
+        0
     ) {
         return;
     }
@@ -2124,15 +3415,17 @@ function nextSlide() {
 }
 
 
-/* ==========================================
-   17. PREVIOUS SLIDE
-========================================== */
+
+/* =========================================================
+   PREVIOUS SLIDE
+========================================================= */
 
 function previousSlide() {
 
     if (
         !activeGallery ||
-        activeGallery.length === 0
+        activeGallery.length ===
+        0
     ) {
         return;
     }
@@ -2157,9 +3450,10 @@ function previousSlide() {
 }
 
 
-/* ==========================================
-   18. CLOSE ARTWORK VIEW
-========================================== */
+
+/* =========================================================
+   20. CLOSE ARTWORK
+========================================================= */
 
 function closeGallery() {
 
@@ -2210,9 +3504,15 @@ function closeGallery() {
 }
 
 
-/* ==========================================
-   19. CLICK ARTWORK
-========================================== */
+
+/* =========================================================
+   21. ARTWORK EVENTS
+========================================================= */
+
+
+/* =========================================================
+   CLICK COLLECTION ARTWORK
+========================================================= */
 
 document
     .querySelectorAll(
@@ -2250,9 +3550,10 @@ document
     );
 
 
-/* ==========================================
-   20. GALLERY BUTTONS
-========================================== */
+
+/* =========================================================
+   GALLERY BUTTONS
+========================================================= */
 
 if (
     lightboxClose
@@ -2290,9 +3591,11 @@ if (
 }
 
 
-/* ==========================================
-   21. ACCORDION / DROP MENUS
-========================================== */
+
+/* =========================================================
+   ACCORDION EVENTS
+   Kept for existing JavaScript compatibility.
+========================================================= */
 
 const accordionButtons =
     document.querySelectorAll(
@@ -2382,151 +3685,10 @@ accordionButtons.forEach(
 );
 
 
-/* ==========================================
-   PRODUCT DETAILS — OPEN
-========================================== */
 
-function openProductDetails() {
-
-    if (
-        !productDetailsPanel ||
-        !activeArtwork
-    ) {
-        return;
-    }
-
-
-    updateProductDetails();
-
-
-    activateProductDetailsTab(
-        "artwork"
-    );
-
-
-    productDetailsPanel.scrollTop =
-        0;
-
-
-    productDetailsPanel.classList.add(
-        "open"
-    );
-
-
-    productDetailsPanel.setAttribute(
-        "aria-hidden",
-        "false"
-    );
-
-}
-
-
-/* ==========================================
-   PRODUCT DETAILS — CLOSE
-========================================== */
-
-function closeProductDetails() {
-
-    if (
-        !productDetailsPanel
-    ) {
-        return;
-    }
-
-
-    productDetailsPanel.classList.remove(
-        "open"
-    );
-
-
-    productDetailsPanel.setAttribute(
-        "aria-hidden",
-        "true"
-    );
-
-}
-
-
-/* ==========================================
-   PRODUCT DETAILS — CHANGE TAB
-========================================== */
-
-function activateProductDetailsTab(
-    tabName
-) {
-
-    productDetailsTabs.forEach(
-        tab => {
-
-            const isActive =
-                tab.dataset.detailsTab
-                ===
-                tabName;
-
-
-            tab.classList.toggle(
-                "active",
-                isActive
-            );
-
-
-            tab.setAttribute(
-                "aria-selected",
-                isActive
-                    ?
-                    "true"
-                    :
-                    "false"
-            );
-
-        }
-    );
-
-
-    productDetailsSections.forEach(
-        section => {
-
-            const isActive =
-                section.dataset.detailsPanel
-                ===
-                tabName;
-
-
-            section.classList.toggle(
-                "active",
-                isActive
-            );
-
-
-            section.hidden =
-                !isActive;
-
-        }
-    );
-
-
-    if (
-        productDetailsPanel
-    ) {
-
-        productDetailsPanel.scrollTo(
-            {
-                top:
-                    0,
-
-                behavior:
-                    "smooth"
-            }
-        );
-
-    }
-
-}
-
-
-/* ==========================================
-   PRODUCT DETAILS — EVENTS
-========================================== */
+/* =========================================================
+   22. PRODUCT DETAILS EVENTS
+========================================================= */
 
 if (
     artworkDetailsLink
@@ -2569,15 +3731,18 @@ productDetailsTabs.forEach(
     }
 );
 
-/* ==========================================
-   22. KEYBOARD
-========================================== */
+
+
+/* =========================================================
+   23. KEYBOARD
+========================================================= */
 
 document.addEventListener(
     "keydown",
     event => {
 
         if (
+            !lightbox ||
             !lightbox.classList.contains(
                 "open"
             )
@@ -2586,42 +3751,161 @@ document.addEventListener(
         }
 
 
-if (
-    event.key ===
-    "Escape"
-) {
 
-    if (
-        sizeGuidePanel &&
-        sizeGuidePanel.classList.contains(
-            "open"
-        )
-    ) {
+        /* =================================================
+           ESCAPE
+        ================================================= */
 
-        closeSizeGuide();
-
-        return;
-
-    }
+        if (
+            event.key ===
+            "Escape"
+        ) {
 
 
-    if (
-        productDetailsPanel &&
-        productDetailsPanel.classList.contains(
-            "open"
-        )
-    ) {
+            /*
+                1. Proportions Guide
+            */
 
-        closeProductDetails();
+            if (
+                proportionsGuidePanel &&
+                proportionsGuidePanel
+                    .classList
+                    .contains(
+                        "open"
+                    )
+            ) {
 
-        return;
+                closeProportionsGuide();
 
-    }
+                return;
+
+            }
 
 
-    closeGallery();
+            /*
+                2. Size Guide
+            */
 
-}
+            if (
+                sizeGuidePanel &&
+                sizeGuidePanel
+                    .classList
+                    .contains(
+                        "open"
+                    )
+            ) {
+
+                closeSizeGuide();
+
+                return;
+
+            }
+
+
+            /*
+                3. Product Details
+            */
+
+            if (
+                productDetailsPanel &&
+                productDetailsPanel
+                    .classList
+                    .contains(
+                        "open"
+                    )
+            ) {
+
+                closeProductDetails();
+
+                return;
+
+            }
+
+
+            /*
+                4. Artwork
+            */
+
+            closeGallery();
+
+            return;
+
+        }
+
+
+
+        /* =================================================
+           PROPORTIONS GUIDE KEYBOARD NAVIGATION
+        ================================================= */
+
+        if (
+            proportionsGuidePanel &&
+            proportionsGuidePanel
+                .classList
+                .contains(
+                    "open"
+                )
+        ) {
+
+            if (
+                event.key ===
+                "ArrowRight"
+            ) {
+
+                showNextProportion();
+
+            }
+
+
+            else if (
+                event.key ===
+                "ArrowLeft"
+            ) {
+
+                showPreviousProportion();
+
+            }
+
+
+            return;
+
+        }
+
+
+
+        /* =================================================
+           DO NOT CHANGE GALLERY BEHIND OTHER PANELS
+        ================================================= */
+
+        if (
+            (
+                sizeGuidePanel &&
+                sizeGuidePanel
+                    .classList
+                    .contains(
+                        "open"
+                    )
+            )
+            ||
+            (
+                productDetailsPanel &&
+                productDetailsPanel
+                    .classList
+                    .contains(
+                        "open"
+                    )
+            )
+        ) {
+
+            return;
+
+        }
+
+
+
+        /* =================================================
+           NORMAL GALLERY KEYBOARD NAVIGATION
+        ================================================= */
 
         if (
             event.key ===
@@ -2633,7 +3917,7 @@ if (
         }
 
 
-        if (
+        else if (
             event.key ===
             "ArrowLeft"
         ) {
@@ -2646,52 +3930,72 @@ if (
 );
 
 
-/* ==========================================
-   23. MOBILE SWIPE — START
-========================================== */
 
-lightboxImage.addEventListener(
-    "touchstart",
-    event => {
-
-        touchStartX =
-            event
-                .changedTouches[0]
-                .screenX;
-
-    },
-    {
-        passive: true
-    }
-);
+/* =========================================================
+   24. MOBILE GALLERY SWIPE
+========================================================= */
 
 
-/* ==========================================
-   24. MOBILE SWIPE — END
-========================================== */
+/* =========================================================
+   SWIPE START
+========================================================= */
 
-lightboxImage.addEventListener(
-    "touchend",
-    event => {
+if (
+    lightboxImage
+) {
 
-        touchEndX =
-            event
-                .changedTouches[0]
-                .screenX;
+    lightboxImage.addEventListener(
+        "touchstart",
+        event => {
+
+            touchStartX =
+                event
+                    .changedTouches[0]
+                    .screenX;
+
+        },
+        {
+            passive: true
+        }
+    );
+
+}
 
 
-        handleSwipe();
 
-    },
-    {
-        passive: true
-    }
-);
+/* =========================================================
+   SWIPE END
+========================================================= */
+
+if (
+    lightboxImage
+) {
+
+    lightboxImage.addEventListener(
+        "touchend",
+        event => {
+
+            touchEndX =
+                event
+                    .changedTouches[0]
+                    .screenX;
 
 
-/* ==========================================
-   25. MOBILE SWIPE — DIRECTION
-========================================== */
+            handleSwipe();
+
+        },
+        {
+            passive: true
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   SWIPE DIRECTION
+========================================================= */
 
 function handleSwipe() {
 
@@ -2729,15 +4033,17 @@ function handleSwipe() {
 }
 
 
-/* ==========================================
-   26. RESIZE
-========================================== */
+
+/* =========================================================
+   25. RESIZE
+========================================================= */
 
 window.addEventListener(
     "resize",
     () => {
 
         if (
+            !lightbox ||
             !lightbox.classList.contains(
                 "open"
             )
@@ -2766,8 +4072,10 @@ window.addEventListener(
     }
 );
 
-/* ==========================================
-   27. BUILD COLLECTION NAVIGATOR
-========================================== */
+
+
+/* =========================================================
+   26. INITIALIZE
+========================================================= */
 
 buildCollectionNavigator();
