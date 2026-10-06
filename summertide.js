@@ -1536,19 +1536,15 @@ sizeGuideOptions.forEach(
 function getProportionsGuideSource() {
 
     if (
-        !activeArtwork
+        !activeArtwork ||
+        !activeArtworkKey
     ) {
         return "";
     }
 
+    return `images/${activeArtworkKey} size.jpg`;
 
-    if (
-        activeArtwork.proportionsSrc
-    ) {
-
-        return activeArtwork.proportionsSrc;
-
-    }
+}
 
 
     if (
