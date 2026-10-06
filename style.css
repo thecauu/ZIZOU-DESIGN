@@ -3971,50 +3971,33 @@ span:last-child {
 .size-guide-wall-art {
     position: absolute;
 
-    left: 50%;
+    /*
+        Right side of the wall so the
+        artwork does not cover the chair.
+    */
+    left: 72%;
+    bottom: 31%;
 
-    bottom: 30%;
+    width: 17.68%;
 
-    width: 19.5%;
+    /*
+        Exact A-series proportion.
+    */
+    aspect-ratio: 1 / 1.41421356237;
 
-    aspect-ratio:
-        2 / 3;
-
-    background-color: #ffffff;
-
+    background-color: transparent;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
 
     box-shadow:
-        0
-        7px
-        18px
-        rgba(
-            0,
-            0,
-            0,
-            0.16
-        );
+        0 7px 18px rgba(0, 0, 0, 0.16);
 
-    transform:
-        translateX(
-            -50%
-        );
-
-    transform-origin:
-        center
-        bottom;
+    transform: translateX(-50%);
+    transform-origin: center bottom;
 
     transition:
-        width
-        0.7s
-        cubic-bezier(
-            0.16,
-            1,
-            0.3,
-            1
-        );
+        width 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 
