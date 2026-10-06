@@ -2485,6 +2485,66 @@ function preloadGalleryImages(
 }
 
 
+/* =========================================================
+   PRELOAD GUIDE IMAGE
+========================================================= */
+
+const guideImageCache =
+    new Map();
+
+
+function preloadGuideImage(
+    artworkKey
+) {
+
+    if (
+        !artworkKey ||
+        guideImageCache.has(
+            artworkKey
+        )
+    ) {
+        return;
+    }
+
+
+    const source =
+        `images/${artworkKey} size.PNG`;
+
+
+    const image =
+        new Image();
+
+
+    image.src =
+        source;
+
+
+    guideImageCache.set(
+        artworkKey,
+        image
+    );
+
+
+    /*
+        Ask the browser to decode the image
+        before the buyer opens either guide.
+    */
+
+    if (
+        typeof image.decode ===
+        "function"
+    ) {
+
+        image
+            .decode()
+            .catch(
+                () => {}
+            );
+
+    }
+
+}
+
 
 /* =========================================================
    13. COLLECTION NAVIGATOR
@@ -2809,6 +2869,11 @@ function switchArtworkFromNavigator(
 
             preloadGalleryImages(
                 activeGallery
+            );
+            
+            
+            preloadGuideImage(
+                activeArtworkKey
             );
 
 
