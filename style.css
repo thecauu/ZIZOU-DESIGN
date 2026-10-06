@@ -197,10 +197,10 @@ body {
         );
 
     backdrop-filter:
-        blur(0.4px);
+        blur(0.3px);
 
     -webkit-backdrop-filter:
-        blur(0.4px);
+        blur(0.3px);
 
     clip-path:
         polygon(
