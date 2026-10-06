@@ -1345,8 +1345,10 @@ function setSizeGuideSize(
     }
 
 
-    const width =
-        button.dataset.width;
+    const paperWidth =
+        parseFloat(
+            button.dataset.widthCm
+        );
 
 
     const label =
@@ -1354,14 +1356,44 @@ function setSizeGuideSize(
 
 
     if (
-        !width
+        Number.isNaN(
+            paperWidth
+        )
     ) {
         return;
     }
 
 
+    /*
+        A1 is the largest size in this guide.
+
+        A1 width = 59.4 cm
+        A1 visual width = 25% of the room.
+
+        Every smaller A size is scaled
+        directly from its real physical width.
+    */
+
+    const largestPaperWidth =
+        59.4;
+
+
+    const largestVisualWidth =
+        25;
+
+
+    const visualWidth =
+        (
+            paperWidth
+            /
+            largestPaperWidth
+        )
+        *
+        largestVisualWidth;
+
+
     sizeGuideWallArt.style.width =
-        `${width}%`;
+        `${visualWidth}%`;
 
 
     if (
@@ -1388,7 +1420,6 @@ function setSizeGuideSize(
 }
 
 
-
 /* =========================================================
    OPEN SIZE GUIDE
 ========================================================= */
@@ -1406,10 +1437,10 @@ function openSizeGuide() {
     updateSizeGuideArtwork();
 
 
-    const defaultSize =
-        document.querySelector(
-            '.size-guide-option[data-size="30x45"]'
-        );
+const defaultSize =
+    document.querySelector(
+        '.size-guide-option[data-size="a2"]'
+    );
 
 
     if (
