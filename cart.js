@@ -21,7 +21,7 @@ const zizouProducts = {
         name: "Amber Breeze",
         type: "DIGITAL ART PHOTOGRAPHY",
         price: 19.99,
-        image: "images/amber breeze home page.jpg",
+        image: "images/amber portrait.JPG",
         checkout:
             "https://zizoudesign.lemonsqueezy.com/checkout/buy/8c922568-b22d-4f21-b7cb-9faaf3298379?embed=1&logo=0"
     },
